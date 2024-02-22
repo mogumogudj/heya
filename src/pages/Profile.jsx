@@ -2,7 +2,7 @@ import Nav from "../components/Nav"
 
 function Profile() {
     return (
-        <div>
+        <div className="page__container">
             <h1>My Profile</h1>
             <Nav />
         </div>

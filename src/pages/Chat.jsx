@@ -2,7 +2,7 @@ import Nav from "../components/Nav"
 
 function Chat() {
     return (
-        <div>
+        <div className="page__container">
             <h1>Chat</h1>
             <Nav />
         </div>

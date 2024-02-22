@@ -2,7 +2,7 @@ import Nav from "../components/Nav"
 
 function Rooms() {
     return (
-        <div>
+        <div className="page__container">
             <h1>My Rooms</h1>
             <Nav />
         </div>

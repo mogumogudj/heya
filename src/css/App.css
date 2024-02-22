@@ -1,0 +1,28 @@
+:root {
+    --Orange : #F7934C;
+    --Dark_Blue : #2A5EF3;
+    --Blue: #668CEF;
+    --Grey_Blue: #A3B9EA;
+    --Beige: #FDFEE4;
+    --Black: #1D1A05;
+    --White: #FFFFFF;
+    --Green: #5EF32A;
+    --Red: #F32A5E;
+    --Transparent-Grey: #F2F2F2;
+    --Mist: #ACACAC;
+}
+
+.page__container{
+    padding-top: 1.5rem;
+}
+
+
+
+
+
+
+@media screen and (max-width: 800px) {
+    .page__container{
+        padding-top: 0rem;
+    }
+}

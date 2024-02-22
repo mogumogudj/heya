@@ -1,0 +1,124 @@
+:root {
+    --Orange : #F7934C;
+    --Dark_Blue : #2A5EF3;
+    --Blue: #668CEF;
+    --Grey_Blue: #A3B9EA;
+    --Beige: #FDFEE4;
+    --Black: #1D1A05;
+    --White: #FFFFFF;
+    --Green: #5EF32A;
+    --Red: #F32A5E;
+    --Transparent-Grey: #F2F2F2;
+    --Mist: #ACACAC;
+}
+
+.nav{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.nav__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.nav__box span {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--Black);
+    margin-left: 0.5rem;
+    font-family: "degular";
+}
+
+.nav__box img {
+    height: 2rem;
+    width: auto;
+}
+
+.nav__img-wrapper {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.nav__img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+
+.nav__box__home img{
+    width:2.5rem;
+    height: 2.5rem;
+}
+
+.nav__box__profile img{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.nav__box__rooms img{
+    height: 1.4rem;
+}
+
+.nav__box__profile span{
+    margin-left: 1rem;
+}
+
+.nav__box__rooms span{
+    margin-left: 1rem;
+}
+
+.nav__box__calendar span{
+    margin-left: 0.7rem;
+}
+
+.nav__box__chat span{
+    margin-left: 0.7rem;
+}
+
+.nav__box:hover {
+    cursor: pointer;
+}
+
+.active span{
+    color: var(--Dark_Blue);
+}
+
+.active img{
+    filter: brightness(0) saturate(100%) invert(34%) sepia(95%) saturate(1582%) hue-rotate(208deg) brightness(91%) contrast(92%);
+}
+
+@media screen and (max-width: 800px) {
+    .nav {
+        bottom:0;
+        top: auto;
+        box-shadow: 0px -4px 6px -1px rgba(0, 0, 0, 0.1);
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .nav__box {
+        flex-direction: column;
+    }
+
+    .nav__box span {
+        font-size: 1rem;
+        margin-left: 0;
+    }
+    
+}
