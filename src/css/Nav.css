@@ -16,15 +16,13 @@
 
 .nav{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr) 55px;
     align-items: center;
     background-color: white;
     width: 100%;
     height: auto;
     position: fixed;
     top: 0;
-    padding-top: 4px;
-    padding-bottom: 4px;
 }
 
 .nav__box {
@@ -33,77 +31,69 @@
     align-items: center;
     text-decoration: none;
     color: black;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .nav__box span {
     font-size: 1.5rem;
     color: var(--Black);
-    margin-left: 0.5rem;
     font-weight: 600;
     font-family: "degular";
-}
-
-.nav__box img {
-    height: 2rem;
-    width: auto;
-}
-
-.nav__img-wrapper {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.nav__img-wrapper img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-}
-
-
-.nav__box__home img{
-    width:2.5rem;
-    height: 2.5rem;
-}
-
-.nav__box__profile img{
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-.nav__box__rooms img{
-    height: 1.4rem;
-}
-
-.nav__box__profile span{
-    margin-left: 1rem;
-}
-
-.nav__box__rooms span{
-    margin-left: 1rem;
-}
-
-.nav__box__calendar span{
-    margin-left: 0.7rem;
-}
-
-.nav__box__chat span{
-    margin-left: 0.7rem;
+    text-transform: uppercase;
 }
 
 .nav__box:hover {
     cursor: pointer;
 }
 
-.active span{
-    color: var(--Dark_Blue);
+.hidden__desktop {
+    display: none;
 }
 
-.active img{
-    filter: brightness(0) saturate(100%) invert(34%) sepia(95%) saturate(1582%) hue-rotate(208deg) brightness(91%) contrast(92%);
+.hidden {
+    display: none;
+}
+
+.heya__logo {
+    height: 38px;
+    width: auto;
+}
+
+@media screen and (min-width: 800px) {
+    .nav {
+        box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav__box span {
+        color: var(--Blue);
+    }
+
+    .active {
+        background-color: var(--Blue);
+        border-radius: 8px;
+    }
+
+    .nav__box__home.active {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    } 
+    
+    .nav__box__profile.active {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        height: 54px;
+    }
+
+    .nav__box__profile.active {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        height: 54px;
+    }
+
+    .active span{
+        color: var(--Beige);
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -116,6 +106,7 @@
 
     .nav__box {
         flex-direction: column;
+        padding-top: 4px;
     }
 
     .nav__box span {
@@ -124,5 +115,54 @@
         font-weight: 200;
     }
 
+    .active span{
+        color: var(--Dark_Blue);
+    }
     
+    .active img{
+        filter: brightness(0) saturate(100%) invert(34%) sepia(95%) saturate(1582%) hue-rotate(208deg) brightness(91%) contrast(92%);
+    }
+
+    .hidden__mobile{
+        display: none;
+    }
+
+    .hidden__desktop {
+        display: flex;
+    }
+
+    .nav__box img {
+        height: 2rem;
+        width: auto;
+    }
+    
+    .nav__img-wrapper {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    
+    .nav__img-wrapper img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+    
+    
+    .nav__box__home img{
+        width:2.5rem;
+        height: 2.5rem;
+    }
+    
+    .nav__box__profile img{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    .nav__box__rooms img{
+        height: 1.4rem;
+    }
 }
