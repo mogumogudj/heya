@@ -10,10 +10,12 @@
     --Red: #F32A5E;
     --Transparent-Grey: #F2F2F2;
     --Mist: #ACACAC;
+    --body-font: 'degular';
+    --heading-font: 'merel';
 }
 
 .page__container{
-    padding-top: 1.5rem;
+    padding-top: 3em;
 }
 
 
