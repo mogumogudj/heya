@@ -1,13 +1,25 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import Rooms from './pages/Rooms'
+import Calendar from './pages/Calendar'
+import Chat from './pages/Chat'
+import Profile from './pages/Profile'
 import './App.css'
 
 function App() {
 
   return (
-    <>
+    <Router>
       <div>
-        <h1>Heya</h1>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/rooms" element={<Rooms />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
       </div>
-    </>
+    </Router>
   )
 }
 
