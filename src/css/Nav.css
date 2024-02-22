@@ -37,9 +37,9 @@
 
 .nav__box span {
     font-size: 1.5rem;
-    font-weight: 600;
     color: var(--Black);
     margin-left: 0.5rem;
+    font-weight: 600;
     font-family: "degular";
 }
 
@@ -121,6 +121,8 @@
     .nav__box span {
         font-size: 1rem;
         margin-left: 0;
+        font-weight: 200;
     }
+
     
 }
