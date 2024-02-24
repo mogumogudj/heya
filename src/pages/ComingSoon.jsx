@@ -1,7 +1,12 @@
+import '../css/ComingSoon.css';
+
 function ComingSoon() {
     return (
-        <div>
-            <h1>Coming soon...</h1>
+        <div className="page__container">
+            <div className='heya2tone'>
+                <img src="heya2tone.svg" alt="Heya 2 tune" />
+            </div>
+            <h1>Bringing a new vision to student housing</h1>
         </div>
     )
 }

@@ -1,0 +1,34 @@
+:root {
+    --Orange : #F7934C;
+    --Dark_Blue : #2A5EF3;
+    --Blue: #668CEF;
+    --Grey_Blue: #A3B9EA;
+    --Beige: #FDFEE4;
+    --Black: #1D1A05;
+    --White: #FFFFFF;
+    --Green: #5EF32A;
+    --Red: #F32A5E;
+    --Transparent-Grey: #F2F2F2;
+    --Mist: #ACACAC;
+    --body-font: 'degular';
+    --heading-font: 'merel';
+}
+
+.heya2tone{
+    display: grid;
+    place-items: center;
+}
+
+.heya2tone img{
+    width: 25%;
+    height: auto;
+}
+
+h1{
+    font-size: 2.5rem;
+    font-family: var(--heading-font);
+    color: var(--Beige);
+    margin-top: 1rem;
+    text-shadow: #ACACAC 0px 1px 0.5px;
+    text-align: center;
+}
