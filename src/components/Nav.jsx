@@ -6,12 +6,12 @@ function Nav() {
 
   return (
     <nav className="nav">
-        <Link to="/" className={`nav__box nav__box__home ${location.pathname === "/" ? "active" : ""}`}>
+        <Link to="/home" className={`nav__box nav__box__home ${location.pathname === "/home" ? "active" : ""}`}>
             <div className="nav__img-wrapper hidden__desktop">
                 <img src="../home.svg" alt="" />
             </div>
-            <img className={`hidden__mobile ${location.pathname === "/" ? "" : "hidden"} heya__logo`} src="../heya-white.svg" alt="" />
-            <img className={`hidden__mobile ${location.pathname === "/" ? "hidden" : ""} heya__logo`} src="../heya-blue.svg" alt="" />
+            <img className={`hidden__mobile ${location.pathname === "/home" ? "" : "hidden"} heya__logo`} src="../heya-white.svg" alt="" />
+            <img className={`hidden__mobile ${location.pathname === "/home" ? "hidden" : ""} heya__logo`} src="../heya-blue.svg" alt="" />
             <span className="hidden__desktop">Home</span>
         </Link>
         <Link to="/rooms" className={`nav__box nav__box__rooms ${location.pathname === "/rooms" ? "active" : ""}`}>
