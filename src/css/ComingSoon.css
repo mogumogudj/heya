@@ -115,6 +115,7 @@
     }
 
     .coming-soon-h1{
+        font-size: 2em;
         padding-top: 1.5em;
         width: 100%;
     }
@@ -122,5 +123,6 @@
     .page__container__coming-soon p{
         padding-top: 0.5;
         width: 100%;
+        font-size: 3em;
     }
 }
