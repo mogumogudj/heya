@@ -38,7 +38,7 @@
 }
 
 .page__container__coming-soon{
-    background-image: url('SleepingRoom.webp');
+    background-image: url('../../public/SleepingRoom.webp');
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -110,7 +110,17 @@
     }
 
     .page__container__coming-soon{
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .coming-soon-h1{
+        padding-top: 1.5em;
+        width: 100%;
+    }
+
+    .page__container__coming-soon p{
+        padding-top: 0.5;
+        width: 100%;
     }
 }
