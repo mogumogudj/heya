@@ -94,6 +94,10 @@
     .active span{
         color: var(--Beige);
     }
+
+    .do-not-show-on-desktop {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -116,11 +120,7 @@
     }
 
     .active span{
-        color: var(--Dark_Blue);
-    }
-    
-    .active img{
-        filter: brightness(0) saturate(100%) invert(34%) sepia(95%) saturate(1582%) hue-rotate(208deg) brightness(91%) contrast(92%);
+        color: var(--Blue);
     }
 
     .hidden__mobile{
