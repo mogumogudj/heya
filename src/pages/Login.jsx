@@ -26,7 +26,7 @@ function Login() {
         e.preventDefault();
         try {
             const response = await fetch('https://heya-api.onrender.com/auth/login', {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
