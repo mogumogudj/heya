@@ -111,6 +111,14 @@
         width: calc(100% - 100px);
         margin: 0.5em 50px;
     }
+
+    .heya__logo__blue__round{
+        margin-top: 3em;
+    }
+
+    .form__group__email {
+        margin-top: 2em;
+    }
 }
 
 @media screen and (max-width: 300px) {
