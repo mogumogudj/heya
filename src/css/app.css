@@ -1,0 +1,94 @@
+.page__container{
+    padding-top: 3.5em;
+}
+
+.title__center{
+    text-align: center;
+    display: block;
+
+}
+
+.heya__logo__blue__round{
+    width: 80px;
+    height: 80px;
+    left: calc(50% - 80px/2);
+    top: calc(50% - 80px/2 - 290px);
+    margin: 3em auto 1em auto;
+    display: block;
+}
+
+@media screen and (max-width: 800px) {
+    .page__container{
+        padding-top: 0;
+    }
+
+    h1{
+        font-size: 1.75em;
+        font-family: var(--heading-font);
+        color: var(--Black);
+    }
+
+    .heya__logo__blue__round{
+        margin-top: 6.5em;
+    }
+
+    .form__group__email {
+        margin-top: 4em;
+    }
+
+    .input__field {
+        width: calc(100% - 32px);
+        margin: 0.5em 16px;
+        padding: 8px 16px;
+        border: none;
+        color: var(--Black);
+        background-color: var(--Transparent-Grey);
+        border-radius: 8px;
+    }
+
+    .forgot__password {
+        display: block;
+        text-align: right;
+        margin-right: 16px;
+        margin-top: -44px
+    }
+
+    .google__button, .facebook__button {
+        width: calc(100% - 200px);
+        margin: 0.5em 100px;
+        padding: 6px;
+        border: 1px solid var(--Grey_Blue);
+        color: var(--Black);
+        background-color: var(--White);
+        border-radius: 8px;
+    }
+
+    .google__button{
+        margin-top: 4em;
+    }
+
+    .big__blue__button {
+        width: calc(100% - 32px);
+        margin: 2em 16px 1em 16px;
+        padding: 6px;
+        border: none;
+        color: var(--Beige);
+        background-color: var(--Dark_Blue);
+        border-radius: 8px;
+    }
+
+    .or{
+        display: block;
+        text-align: center;
+    }
+
+    .big__white__button {
+        width: calc(100% - 32px);
+        margin: 1em 16px;
+        padding: 6px;
+        border: 1px solid var(--Grey_Blue);
+        color: var(--Dark_Blue);
+        background-color: var(--White);
+        border-radius: 8px;
+    }
+}

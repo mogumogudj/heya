@@ -10,21 +10,6 @@
     --Red: #F32A5E;
     --Transparent-Grey: #F2F2F2;
     --Mist: #ACACAC;
-    --body-font: 'degular';
-    --heading-font: 'merel';
-}
-
-.page__container{
-    padding-top: 3.5em;
-}
-
-
-
-
-
-
-@media screen and (max-width: 800px) {
-    .page__container{
-        padding-top: 0rem;
-    }
+    --body-font: 'degular', sans-serif;
+    --heading-font: 'merel', serif;
 }
