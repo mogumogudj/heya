@@ -32,10 +32,6 @@
         margin-top: 3.5em;
     }
 
-    .form__group__email {
-        margin-top: 4em;
-    }
-
     .input__field {
         width: calc(100% - 32px);
         margin: 0.5em 16px;
@@ -53,6 +49,16 @@
         margin-top: -44px
     }
 
+    .form__group__confirm__password {
+        margin-top: -40px
+    }
+
+    .already__have__account {
+        display: block;
+        text-align: center;
+        margin-top: -40px
+    }
+
     .google__button, .facebook__button {
         width: calc(100% - 200px);
         margin: 0.5em 100px;
@@ -61,6 +67,13 @@
         color: var(--Black);
         background-color: var(--White);
         border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .google__button svg, .facebook__button svg {
+        margin-right: 16px; 
     }
 
     .google__button{

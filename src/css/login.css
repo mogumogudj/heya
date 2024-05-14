@@ -4,3 +4,7 @@
     right: calc(-100% + 56px);
     top: -45px;
 }
+
+.form__group__email {
+    margin-top: 4em;
+}

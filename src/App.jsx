@@ -1,6 +1,7 @@
 import "antd/dist/antd.min.css";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from "./pages/Login";
+import CreateAccount from "./pages/CreateAccount.jsx";
 import ComingSoon from "./pages/ComingSoon";
 import Home from './pages/Home';
 import Rooms from './pages/Rooms';
@@ -16,6 +17,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/" element={<ComingSoon />} />
           <Route path="/home" element={<Home />} />
           <Route path="/rooms" element={<Rooms />} />
