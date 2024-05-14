@@ -105,3 +105,17 @@
         border-radius: 8px;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .google__button, .facebook__button {
+        width: calc(100% - 100px);
+        margin: 0.5em 50px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .google__button, .facebook__button {
+        width: calc(100% - 32px);
+        margin: 0.5em 16px;
+    }
+}
