@@ -2,6 +2,13 @@
     padding-top: 3.5em;
 }
 
+.center-container-always{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
 h1{
     font-family: var(--heading-font);
     color: var(--Black);
@@ -64,7 +71,6 @@ h1{
     border-radius: 8px;
 }
 
-
 .or{
     display: block;
     text-align: center;
@@ -84,7 +90,19 @@ h1{
     margin-top: -40px
 }
 
-@media screen and (min-height: 800px) and (min-width: 800px) {
+.place__to__offer, .looking__for__a__place {
+    border: 1px solid var(--Grey_Blue);
+    border-radius: 8px;
+    text-align: center;
+    padding: 12px 12px 0 0;
+}
+
+.situation__icon{
+    width: 100px;
+    height: 100px;
+}
+
+@media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{
         display: flex;
         align-items: center;
@@ -131,7 +149,21 @@ h1{
         margin: 1em auto;
         display: block;
     }
-    
+
+    .select__situation {
+        width: 768px;
+        display: flex;
+    }
+
+    .place__to__offer {
+        width: 388px;
+        margin-right: 12px;
+    }
+
+    .looking__for__a__place {
+        width: 388px;
+        margin-left: 12px;
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -169,6 +201,22 @@ h1{
         width: calc(100% - 32px);
         margin: 1em 16px;
     }
+
+    .select__situation__page {
+        margin: 0 16px;
+    }
+
+    .place__to__offer {
+        margin: 16px 0;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .looking__for__a__place {
+        margin: 16px 0;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -179,6 +227,10 @@ h1{
 
     .heya__logo__blue__round{
         margin-top: 3em;
+    }
+
+    .select__situation__page .heya__logo__blue__round {
+        margin: 0 ;
     }
 
     .form__group__email {

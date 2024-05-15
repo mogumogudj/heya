@@ -1,4 +1,4 @@
-import '../css/login.css';
+import '../../css/login.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
@@ -35,6 +35,7 @@ function Login() {
             const data = await response.json();
             if (response.ok) {
                 console.log('Login successful:', data);
+                navigate('/home')
             } else {
                 throw new Error(data.message || 'Failed to login');
             }

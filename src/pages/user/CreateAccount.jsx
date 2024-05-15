@@ -38,6 +38,7 @@ function CreateAccount() {
             const data = await response.json();
             if (response.ok) {
                 console.log('signup successful:', data);
+                navigate('/select-situation')
             } else {
                 throw new Error(data.message || 'Failed to signup');
             }
