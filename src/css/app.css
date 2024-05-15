@@ -97,11 +97,6 @@ h1{
     padding: 12px 12px 0 0;
 }
 
-.situation__icon{
-    width: 100px;
-    height: 100px;
-}
-
 @media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{
         display: flex;
@@ -230,7 +225,7 @@ h1{
     }
 
     .select__situation__page .heya__logo__blue__round {
-        margin: 0 ;
+        margin-top: 0;
     }
 
     .form__group__email {
