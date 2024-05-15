@@ -44,50 +44,52 @@ function Login() {
     };
 
     return (
-        <div className="page__container">
-            <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
-            <h1 className="title__center">Login</h1>
+        <div className="center-container">
+            <div className="page__container__login">
+                <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
+                <h1 className="title__center">Login</h1>
 
-            <form>
-                <div className="form__group__email">
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        className="input__field"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        autoComplete="email"
-                    />
-                </div>
+                <form>
+                    <div className="form__group__email">
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            className="input__field"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            autoComplete="email"
+                        />
+                    </div>
 
-                <div className="form__group__password">
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Password"
-                        className="input__field"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        autoComplete="current-password"
-                    />
-                    <IconButton
-                        onClick={togglePasswordVisibility}
-                        aria-label="toggle password visibility"
-                        className="password-icon"
-                    >
-                        {showPassword ? <VisibilityOffOutlinedIcon /> : <RemoveRedEyeOutlinedIcon />}
-                    </IconButton>
-                    <span className="forgot__password">Forgot password?</span>
-                </div>
+                    <div className="form__group__password">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Password"
+                            className="input__field"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            autoComplete="current-password"
+                        />
+                        <IconButton
+                            onClick={togglePasswordVisibility}
+                            aria-label="toggle password visibility"
+                            className="password-icon"
+                        >
+                            {showPassword ? <VisibilityOffOutlinedIcon /> : <RemoveRedEyeOutlinedIcon />}
+                        </IconButton>
+                        <span className="forgot__password">Forgot password?</span>
+                    </div>
 
-                <button className="google__button"><GoogleIcon fontSize="small" /> Create with Google</button>
-                <button className="facebook__button"><FacebookRoundedIcon fontSize="small" /> Create with Facebook</button>
+                    <button className="google__button"><GoogleIcon fontSize="small" /> Create with Google</button>
+                    <button className="facebook__button"><FacebookRoundedIcon fontSize="small" /> Create with Facebook</button>
 
-                <button onClick={handleLogin} className="big__blue__button">Login</button>
-                <span className="or">Or</span>
-                <button onClick={handleCreateAccount} className="big__white__button">Create an account</button>
-            </form>
+                    <button onClick={handleLogin} className="big__blue__button">Login</button>
+                    <span className="or">Or</span>
+                    <button onClick={handleCreateAccount} className="big__white__button">Create an account</button>
+                </form>
+            </div>
         </div>
     );
 }

@@ -52,80 +52,81 @@ function CreateAccount() {
 
 
     return (
-        <div className="page__container">
-            <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
-            <h1 className="title__center">Create Account</h1>
+        <div className="center-container">
+            <div className="page__container__signup">
+                <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
+                <h1 className="title__center">Create Account</h1>
 
-            <form>
-                <div className="form__group__email">
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        className="input__field"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        autoComplete="email"
-                    />
-                </div>
+                <form>
+                    <div className="form__group__email">
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            className="input__field"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            autoComplete="email"
+                        />
+                    </div>
 
-                <div className="form__group__name">
-                    <input
-                        type="name"
-                        placeholder="Name"
-                        className="input__field"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                        autoComplete="name"
-                    />
-                </div>
+                    <div className="form__group__name">
+                        <input
+                            type="name"
+                            placeholder="Name"
+                            className="input__field"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                            autoComplete="name"
+                        />
+                    </div>
 
-                <div className="form__group__password">
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Password"
-                        className="input__field"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        autoComplete="new-password"
-                    />
-                    <IconButton
-                        onClick={togglePasswordVisibility}
-                        aria-label="toggle password visibility"
-                        className="password-icon"
-                    >
-                        {showPassword ? <VisibilityOffOutlinedIcon /> : <RemoveRedEyeOutlinedIcon />}
-                    </IconButton>
-                </div>
+                    <div className="form__group__password">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Password"
+                            className="input__field"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            autoComplete="new-password"
+                        />
+                        <IconButton
+                            onClick={togglePasswordVisibility}
+                            aria-label="toggle password visibility"
+                            className="password-icon"
+                        >
+                            {showPassword ? <VisibilityOffOutlinedIcon /> : <RemoveRedEyeOutlinedIcon />}
+                        </IconButton>
+                    </div>
 
-                <div className="form__group__confirm__password">
-                    <input
-                        type={showConfirmPassword ? "text" : "password"}
-                        placeholder="Repeat password"
-                        className="input__field"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                        autoComplete="new-password"
-                    />
-                    <IconButton
-                        onClick={togglePasswordConfirmVisibility}
-                        aria-label="toggle password visibility"
-                        className="password-icon"
-                    >
-                        {showConfirmPassword ? <VisibilityOffOutlinedIcon /> : <RemoveRedEyeOutlinedIcon />}
-                    </IconButton>
-                    <span onClick={handleLogin} className="already__have__account">I already have an account</span>
-                </div>
-            </form>
+                    <div className="form__group__confirm__password">
+                        <input
+                            type={showConfirmPassword ? "text" : "password"}
+                            placeholder="Repeat password"
+                            className="input__field"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required
+                            autoComplete="new-password"
+                        />
+                        <IconButton
+                            onClick={togglePasswordConfirmVisibility}
+                            aria-label="toggle password visibility"
+                            className="password-icon"
+                        >
+                            {showConfirmPassword ? <VisibilityOffOutlinedIcon /> : <RemoveRedEyeOutlinedIcon />}
+                        </IconButton>
+                        <span onClick={handleLogin} className="already__have__account">I already have an account</span>
+                    </div>
+                </form>
 
-            <button className="google__button"><GoogleIcon fontSize="small" /> Create with Google</button>
-            <button className="facebook__button"><FacebookRoundedIcon fontSize="small" /> Create with Facebook</button>
-            <button onClick={handleCreateAccount} className="big__blue__button">Create your account</button>
-            <span className="or">Or</span>
-            <button onClick={handleLogin} className="big__white__button">Login</button>
+                <button onClick={handleCreateAccount} className="big__blue__button">Create your account</button>
+                <span className="or">Or</span>
+                <button className="google__button"><GoogleIcon fontSize="small" /> Create with Google</button>
+                <button className="facebook__button"><FacebookRoundedIcon fontSize="small" /> Create with Facebook</button>
+            </div>
         </div>
     );
 }
