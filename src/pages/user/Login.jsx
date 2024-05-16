@@ -6,12 +6,35 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 import IconButton from '@mui/material/IconButton';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import Alert from '@mui/material/Alert';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+    customAlert: {
+        paddingBottom: '16px',
+        borderRadius: '8px',
+        width: '768px',
+        margin: '-16px auto 32px auto',
+    },
+    '@media screen and (max-width: 800px)': {
+        customAlert: {
+          width: 'calc(100% - 32px)',
+          margin: '-16px 16px 32px 16px',
+        },
+    },
+    errorInput: {
+        border: '1px solid red',
+    },
+});
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState('');
+
     const navigate = useNavigate();
+    const classes = useStyles();
 
     const togglePasswordVisibility = (e) => {
         e.preventDefault();
@@ -41,6 +64,7 @@ function Login() {
             }
         } catch (error) {
             console.error('Login error:', error);
+            setError(error.message || 'Failed to login');
         }
     };
 
@@ -55,7 +79,7 @@ function Login() {
                         <input
                             type="email"
                             placeholder="Email"
-                            className="input__field"
+                            className={`input__field ${error && classes.errorInput}`}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -67,7 +91,7 @@ function Login() {
                         <input
                             type={showPassword ? "text" : "password"}
                             placeholder="Password"
-                            className="input__field"
+                            className={`input__field ${error && classes.errorInput}`}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -82,6 +106,8 @@ function Login() {
                         </IconButton>
                         <span className="forgot__password">Forgot password?</span>
                     </div>
+
+                    {error && <Alert className={classes.customAlert} severity="error">{error}</Alert>}
 
                     <button className="google__button"><GoogleIcon fontSize="small" /> Create with Google</button>
                     <button className="facebook__button"><FacebookRoundedIcon fontSize="small" /> Create with Facebook</button>
