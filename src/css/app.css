@@ -97,6 +97,66 @@ h1{
     padding: 12px 12px 0 0;
 }
 
+.about__yourself__page {
+    margin: 0 16px;
+}
+
+.form__group p {
+    padding-top: 16px;
+}
+
+.about__yourself__inputs input {
+    width: 100%;
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--Transparent-Grey);
+}
+
+.about__yourself__inputs select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--Transparent-Grey);
+    width: 100%;
+}
+
+.date__picker {
+    width: 100%;
+    margin: 0;
+    background-color: var(--Transparent-Grey);
+    font-family: var(--body-font);
+    font-size: 1em;
+    height: 42px;
+    border-radius: 8px;
+}
+
+.MuiInputBase-root.MuiOutlinedInput-root{
+    border-radius: 8px;
+}
+
+.next__help {
+    float: right;
+}
+
+.blue__button__medium__width-height {
+    background-color: var(--Dark_Blue);
+    border-radius: 8px;
+    border: none;
+    padding: 8px 48px;
+    color: var(--Beige);
+    margin-top: 32px;
+    display: block;
+}
+
+.help {
+    display: block;
+    text-align: right;
+    padding-top: 8px;
+}
+
+
 @media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{
         display: flex;
@@ -158,6 +218,35 @@ h1{
     .looking__for__a__place {
         width: 388px;
         margin-left: 12px;
+    }
+
+    .about__yourself__inputs {
+        width: 800px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 32px;
+    }
+
+    .about__yourself__inputs input {
+        width: 384px;
+        margin: 0;
+    }
+
+    .about__yourself__inputs select {
+        width: 384px;
+        margin: 0;
+    }
+
+    .MuiInputBase-root.MuiOutlinedInput-root {
+        width: 384px;
+        margin: 0;
+    }
+
+    .blue__button__medium__width-height {
+        width: 210px;
+        background-color: var(--Dark_Blue);
+        padding: 16px;
+        left: calc(87% - 210px/2);
     }
 }
 
