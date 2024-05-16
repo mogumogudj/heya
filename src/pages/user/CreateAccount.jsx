@@ -5,6 +5,25 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 import IconButton from '@mui/material/IconButton';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import Alert from '@mui/material/Alert';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+    customAlert: {
+        borderRadius: '8px',
+        width: '768px',
+        margin: '16px auto 32px auto',
+    },
+    '@media screen and (max-width: 800px)': {
+        customAlert: {
+          width: 'calc(100% - 32px)',
+          margin: '16px 16px 32px 16px',
+        },
+    },
+    errorInput: {
+        border: '1px solid red',
+    },
+});
 
 function CreateAccount() {
     const [name, setName] = useState('');
@@ -13,7 +32,10 @@ function CreateAccount() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfrimPassword] = useState(false);
+    const [error, setError] = useState('');
+
     const navigate = useNavigate();
+    const classes = useStyles();
 
     const togglePasswordVisibility = (e) => {
         e.preventDefault();
@@ -27,6 +49,14 @@ function CreateAccount() {
 
     const handleCreateAccount = async (e) => {
         e.preventDefault();
+        if (password !== confirmPassword) {
+            setError('Passwords do not match');
+            return;
+        }
+        if (name === '' || email === '' || password === '' || confirmPassword === '') {
+            setError('All fields are required');
+            return;
+        }
         try {
             const response = await fetch('https://heya-api.onrender.com/auth/signup', {
                 method: 'POST',
@@ -44,6 +74,7 @@ function CreateAccount() {
             }
         } catch (error) {
             console.error('signup error:', error);
+            setError(error.message || 'Failed to login');
         }
     };
 
@@ -63,7 +94,7 @@ function CreateAccount() {
                         <input
                             type="email"
                             placeholder="Email"
-                            className="input__field"
+                            className={`input__field ${error && classes.errorInput}`}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -75,7 +106,7 @@ function CreateAccount() {
                         <input
                             type="name"
                             placeholder="Name"
-                            className="input__field"
+                            className={`input__field ${error && classes.errorInput}`}
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required
@@ -87,7 +118,7 @@ function CreateAccount() {
                         <input
                             type={showPassword ? "text" : "password"}
                             placeholder="Password"
-                            className="input__field"
+                            className={`input__field ${error && classes.errorInput}`}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -106,7 +137,7 @@ function CreateAccount() {
                         <input
                             type={showConfirmPassword ? "text" : "password"}
                             placeholder="Repeat password"
-                            className="input__field"
+                            className={`input__field ${error && classes.errorInput}`}
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
@@ -122,6 +153,8 @@ function CreateAccount() {
                         <span onClick={handleLogin} className="already__have__account">I already have an account</span>
                     </div>
                 </form>
+
+                {error && <Alert className={classes.customAlert} severity="error">{error}</Alert>}
 
                 <button onClick={handleCreateAccount} className="big__blue__button">Create your account</button>
                 <span className="or">Or</span>

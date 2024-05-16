@@ -11,7 +11,6 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
     customAlert: {
-        paddingBottom: '16px',
         borderRadius: '8px',
         width: '768px',
         margin: '-16px auto 32px auto',
