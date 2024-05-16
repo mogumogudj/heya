@@ -7,6 +7,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
+import { useAuth } from '../../AuthContext';
 
 const useStyles = makeStyles({
     customAlert: {
@@ -35,6 +36,7 @@ function CreateAccount() {
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
+    const { login } = useAuth();
     const classes = useStyles();
 
     const togglePasswordVisibility = (e) => {
@@ -68,6 +70,8 @@ function CreateAccount() {
             const data = await response.json();
             if (response.ok) {
                 console.log('signup successful:', data);
+                localStorage.setItem('token', data.token);
+                login();
                 navigate('/select-situation')
             } else {
                 throw new Error(data.message || 'Failed to signup');
