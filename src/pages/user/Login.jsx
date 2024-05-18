@@ -8,7 +8,6 @@ import GoogleIcon from '@mui/icons-material/Google';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
-import { useAuth } from '../../AuthContext';
 
 const useStyles = makeStyles({
     customAlert: {
@@ -34,7 +33,6 @@ function Login() {
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
-    const { login } = useAuth();
     const classes = useStyles();
 
     const togglePasswordVisibility = (e) => {
@@ -48,6 +46,7 @@ function Login() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        console.log("Login button clicked"); 
         try {
             const response = await fetch('https://heya-api.onrender.com/auth/login', {
                 method: 'POST',
@@ -60,7 +59,6 @@ function Login() {
             if (response.ok) {
                 console.log('Login successful:', data);
                 localStorage.setItem('token', data.token);
-                login();
                 navigate('/home')
             } else {
                 throw new Error(data.message || 'Failed to login');
