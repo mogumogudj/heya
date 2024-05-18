@@ -1,5 +1,5 @@
-import '../../css/login.css';
-import { useState } from 'react';
+import '../../css/login.css'
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
@@ -31,7 +31,6 @@ function Login() {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
-
     const navigate = useNavigate();
     const classes = useStyles();
 
@@ -69,13 +68,18 @@ function Login() {
         }
     };
 
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        handleLogin(e);
+    };
+
     return (
         <div className="center-container">
             <div className="page__container__login">
                 <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
                 <h1 className="title__center">Login</h1>
 
-                <form>
+                <form onSubmit={handleFormSubmit}>
                     <div className="form__group__email">
                         <input
                             type="email"
@@ -113,7 +117,7 @@ function Login() {
                     <button className="google__button"><GoogleIcon fontSize="small" /> Create with Google</button>
                     <button className="facebook__button"><FacebookRoundedIcon fontSize="small" /> Create with Facebook</button>
 
-                    <button onClick={handleLogin} className="big__blue__button">Login</button>
+                    <button type="submit" className="big__blue__button">Login</button>
                     <span className="or">Or</span>
                     <button onClick={handleCreateAccount} className="big__white__button">Create an account</button>
                 </form>

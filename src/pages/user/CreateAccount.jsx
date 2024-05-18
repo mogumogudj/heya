@@ -31,20 +31,17 @@ function CreateAccount() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfrimPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [error, setError] = useState('');
-
     const navigate = useNavigate();
     const classes = useStyles();
 
-    const togglePasswordVisibility = (e) => {
-        e.preventDefault();
+    const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
 
-    const togglePasswordConfirmVisibility = (e) => {
-        e.preventDefault();
-        setShowConfrimPassword(!showConfirmPassword);
+    const toggleConfirmPasswordVisibility = () => {
+        setShowConfirmPassword(!showConfirmPassword);
     };
 
     const handleCreateAccount = async (e) => {
@@ -69,7 +66,7 @@ function CreateAccount() {
             if (response.ok) {
                 console.log('signup successful:', data);
                 localStorage.setItem('token', data.token);
-                navigate('/select-situation')
+                navigate('/select-situation');
             } else {
                 throw new Error(data.message || 'Failed to signup');
             }
@@ -83,6 +80,10 @@ function CreateAccount() {
         navigate('/login');
     };
 
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        handleCreateAccount(e);
+    };
 
     return (
         <div className="center-container">
@@ -90,7 +91,7 @@ function CreateAccount() {
                 <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
                 <h1 className="title__center">Create Account</h1>
 
-                <form>
+                <form onSubmit={handleFormSubmit}>
                     <div className="form__group__email">
                         <input
                             type="email"
@@ -145,22 +146,24 @@ function CreateAccount() {
                             autoComplete="new-password"
                         />
                         <IconButton
-                            onClick={togglePasswordConfirmVisibility}
-                            aria-label="toggle password visibility"
+                            onClick={toggleConfirmPasswordVisibility}
+                            aria-label="toggle confirm password visibility"
                             className="password-icon"
                         >
                             {showConfirmPassword ? <VisibilityOffOutlinedIcon /> : <RemoveRedEyeOutlinedIcon />}
                         </IconButton>
-                        <span onClick={handleLogin} className="already__have__account">I already have an account</span>
                     </div>
+
+                    <span onClick={handleLogin} className="already__have__account">I already have an account</span>
+
+
+                    {error && <Alert className={classes.customAlert} severity="error">{error}</Alert>}
+
+                    <button type="submit" className="big__blue__button">Create your account</button>
+                    <span className="or">Or</span>
+                    <button className="google__button"><GoogleIcon fontSize="small" /> Create with Google</button>
+                    <button className="facebook__button"><FacebookRoundedIcon fontSize="small" /> Create with Facebook</button>
                 </form>
-
-                {error && <Alert className={classes.customAlert} severity="error">{error}</Alert>}
-
-                <button onClick={handleCreateAccount} className="big__blue__button">Create your account</button>
-                <span className="or">Or</span>
-                <button className="google__button"><GoogleIcon fontSize="small" /> Create with Google</button>
-                <button className="facebook__button"><FacebookRoundedIcon fontSize="small" /> Create with Facebook</button>
             </div>
         </div>
     );
