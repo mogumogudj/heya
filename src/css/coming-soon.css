@@ -22,7 +22,7 @@
 }
 
 .page__container__coming-soon{
-    background-image: url('../../public/SleepingRoom.webp');
+    background-image: url('../../SleepingRoom.webp');
     background-size: cover;
     background-position: center;
     width: 100%;

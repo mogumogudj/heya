@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useAuth } from '../../AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,6 +11,12 @@ function Logout() {
         localStorage.removeItem('token');
         navigate('/login');
     };
+
+    useEffect(() => {
+        handleLogout();
+    }, []);
+
+    return null;
 }
 
 export default Logout;
