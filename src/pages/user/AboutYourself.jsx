@@ -78,63 +78,65 @@ function AboutYourself() {
                 <h1>Tell us about yourself</h1>
                 <h2>Personal information</h2>
                 <FormProvider {...methods}>
-                    <form onSubmit={handleSubmit(onSubmit)} className={'about__yourself__inputs'}>
-                        <div className="form__group">
-                            <p>Firstname</p>
-                            <input
-                                type="text"
-                                placeholder="John"
-                                className="input__field"
-                                {...methods.register('firstname', { required: true })}
-                            />
-                        </div>
-                        <div className="form__group">
-                            <p>Lastname</p>
-                            <input
-                                type="text"
-                                placeholder="Doe"
-                                className="input__field"
-                                {...methods.register('lastname', { required: true })}
-                            />
-                        </div>
-                        <div className="form__group">
-                            <p>Gender</p>
-                            <select {...methods.register('gender', { required: true })}>
-                                {Object.values(Gender).map((genderOption) => (
-                                    <option key={genderOption} value={genderOption}>
-                                        {genderOption}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="form__group">
-                            <p>Birthday</p>
-                            <Controller
-                                className="date__controller"
-                                name="birthday"
-                                control={control}
-                                defaultValue=""
-                                render={({ field }) => (
-                                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                        <DatePicker
-                                            {...field}
-                                            className="date__picker"
-                                            label=""
-                                            format="dd/MM/yyyy"
-                                            value={field.value !== '' ? new Date(field.value) : null}
-                                        />
-                                    </LocalizationProvider>
-                                )}
-                            />
-                        </div>
-                        <div className="form__group">
-                            <p>Phone number</p>
-                            <input
-                                type="tel"
-                                placeholder="+32412345678"
-                                className="input__field"
-                                {...methods.register('phone', { required: true })}
-                            />
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className={'about__yourself__inputs'}>
+                            <div className="form__group">
+                                <p>Firstname</p>
+                                <input
+                                    type="text"
+                                    placeholder="John"
+                                    className="input__field"
+                                    {...methods.register('firstname', { required: true })}
+                                />
+                            </div>
+                            <div className="form__group">
+                                <p>Lastname</p>
+                                <input
+                                    type="text"
+                                    placeholder="Doe"
+                                    className="input__field"
+                                    {...methods.register('lastname', { required: true })}
+                                />
+                            </div>
+                            <div className="form__group">
+                                <p>Gender</p>
+                                <select {...methods.register('gender', { required: true })}>
+                                    {Object.values(Gender).map((genderOption) => (
+                                        <option key={genderOption} value={genderOption}>
+                                            {genderOption}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="form__group">
+                                <p>Birthday</p>
+                                <Controller
+                                    className="date__controller"
+                                    name="birthday"
+                                    control={control}
+                                    defaultValue=""
+                                    render={({ field }) => (
+                                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                            <DatePicker
+                                                {...field}
+                                                className="date__picker"
+                                                label=""
+                                                format="dd/MM/yyyy"
+                                                value={field.value !== '' ? new Date(field.value) : null}
+                                            />
+                                        </LocalizationProvider>
+                                    )}
+                                />
+                            </div>
+                            <div className="form__group">
+                                <p>Phone number</p>
+                                <input
+                                    type="tel"
+                                    placeholder="+32412345678"
+                                    className="input__field"
+                                    {...methods.register('phone', { required: true })}
+                                />
+                            </div>
                         </div>
                         <div className="next__help">
                             <button className="blue__button__medium__width-height" type="submit">Next step</button>

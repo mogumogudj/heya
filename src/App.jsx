@@ -15,6 +15,7 @@ import Chat from './pages/Chat.jsx';
 import Profile from './pages/user/Profile.jsx';
 import Logout from './pages/user/Logout.jsx';
 import PrivateRoutes from './PrivateRoute.jsx'
+import UploadImage from './pages/user/UploadImage.jsx';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/logout" element={<Logout />} />
             <Route path="/select-situation" element={<SelectSituation />} />
             <Route path="/about-yourself" element={<AboutYourself />} />
+            <Route path="/upload-image" element={<UploadImage />} />
             <Route path="/rooms" element={<Rooms />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/chat" element={<Chat />} />
