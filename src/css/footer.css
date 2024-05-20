@@ -7,6 +7,7 @@
     justify-content: space-between;
     background-color: var(--Transparent-Grey);
     height: 340px;
+    padding: 0 16px 0 16px;
   }
   
   .footer-left {
