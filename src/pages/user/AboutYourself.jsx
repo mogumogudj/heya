@@ -139,7 +139,7 @@ function AboutYourself() {
                             </div>
                         </div>
                         <div className="next__help">
-                            <button className="blue__button__medium__width-height" type="submit">Next step</button>
+                            <button className="blue__button medium" type="submit">Next step</button>
                             <span className='help'>I need help</span>
                         </div>
                     </form>

@@ -117,9 +117,9 @@ function Login() {
                     <button className="google__button"><GoogleIcon fontSize="small" /> Create with Google</button>
                     <button className="facebook__button"><FacebookRoundedIcon fontSize="small" /> Create with Facebook</button>
 
-                    <button type="submit" className="big__blue__button">Login</button>
+                    <button type="submit" className="blue__button big">Login</button>
                     <span className="or">Or</span>
-                    <button onClick={handleCreateAccount} className="big__white__button">Create an account</button>
+                    <button onClick={handleCreateAccount} className="white__button big">Create an account</button>
                 </form>
             </div>
         </div>

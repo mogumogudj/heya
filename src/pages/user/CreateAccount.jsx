@@ -159,7 +159,7 @@ function CreateAccount() {
 
                     {error && <Alert className={classes.customAlert} severity="error">{error}</Alert>}
 
-                    <button type="submit" className="big__blue__button">Create your account</button>
+                    <button type="submit" className="blue__button big">Create your account</button>
                     <span className="or">Or</span>
                     <button className="google__button"><GoogleIcon fontSize="small" /> Create with Google</button>
                     <button className="facebook__button"><FacebookRoundedIcon fontSize="small" /> Create with Facebook</button>
