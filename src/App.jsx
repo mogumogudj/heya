@@ -31,6 +31,7 @@ function App() {
             <Route path="/select-situation" element={<SelectSituation />} />
             <Route path="/about-yourself" element={<AboutYourself />} />
             <Route path="/upload-image" element={<UploadImage />} />
+            <Route path="/customize-stay" element={<ComingSoon />} />
             <Route path="/rooms" element={<Rooms />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/chat" element={<Chat />} />

@@ -61,6 +61,7 @@ function AboutYourself() {
             const result = await response.json();
             if (response.ok) {
                 console.log('User created successfully:', result);
+                localStorage.setItem('userId', result._id);
                 navigate('/upload-image');
             } else {
                 throw new Error(result.message || 'Failed to create user');
