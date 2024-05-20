@@ -16,6 +16,7 @@ import Profile from './pages/user/Profile.jsx';
 import Logout from './pages/user/Logout.jsx';
 import PrivateRoutes from './PrivateRoute.jsx'
 import UploadImage from './pages/user/UploadImage.jsx';
+import Welcome from './pages/Welcome.jsx';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/welcome" element={<Welcome />} />
           </Route>
       </Routes>
     </BrowserRouter>

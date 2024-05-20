@@ -1,0 +1,119 @@
+.page__container {
+    padding: 0 120px;
+}
+
+.content__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 200px;
+}
+
+.content__container h1 {
+    font-size: 48px;
+    color: var(--Black);
+    margin-bottom: 20px;
+    line-height: 48px;
+}
+
+.switch__container {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--Transparent-Grey);
+}
+
+.switch__button {
+    padding: 4px 20px;
+    margin: 0 8px;
+    border: none;
+    background-color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.5s ease, font-weight 0.5s ease;
+    font-weight: normal; 
+}
+
+.switch__button.active {
+    background-color: var(--Grey_Blue);
+    color: white;
+    font-weight: bold;
+}
+
+.description {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: var(--Black);
+}
+
+.button__container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.action__button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action__button:hover {
+    background-color: #0056b3;
+}
+
+.rotated__image {
+    width: 600px;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    transform: rotate(50%);
+    border-radius: 50% 60% 60% 80% / 60% 100% 80% 85%; /* een random shape */
+    margin-left: 20px;
+    margin-top: 200px;
+    object-fit: cover;
+}
+
+
+@media (max-width: 768px) {
+    .page__container {
+        padding: 0 12px; 
+        margin-bottom: 40px;
+        padding-bottom: 80px;
+    }
+
+    .content__wrapper {
+        flex-direction: column; 
+        align-items: center;
+        text-align: center;
+    }
+
+    .content__container {
+        align-items: center; 
+        text-align: center;
+        margin-top: 100px; 
+    }
+
+    .rotated__image {
+        width: 100%; 
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .switch__container {
+        justify-content: center; 
+    }
+
+    .button__container {
+        justify-content: center;
+    }
+}
