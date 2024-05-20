@@ -1,5 +1,7 @@
 .page__container {
+    min-height: 200vh;
     padding: 0 120px;
+    
 }
 
 .content__wrapper {

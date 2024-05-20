@@ -1,0 +1,150 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 120px;
+    background-color: var(--Transparent-Grey);
+    /* margin-top: 120px; */
+    height: 340px;
+  }
+  
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-logo {
+    width: 150px;
+    margin-top: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    text-decoration: underline;
+  }
+  
+  .footer-email, .footer-phone {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .footer-icon {
+    margin-right: 10px;
+  }
+  
+  .footer-nav {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 160px;
+  }
+  
+  .footer-nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-nav li {
+    margin-bottom: 20px; /* links spacing */
+  }
+  
+  .footer-nav-big a {
+    font-size: 16px;
+    color: var(--Black);
+  }
+  
+  .footer-nav-small a {
+    font-size: 14px;
+    color: var(--Black);
+    font-weight: lighter;
+  }
+  
+  .footer-subscribe {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+  }
+
+  .footer-subscribe h2 {
+    /* margin-bottom: 10px; */
+    font-size: 22px;
+  }
+
+    .footer-subscribe h4 {
+        font-size: 14px;
+    }
+  
+    .footer-subscribe p {
+        font-size: 14px;
+        margin-top: 8px;
+        margin-bottom: -4px;
+    }
+
+    
+  .footer-input {
+    margin: 10px 0;
+    padding: 8px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--Grey_Blue);
+    border-radius: 4px;
+  }
+  
+  .footer-checkbox {
+    display: flex;
+    align-items: center;
+    margin: 0px 0;
+  }
+  
+  .footer-checkbox input {
+    margin-right: 10px;
+  }
+
+  .footer-checkbox label span {
+    text-decoration: underline;
+    color: var(--Blue);
+  }
+  
+  .footer-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: var(--Dark_Blue);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .footer-button:hover {
+    background-color: var(--Blue);
+  }
+
+  .footer-button.subscribed {
+    background-color: var(--Green);
+    font-weight: 800;
+  }
+  
+  .footer-social {
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-social h4 {
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-right: 10px;
+  }
+  
+  .footer-social .MuiIconButton-root {
+    color: var(--Black);
+    margin-right: -4px;
+  }
+  

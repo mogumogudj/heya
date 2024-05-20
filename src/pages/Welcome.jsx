@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../css/welcome.css';
 import Nav from "../components/Nav";
+import Footer from '../components/Footer';
 
 function Welcome() {
     const [isLeftActive, setIsLeftActive] = useState(true);
@@ -44,8 +45,10 @@ function Welcome() {
                         className="rotated__image" 
                     />
                 </div>
+                </div>
+                <Footer />
             </div>
-        </div>
+        
     );
 }
 
