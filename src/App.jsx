@@ -17,6 +17,7 @@ import Logout from './pages/user/Logout.jsx';
 import PrivateRoutes from './PrivateRoute.jsx'
 import UploadImage from './pages/user/UploadImage.jsx';
 import Welcome from './pages/Welcome.jsx';
+import CustomizeStay from './pages/user/CustomizeStay.jsx';
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
             <Route path="/select-situation" element={<SelectSituation />} />
             <Route path="/about-yourself" element={<AboutYourself />} />
             <Route path="/upload-image" element={<UploadImage />} />
-            <Route path="/customize-stay" element={<ComingSoon />} />
+            <Route path="/customize-stay" element={<CustomizeStay />} />
             <Route path="/rooms" element={<Rooms />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/chat" element={<Chat />} />

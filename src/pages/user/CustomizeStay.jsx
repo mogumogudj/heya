@@ -1,9 +1,12 @@
-import Nav from "../../components/Nav"
+import Footer from "../../components/Footer"
 
 function CustomizeStay() {
     return (
         <div className="page__container">
-            <h1>Customize your stay</h1>
+            <div className="content">
+                <h1>Customize your stay</h1>        
+            </div>
+            <Footer />
         </div>
     )
 }

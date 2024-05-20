@@ -7,6 +7,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
+import Footer from '../../components/Footer';
 
 const useStyles = makeStyles({
     customAlert: {
@@ -86,85 +87,90 @@ function CreateAccount() {
     };
 
     return (
-        <div className="center-container">
-            <div className="page__container__signup">
-                <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
-                <h1 className="title__center">Create Account</h1>
+        <div className="page__container">
+            <div className='content'>
+                <div className="center-container">
+                    <div className="page__container__signup">
+                        <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
+                        <h1 className="title__center">Create Account</h1>
 
-                <form onSubmit={handleFormSubmit}>
-                    <div className="form__group__email">
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            className={`input__field ${error && classes.errorInput}`}
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            autoComplete="email"
-                        />
+                        <form onSubmit={handleFormSubmit}>
+                            <div className="form__group__email">
+                                <input
+                                    type="email"
+                                    placeholder="Email"
+                                    className={`input__field ${error && classes.errorInput}`}
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                    autoComplete="email"
+                                />
+                            </div>
+
+                            <div className="form__group__name">
+                                <input
+                                    type="name"
+                                    placeholder="Name"
+                                    className={`input__field ${error && classes.errorInput}`}
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    required
+                                    autoComplete="name"
+                                />
+                            </div>
+
+                            <div className="form__group__password">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="Password"
+                                    className={`input__field ${error && classes.errorInput}`}
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                    autoComplete="new-password"
+                                />
+                                <IconButton
+                                    onClick={togglePasswordVisibility}
+                                    aria-label="toggle password visibility"
+                                    className="password-icon"
+                                >
+                                    {showPassword ? <VisibilityOffOutlinedIcon /> : <RemoveRedEyeOutlinedIcon />}
+                                </IconButton>
+                            </div>
+
+                            <div className="form__group__confirm__password">
+                                <input
+                                    type={showConfirmPassword ? "text" : "password"}
+                                    placeholder="Repeat password"
+                                    className={`input__field ${error && classes.errorInput}`}
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    required
+                                    autoComplete="new-password"
+                                />
+                                <IconButton
+                                    onClick={toggleConfirmPasswordVisibility}
+                                    aria-label="toggle confirm password visibility"
+                                    className="password-icon"
+                                >
+                                    {showConfirmPassword ? <VisibilityOffOutlinedIcon /> : <RemoveRedEyeOutlinedIcon />}
+                                </IconButton>
+                            </div>
+
+                            <span onClick={handleLogin} className="already__have__account">I already have an account</span>
+
+
+                            {error && <Alert className={classes.customAlert} severity="error">{error}</Alert>}
+
+                            <button type="submit" className="blue__button big">Create your account</button>
+                            <span className="or">Or</span>
+                            <button className="google__button"><GoogleIcon fontSize="small" /> Create with Google</button>
+                            <button className="facebook__button"><FacebookRoundedIcon fontSize="small" /> Create with Facebook</button>
+                        </form>
                     </div>
-
-                    <div className="form__group__name">
-                        <input
-                            type="name"
-                            placeholder="Name"
-                            className={`input__field ${error && classes.errorInput}`}
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required
-                            autoComplete="name"
-                        />
-                    </div>
-
-                    <div className="form__group__password">
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            placeholder="Password"
-                            className={`input__field ${error && classes.errorInput}`}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                            autoComplete="new-password"
-                        />
-                        <IconButton
-                            onClick={togglePasswordVisibility}
-                            aria-label="toggle password visibility"
-                            className="password-icon"
-                        >
-                            {showPassword ? <VisibilityOffOutlinedIcon /> : <RemoveRedEyeOutlinedIcon />}
-                        </IconButton>
-                    </div>
-
-                    <div className="form__group__confirm__password">
-                        <input
-                            type={showConfirmPassword ? "text" : "password"}
-                            placeholder="Repeat password"
-                            className={`input__field ${error && classes.errorInput}`}
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            required
-                            autoComplete="new-password"
-                        />
-                        <IconButton
-                            onClick={toggleConfirmPasswordVisibility}
-                            aria-label="toggle confirm password visibility"
-                            className="password-icon"
-                        >
-                            {showConfirmPassword ? <VisibilityOffOutlinedIcon /> : <RemoveRedEyeOutlinedIcon />}
-                        </IconButton>
-                    </div>
-
-                    <span onClick={handleLogin} className="already__have__account">I already have an account</span>
-
-
-                    {error && <Alert className={classes.customAlert} severity="error">{error}</Alert>}
-
-                    <button type="submit" className="blue__button big">Create your account</button>
-                    <span className="or">Or</span>
-                    <button className="google__button"><GoogleIcon fontSize="small" /> Create with Google</button>
-                    <button className="facebook__button"><FacebookRoundedIcon fontSize="small" /> Create with Facebook</button>
-                </form>
+                </div>
             </div>
+            <Footer />
         </div>
     );
 }

@@ -8,6 +8,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
 import { jwtDecode } from "jwt-decode";
+import Footer from '../../components/Footer';
 
 const useStyles = makeStyles({
     customAlert: {
@@ -73,80 +74,85 @@ function AboutYourself() {
     };
 
     return (
-        <div className="center-container">
-            <div className="about__yourself__page">
-                <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
-                <h1>Tell us about yourself</h1>
-                <h2>Personal information</h2>
-                <FormProvider {...methods}>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className={'about__yourself__inputs'}>
-                            <div className="form__group">
-                                <p>Firstname</p>
-                                <input
-                                    type="text"
-                                    placeholder="John"
-                                    className="input__field"
-                                    {...methods.register('firstname', { required: true })}
-                                />
-                            </div>
-                            <div className="form__group">
-                                <p>Lastname</p>
-                                <input
-                                    type="text"
-                                    placeholder="Doe"
-                                    className="input__field"
-                                    {...methods.register('lastname', { required: true })}
-                                />
-                            </div>
-                            <div className="form__group">
-                                <p>Gender</p>
-                                <select {...methods.register('gender', { required: true })}>
-                                    {Object.values(Gender).map((genderOption) => (
-                                        <option key={genderOption} value={genderOption}>
-                                            {genderOption}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div className="form__group">
-                                <p>Birthday</p>
-                                <Controller
-                                    className="date__controller"
-                                    name="birthday"
-                                    control={control}
-                                    defaultValue=""
-                                    render={({ field }) => (
-                                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                            <DatePicker
-                                                {...field}
-                                                className="date__picker"
-                                                label=""
-                                                format="dd/MM/yyyy"
-                                                value={field.value !== '' ? new Date(field.value) : null}
-                                            />
-                                        </LocalizationProvider>
-                                    )}
-                                />
-                            </div>
-                            <div className="form__group">
-                                <p>Phone number</p>
-                                <input
-                                    type="tel"
-                                    placeholder="+32412345678"
-                                    className="input__field"
-                                    {...methods.register('phone', { required: true })}
-                                />
-                            </div>
-                        </div>
-                        <div className="next__help">
-                            <button className="blue__button medium" type="submit">Next step</button>
-                            <span className='help'>I need help</span>
-                        </div>
-                    </form>
-                    {error && <Alert className={classes.customAlert} severity="error">{error}</Alert>}
-                </FormProvider>
+        <div className="page__container">
+            <div className='content'>
+                <div className="center-container">
+                    <div className="about__yourself__page">
+                        <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
+                        <h1>Tell us about yourself</h1>
+                        <h2>Personal information</h2>
+                        <FormProvider {...methods}>
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <div className={'about__yourself__inputs'}>
+                                    <div className="form__group">
+                                        <p>Firstname</p>
+                                        <input
+                                            type="text"
+                                            placeholder="John"
+                                            className="input__field"
+                                            {...methods.register('firstname', { required: true })}
+                                        />
+                                    </div>
+                                    <div className="form__group">
+                                        <p>Lastname</p>
+                                        <input
+                                            type="text"
+                                            placeholder="Doe"
+                                            className="input__field"
+                                            {...methods.register('lastname', { required: true })}
+                                        />
+                                    </div>
+                                    <div className="form__group">
+                                        <p>Gender</p>
+                                        <select {...methods.register('gender', { required: true })}>
+                                            {Object.values(Gender).map((genderOption) => (
+                                                <option key={genderOption} value={genderOption}>
+                                                    {genderOption}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div className="form__group">
+                                        <p>Birthday</p>
+                                        <Controller
+                                            className="date__controller"
+                                            name="birthday"
+                                            control={control}
+                                            defaultValue=""
+                                            render={({ field }) => (
+                                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                                    <DatePicker
+                                                        {...field}
+                                                        className="date__picker"
+                                                        label=""
+                                                        format="dd/MM/yyyy"
+                                                        value={field.value !== '' ? new Date(field.value) : null}
+                                                    />
+                                                </LocalizationProvider>
+                                            )}
+                                        />
+                                    </div>
+                                    <div className="form__group">
+                                        <p>Phone number</p>
+                                        <input
+                                            type="tel"
+                                            placeholder="+32412345678"
+                                            className="input__field"
+                                            {...methods.register('phone', { required: true })}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="next__help">
+                                    <button className="blue__button medium" type="submit">Next step</button>
+                                    <span className='help'>I need help</span>
+                                </div>
+                            </form>
+                            {error && <Alert className={classes.customAlert} severity="error">{error}</Alert>}
+                        </FormProvider>
+                    </div>
+                </div>
             </div>
+            <Footer />
         </div>
     );
 }

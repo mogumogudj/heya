@@ -1,9 +1,3 @@
-.page__container {
-    min-height: 200vh;
-    padding: 0 120px;
-    
-}
-
 .content__wrapper {
     display: flex;
     align-items: center;
@@ -79,7 +73,7 @@
     height: auto;
     aspect-ratio: 4 / 3;
     transform: rotate(50%);
-    border-radius: 50% 60% 60% 80% / 60% 100% 80% 85%; /* een random shape */
+    border-radius: 50% 60% 60% 80% / 60% 100% 80% 85%;
     margin-left: 20px;
     margin-top: 200px;
     object-fit: cover;
