@@ -1,5 +1,7 @@
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import EmailIcon from '@mui/icons-material/Email';
 import '../css/about.css';
 
 function About() {
@@ -38,8 +40,8 @@ function About() {
                                     <div className="team-member__name">Wouter Waumans</div>
                                     <div className="team-member__role">Owner</div>
                                     <div className="team-member__socials">
-                                        <div className="team-member__socials-Linkedin"></div>
-                                        <div className="team-member__socials-Mail"></div>
+                                        <div className="team-member__socials-Linkedin team-member__socials-icon"><LinkedInIcon /></div>
+                                        <div className="team-member__socials-Mail team-member__socials-icon"><EmailIcon /></div>
                                     </div>
                                 </div>
                                 <div className="team-member Tjerk">
@@ -47,8 +49,8 @@ function About() {
                                     <div className="team-member__name">Tjerk Symens</div>
                                     <div className="team-member__role">Owner</div>
                                     <div className="team-member__socials">
-                                        <div className="team-member__socials-Linkedin"></div>
-                                        <div className="team-member__socials-Mail"></div>
+                                        <div className="team-member__socials-Linkedin team-member__socials-icon"><LinkedInIcon /></div>
+                                        <div className="team-member__socials-Mail team-member__socials-icon"><EmailIcon /></div>
                                     </div>
                                 </div>
                                 <div className="team-member Wolf">
@@ -56,14 +58,18 @@ function About() {
                                     <div className="team-member__name">Wolf Ver Elst</div>
                                     <div className="team-member__role">Owner</div>
                                     <div className="team-member__socials">
-                                        <div className="team-member__socials-Linkedin"></div>
-                                        <div className="team-member__socials-Mail"></div>
+                                        <div className="team-member__socials-Linkedin team-member__socials-icon"><LinkedInIcon /></div>
+                                        <div className="team-member__socials-Mail team-member__socials-icon"><EmailIcon /></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="about__mission">
-                            
+                            <div className="about__mission-text">
+                                <h1>Our mission</h1>
+                                <h4>At Heya, our mission is to revolutionize student housing by connecting students with affordable, quality homes and supportive hosts. We champion the innovative concept of hospitawonen, ensuring every student finds a safe and enriching living experience.</h4>
+                            </div>
+                            <div className="about__mission-image mission-image"></div>
                         </div>
                         <div className="about__ideal__room">
                             
