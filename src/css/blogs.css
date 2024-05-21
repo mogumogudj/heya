@@ -1,6 +1,13 @@
 .blogs__articles {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-top: 64px;
+}
+
+.blogs__articles__50{
+    grid-template-columns: 1fr 1fr;
+}
+
+.blogs__articles__33{
+    grid-template-columns: 1fr 1fr 1fr;
 }

@@ -87,4 +87,11 @@
         font-weight: 400;
         font-family: 'merel', serif;
     }
+
+    .strong__text{
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 700;
+        font-family: 'degular', sans-serif;
+    }
 }
