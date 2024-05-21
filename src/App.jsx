@@ -18,6 +18,7 @@ import PrivateRoutes from './PrivateRoute.jsx'
 import UploadImage from './pages/user/UploadImage.jsx';
 import Welcome from './pages/Welcome.jsx';
 import CustomizeStay from './pages/user/CustomizeStay.jsx';
+import Blogs from './pages/Blogs.jsx';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="/chat" element={<Chat />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/welcome" element={<Welcome />} />
+            <Route path="/blogs" element={<Blogs />} />
           </Route>
       </Routes>
     </BrowserRouter>
