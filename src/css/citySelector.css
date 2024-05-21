@@ -31,3 +31,39 @@
     margin-top: 92px;
     text-shadow: 2px 2px 4px var(--Black);
 }
+
+.image-Antwerp{
+    background-image: url(../../public/antwerpen.webp);
+    background-size: cover;
+    background-position: center;
+}
+
+.image-Brussels{
+    background-image: url(../../public/brussel.webp);
+    background-size: cover;
+    background-position: center;
+}
+
+.image-Ghent{
+    background-image: url(../../public/gent.webp);
+    background-size: cover;
+    background-position: center;
+}
+
+.image-Kortrijk{
+    background-image: url(../../public/kortrijk.webp);
+    background-size: cover;
+    background-position: center;
+}
+
+.image-Leuven{
+    background-image: url(../../public/leuven.webp);
+    background-size: cover;
+    background-position: center;
+}
+
+.image-Hasselt{
+    background-image: url(../../public/hasselt.webp);
+    background-size: cover;
+    background-position: center;
+}
