@@ -1,20 +1,22 @@
 body {
-    overflow-y: scroll; /* Ensures consistent scrollbar behavior */
+    overflow-y: scroll;
 }
 
 * {
-    box-sizing: border-box; /* Consistent box-sizing across elements */
+    box-sizing: border-box;
 }
 
 .nav{
     display: grid;
-    grid-template-columns: repeat(4, 1fr) 55px;
+    grid-template-columns: repeat(8, 1fr) 55px;
+    transition: color 0.3s ease;
     align-items: center;
-    background-color: white;
+    background-color: var(--White);
     width: 100%;
     height: auto;
     position: fixed;
     top: 0;
+    height: 100px;
 }
 
 .nav__box {
@@ -22,17 +24,20 @@ body {
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: black;
+    color: var(--Black);
     padding-top: 8px;
     padding-bottom: 8px;
 }
 
 .nav__box span {
-    font-size: 1.5rem;
+    font-size: 18px;
     color: var(--Black);
-    font-weight: 600;
+    font-weight: 200;
     font-family: var(--body-font);
-    text-transform: uppercase;
+}
+
+.nav__box.active span {
+    color: var(--Dark_Blue); 
 }
 
 .nav__box:hover {
@@ -48,21 +53,36 @@ body {
 }
 
 .heya__logo {
-    height: 38px;
+    height: 52px;
     width: auto;
 }
+
+.nav__box:hover {
+    cursor: pointer;
+}
+
+.nav__box:not(.no-hover):hover::after,
+.nav__box:not(.no-hover).active::after {
+    width: calc(70% - 40px); 
+    background-color: var(--Dark_Blue); 
+}
+
 
 @media screen and (min-width: 800px) {
     .nav {
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+    }
+
+    .nav__box {
+        position: relative;
     }
 
     .nav__box span {
-        color: var(--Blue);
+        color: var(--Black);
     }
 
     .active {
-        background-color: var(--Blue);
         border-radius: 8px;
     }
 
@@ -77,19 +97,73 @@ body {
         height: 54px;
     }
 
-    .nav__box__profile.active {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-        height: 54px;
+    .active span{
+        color: var(--Dark_Blue);
     }
 
-    .active span{
-        color: var(--Beige);
+    .nav__box::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+        height: 2px;
+        background-color: transparent;
+        transition: width 0.3s ease;
     }
+
 
     .do-not-show-on-desktop {
         display: none;
     }
+
+    .nav__profile-wrapper {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        margin-left: 40px;
+    }
+
+    .nav__profile-wrapper .profile__picture {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 0;
+        object-fit: cover;
+    }
+
+    .nav__profile-name {
+        margin-left: 8px;
+        font-size: 18px;
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis;
+    }
+
+    .nav__box__language {
+        display: flex;
+        align-items: center;
+        color: var(--Black);
+        padding: 8px;
+        text-decoration: none;
+        font-weight: lighter;
+      }
+      
+      .language-icon {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+      
+      .dropdown-icon {
+        color: var(--Black);
+      }
+
+      
+    
 }
 
 @media screen and (max-width: 800px) {
@@ -156,5 +230,15 @@ body {
     
     .nav__box__rooms img{
         height: 1.4rem;
+    }
+
+    .nav__profile-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav__profile-name {
+        margin-left: 8px;
+        font-size: 1rem;
     }
 }

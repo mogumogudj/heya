@@ -3,11 +3,13 @@ import Nav from "../../components/Nav"
 
 function Profile() {
     return (
-        <div className="page__container">
+        <div>
             <Nav />
+        <div className="page__container">
             <div className="content">
                 <h1>My Profile</h1>
             </div>
+        </div>
             <Footer />
         </div>
     )
