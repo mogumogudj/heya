@@ -4,7 +4,7 @@ import '../css/about.css';
 
 function About() {
     return (
-        <div>
+        <div className="page__container">
             <Nav />
             <div className="about__container">
                 <div className="content">
