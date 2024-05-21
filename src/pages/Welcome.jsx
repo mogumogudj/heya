@@ -2,9 +2,19 @@ import React, { useState } from 'react';
 import '../css/welcome.css';
 import Nav from "../components/Nav";
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 function Welcome() {
     const [isLeftActive, setIsLeftActive] = useState(true);
+    const navigate = useNavigate();
+
+    const handleLogin = () => {
+        navigate('/login');
+    };
+
+    const handleGetStarted = () => {
+        navigate('/create-account');
+    }
 
     return (
         <div>
@@ -35,12 +45,12 @@ function Welcome() {
                             }
                         </h4>
                         <div className="button__container">
-                            <button type="submit" className="blue__button medium">Get started</button>
-                            <button type="submit" className="white__button medium">Login</button>
+                            <button onClick={handleGetStarted} className="blue__button">Get started</button>
+                            <button onClick={handleLogin}  className="white__button">Login</button>
                         </div>
                     </div>
                     <img 
-                        src={isLeftActive ? '../public/SleepingRoom.webp' : '../public/CozyLivingRoom.webp'} 
+                        src={isLeftActive ? '../SleepingRoom.webp' : '../CozyLivingRoom.webp'} 
                         alt={isLeftActive ? 'Sleeping Room' : 'Cozy Living Room'} 
                         className="rotated__image" 
                     />

@@ -7,7 +7,7 @@
     justify-content: space-between;
     background-color: var(--Transparent-Grey);
     height: 340px;
-    padding: 0 16px 0 16px;
+    padding: 0 120px 0 120px;
 }
 
 .footer-left {
@@ -144,8 +144,12 @@
   color: var(--Black);
   margin-right: -4px;
 }
+
+.content__wrapper {
+  height: 100vh;
+}
   
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1100px) {
   .footer {
     display: none;
   }
