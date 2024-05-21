@@ -9,7 +9,7 @@ function About() {
         <div className="page__container">
             <Nav />
             <div className="about__container">
-                <div className="content">
+                <div className="content__about">
                     <header className="title__center normal__header">
                         <h6>Heya</h6>
                         <h1>About us</h1>
@@ -65,14 +65,18 @@ function About() {
                             </div>
                         </div>
                         <div className="about__mission">
+                            <div className="about__mission-image mission-image"></div>
                             <div className="about__mission-text">
                                 <h1>Our mission</h1>
                                 <h4>At Heya, our mission is to revolutionize student housing by connecting students with affordable, quality homes and supportive hosts. We champion the innovative concept of hospitawonen, ensuring every student finds a safe and enriching living experience.</h4>
                             </div>
-                            <div className="about__mission-image mission-image"></div>
                         </div>
-                        <div className="about__ideal__room">
-                            
+                        <div className="about__ideal-room">
+                            <div className="about__ideal-room-text">
+                                <h1>Your ideal room</h1>
+                                <h4>At Heya, our mission is to revolutionize student housing by connecting students with affordable, quality homes and supportive hosts. We champion the innovative concept of hospitawonen, ensuring every student finds a safe and enriching living experience.</h4>
+                            </div>
+                            <div className="about__ideal-room-image ideal-room-image"></div>
                         </div>
                         <div className="about__slogan">
                             <h3>

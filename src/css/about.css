@@ -8,7 +8,7 @@
     padding-top: 64px;
 }
 
-.about__intro, .about__mission {
+.about__intro, .about__mission, .about__ideal-room {
     width: calc(100% - 240px);
     height: 440px;
     display: flex;
@@ -16,11 +16,17 @@
     gap: 16px;
 }
 
-.about__intro-text, .about__mission-text {
+.about__ideal-room {
+    margin-top: 64px;
+    margin-bottom: 16px;
+}
+
+.about__intro-text, .about__mission-text, .about__ideal-room-text {
     display: flex;
     flex-direction: column;
     align-items: left;
     justify-content: center;
+    width: 100%;
 }
 
 .about__intro-images {
@@ -32,12 +38,24 @@
     height: 100%;
 }
 
-.about__intro-image, .about__mission-image {
-    width: 100%;
+.about__intro-image, .about__mission-image, .about__ideal-room-image {
+    width: 90%;
     height: 100%;
     background-size: cover;
     background-position: center;
     border-radius: 8px;
+}
+
+.about__intro-image {
+    width: 100%;
+}
+
+.about__ideal-room-image {
+    margin-left: 10%;
+}
+
+.about__mission-image {
+    margin-right: 10%;
 }
 
 .about__intro-images-double{
@@ -55,7 +73,7 @@
     background-image: url(../../public/street.webp);
 }
 
-.intro-image__3, .mission-image {
+.intro-image__3, .mission-image, .ideal-room-image {
     background-image: url(../../public/apartment.webp);
 }
 
@@ -145,11 +163,29 @@
     gap: 16px;
 }
 
+.about__slogan {
+    width: 66%;
+    text-align: center;
+    padding: 16px 0;
+    margin-bottom: 24px;
+}
+
 @media screen and (max-width: 800px) {
-    .about__intro {
+    .about__intro, .about__mission, .about__ideal-room {
         flex-direction: column;
         width: calc(100% - 32px);
+        height: auto;
     }
+
+    .about__ideal-room {
+        margin-top: 32px;
+        margin-bottom: 0;
+    }
+
+    .about__intro-image {
+        height: 100px;
+    }
+    
 
     .about__team {
         height: auto;
@@ -165,12 +201,6 @@
         grid-template-columns: 1fr;
         min-width: 0;
         width: 80%;
-    }
-
-    .about__mission {
-        flex-direction: column;
-        width: calc(100% - 32px);
-        height: auto;
     }
 
     .about__mission-image {
