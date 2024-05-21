@@ -1,12 +1,9 @@
 .footer {
-    bottom: 0;
-    left: 0;
     width: 100%;
-    z-index: 1000;
     display: flex;
     justify-content: space-between;
     background-color: var(--Transparent-Grey);
-    height: 340px;
+    height: 360px;
     padding: 0 120px 0 120px;
 }
 
@@ -74,17 +71,16 @@
   font-size: 22px;
 }
 
-  .footer-subscribe h4 {
-      font-size: 14px;
-  }
+.footer-subscribe h4 {
+    font-size: 14px;
+}
 
-  .footer-subscribe p {
-      font-size: 14px;
-      margin-top: 8px;
-      margin-bottom: -4px;
-  }
+.footer-subscribe p {
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: -4px;
+}
 
-  
 .footer-input {
   margin: 10px 0;
   padding: 8px;
