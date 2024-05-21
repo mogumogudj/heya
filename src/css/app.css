@@ -1,5 +1,5 @@
 .page__container {
-    padding-top: 3.5em;
+    padding-top: 100px;
 }
 
 .content{
@@ -283,17 +283,13 @@ h1, h2, h3, h4, h5, h6{
 }
 
 @media screen and (max-width: 800px) {
-    .page__container{
+    .content{
         padding-top: 0;
         margin: 0 16px 0 16px;
     }
 
     h1{
         font-size: 1.75em;
-    }
-
-    .content {
-        padding-bottom: 96px;
     }
 
     .heya__logo__blue__round{

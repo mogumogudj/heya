@@ -1,15 +1,13 @@
 import Footer from "../../components/Footer"
-import Nav from "../../components/Nav"
+import NavApp from "../../components/NavApp"
 
 function Profile() {
     return (
-        <div>
-            <Nav />
         <div className="page__container">
+            <NavApp />
             <div className="content">
                 <h1>My Profile</h1>
             </div>
-        </div>
             <Footer />
         </div>
     )

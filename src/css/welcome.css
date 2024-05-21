@@ -4,6 +4,9 @@
     justify-content: space-between;
     height: 100vh;
     gap: 48px;
+    padding: 0 120px;
+    margin-bottom: 80px;
+    padding-bottom: 160px;
 }
 
 .content__container {
@@ -18,12 +21,6 @@
     color: var(--Black);
     margin-bottom: 20px;
     line-height: 48px;
-}
-
-.page__container {
-    padding: 0 120px;
-    margin-bottom: 80px;
-    padding-bottom: 160px;
 }
 
 .switch__container {
@@ -104,16 +101,13 @@
 
 
 @media (max-width: 1100px) {
-    .page__container {
-        padding: 0 12px; 
-        margin: 0 16px 0 16px;
-    }
-
     .content__wrapper {
         flex-direction: column; 
         align-items: center;
         text-align: center;
         justify-content: flex-start;
+        padding: 0 12px; 
+        margin: 0 16px 0 16px;
     }
 
     .content__container {
@@ -123,7 +117,7 @@
     }
 
     .rotated__image {
-        width: 100%; 
+        width: 90%; 
         margin-left: 0;
     }
 

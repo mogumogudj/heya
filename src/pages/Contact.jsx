@@ -1,17 +1,17 @@
 import React from "react";
-import NavApp from "../components/NavApp";
+import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 
-function Rooms() {
+function Contact() {
     return (
         <div className="page__container">
-            <NavApp />
+            <Nav />
             <div className="content">
-                <h1>My Rooms</h1>
+                <h1>Contact</h1>
             </div>
             <Footer />
         </div>
     )
 }
 
-export default Rooms
+export default Contact
