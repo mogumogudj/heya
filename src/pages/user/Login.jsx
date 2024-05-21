@@ -9,6 +9,7 @@ import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
 import Footer from '../../components/Footer';
+import { jwtDecode } from "jwt-decode";
 
 const useStyles = makeStyles({
     customAlert: {
@@ -59,7 +60,26 @@ function Login() {
             if (response.ok) {
                 console.log('Login successful:', data);
                 localStorage.setItem('token', data.token);
-                navigate('/home')
+                const decodedToken = jwtDecode(data.token);
+                const userId = decodedToken.id;
+                console.log('Decoded token:', userId);
+
+                const profileResponse = await fetch(`https://heya-api.onrender.com/users/auth/${userId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                const profileData = await profileResponse.json();
+                
+                if (profileResponse.ok) {
+                    console.log('User profile fetched successfully:', profileData);
+                    localStorage.setItem('userId', profileData._id);
+                    navigate('/home');
+                } else {
+                    console.log('User profile does not exist, redirecting to about yourself page.');
+                    navigate('/about-yourself');
+                }
             } else {
                 throw new Error(data.message || 'Failed to login');
             }
