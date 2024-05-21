@@ -66,15 +66,15 @@
 }
 
 .intro-image__1 {
-    background-image: url(../../public/Aula.webp);
+    background-image: url(../../Aula.webp);
 }
 
 .intro-image__2 {
-    background-image: url(../../public/street.webp);
+    background-image: url(../../street.webp);
 }
 
 .intro-image__3, .mission-image, .ideal-room-image {
-    background-image: url(../../public/apartment.webp);
+    background-image: url(../../apartment.webp);
 }
 
 .about__team {
@@ -129,15 +129,15 @@
 }
 
 .team-member__image--Wouter {
-    background-image: url(../../public/wouter.webp);
+    background-image: url(../../wouter.webp);
 }
 
 .team-member__image--Tjerk {
-    background-image: url(../../public/tjerk.webp);
+    background-image: url(../../tjerk.webp);
 }
 
 .team-member__image--Wolf {
-    background-image: url(../../public/wolf.webp);
+    background-image: url(../../wolf.webp);
     background-position: 70% 20%;
     background-size: 200%;
 }
