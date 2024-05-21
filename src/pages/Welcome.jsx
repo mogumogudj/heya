@@ -17,9 +17,8 @@ function Welcome() {
     }
 
     return (
-        <div>
+        <div className="page__container">
             <Nav />
-            <div className="page__container">
                 <div className="content__wrapper">
                     <div className="content__container">
                         <h1>{isLeftActive ? 'Find your ideal room with Heya' : 'List your room with Heya today'}</h1>
@@ -54,7 +53,6 @@ function Welcome() {
                         alt={isLeftActive ? 'Sleeping Room' : 'Cozy Living Room'} 
                         className="rotated__image" 
                     />
-                </div>
                 </div>
                 <Footer />
             </div>

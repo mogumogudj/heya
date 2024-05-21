@@ -7,7 +7,6 @@ import Login from "./pages/user/Login.jsx";
 import CreateAccount from "./pages/user/CreateAccount.jsx";
 import SelectSituation from "./pages/user/SelectSituation.jsx";
 import AboutYourself from "./pages/user/AboutYourself.jsx";
-import ComingSoon from "./pages/ComingSoon.jsx";
 import Home from './pages/Home.jsx';
 import Rooms from './pages/Rooms.jsx';
 import Calendar from './pages/Calendar.jsx';
@@ -20,6 +19,8 @@ import Welcome from './pages/Welcome.jsx';
 import CustomizeStay from './pages/user/CustomizeStay.jsx';
 import Blogs from './pages/Blogs.jsx';
 import About from './pages/About.jsx';
+import Faq from './pages/Faq.jsx';
+import Contact from './pages/Contact.jsx';
 
 function App() {
   return (
@@ -27,11 +28,13 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/create-account" element={<CreateAccount />} />
-        <Route path="/" element={<ComingSoon />} />
+        <Route path="/" element={<Welcome />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/welcome" element={<Welcome />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/about" element={<About />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/home" element={<Home />} />
           <Route element={<PrivateRoutes />}>
             <Route path="/logout" element={<Logout />} />
             <Route path="/select-situation" element={<SelectSituation />} />

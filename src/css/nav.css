@@ -8,7 +8,7 @@ body {
 
 .nav{
     display: grid;
-    grid-template-columns: repeat(8, 1fr) 55px;
+    grid-template-columns: repeat(6, 1fr) 55px;
     transition: color 0.3s ease;
     align-items: center;
     background-color: var(--White);
@@ -167,6 +167,10 @@ body {
 }
 
 @media screen and (max-width: 800px) {
+    .page__container {
+        padding-top: 16px;
+    }
+
     .nav {
         bottom:0;
         top: auto;

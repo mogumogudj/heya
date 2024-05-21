@@ -9,6 +9,7 @@ import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
 import { jwtDecode } from "jwt-decode";
 import Footer from '../../components/Footer';
+import NavLogin from '../../components/NavLogin';
 
 const useStyles = makeStyles({
     customAlert: {
@@ -75,10 +76,10 @@ function AboutYourself() {
 
     return (
         <div className="page__container">
+            <NavLogin />
             <div className='content'>
                 <div className="center-container">
                     <div className="about__yourself__page">
-                        <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
                         <h1>Tell us about yourself</h1>
                         <h2>Personal information</h2>
                         <FormProvider {...methods}>

@@ -8,6 +8,7 @@ import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
 import Footer from '../../components/Footer';
+import NavLogin from '../../components/NavLogin';
 
 const useStyles = makeStyles({
     customAlert: {
@@ -88,10 +89,10 @@ function CreateAccount() {
 
     return (
         <div className="page__container">
+            <NavLogin />
             <div className='content'>
                 <div className="center-container">
                     <div className="page__container__signup">
-                        <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
                         <h1 className="title__center">Create Account</h1>
 
                         <form onSubmit={handleFormSubmit}>

@@ -1,15 +1,13 @@
-import Nav from "../components/Nav"
+import NavApp from "../components/NavApp"
 import Footer from "../components/Footer"
 
 function Chat() {
     return (
-        <div>
-            <Nav />
         <div className="page__container">
+            <NavApp />
             <div className="content">
                 <h1>Chat</h1>
             </div>
-        </div>
             <Footer />
         </div>
     )

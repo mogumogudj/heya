@@ -2,6 +2,7 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
+import NavLogin from '../../components/NavLogin';
 
 function SelectSituation() {
     const navigate = useNavigate();
@@ -12,10 +13,10 @@ function SelectSituation() {
 
     return (
         <div className="page__container">
+            <NavLogin />
             <div className="content">
                 <div className="center-container-always">
                     <div className="select__situation__page">
-                        <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
                         <h1>How can we assist you?</h1>
                         <h2>Select your situation</h2>
                         <div className="select__situation">

@@ -7,66 +7,28 @@ function Nav() {
 
   return (
     <nav className="nav">
-      <Link to="/home" className="nav__box nav__box__home no-hover">
-        <div className="nav__img-wrapper hidden__desktop">
-          <img className="home-icon" src="../nav/home.svg" alt="Home icon" />
-        </div>
+      <Link to="/home" className="nav__box nav__box__home no-hover hidden__mobile">
         <img className="hidden__mobile heya__logo nav__box__logo" src="../heya-blue-round.svg" alt="heya logo" />
         <span className="hidden__desktop">Home</span>
       </Link>
 
-
-
-        <Link to="/rooms" className={`nav__box nav__box__rooms ${location.pathname === "/rooms" ? "active" : ""}`}>
-            <div className="nav__img-wrapper hidden__desktop">
-                <img className= {`do-not-show-on-desktop ${location.pathname === "/rooms" ? "hidden" : ""}`} src="../nav/rooms.svg" alt="rooms icon" />
-                <img className= {`do-not-show-on-desktop ${location.pathname === "/rooms" ? "" : "hidden"}`} src="../nav/rooms-blue.svg" alt="rooms icon blue" />
-            </div>
-            <span>Discover</span>
-        </Link>
-
-
-
-        <Link to="/calendar" className={`nav__box nav__box__calendar ${location.pathname === "/calendar" ? "active" : ""}`}>
-            <div className="nav__img-wrapper hidden__desktop">
-                <img className= {`do-not-show-on-desktop ${location.pathname === "/calendar" ? "hidden" : ""}`} src="../nav/calendar.svg" alt="calendar icon" />
-                <img className= {`do-not-show-on-desktop ${location.pathname === "/calendar" ? "" : "hidden"}`} src="../nav/calendar-blue.svg" alt="calendar icon blue" />
-            </div>
-            <span>Calendar</span>
-        </Link>
-
-
-
-        <Link to="/chat" className={`nav__box nav__box__chat ${location.pathname === "/chat" ? "active" : ""}`}>
-            <div className="nav__img-wrapper hidden__desktop">
-                <img className= {`do-not-show-on-desktop ${location.pathname === "/chat" ? "hidden" : ""}`} src="../nav/chat.svg" alt="chat icon" />
-                <img className= {`do-not-show-on-desktop ${location.pathname === "/chat" ? "" : "hidden"}`} src="../nav/chat-blue.svg" alt="chat icon blue" />
-            </div>
-            <span>Chat</span>
-        </Link>
-
-
-
-        <Link to="/about-us" className={`nav__box nav__box__about ${location.pathname === "/about-us" ? "active" : ""} hidden__mobile`}>
-            <span>About Us</span>
-        </Link>
-
-        <Link to="/faq" className={`nav__box nav__box__faq ${location.pathname === "/faq" ? "active" : ""} hidden__mobile`}>
-            <span>FAQ</span>
-        </Link>
-
-
-
-        <Link to="/profile" className={`nav__box nav__box__profile no-hover ${location.pathname === "/profile" ? "active" : ""}`}>
-        <div className="nav__img-wrapper nav__profile-wrapper">
-          <img className={`do-not-show-on-desktop ${location.pathname === "/profile" ? "hidden" : ""}`} src="../nav/profile-mobile.svg" alt="profile icon" />
-          <img className={`do-not-show-on-desktop ${location.pathname === "/profile" ? "" : "hidden"}`} src="../nav/profile-mobile-blue.svg" alt="profile icon blue" />
-          <img className={`hidden__mobile heya__logo profile__picture`} src="../nav/profile-picture.webp" alt="profile icon" />
-          <span className={`hidden__mobile nav__profile-name`}>Tibo Vermeire</span>
-        </div>
-        <span className="hidden__desktop">Profile</span>
+      <Link to="/blogs" className={`nav__box nav__box__faq ${location.pathname === "/blogs" ? "active" : ""} hidden__mobile`}>
+          <span>Blogs</span>
       </Link>
 
+      <Link to="/about" className={`nav__box nav__box__about ${location.pathname === "/about" ? "active" : ""} hidden__mobile`}>
+          <span>About Us</span>
+      </Link>
+
+      <Link to="/faq" className={`nav__box nav__box__faq ${location.pathname === "/faq" ? "active" : ""} hidden__mobile`}>
+          <span>FAQ</span>
+      </Link>
+
+      <Link to="/contact" className={`nav__box nav__box__faq ${location.pathname === "/contact" ? "active" : ""} hidden__mobile`}>
+          <span>Contact</span>
+      </Link>
+
+      
       <div className="hidden__mobile nav__box nav__box__language no-hover">
         <div className="nav__img-wrapper">
           <img className="language-icon" src="../nav/english-flag.webp" alt="Language icon" />
@@ -74,10 +36,6 @@ function Nav() {
         <span>EN</span>
         <ExpandMoreIcon className="dropdown-icon" />
       </div>
-
-      
-
-
     </nav>
   );
 }
