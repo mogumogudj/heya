@@ -19,6 +19,7 @@ import UploadImage from './pages/user/UploadImage.jsx';
 import Welcome from './pages/Welcome.jsx';
 import CustomizeStay from './pages/user/CustomizeStay.jsx';
 import Blogs from './pages/Blogs.jsx';
+import About from './pages/About.jsx';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/about" element={<About />} />
           <Route element={<PrivateRoutes />}>
             <Route path="/logout" element={<Logout />} />
             <Route path="/select-situation" element={<SelectSituation />} />
