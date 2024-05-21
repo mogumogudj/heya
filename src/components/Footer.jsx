@@ -1,5 +1,5 @@
 import '../css/footer.css';
-import logo from '../../public/heya-blue-round.svg';
+import logo from '/heya-blue-round.svg';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import FacebookIcon from '@mui/icons-material/Facebook';

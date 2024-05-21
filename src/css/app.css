@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6{
     color: var(--Black);
     background-color: var(--Transparent-Grey);
     border-radius: 8px;
-    margin: 0.5em 16px;
+    margin: 0.5em 0;
     padding: 8px 16px;
 }
 
@@ -109,8 +109,8 @@ h1, h2, h3, h4, h5, h6{
     padding: 12px 12px 0 0;
 }
 
-.about__yourself__page {
-    margin: 0 16px;
+.next__help {
+    padding-top: 32px;
 }
 
 .form__group p {
@@ -201,7 +201,7 @@ h1, h2, h3, h4, h5, h6{
 
 @media screen and (min-width: 800px) {
     .input__field {
-        width: 768px;
+        width: 100%;
         margin: 1em auto 0.5em auto;
         display: block;
     }
@@ -217,24 +217,24 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .google__button, .facebook__button {
-        width: 768px;
+        width: 100%;
         margin: 0.5em auto 0.5em auto;
     }
 
     .blue__button.big {
-        width: 768px;
+        width: 100%;
         margin: 2em auto 1em auto;
         display: block;
     }
 
     .white__button.big {
-        width: 768px;
+        width: 100%;
         margin: 1em auto;
         display: block;
     }
 
     .select__situation {
-        width: 768px;
+        width: 100%;
         display: flex;
     }
 
@@ -298,12 +298,12 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .input__field {
-        width: calc(100% - 32px);
+        width: 100%;
     }
 
     .google__button, .facebook__button {
-        width: calc(100% - 200px);
-        margin: 0.5em 100px;
+        width: 100%;
+        margin: 0.5em 0;
     }
 
     .google__button{
@@ -311,17 +311,13 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .blue__button.big {
-        width: calc(100% - 32px);
-        margin: 2em 16px 1em 16px;
+        width: 100%;
+        margin: 2em 0 1em 0;
     }
 
     .white__button.big {
-        width: calc(100% - 32px);
-        margin: 1em 16px;
-    }
-
-    .select__situation__page {
-        margin: 0 16px;
+        width: 100%;
+        margin: 1em 0;
     }
 
     .place__to__offer {
