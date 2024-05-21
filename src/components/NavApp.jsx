@@ -9,7 +9,8 @@ function NavApp() {
     <nav className="nav">
       <Link to="/home" className="nav__box nav__box__home no-hover">
         <div className="nav__img-wrapper hidden__desktop">
-          <img className="home-icon" src="../nav/home.svg" alt="Home icon" />
+          <img className= {`do-not-show-on-desktop ${location.pathname === "/home" ? "hidden" : ""}`} src="../nav/home.svg" alt="home icon" />
+          <img className= {`do-not-show-on-desktop ${location.pathname === "/home" ? "" : "hidden"}`} src="../nav/home-blue.svg" alt="home icon blue" />
         </div>
         <img className="hidden__mobile heya__logo nav__box__logo" src="../heya-blue-round.svg" alt="heya logo" />
         <span className="hidden__desktop">Home</span>

@@ -68,6 +68,16 @@ body {
 }
 
 
+.nav__img-wrapper .MuiSvgIcon-root {
+    font-size: 2.2rem; 
+    color: var(--Black);
+}
+
+.nav__img-wrapper .active-icon {
+    color: var(--Blue);
+}
+
+
 @media screen and (min-width: 800px) {
     .nav {
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
