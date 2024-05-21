@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .normal__header {
-    margin-top: 72px;
+    margin-top: 120px;
 }
 
 .normal__header h1, .normal__header h4, .normal__header h6{
@@ -290,6 +290,10 @@ h1, h2, h3, h4, h5, h6{
 
     h1{
         font-size: 1.75em;
+    }
+
+    .content {
+        padding-bottom: 96px;
     }
 
     .heya__logo__blue__round{

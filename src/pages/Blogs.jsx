@@ -1,3 +1,4 @@
+import '../css/blogs.css';
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import Article from "../components/Article"
