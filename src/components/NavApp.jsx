@@ -20,7 +20,7 @@ function NavApp() {
               <img className= {`do-not-show-on-desktop ${location.pathname === "/rooms" ? "hidden" : ""}`} src="../nav/rooms.svg" alt="rooms icon" />
               <img className= {`do-not-show-on-desktop ${location.pathname === "/rooms" ? "" : "hidden"}`} src="../nav/rooms-blue.svg" alt="rooms icon blue" />
           </div>
-          <span>Discover</span>
+          <span>Rooms</span>
       </Link>
 
       <Link to="/calendar" className={`nav__box nav__box__calendar ${location.pathname === "/calendar" ? "active" : ""}`}>
