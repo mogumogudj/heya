@@ -59,7 +59,7 @@ const Footer = () => {
         {subscribed ? 'Thanks!' : 'Subscribe'}
       </button>
         
-        <div className="footer-social">
+      <div className="footer-social">
         <h4>or follow us on</h4>
           <IconButton href="https://www.facebook.com" aria-label="Facebook">
             <FacebookIcon />

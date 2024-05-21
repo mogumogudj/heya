@@ -28,6 +28,8 @@ function App() {
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/" element={<ComingSoon />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/welcome" element={<Welcome />} />
+        <Route path="/blogs" element={<Blogs />} />
           <Route element={<PrivateRoutes />}>
             <Route path="/logout" element={<Logout />} />
             <Route path="/select-situation" element={<SelectSituation />} />
@@ -38,8 +40,6 @@ function App() {
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/welcome" element={<Welcome />} />
-            <Route path="/blogs" element={<Blogs />} />
           </Route>
       </Routes>
     </BrowserRouter>
