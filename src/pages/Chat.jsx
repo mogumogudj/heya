@@ -3,11 +3,13 @@ import Footer from "../components/Footer"
 
 function Chat() {
     return (
-        <div className="page__container">
+        <div>
             <Nav />
+        <div className="page__container">
             <div className="content">
                 <h1>Chat</h1>
             </div>
+        </div>
             <Footer />
         </div>
     )
