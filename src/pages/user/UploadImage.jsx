@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
 import Footer from '../../components/Footer';
+import NavLogin from '../../components/NavLogin';
 
 const useStyles = makeStyles({
     customAlert: {
@@ -86,10 +87,10 @@ function UploadImage() {
 
     return (
         <div className="page__container">
+            <NavLogin />
             <div className="content">
                 <div className="center-container">
                     <div>
-                        <img className="heya__logo__blue__round" src="../heya-blue-round.svg" alt="heya logo blue"/>
                         <h1 className='photo__h1'>Give us a photo of yourself</h1>
                         <h2>Upload your profile picture</h2>
                         <div className="center">
