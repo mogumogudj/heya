@@ -3,8 +3,10 @@ import Footer from "../components/Footer"
 
 function Blogs() {
     return (
-        <div className="page__container">
+        <div>
             <Nav />
+        <div className="page__container">
+
             <div className="content">
                 <header className="title__center">
                     <h6>Heya</h6>
@@ -12,6 +14,7 @@ function Blogs() {
                     <h4>Insights and News</h4>
                 </header>
             </div>
+        </div>
             <Footer />
         </div>
     )

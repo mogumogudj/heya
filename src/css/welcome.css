@@ -19,6 +19,12 @@
     line-height: 48px;
 }
 
+.page__container {
+    padding: 0 120px;
+    margin-bottom: 80px;
+    padding-bottom: 160px;
+}
+
 .switch__container {
     display: flex;
     margin-bottom: 20px;
@@ -83,8 +89,7 @@
 @media (max-width: 768px) {
     .page__container {
         padding: 0 12px; 
-        margin-bottom: 40px;
-        padding-bottom: 80px;
+        margin: 0 16px 0 16px;
     }
 
     .content__wrapper {
