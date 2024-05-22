@@ -33,7 +33,7 @@ function Faq() {
 
                 <div className="faq-container">
         <div className="left">
-          <img src="../public/street.webp" alt="FAQ" className="faq-image" />
+          <img src="../street.webp" alt="FAQ" className="faq-image" />
         </div>
         <div className="right">
           <div className="search-container">
