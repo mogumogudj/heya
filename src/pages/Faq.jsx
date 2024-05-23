@@ -52,8 +52,8 @@ function Faq() {
               </div>
             ))}
           </div>
-          <div className="footer">
-            <button className="load-more">Load more...</button>
+          <div className="footer-faq">
+            <button className="load-more white__button">Load more...</button>
             <a href="#" className="contact-link">Get in contact with us</a>
           </div>
         </div>
