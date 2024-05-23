@@ -1,0 +1,56 @@
+.contact__container {
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+    width: 83,17%;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.contact__form {
+    width: 100%;
+}
+
+.contact__form form h4 {
+    width: 100%; 
+    text-align: center;
+}
+
+.contact__info {
+    width: 100%;
+    height: auto;
+    padding-left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    gap: 16px;
+}
+
+.form__group__message {
+    height: 127px;
+}
+
+.form__group__message input {
+    height: 100%;
+}
+
+.contact__info--offices {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.contact__info--office {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+}
+
+.contact__info--office h6, .contact__info--office p {
+    margin: 0;
+}

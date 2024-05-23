@@ -95,3 +95,11 @@
         font-family: 'degular', sans-serif;
     }
 }
+
+.regular {
+    font-weight: 400;
+}
+
+.bold {
+    font-weight: 700;
+}
