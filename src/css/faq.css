@@ -80,7 +80,7 @@
   
   .contact-link {
     text-decoration: underline;
-    color: #007bff;
+    color: var(--Blue);
     cursor: pointer;
     font-family: var(--body-font);
   }

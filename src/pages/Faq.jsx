@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import "../css/faq.css";
+import SearchIcon from '@mui/icons-material/Search';
 
 function Faq() {
 
@@ -38,7 +39,7 @@ function Faq() {
         <div className="right">
           <div className="search-container">
             <input type="text" placeholder="Where do I find..." className="search-bar" />
-            <span className="search-icon">&#128269;</span>
+            < SearchIcon/>
           </div>
           <h1>Frequently Asked Questions</h1>
           <div className="faq-list">
