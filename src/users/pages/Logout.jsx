@@ -4,16 +4,14 @@ import { useNavigate } from 'react-router-dom';
 function Logout() {
     const navigate = useNavigate();
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('userId');
-        navigate('/login');
-    };
-
     useEffect(() => {
+        const handleLogout = () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('userId');
+            navigate('/login');
+        };
         handleLogout();
-    }, []);
-
+    }, [navigate]);
     return null;
 }
 

@@ -44,7 +44,7 @@ function UploadImage() {
             const formData = new FormData();
             formData.append('image', selectedFile);
 
-            const response = await fetch('https://heya-api.onrender.com/upload', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/upload`, {
                 method: 'POST',
                 body: formData,
             });
@@ -58,7 +58,7 @@ function UploadImage() {
             const data = await response.json();
             const imageUrl = data.imageUrl;
 
-            const updateUserResponse = await fetch(`https://heya-api.onrender.com/users/${localStorage.userId}`, {
+            const updateUserResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${localStorage.userId}`, {
                 method: 'PUT',
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,

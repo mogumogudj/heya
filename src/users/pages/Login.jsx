@@ -50,7 +50,7 @@ function Login() {
         e.preventDefault();
         console.log('Login button clicked');
         try {
-            const response = await fetch('https://heya-api.onrender.com/auth/login', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ function Login() {
                 const userId = decodedToken.id;
                 console.log('Decoded token:', userId);
 
-                const profileResponse = await fetch(`https://heya-api.onrender.com/users/auth/${userId}`, {
+                const profileResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/auth/${userId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -90,9 +90,9 @@ function Login() {
         }
     };
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
-        handleLogin(e);
+        await handleLogin(e);
     };
 
     return (
