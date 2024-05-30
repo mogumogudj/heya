@@ -3,7 +3,19 @@ import '../css/customizeStay.css';
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
+import Alert from '@mui/material/Alert';
+import { makeStyles } from '@mui/styles';
 
+const useStyles = makeStyles({
+    customAlert: {
+        borderRadius: '8px',
+        width: '100%',
+        margin: '16px 0 0 0',
+    },
+    errorInput: {
+        border: '1px solid red',
+    },
+});
 function CustomizeStay() {
     const [selectedOptions, setSelectedOptions] = useState({
         activities: '',
@@ -13,7 +25,8 @@ function CustomizeStay() {
     const [study, setStudy] = useState('');
     const [city, setCity] = useState('');
     const [userId] = useState(localStorage.getItem('userId'));
-
+    const [errors, setErrors] = useState({});
+    const classes = useStyles();
     const handleClick = (category, option) => {
         setSelectedOptions((prevState) => ({
             ...prevState,
@@ -27,7 +40,21 @@ function CustomizeStay() {
 
     const isChecked = (category, option) => selectedOptions[category] === option;
 
+    const validateFields = () => {
+        const newErrors = {};
+
+        if (!selectedOptions.activities) newErrors.activities = 'Please select an activity.';
+        if (!selectedOptions.experiences) newErrors.experiences = 'Please select an experience.';
+        if (!study) newErrors.study = 'Please enter what you will study.';
+        if (!city) newErrors.city = 'Please enter the city you will study in.';
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleSubmit = async () => {
+        if (!validateFields()) return;
+
         const data = {
             userStayInfo: {
                 activities: selectedOptions.activities,
@@ -76,6 +103,11 @@ function CustomizeStay() {
                             </div>
                         ))}
                     </div>
+                    {errors.activities && (
+                        <Alert className={classes.customAlert} severity="error">
+                            {errors.activities}
+                        </Alert>
+                    )}
                     <div>
                         <p>Other information</p>
                         <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
@@ -90,6 +122,11 @@ function CustomizeStay() {
                                 value={study}
                                 onChange={handleStudyChange}
                             />
+                            {errors.study && (
+                                <Alert className={classes.customAlert} severity="error">
+                                    {errors.study}
+                                </Alert>
+                            )}
                         </div>
                         <div>
                             <p>In what city do/will you study?</p>
@@ -100,6 +137,11 @@ function CustomizeStay() {
                                 value={city}
                                 onChange={handleCityChange}
                             />
+                            {errors.city && (
+                                <Alert className={classes.customAlert} severity="error">
+                                    {errors.city}
+                                </Alert>
+                            )}
                         </div>
                     </div>
                     <p>Have you ever...</p>
@@ -120,6 +162,11 @@ function CustomizeStay() {
                             </div>
                         ))}
                     </div>
+                    {errors.experiences && (
+                        <Alert className={classes.customAlert} severity="error">
+                            {errors.experiences}
+                        </Alert>
+                    )}
                     <div>
                         <p>Extra information you would like us to know?</p>
                         <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
