@@ -152,7 +152,7 @@ function Contact() {
                     <div className="contact__info">
                         <h4>Contact Details</h4>
                         <div className="contact__person">
-                            <a href="#">eenmail@heya.me</a>
+                            <a className='contact__mail' href="#">eenmail@heya.me</a>
                             <p>+32 468 21 04 21</p>
                         </div>
                         <div className="contact__info--offices">
