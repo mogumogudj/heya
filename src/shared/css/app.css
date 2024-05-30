@@ -177,6 +177,59 @@ h1, h2, h3, h4, h5, h6{
     display: block;
 }
 
+.grid {
+    width: 100%;
+    display: grid;
+    gap: 16px
+}
+
+.forGrid{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.forGrid div{
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--Grey_Blue);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.twoGrid input{
+    width: 100%;
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--Transparent-Grey);
+}
+
+.textarea-container {
+    position: relative;
+    width: 100%;
+}
+
+textarea{
+    width: 100%;
+    height: 128px;
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--Transparent-Grey);
+}
+
+.char-counter {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #757575;
+    z-index: 0;
+}
+
+
 @media screen and (min-height: 900px) and (min-width: 800px) {
     .next__help {
         position: absolute;
@@ -191,6 +244,7 @@ h1, h2, h3, h4, h5, h6{
         align-items: center;
         justify-content: center;
         height: 100vh;
+        margin-top: -70px;
     }
 
     .heya__logo__blue__round{
@@ -280,6 +334,10 @@ h1, h2, h3, h4, h5, h6{
         margin-top: -100px;
         display: block;
         width: 800px;
+    }
+
+    .twoGrid{
+        grid-template-columns: 1fr 1fr;
     }
 }
 

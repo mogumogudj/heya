@@ -13,10 +13,10 @@ body {
     align-items: center;
     background-color: var(--White);
     width: 100%;
-    height: auto;
     position: fixed;
     top: 0;
     height: 100px;
+    z-index: 1;
 }
 
 .nav__box {
@@ -33,7 +33,7 @@ body {
     font-size: 18px;
     color: var(--Black);
     font-weight: 200;
-    font-family: var(--body-font);
+    font-family: var(--body-font), sans-serif;
 }
 
 .nav__box.active span {
@@ -117,7 +117,7 @@ body {
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 0%;
+        width: 0;
         height: 2px;
         background-color: transparent;
         transition: width 0.3s ease;
