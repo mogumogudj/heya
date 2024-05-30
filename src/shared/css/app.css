@@ -195,6 +195,12 @@ h1, h2, h3, h4, h5, h6{
     text-align: center;
 }
 
+.checked {
+    background-color: var(--Dark_Blue);
+    color: var(--Beige);
+}
+
+
 .twoGrid input{
     width: 100%;
     margin: 0;
@@ -227,15 +233,6 @@ textarea{
     border-radius: 4px;
     color: #757575;
     z-index: 0;
-}
-
-
-@media screen and (min-height: 900px) and (min-width: 800px) {
-    .next__help {
-        position: absolute;
-        right: 120px;
-        bottom: 120px;
-    }
 }
 
 @media screen and (min-height: 700px) and (min-width: 800px) {

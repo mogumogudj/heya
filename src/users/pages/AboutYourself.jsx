@@ -34,11 +34,8 @@ function AboutYourself() {
     const [error, setLocalError] = React.useState('');
 
     const onSubmit = async (data) => {
-        console.log('Next step pressed:', data);
-
         const decodedToken = jwtDecode(token);
         const userId = decodedToken.id;
-        console.log('Decoded token:', userId);
 
         const userDto = {
             auth: userId,
@@ -55,21 +52,18 @@ function AboutYourself() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(userDto),
             });
 
             const result = await response.json();
             if (response.ok) {
-                console.log('User created successfully:', result);
                 localStorage.setItem('userId', result._id);
                 navigate('/upload-image');
             } else {
                 throw new Error(result.message || 'Failed to create user');
             }
         } catch (error) {
-            console.error('User creation error:', error);
             setLocalError(error.message || 'Failed to create user');
         }
     };

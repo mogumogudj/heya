@@ -61,7 +61,6 @@ function UploadImage() {
             const updateUserResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${localStorage.userId}`, {
                 method: 'PUT',
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ imageLink: imageUrl }),
