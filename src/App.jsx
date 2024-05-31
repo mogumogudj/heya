@@ -23,6 +23,7 @@ import Faq from './heya-web/pages/Faq.jsx';
 import Contact from './heya-web/pages/Contact.jsx';
 import UserPersonInfo from './users/pages/UserPersonInfo.jsx';
 import UserExpectations from './users/pages/UserExpectations.jsx';
+import RoomInfo from './main/pages/RoomInfo.jsx';
 
 function App() {
     return (
@@ -36,7 +37,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/faq" element={<Faq />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/home" element={<Home />} />
+                <Route path="/room-info" element={<RoomInfo />} />
                 <Route element={<PrivateRoutes />}>
                     <Route path="/logout" element={<Logout />} />
                     <Route path="/select-situation" element={<SelectSituation />} />
