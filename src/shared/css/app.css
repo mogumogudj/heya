@@ -127,25 +127,20 @@ h1, h2, h3, h4, h5, h6{
     background-color: var(--Transparent-Grey);
 }
 
-.about__yourself__inputs select {
+select {
     padding: 10px 12px;
     border-radius: 8px;
     border: none;
     background-color: var(--Transparent-Grey);
+    color: #797979;
     width: 100%;
 }
 
 .date__picker {
-    width: 100%;
     margin: 0;
-    background-color: var(--Transparent-Grey);
     font-family: var(--body-font), sans-serif;
     font-size: 1em;
     height: 42px;
-    border-radius: 8px;
-}
-
-.MuiInputBase-root.MuiOutlinedInput-root{
     border-radius: 8px;
 }
 
@@ -196,6 +191,14 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .forGrid div{
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--Grey_Blue);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.twoGrid.selectGrid div{
     width: 100%;
     padding: 16px;
     border: 1px solid var(--Grey_Blue);
@@ -430,9 +433,15 @@ textarea{
         margin: 0;
     }
 
-    .MuiInputBase-root.MuiOutlinedInput-root {
-        width: 384px;
+    .MuiFormControl-root {
+        width: 100%;
         margin: 0;
+        background-color: var(--Transparent-Grey);
+        border-radius: 8px;
+    }
+
+    .about__yourself__inputs .MuiFormControl-root {
+        width: 384px;
     }
 
     .blue__button.medium {
