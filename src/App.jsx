@@ -21,6 +21,7 @@ import Blogs from './heya-web/pages/Blogs.jsx';
 import About from './heya-web/pages/About.jsx';
 import Faq from './heya-web/pages/Faq.jsx';
 import Contact from './heya-web/pages/Contact.jsx';
+import UserPersonInfo from './users/pages/UserPersonInfo.jsx';
 
 function App() {
     return (
@@ -41,6 +42,7 @@ function App() {
                     <Route path="/about-yourself" element={<AboutYourself />} />
                     <Route path="/upload-image" element={<UploadImage />} />
                     <Route path="/customize-stay" element={<CustomizeStay />} />
+                    <Route path="/user-person-info" element={<UserPersonInfo />} />
                     <Route path="/rooms" element={<Rooms />} />
                     <Route path="/calendar" element={<Calendar />} />
                     <Route path="/chat" element={<Chat />} />

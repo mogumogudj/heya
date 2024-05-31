@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const TextBoxWithMaxInput = () => {
-    const [text, setText] = useState('');
-
-    const handleChange = (event) => {
-        setText(event.target.value);
-    };
-
+const TextBoxWithMaxInput = ({ value, onChange }) => {
     return (
         <div className="textarea-container">
             <textarea
-                value={text}
-                onChange={handleChange}
+                value={value}
+                onChange={onChange}
                 maxLength="300"
                 placeholder="Enter text (max 300 characters)"
                 rows="10"
                 cols="50"
             />
-            <div className="char-counter">{text.length}/300</div>
+            <div className="char-counter">{value.length}/300</div>
         </div>
     );
 };
