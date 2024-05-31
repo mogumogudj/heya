@@ -37,8 +37,17 @@ function Rooms() {
                     <div className="page__container">
                         <NavApp />
                         <div className="content student__with-room">
-                            <div>
-
+                            <div className='room__basic-info'>
+                                <div className='room__basic-info__text'>
+                                    <h1>Your room</h1>
+                                    <div className='in-use'>
+                                        <div className='in-use__circle'></div>
+                                        <p className='in-use__text'>in use</p>
+                                    </div>
+                                </div>
+                                <div className='room__basic-info__cards'>
+                                    WORK IN PROGRESS
+                                </div>
                             </div>
                             <div className='room__image__container'>
                                 <div className='ellipse--image ellipse--room'></div>

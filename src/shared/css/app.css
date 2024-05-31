@@ -286,6 +286,11 @@ textarea{
     font-size: 1em;
 }
 
+.tag.default {
+    background-color: var(--Beige);
+    color: var(--Grey_Blue);
+}
+
 .tag.featured {
     background-color: var(--Orange);
     color: var(--White);
@@ -312,7 +317,28 @@ textarea{
 }
 
 
+.in-use {
+    color: var(--Orange);
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    margin-left: 6px;
+}
 
+.in-use__circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--Orange);
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.in-use__text {
+    padding: 0;
+    margin: 0;
+}
 
 
 @media screen and (min-height: 700px) and (min-width: 800px) {
