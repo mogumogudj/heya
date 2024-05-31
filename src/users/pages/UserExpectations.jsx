@@ -5,7 +5,6 @@ import NavLogin from '../../shared/components/NavLogin.jsx';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
-import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles({
     customAlert: {
@@ -18,18 +17,15 @@ const useStyles = makeStyles({
     },
 });
 
-function UserPersonInfo() {
+function UserExpectations() {
     const [selectedOptions, setSelectedOptions] = useState({
-        languages: [],
-        character: [],
+        wants: [],
+        characteristics: [],
     });
-    const [otherLanguage, setOtherLanguage] = useState('');
-    const [otherCharacter, setOtherCharacter] = useState('');
-    const [shortDescription, setShortDescription] = useState('');
+    const [otherCharacteristics, setOtherCharacteristics] = useState('');
     const [userId] = useState(localStorage.getItem('userId'));
     const [errors, setErrors] = useState({});
     const classes = useStyles();
-    const navigate = useNavigate();
 
     const handleClick = (category, option) => {
         setSelectedOptions((prevState) => {
@@ -43,34 +39,29 @@ function UserPersonInfo() {
         });
     };
 
-    const handleOtherLanguageChange = (e) => setOtherLanguage(e.target.value);
-    const handleOtherCharacterChange = (e) => setOtherCharacter(e.target.value);
-    const handleShortDescriptionChange = (e) => setShortDescription(e.target.value);
+    const handleOtherCharacteristicsChange = (e) => setOtherCharacteristics(e.target.value);
 
     const isChecked = (category, option) => selectedOptions[category].includes(option);
 
     const validateFields = () => {
         const newErrors = {};
 
-        if (selectedOptions.languages.length === 0) newErrors.languages = 'Please select at least one language.';
-        if (selectedOptions.character.length === 0) newErrors.character = 'Please select at least one character.';
-        if (!shortDescription) newErrors.shortDescription = 'Please enter a short description.';
+        if (selectedOptions.wants.length === 0) newErrors.wants = 'Please select at least one want.';
+        if (selectedOptions.characteristics.length === 0)
+            newErrors.characteristics = 'Please select at least one characteristics.';
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = async () => {
-        console.log('Short description value:', shortDescription);
         if (!validateFields()) return;
 
         const data = {
-            userInfo: {
-                languages: selectedOptions.languages,
-                otherLanguage: otherLanguage,
-                character: selectedOptions.character,
-                otherCharacter: otherCharacter,
-                shortDescription: shortDescription,
+            userExpectations: {
+                wants: selectedOptions.wants,
+                characteristics: selectedOptions.characteristics,
+                otherCharacteristics: otherCharacteristics,
             },
         };
 
@@ -85,7 +76,6 @@ function UserPersonInfo() {
 
             if (response.ok) {
                 console.log('Data submitted successfully');
-                navigate('/user-expectations');
             } else {
                 console.error('Error submitting data');
             }
@@ -98,69 +88,63 @@ function UserPersonInfo() {
         <div className="page__container">
             <NavLogin />
             <div className="content">
-                <h1>Who are you as a person?</h1>
-                <h2>Tell us about yourself so we can find the best match possible</h2>
+                <h1>Your Expectations?</h1>
+                <h2>This helps us find your ideal match.</h2>
                 <div>
-                    <p>What languages do you speak?</p>
+                    <p>I want my host to.</p>
                     <div className="forGrid grid">
-                        {['Dutch', 'English', 'French', 'German', 'Other'].map((option) => (
+                        {[
+                            'Become friends with me',
+                            'Let me become a member of the family',
+                            'Hang out and do things together',
+                            'Have a chat now and then',
+                            'Do my own thing',
+                        ].map((option) => (
                             <div
                                 key={option}
-                                className={isChecked('languages', option) ? 'checked' : ''}
-                                onClick={() => handleClick('languages', option)}
+                                className={isChecked('wants', option) ? 'checked' : ''}
+                                onClick={() => handleClick('wants', option)}
                             >
                                 <span>{option}</span>
                             </div>
                         ))}
                     </div>
-                    {errors.languages && (
+                    {errors.wants && (
                         <Alert className={classes.customAlert} severity="error">
-                            {errors.languages}
+                            {errors.wants}
                         </Alert>
                     )}
-                    <div>
-                        <p>Other Languages</p>
-                        <TextBoxWithMaxInput value={otherLanguage} onChange={handleOtherLanguageChange} />
-                    </div>
-                    <p>What characterizes you?</p>
+                    <p>Characteristics you find important for the house?</p>
                     <div className="forGrid grid">
                         {[
                             'Clean',
                             'Quiet',
                             'Eco friendly',
                             'Animal friendly',
-                            'Social',
-                            'Pro-active',
-                            'Honest',
-                            'Outgoing',
+                            'Spacious',
+                            'Light',
+                            'Unique',
+                            'In the city center',
+                            'Close to public transport',
                             'Other',
                         ].map((option) => (
                             <div
                                 key={option}
-                                className={isChecked('character', option) ? 'checked' : ''}
-                                onClick={() => handleClick('character', option)}
+                                className={isChecked('characteristics', option) ? 'checked' : ''}
+                                onClick={() => handleClick('characteristics', option)}
                             >
                                 <span>{option}</span>
                             </div>
                         ))}
                     </div>
-                    {errors.character && (
+                    {errors.characteristics && (
                         <Alert className={classes.customAlert} severity="error">
-                            {errors.character}
+                            {errors.characteristics}
                         </Alert>
                     )}
                     <div>
-                        <p>Other character</p>
-                        <TextBoxWithMaxInput value={otherCharacter} onChange={handleOtherCharacterChange} />
-                    </div>
-                    <div>
-                        <p>Give us a short description of yourself</p>
-                        <TextBoxWithMaxInput value={shortDescription} onChange={handleShortDescriptionChange} />
-                        {errors.shortDescription && (
-                            <Alert className={classes.customAlert} severity="error">
-                                {errors.shortDescription}
-                            </Alert>
-                        )}
+                        <p>Other characteristics</p>
+                        <TextBoxWithMaxInput value={otherCharacteristics} onChange={handleOtherCharacteristicsChange} />
                     </div>
                     <div className="next__help">
                         <button className="blue__button medium" type="button" onClick={handleSubmit}>
@@ -175,4 +159,4 @@ function UserPersonInfo() {
     );
 }
 
-export default UserPersonInfo;
+export default UserExpectations;
