@@ -25,6 +25,7 @@ import UserPersonInfo from './users/pages/UserPersonInfo.jsx';
 import UserExpectations from './users/pages/UserExpectations.jsx';
 import RoomInfo from './main/pages/RoomInfo.jsx';
 import PreferredAccommodation from './users/pages/PreferredAccommodation.jsx';
+import ProfileOverview from './users/pages/ProfileOverview.jsx';
 
 function App() {
     return (
@@ -48,6 +49,7 @@ function App() {
                     <Route path="/user-person-info" element={<UserPersonInfo />} />
                     <Route path="/user-expectations" element={<UserExpectations />} />
                     <Route path="/preferred-accommodation" element={<PreferredAccommodation />} />
+                    <Route path="/profile-overview" element={<ProfileOverview />} />
                     <Route path="/rooms" element={<Rooms />} />
                     <Route path="/calendar" element={<Calendar />} />
                     <Route path="/chat" element={<Chat />} />

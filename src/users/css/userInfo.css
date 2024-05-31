@@ -1,0 +1,29 @@
+p {
+    padding-top: 32px;
+}
+
+.next__help {
+    padding-bottom: 64px;
+}
+
+.personalInfo {
+    background-color: var(--Transparent-Grey);
+    padding: 32px;
+    border-radius: 8px;
+}
+
+.userImage {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    display: block;
+    margin: 32px auto 16px;
+    border: 2px solid var(--Dark_Blue)
+}
+
+@media (min-width: 1200px) {
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}

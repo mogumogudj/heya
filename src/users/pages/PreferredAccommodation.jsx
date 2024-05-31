@@ -9,7 +9,7 @@ import { makeStyles } from '@mui/styles';
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 import { Cities } from '../../shared/enums/cities';
-import '../css/customizeStay.css';
+import '../css/userInfo.css';
 
 const useStyles = makeStyles({
     customAlert: {
@@ -112,7 +112,7 @@ function PreferredAccommodation() {
 
             if (response.ok) {
                 console.log('Data submitted successfully');
-                navigate('/user-person-info');
+                navigate('/profile-overview');
             } else {
                 console.error('Error submitting data');
             }

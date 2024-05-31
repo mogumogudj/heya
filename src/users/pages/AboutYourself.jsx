@@ -37,12 +37,14 @@ function AboutYourself() {
         const decodedToken = jwtDecode(token);
         const userId = decodedToken.id;
 
+        const birthdayDate = new Date(data.birthday.getTime() - data.birthday.getTimezoneOffset() * 60000);
+
         const userDto = {
             auth: userId,
             firstName: data.firstname,
             lastName: data.lastname,
             type: data.gender,
-            birthday: data.birthday,
+            birthday: birthdayDate,
             phoneNumber: data.phone,
             rentsRoom: false,
         };

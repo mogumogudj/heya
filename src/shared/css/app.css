@@ -343,6 +343,10 @@ textarea{
     margin: 0;
 }
 
+.centered {
+    text-align: center;
+}
+
 
 @media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{

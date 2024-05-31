@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../css/customizeStay.css';
+import '../css/userInfo.css';
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
