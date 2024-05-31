@@ -31,14 +31,22 @@ function Rooms() {
         const [Houseowner, setHouseowner] = useState(false);
 
         if (Student) {
-            const [RoomRented, setRoomRented] = useState(false);
+            const [RoomRented, setRoomRented] = useState(true);
             if (RoomRented) {
                 return (
                     <div className="page__container">
                         <NavApp />
-                        <div className="content">
-                            <h1>Your room</h1>
-                            <p>dit moet nog uitgewerkt worden</p>
+                        <div className="content student__with-room">
+                            <div>
+
+                            </div>
+                            <div className='room__image__container'>
+                                <div className='ellipse--image ellipse--room'></div>
+                                <div className='room--location--tag'>
+                                    <div className='room--tag tag featured'><p>Featured</p></div>
+                                    <p className='room--location'>Lange Noordstraat 66</p>
+                                </div>
+                            </div>
                         </div>
                         <Footer />
                     </div>

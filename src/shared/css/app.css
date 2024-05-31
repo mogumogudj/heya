@@ -248,6 +248,73 @@ textarea{
     text-underline-offset: 3px;
 }
 
+.ellipse--image {
+    width: 1000px;
+    height: 600px;
+    border-radius: 50%;
+    overflow: hidden;
+    transform: rotate(20deg);
+    position: relative;
+}
+
+.ellipse--image::before {
+    content: '';
+    position: absolute;
+    left: -50%;
+    width: 140%;
+    height: 140%;
+    background-image: url('../room.webp');
+    background-size: cover;
+    background-position: center;
+    transform: rotate(-20deg);
+    transform-origin: center;
+}
+
+.tag {
+    width: 120px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.tag p {
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+}
+
+.tag.featured {
+    background-color: var(--Orange);
+    color: var(--White);
+}
+
+.tag.with-bike {
+    background-color: var(--Dark_Blue);
+    color: var(--White);
+}
+
+.tag.opening {
+    background-color: var(--Grey_Blue);
+    color: var(--White);
+}
+
+.tag.new {
+    background-color: var(--Lime_Green);
+    color: var(--Black);
+}
+
+.tag.cheap {
+    background-color: var(--Red);
+    color: var(--White);
+}
+
+
+
+
+
 @media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{
         display: flex;

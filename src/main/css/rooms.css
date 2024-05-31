@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+.student__with-room {
+    
+}
+
 .student__no-room__text {
     display: flex;
     flex-direction: column;
@@ -44,6 +48,36 @@
     height: 60vh;
 }
 
+.room__image__container {
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 100px;
+    right: 0;
+}
+
+.ellipse--room {
+    top: -40%;
+}
+
+.room--location--tag {
+    position: absolute;
+    top: 5%;
+    right: 0;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.room--location {
+    color: var(--White);
+    font-family: var(--heading-font);
+    font-size: 48px;
+    font-weight: 700;
+    padding: 0;
+}
+
 @media screen and (max-width: 800px) {
     .student__no-room {
         flex-direction: column;
@@ -64,6 +98,10 @@
     }
     
     .student__no-room__image img {
+        display: none;
+    }
+
+    .room__image__container {
         display: none;
     }
 }
