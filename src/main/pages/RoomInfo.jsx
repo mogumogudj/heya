@@ -49,22 +49,22 @@ function RoomInfo() {
                                 <div className='room--basics--location room--basics__item'>
                                     <LocationOnIcon />
                                     <div className='room--basics__item__text'>    
-                                        <p>Location</p>
-                                        <span>Leuven</span>
+                                        <p className='room--basics__item__name'>Location</p>
+                                        <span className='room--basics__item__value'>Leuven</span>
                                     </div>
                                 </div>
                                 <div className='room--basics--space room--basics__item'>
                                     <SwapHorizontalCircleRoundedIcon />
                                     <div className='room--basics__item__text'>
-                                        <p>Space</p>
-                                        <span>12m²</span>
+                                        <p className='room--basics__item__name'>Space</p>
+                                        <span className='room--basics__item__value'>12m²</span>
                                     </div>
                                 </div>
                                 <div className='room--basics--type room--basics__item'>
                                     <MapsHomeWorkRoundedIcon />
                                     <div className='room--basics__item__text'>
-                                        <p>Type</p>
-                                        <span>Townhouse</span>
+                                        <p className='room--basics__item__name'>Type</p>
+                                        <span className='room--basics__item__value'>Townhouse</span>
                                     </div>
                                 </div>
                             </div>

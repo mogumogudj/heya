@@ -1,9 +1,9 @@
-p {
+.room--basics__item__name {
     padding: 0;
     margin: 0;
 }
 
-span {
+.room--basics__item__value {
     font-weight: 700;
     font-size: 18px;
 }
