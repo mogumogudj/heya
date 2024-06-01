@@ -319,7 +319,6 @@ textarea{
     color: var(--White);
 }
 
-
 .in-use {
     color: var(--Orange);
     font-weight: 700;
@@ -347,6 +346,69 @@ textarea{
     text-align: center;
 }
 
+.no__padding {
+    padding: 0;
+    margin: 0;
+}
+
+.person__card {
+    height: 140px;
+    width: 100%;
+    min-width: 300px;
+    background-color: var(--Grey_Blue);
+    border-radius: 8px;
+    padding: 0 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.person__card--image {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.person__card--info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.person__card--name {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.person__card--basics {
+    margin-bottom: 8px;
+}
+
+.person__card--links {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.person__card--chat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.person__card--chat__text {
+    position: relative;
+    top: -7px;
+}
+
+.person__card--button {
+    width: 100%;
+}
 
 @media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{
@@ -463,6 +525,12 @@ textarea{
 
     .twoGrid{
         grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .person__card {
+        width: 320px;
     }
 }
 
