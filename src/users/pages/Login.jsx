@@ -76,6 +76,7 @@ function Login() {
                 if (profileResponse.ok) {
                     console.log('User profile fetched successfully:', profileData);
                     localStorage.setItem('userId', profileData._id);
+                    window.dispatchEvent(new Event('storage'));
                     navigate('/home');
                 } else {
                     console.log('User profile does not exist, redirecting to about yourself page.');

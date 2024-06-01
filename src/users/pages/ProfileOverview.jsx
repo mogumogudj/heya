@@ -1,41 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import '../css/userInfo.css';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 import Footer from '../../shared/components/Footer.jsx';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../shared/contexts/UserContext';
 
 function ProfileOverview() {
     const navigate = useNavigate();
-    const [userData, setUserData] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const { userData, isLoading } = useContext(UserContext);
 
     const handleSubmit = () => {
         navigate('/home');
-    };
-
-    useEffect(() => {
-        fetchUserData();
-    }, []);
-
-    const fetchUserData = async () => {
-        const userId = localStorage.getItem('userId');
-        if (userId) {
-            try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`);
-                if (response.ok) {
-                    const userData = await response.json();
-                    setUserData(userData);
-                } else {
-                    console.error('Failed to fetch user information');
-                }
-            } catch (error) {
-                console.error('Error fetching user information:', error);
-            } finally {
-                setIsLoading(false);
-            }
-        } else {
-            setIsLoading(false);
-        }
     };
 
     return (
@@ -70,7 +45,7 @@ function ProfileOverview() {
                                     <span>{userData.lastName}</span>
                                 </div>
                                 <div>
-                                    <b>birthday</b>
+                                    <b>Birthday</b>
                                     <br />
                                     <span>
                                         <span>
@@ -81,13 +56,13 @@ function ProfileOverview() {
                                     </span>
                                 </div>
                                 <div>
-                                    <b>phone number</b>
+                                    <b>Phone number</b>
                                     <br />
                                     <span>{userData.phoneNumber}</span>
                                 </div>
                             </div>
                             <br />
-                            <h4>extra information</h4>
+                            <h4>Extra information</h4>
                             <div className={'twoGrid grid'}>
                                 <div>
                                     <b>Languages</b>

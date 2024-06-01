@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom'; 
+import { Navigate } from 'react-router-dom';
 import NavApp from '../components/NavApp.jsx';
 import Footer from '../../shared/components/Footer.jsx';
 import '../css/rooms.css';
@@ -23,7 +23,7 @@ function Rooms() {
     const moveToHome = () => {
         window.location.href = '/home';
     };
-    
+
     if (isLoggedIn) {
         //als de user ingelogd is gaan we kijken of die student is of houseowner
         //dit moet dus geslecteerd worden van het user profile of die student is of houseowner
@@ -37,41 +37,41 @@ function Rooms() {
                     <div className="page__container">
                         <NavApp />
                         <div className="content student__with-room">
-                            <div className='room__basic-info'>
-                                <div className='room__basic-info__text'>
+                            <div className="room__basic-info">
+                                <div className="room__basic-info__text">
                                     <h1>Your room</h1>
-                                    <div className='in-use'>
-                                        <div className='in-use__circle'></div>
-                                        <p className='in-use__text'>in use</p>
+                                    <div className="in-use">
+                                        <div className="in-use__circle"></div>
+                                        <p className="in-use__text">in use</p>
                                     </div>
                                 </div>
-                                <div className='room__basic-info__cards'>
-                                    WORK IN PROGRESS
-                                </div>
+                                <div className="room__basic-info__cards">WORK IN PROGRESS</div>
                             </div>
-                            <div className='room__image__container'>
-                                <div className='ellipse--image ellipse--room'></div>
-                                <div className='room--location--tag'>
-                                    <div className='room--tag tag featured'><p>Featured</p></div>
-                                    <p className='room--location'>Lange Noordstraat 66</p>
+                            <div className="room__image__container">
+                                <div className="ellipse--image ellipse--room"></div>
+                                <div className="room--location--tag">
+                                    <div className="room--tag tag featured">
+                                        <p>Featured</p>
+                                    </div>
+                                    <p className="room--location">Lange Noordstraat 66</p>
                                 </div>
                             </div>
                         </div>
                         <Footer />
                     </div>
                 );
-            } else {  
+            } else {
                 return (
                     <div className="page__container">
                         <NavApp />
                         <div className="content student__no-room">
-                            <div className='student__no-room__text'>
+                            <div className="student__no-room__text">
                                 <h3>It seems you haven't found the right room yet</h3>
                                 <p>
-                                    Do you need some help?  Don’t worry we surely have the right room for you. 
-                                    Try reading some of our blogs on how to find the perfect room to stay.
+                                    Do you need some help? Don’t worry we surely have the right room for you. Try
+                                    reading some of our blogs on how to find the perfect room to stay.
                                 </p>
-                                <div className='no-room__buttons'>
+                                <div className="no-room__buttons">
                                     <button onClick={moveToBlogs} className="blue__button">
                                         Our Blogs
                                     </button>
@@ -80,9 +80,11 @@ function Rooms() {
                                     </button>
                                 </div>
                             </div>
-                            <div  className='student__no-room__image'>
+                            <div className="student__no-room__image">
                                 <img src="../desktop.webp" alt="Heya will help you out" />
-                                <a className='underline' href="/contact">Don't see your room?</a>
+                                <a className="underline" href="/contact">
+                                    Don't see your room?
+                                </a>
                             </div>
                         </div>
                         <Footer />

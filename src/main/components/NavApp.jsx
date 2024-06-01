@@ -1,9 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import '../../shared/css/nav.css';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useContext } from 'react';
+import { UserContext } from '../../shared/contexts/UserContext';
 
 function NavApp() {
     const location = useLocation();
+    const { userData, isLoading } = useContext(UserContext);
 
     return (
         <nav className="nav">
@@ -97,10 +100,12 @@ function NavApp() {
                     />
                     <img
                         className={`hidden__mobile heya__logo profile__picture`}
-                        src="../nav/profile-picture.webp"
+                        src={isLoading ? '../nav/default-profile.svg' : userData?.imageLink}
                         alt="profile icon"
                     />
-                    <span className={`hidden__mobile nav__profile-name`}>Tibo Vermeire</span>
+                    <span className={`hidden__mobile nav__profile-name`}>
+                        {isLoading ? 'Loading...' : `${userData?.firstName} ${userData?.lastName}`}
+                    </span>
                 </div>
                 <span className="hidden__desktop">Profile</span>
             </Link>
