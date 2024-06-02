@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, searchQuery } from 'react';
 import NavApp from '../components/NavApp.jsx';
 import Nav from '../../heya-web/components/Nav.jsx';
 import Footer from '../../shared/components/Footer.jsx';
@@ -14,7 +14,7 @@ import {
   } from '@mui/material';
 
   import Filter from '../../main/components/Filters.jsx';
-
+  import RoomSlider from '../../main/components/RoomSlider.jsx';
 
 
   const cities = [
@@ -22,7 +22,7 @@ import {
     { key: 'rotterdam', value: 'rotterdam', text: 'Rotterdam' },
     // add more cities as needed
   ];
-  
+
 function Home() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -55,14 +55,20 @@ function Home() {
                         variant="outlined"
                         placeholder="Search..."
                         InputProps={{
-                            endAdornment: <SearchIcon />
+                            endAdornment: (
+                              <>
+                                    <SearchIcon />
+                                </>
+                            ),
                         }}
                     />
                 </Box>
                 <Divider />
-                <Box display="flex" mt={2}>
+                <Box display="flex" alignItems="flex-start" mt={2} gap={2}>
                     <Filter />
+                    <RoomSlider />
                 </Box>
+                <Divider />
             </div>
             <Footer />
         </div>

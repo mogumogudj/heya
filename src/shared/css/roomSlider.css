@@ -1,0 +1,69 @@
+.room-slider {
+    padding: 16px;
+  }
+  
+  .flex-container {
+    display: flex;
+    justify-content: space-between; /* Distribute space between items */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .more-rooms-button {
+    margin-left: auto; /* Push button to the right */
+  }
+  
+  .room-card-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .room-card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-right: 16px;
+    flex: 0 0 auto;
+    width: 300px;
+    scroll-snap-align: start;
+  }
+  
+  .room-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .room-label {
+    position: relative;
+    bottom: 192px;
+    left: 8px;
+    color: var(--White);
+    background-color: var(--Red);
+    padding: 4px 8px;
+    border-radius: 16px;
+    width: 120px;
+    text-align: center;
+    z-index: 1000;
+  }
+  
+  .room-favorite-icon {
+    position: relative;
+    top: -232px;
+    right: -260px;
+    color: var(--White);
+    cursor: pointer;
+  }
+  
+  .room-details {
+    margin-top: -74px;
+    padding: 12px;
+    background-color: var(--White);
+  }
+  
+  .room-city {
+    color: #666;
+  }
+  
