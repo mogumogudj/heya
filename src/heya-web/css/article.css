@@ -26,6 +26,7 @@
 .article__content {
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 .article__title{
@@ -35,6 +36,7 @@
 
 .article__description{
     margin: 0;
+    padding: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

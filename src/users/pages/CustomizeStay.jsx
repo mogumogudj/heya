@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import '../css/customizeStay.css';
+import '../css/userInfo.css';
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles({
     customAlert: {
@@ -16,10 +17,11 @@ const useStyles = makeStyles({
         border: '1px solid red',
     },
 });
+
 function CustomizeStay() {
     const [selectedOptions, setSelectedOptions] = useState({
-        activities: '',
-        experiences: '',
+        activities: [],
+        experiences: [],
     });
     const [otherInfo, setOtherInfo] = useState('');
     const [study, setStudy] = useState('');
@@ -27,24 +29,31 @@ function CustomizeStay() {
     const [userId] = useState(localStorage.getItem('userId'));
     const [errors, setErrors] = useState({});
     const classes = useStyles();
+    const navigate = useNavigate();
+
     const handleClick = (category, option) => {
-        setSelectedOptions((prevState) => ({
-            ...prevState,
-            [category]: option === prevState[category] ? '' : option,
-        }));
+        setSelectedOptions((prevState) => {
+            const isSelected = prevState[category].includes(option);
+            return {
+                ...prevState,
+                [category]: isSelected
+                    ? prevState[category].filter((item) => item !== option)
+                    : [...prevState[category], option],
+            };
+        });
     };
 
     const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
     const handleStudyChange = (e) => setStudy(e.target.value);
     const handleCityChange = (e) => setCity(e.target.value);
 
-    const isChecked = (category, option) => selectedOptions[category] === option;
+    const isChecked = (category, option) => selectedOptions[category].includes(option);
 
     const validateFields = () => {
         const newErrors = {};
 
-        if (!selectedOptions.activities) newErrors.activities = 'Please select an activity.';
-        if (!selectedOptions.experiences) newErrors.experiences = 'Please select an experience.';
+        if (selectedOptions.activities.length === 0) newErrors.activities = 'Please select at least one activity.';
+        if (selectedOptions.experiences.length === 0) newErrors.experiences = 'Please select at least one experience.';
         if (!study) newErrors.study = 'Please enter what you will study.';
         if (!city) newErrors.city = 'Please enter the city you will study in.';
 
@@ -76,6 +85,7 @@ function CustomizeStay() {
 
             if (response.ok) {
                 console.log('Data submitted successfully');
+                navigate('/user-person-info');
             } else {
                 console.error('Error submitting data');
             }

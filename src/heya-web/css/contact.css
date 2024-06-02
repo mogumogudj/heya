@@ -59,6 +59,7 @@
 
 .contact__info--office h6, .contact__info--office p {
     margin: 0;
+    padding: 0;
 }
 
 @media screen and (max-width: 1400px) {

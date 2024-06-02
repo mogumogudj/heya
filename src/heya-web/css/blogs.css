@@ -2,6 +2,7 @@
   display: grid;
   gap: 16px;
   margin-top: 64px;
+  margin-bottom: 32px;
 }
 
 .blogs__articles__50{

@@ -80,6 +80,7 @@ h1, h2, h3, h4, h5, h6{
     color: var(--Beige);
     background-color: var(--Dark_Blue);
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .or{
@@ -93,6 +94,7 @@ h1, h2, h3, h4, h5, h6{
     color: var(--Dark_Blue);
     background-color: var(--White);
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .already__have__account {
@@ -125,25 +127,20 @@ h1, h2, h3, h4, h5, h6{
     background-color: var(--Transparent-Grey);
 }
 
-.about__yourself__inputs select {
+select {
     padding: 10px 12px;
     border-radius: 8px;
     border: none;
     background-color: var(--Transparent-Grey);
+    color: #797979;
     width: 100%;
 }
 
 .date__picker {
-    width: 100%;
     margin: 0;
-    background-color: var(--Transparent-Grey);
     font-family: var(--body-font), sans-serif;
     font-size: 1em;
     height: 42px;
-    border-radius: 8px;
-}
-
-.MuiInputBase-root.MuiOutlinedInput-root{
     border-radius: 8px;
 }
 
@@ -171,6 +168,12 @@ h1, h2, h3, h4, h5, h6{
     text-align: center;
 }
 
+.blue__button.medium {
+    width: 200px;
+    margin: 1em auto;
+    display: block;
+}
+
 .white__button.medium {
     width: 200px;
     margin: 1em auto;
@@ -188,6 +191,14 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .forGrid div{
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--Grey_Blue);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.twoGrid.selectGrid div{
     width: 100%;
     padding: 16px;
     border: 1px solid var(--Grey_Blue);
@@ -235,6 +246,170 @@ textarea{
     z-index: 0;
 }
 
+.underline {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.ellipse--image {
+    width: 1000px;
+    height: 600px;
+    border-radius: 50%;
+    overflow: hidden;
+    transform: rotate(20deg);
+    position: relative;
+}
+
+.ellipse--image::before {
+    content: '';
+    position: absolute;
+    left: -50%;
+    width: 140%;
+    height: 140%;
+    background-image: url('../room.webp');
+    background-size: cover;
+    background-position: center;
+    transform: rotate(-20deg);
+    transform-origin: center;
+}
+
+.tag {
+    width: 120px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.tag p {
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+}
+
+.tag.default {
+    background-color: var(--Beige);
+    color: var(--Grey_Blue);
+}
+
+.tag.featured {
+    background-color: var(--Orange);
+    color: var(--White);
+}
+
+.tag.with-bike {
+    background-color: var(--Dark_Blue);
+    color: var(--White);
+}
+
+.tag.opening {
+    background-color: var(--Grey_Blue);
+    color: var(--White);
+}
+
+.tag.new {
+    background-color: var(--Lime_Green);
+    color: var(--Black);
+}
+
+.tag.cheap {
+    background-color: var(--Red);
+    color: var(--White);
+}
+
+.in-use {
+    color: var(--Orange);
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    margin-left: 6px;
+}
+
+.in-use__circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--Orange);
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.in-use__text {
+    padding: 0;
+    margin: 0;
+}
+
+.centered {
+    text-align: center;
+}
+
+.no__padding {
+    padding: 0;
+    margin: 0;
+}
+
+.person__card {
+    height: 140px;
+    width: 100%;
+    min-width: 300px;
+    background-color: var(--Grey_Blue);
+    border-radius: 8px;
+    padding: 0 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.person__card--image {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.person__card--info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.person__card--name {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.person__card--basics {
+    margin-bottom: 8px;
+}
+
+.person__card--links {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.person__card--chat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.person__card--chat__text {
+    position: relative;
+    top: -7px;
+}
+
+.person__card--button {
+    width: 100%;
+}
+
 @media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{
         display: flex;
@@ -269,6 +444,15 @@ textarea{
     .google__button, .facebook__button {
         width: 100%;
         margin: 0.5em auto 0.5em auto;
+        cursor: pointer;
+    }
+
+    .blue__button:hover {
+        background-color: var(--Blue);
+    }
+
+    .white__button:hover {
+        border: 1px solid var(--Dark_Blue);
     }
 
     .blue__button.big {
@@ -315,9 +499,15 @@ textarea{
         margin: 0;
     }
 
-    .MuiInputBase-root.MuiOutlinedInput-root {
-        width: 384px;
+    .MuiFormControl-root {
+        width: 100%;
         margin: 0;
+        background-color: var(--Transparent-Grey);
+        border-radius: 8px;
+    }
+
+    .about__yourself__inputs .MuiFormControl-root {
+        width: 384px;
     }
 
     .blue__button.medium {
@@ -335,6 +525,12 @@ textarea{
 
     .twoGrid{
         grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .person__card {
+        width: 320px;
     }
 }
 
