@@ -429,6 +429,22 @@ textarea{
     background-color: var(--Transparent-Grey);
 }
 
+.home__container {
+    padding-top: 60px;
+}
+
+.room-slider-container {
+    padding-top: 80px;
+}
+
+.form-control-custom {
+    color: red;
+  }
+  
+  .search-icon {
+  }
+
+
 @media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{
         display: flex;

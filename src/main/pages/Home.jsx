@@ -3,6 +3,7 @@ import NavApp from '../components/NavApp.jsx';
 import Nav from '../../heya-web/components/Nav.jsx';
 import Footer from '../../shared/components/Footer.jsx';
 import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
 import { 
     Box, 
     Divider, 
@@ -11,6 +12,8 @@ import {
     Select, 
     MenuItem, 
     TextField, 
+    Chip, 
+    IconButton,
   } from '@mui/material';
 
   import Filter from '../../main/components/Filters.jsx';
@@ -26,6 +29,10 @@ import {
 function Home() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    // search
+    const [searchKeyword, setSearchKeyword] = useState('');
+    const [searchKeywords, setSearchKeywords] = useState([]);
+
     useEffect(() => {
         const userId = localStorage.getItem('userId');
         if (userId) {
@@ -37,41 +44,88 @@ function Home() {
 
 
 
-    return (
-        <div className="page__container">
+    // Function to handle adding search keyword
+    const handleAddKeyword = () => {
+      if (searchKeyword.trim() !== '') {
+          setSearchKeywords([...searchKeywords, searchKeyword.trim()]);
+          setSearchKeyword('');
+      }
+  };
+
+  // Function to handle removing search keyword
+  const handleRemoveKeyword = (keywordToRemove) => {
+      setSearchKeywords(searchKeywords.filter(keyword => keyword !== keywordToRemove));
+  };
+
+  // Function to handle search keyword input change
+  const handleChange = (event) => {
+      setSearchKeyword(event.target.value);
+  };
+
+  // Function to handle search keyword input onEnter
+  const handleKeyPress = (event) => {
+      if (event.key === 'Enter') {
+          handleAddKeyword();
+      }
+  };
+
+  return (
+    <div className="page__container">
       {isLoggedIn ? <NavApp /> : <Nav />}
       <div className="content">
-      <Box display="flex" alignItems="center" gap={2} mb={2}>
-                    <FormControl fullWidth variant="outlined">
-                        <InputLabel>Choose your city</InputLabel>
-                        <Select label="Choose your city" defaultValue="">
-                            {cities.map((city) => (
-                                <MenuItem key={city.key} value={city.value}>{city.text}</MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
-                    <TextField
-                        fullWidth
-                        variant="outlined"
-                        placeholder="Search..."
-                        InputProps={{
-                            endAdornment: (
-                              <>
-                                    <SearchIcon />
-                                </>
-                            ),
-                        }}
-                    />
-                </Box>
-                <Divider />
-                <Box display="flex" alignItems="flex-start" mt={2} gap={2}>
-                    <Filter />
-                    <RoomSlider />
-                </Box>
-                <Divider />
-            </div>
-            <Footer />
+        <div className="home__container">
+          <Box display="flex" alignItems="center" gap={2} mb={2}>
+            <FormControl fullWidth variant="outlined" className="form-control-custom">
+              <InputLabel>Choose your city</InputLabel>
+              <Select label="Choose your city" defaultValue="">
+                {cities.map((city) => (
+                  <MenuItem key={city.key} value={city.value}>{city.text}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <TextField
+              fullWidth
+              variant="outlined"
+              placeholder="Search..."
+              className="form-control-custom"
+              value={searchKeyword}
+              onChange={handleChange}
+              onKeyPress={handleKeyPress}
+              InputProps={{
+                endAdornment: (
+                  <IconButton onClick={handleAddKeyword}>
+                    <SearchIcon className="search-icon" />
+                  </IconButton>
+                ),
+              }}
+            />
+          </Box>
+          <Divider />
+          
         </div>
+        <Box display="flex" alignItems="flex-start" mt={2} gap={4}>
+          <Filter />
+          <div className="room-slider-container">
+          <Box display="flex" alignItems="center" flexWrap="wrap" gap={1} mb={2}>
+            {searchKeywords.map((keyword, index) => (
+              <Chip
+                key={index}
+                label={keyword}
+                onDelete={() => handleRemoveKeyword(keyword)}
+                color="primary"
+                variant="outlined"
+                className="search-keyword"
+                deleteIcon={<CloseIcon />}
+              />
+            ))}
+          </Box>
+            <RoomSlider />
+          </div>
+        </Box>
+        <Divider />
+      </div>
+      <Footer />
+    </div>
   );
 }
 

@@ -1,4 +1,4 @@
-/* Adjustments for Filters component */
+/* General styles for the filter container */
 .filter__container {
     display: flex;
 }
@@ -6,40 +6,145 @@
 .filters {
     width: 25%;
     padding: 16px;
-    border-right: 1px solid var(--Grey_Blue);
+    border-right: 2px solid var(--Transparent-Grey);
 }
 
 .filter__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 2px solid var(--Transparent-Grey);
+    margin-top: 8px;
 }
 
 .reset__link {
-    color: green; /* Ensure this overrides any default styles */
+    color: var(--Mist);
     cursor: pointer;
+    background: none;
+}
+
+.reset__link:hover {
+    color: var(--Red);
 }
 
 .filter__section {
+    position: relative;
+    top: 20px;
+    padding-top: 8px;
+    padding-bottom: 16px;
     margin-bottom: 16px;
+    border-bottom: 2px solid var(--Transparent-Grey);
+   
 }
 
-.filter__section h4 {
+.filter__section h6 {
     margin-bottom: 8px;
 }
 
-.input__price, .input__size, .date__picker {
+.input__price,
+.input__size,
+.date__picker {
     width: 100%;
     margin-bottom: 8px;
-    padding: 10px 12px;
+    padding: 0px;
+    border: 1px solid var(--Grey_Blue);
     border-radius: 8px;
-    border: 1px solid #ccc;
     background-color: var(--Transparent-Grey);
+}
+
+.mt-1 {
+    margin-top: 8px;
 }
 
 .see__all__amenities {
     display: block;
     color: var(--Dark_Blue);
     cursor: pointer;
-    margin-top: 8px;
+    margin-top: 16px;
+    text-decoration: none;
 }
+
+/* Custom radio buttons */
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.radio-label input[type="radio"] {
+    display: none;
+}
+
+.radio-custom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--Grey_Blue);
+    background-color: var(--Transparent-Grey);
+    border-radius: 50%;
+    position: relative;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+
+.radio-custom::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: var(--Blue); /* Ensure this variable is defined in your CSS */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s ease-in-out;
+}
+
+input[type="radio"]:checked + .radio-custom::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Custom checkboxes */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--Grey_Blue);
+    background-color: var(--Transparent-Grey);
+    border-radius: 4px; /* Added border-radius */
+    position: relative;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.checkbox-custom::after {
+    content: "";
+    width: 5px;
+    height: 10px;
+    border: solid var(--Dark_Blue); /* Ensure this variable is defined in your CSS */
+    border-width: 0 2px 2px 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    transition: transform 0.2s ease-in-out;
+}
+
+input[type="checkbox"]:checked + .checkbox-custom::after {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+}
+
+

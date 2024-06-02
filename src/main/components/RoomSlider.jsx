@@ -121,7 +121,7 @@ function RoomSlider() {
     <div className="room-slider">
       <div className="flex-container mb-2">
         <h3>Some rooms in the spotlight</h3>
-        <button className="blue__button small">More rooms</button>
+        <button className="more-rooms-button blue__button small">More rooms</button>
       </div>
 
       <div
