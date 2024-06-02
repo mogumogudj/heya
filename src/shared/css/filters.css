@@ -1,0 +1,45 @@
+/* Adjustments for Filters component */
+.filter__container {
+    display: flex;
+}
+
+.filters {
+    width: 25%;
+    padding: 16px;
+    border-right: 1px solid var(--Grey_Blue);
+}
+
+.filter__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reset__link {
+    color: green; /* Ensure this overrides any default styles */
+    cursor: pointer;
+}
+
+.filter__section {
+    margin-bottom: 16px;
+}
+
+.filter__section h4 {
+    margin-bottom: 8px;
+}
+
+.input__price, .input__size, .date__picker {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: var(--Transparent-Grey);
+}
+
+.see__all__amenities {
+    display: block;
+    color: var(--Dark_Blue);
+    cursor: pointer;
+    margin-top: 8px;
+}
