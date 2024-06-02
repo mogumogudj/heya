@@ -16,6 +16,8 @@
 }
 
 /* Font Sizes */
+
+/* Mobile */
 @media screen and (max-width: 800px) {
     h1{
         font-size: 28px;
@@ -44,8 +46,24 @@
         font-weight: 400;
         font-family: 'degular', sans-serif;
     }
+
+    p{
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        font-family: 'degular', sans-serif;
+    }
+
+    .small__body{
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 400;
+        font-family: 'degular', sans-serif;
+    }
 }
 
+
+/* Web */
 @media screen and (min-width: 800px) {
     h1{
         padding-top: 32px;
@@ -90,12 +108,34 @@
         font-family: 'merel', serif;
     }
 
-    .strong__text{
+    .h6__strong {
+        font-size: 22px;
+        line-height: 26px;
+        font-weight: 700;
+        font-family: 'merel', serif;
+    }
+
+    p{
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 400;
+        font-family: 'degular', sans-serif;
+    }
+
+    .p__strong {
         font-size: 18px;
         line-height: 24px;
         font-weight: 700;
         font-family: 'degular', sans-serif;
     }
+    
+    .smallest_text{
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        font-family: 'degular', sans-serif;
+    }
+
 }
 
 .regular {

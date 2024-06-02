@@ -143,7 +143,7 @@ function RoomSlider() {
             <FavoriteBorderIcon className="room-favorite-icon" />
             <div className="room-details">
               <h6 className="room-price">{room.price}</h6>
-              <p className="room-city">{room.city}</p>
+              <p className="room-city p__strong">{room.city}</p>
             </div>
           </div>
         ))}
