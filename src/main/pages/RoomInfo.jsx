@@ -192,7 +192,7 @@ function RoomInfo() {
                                 </p>
                             </div>
                         </div>
-                        <div className="no-room__buttons">
+                        <div className="room__buttons">
                             <button onClick={BookThisRoom} className="blue__button">
                                 Book this room
                             </button>
@@ -316,13 +316,13 @@ function RoomInfo() {
                                         </button>
                                     </div>
                                 </div>
-                                <p className="no__padding">
-                                    Something wrong? Please{' '}
-                                    <a className="underline" href="/contact">
-                                        Contact us
-                                    </a>
-                                </p>
                             </div>
+                            <p className="no__padding">
+                                Something wrong? Please{' '}
+                                <a className="underline" href="/contact">
+                                    Contact us
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>

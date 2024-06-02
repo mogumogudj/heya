@@ -170,6 +170,19 @@
     padding: 8px;
 }
 
+.room__buttons {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 8px;
+    margin-top: 32px;
+}
+
+.room__buttons button {
+    height: 48px;
+}
+
 .room__info {
     display: flex;
     flex-direction: row;
@@ -188,7 +201,7 @@
 .room__info--people {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
     width: 50%;
     margin: 32px 0;
     justify-content: right;
@@ -202,10 +215,22 @@
 }
 
 .room__people {
-    margin: 32px 0;
+    margin-top: 32px;
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+@media screen and (max-width: 1200px) {
+    .room--details {
+        flex-direction: column;
+    }
+
+    .room--icons {
+        padding-left: 24px;
+        width: calc(50% + 24px);
+        margin-top: 16px;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -215,6 +240,50 @@
 
     .room__images {
         justify-content: center;
+        height: 570px;
+    }
+
+    .room--details {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 24px;
+    }
+
+    .room--icons {
+        padding-left: 0;
+        margin-top: 16px;
+        width: auto;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: 0;
+        flex-wrap: nowrap;
+    }
+
+    .remaining--icons {
+        margin-left: 16px;
+    }
+
+    .room__buttons {
+        width: 100%;
+        align-items: center;
+    }
+
+    .room__buttons button {
+        width: 60%;
+    }
+
+    .room__info {
+        flex-direction: column;
+    }
+
+    .room__info--people {
+        width: 100%;
+        margin: 0;
+    }
+
+    .room__people {
+        margin: 0;
+        width: 100%;
+        flex-direction: row;
     }
 }
 
