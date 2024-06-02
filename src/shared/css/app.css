@@ -410,6 +410,25 @@ textarea{
     width: 100%;
 }
 
+.information__button {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Blue);
+    color: var(--White);
+}
+
+.divider {
+    width: 60%;
+    margin-left: 20%;
+    height: 2px;
+    border-radius: 1px;
+    background-color: var(--Transparent-Grey);
+}
+
 @media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{
         display: flex;
