@@ -68,7 +68,7 @@ function Profile() {
                 <div className="threeGrid">
                     <div>
                         <img
-                            className="profile__image"
+                            className="profile__image profile"
                             src={userData?.imageLink || '../nav/default-profile.svg'}
                             alt="profile picture"
                         />
