@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import '../css/profile.css';
 import Footer from '../../shared/components/Footer.jsx';
 import NavApp from '../components/NavApp.jsx';
 import { UserContext } from '../../shared/contexts/UserContext';
@@ -62,16 +63,16 @@ function Profile() {
     return (
         <div className="page__container">
             <NavApp />
-            <div className="content">
+            <div className="content content--profile">
                 <h1>My Profile</h1>
-                <div>
+                <div className="threeGrid">
                     <div>
                         <img
-                            className="profile__picture"
+                            className="profile__image"
                             src={userData?.imageLink || '../nav/default-profile.svg'}
                             alt="profile picture"
                         />
-                        <button onClick={handleLogout} className="white__button">
+                        <button onClick={handleLogout} className="white__button profile hidden__mobile">
                             Logout
                         </button>
                     </div>
@@ -90,21 +91,26 @@ function Profile() {
                         </div>
                     </div>
                     <div>
-                        <button onClick={handleEdit} className="white__button">
+                        <button onClick={handleEdit} className="white__button profile">
                             Edit
                         </button>
                     </div>
                 </div>
-                <div>
-                    <h4>About</h4>
-                    <p>{userData?.userInfo[0].shortDescription}</p>
+                <div className="twoGrid grid profile">
+                    <div>
+                        <h4>About</h4>
+                        <p>{userData?.userInfo[0].shortDescription}</p>
+                    </div>
+                    <div>
+                        <h4>My confirmed information</h4>
+                        <p>✔️ Identity</p>
+                        <p>✔️ Email address</p>
+                        <p>✔️ Phone number</p>
+                    </div>
                 </div>
-                <div>
-                    <h4>My confirmed information</h4>
-                    <p>✔️ Identity</p>
-                    <p>✔️ Email address</p>
-                    <p>✔️ Phone number</p>
-                </div>
+                <button onClick={handleLogout} className="white__button profile hidden__desktop">
+                    Logout
+                </button>
             </div>
             <Footer />
         </div>
