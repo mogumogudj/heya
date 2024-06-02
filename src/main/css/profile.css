@@ -65,7 +65,7 @@
         grid-template-columns: 30% 70%;
     }
 
-    .profile__image{
+    .profile__image.profile{
         width: 120px;
         height: 120px;
         border-radius: 50%;
