@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import NavApp from '../components/NavApp.jsx';
 import Nav from '../../heya-web/components/Nav.jsx';
 import Footer from '../../shared/components/Footer.jsx';
+import PersonCard from '../components/PersonCard.jsx';
 import '../css/room-info.css';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import SwapHorizontalCircleRoundedIcon from '@mui/icons-material/SwapHorizontalCircleRounded';
@@ -45,18 +46,6 @@ function RoomInfo() {
 
     const goBack = () => {
         window.history.back();
-    };
-
-    const chatWithThisPerson = () => {
-        //moet naar de chat gaan met deze persoon
-        //nu tijdelijk gewoon naar chat gaan
-        window.location.href = '/chat';
-    };
-
-    const ViewProfile = () => {
-        //moet naar de profile van deze persoon gaan
-        //nu tijdelijk gewoon naar profile gaan
-        window.location.href = '/profile';
     };
 
    //if the window size is bigger than mobile (800px) return this
@@ -271,58 +260,8 @@ function RoomInfo() {
                             </div>
                             <div className="room__info--people">
                                 <div className="room__people">
-                                    <div className="room__person person__card owner">
-                                        <img
-                                            className="owner__image profile__image person__card--image"
-                                            src="../tjerk.webp"
-                                            alt="Tjerk Symens"
-                                        />
-                                        <div className="person__card--info">
-                                            <p className="person__card--name no__padding">Tjerk Symens</p>
-                                            <p className="person__card--basics no__padding">
-                                                Houseowner <br />
-                                                Leuven
-                                            </p>
-                                            <div className="person--tag tag default no__padding">
-                                                <p>Owner</p>
-                                            </div>
-                                        </div>
-                                        <div className="person__card--links">
-                                            <div className="person__card--chat" onClick={chatWithThisPerson}>
-                                                <img src="../nav/chat.svg" alt="chat" />
-                                                <p className="no__padding person__card--chat__text">Chat now</p>
-                                            </div>
-                                            <button onClick={ViewProfile} className="blue__button person__card--button">
-                                                View
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div className="room__person person__card student">
-                                        <img
-                                            className="owner__image profile__image person__card--image"
-                                            src="../wolf.webp"
-                                            alt="Wolf Ver Elst"
-                                        />
-                                        <div className="person__card--info">
-                                            <p className="person__card--name no__padding">Wolf Ver Elst</p>
-                                            <p className="person__card--basics no__padding">
-                                                Student <br />
-                                                Leuven
-                                            </p>
-                                            <div className="person--tag tag new no__padding">
-                                                <p>Renting</p>
-                                            </div>
-                                        </div>
-                                        <div className="person__card--links">
-                                            <div className="person__card--chat" onClick={chatWithThisPerson}>
-                                                <img src="../nav/chat.svg" alt="chat" />
-                                                <p className="no__padding person__card--chat__text">Chat now</p>
-                                            </div>
-                                            <button onClick={ViewProfile} className="blue__button person__card--button">
-                                                View
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <PersonCard userType="houseowner" name="Tjerk Symens" />  
+                                    <PersonCard userType="student" name="Wolf Ver Elst" />
                                 </div>
                                 <p className="no__padding">
                                     Something wrong? Please{' '}
