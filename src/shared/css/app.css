@@ -97,6 +97,15 @@ h1, h2, h3, h4, h5, h6{
     cursor: pointer;
 }
 
+.red__button {
+    padding: 6px;
+    border: none;
+    color: var(--White);
+    background-color: var(--Red);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 .already__have__account {
     display: block;
     text-align: center;
