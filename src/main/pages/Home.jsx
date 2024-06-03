@@ -119,7 +119,9 @@ function Home() {
               />
             ))}
           </Box>
-            <RoomSlider />
+            <RoomSlider title="Some rooms in the spotlight" />
+            <Divider />
+            <RoomSlider title="Best match for you" />
           </div>
         </Box>
         <Divider />

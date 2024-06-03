@@ -89,7 +89,7 @@ const rooms = [
     }
 ];
 
-function RoomSlider() {
+function RoomSlider({title}) {
   const roomCardContainerRef = useRef(null);
   let isDown = false;
   let startX;
@@ -120,7 +120,7 @@ function RoomSlider() {
   return (
     <div className="room-slider">
       <div className="flex-container mb-2">
-        <h3>Some rooms in the spotlight</h3>
+        <h3>{title}</h3>
         <button className="more-rooms-button blue__button small">More rooms</button>
       </div>
 
