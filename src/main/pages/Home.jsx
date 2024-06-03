@@ -18,6 +18,7 @@ import {
 
   import Filter from '../../main/components/Filters.jsx';
   import RoomSlider from '../../main/components/RoomSlider.jsx';
+  import PinterestRoomGrid from '../../main/components/PinterestRoomGrid.jsx';
 
 
   const cities = [
@@ -122,9 +123,10 @@ function Home() {
             <RoomSlider title="Some rooms in the spotlight" />
             <Divider />
             <RoomSlider title="Best match for you" />
+            <Divider />
+            <PinterestRoomGrid title="29 listings found for bike"/>
           </div>
-        </Box>
-        <Divider />
+        </Box>    
       </div>
       <Footer />
     </div>

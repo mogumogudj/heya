@@ -1,0 +1,69 @@
+.pinterest-room-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 16px;
+  }
+  
+  .pinterest-room-card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    width: 300px;
+  }
+  
+  .pinterest-room-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .pinterest-room-card:nth-child(4n+1) .pinterest-room-image {
+    height: 250px;
+  }
+  
+  .pinterest-room-card:nth-child(4n+2) .pinterest-room-image {
+    height: 300px;
+  }
+  
+  .pinterest-room-card:nth-child(4n+3) .pinterest-room-image {
+    height: 200px;
+  }
+  
+  .pinterest-room-card:nth-child(4n+4) .pinterest-room-image {
+    height: 350px;
+  }
+  
+  .pinterest-room-label {
+    position: absolute;
+    bottom: 392px;
+    left: 8px;
+    color: var(--White);
+    background-color: var(--Orange);
+    padding: 4px 8px;
+    border-radius: 16px;
+    width: 120px;
+    text-align: center;
+    z-index: 0;
+  }
+  
+  .pinterest-room-favorite-icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: var(--White);
+    cursor: pointer;
+  }
+  
+  .pinterest-room-details {
+    margin-top: 8px;
+    padding: 12px;
+    background-color: var(--White);
+  }
+
+  .pinterest-room-city {
+    color: var(--Black);
+    margin-top: -40px;
+  }
+  
