@@ -1,16 +1,20 @@
 .pinterest-room-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 16px;
-  }
-  
+  columns: 4;
+  gap: 80vh;
+  justify-content: space-between;
+  padding: 16px; 
+
+  }  
+
   .pinterest-room-card {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     position: relative;
     width: 300px;
+    cursor: pointer;
+    background-color: aqua;
+    position: relative;
   }
   
   .pinterest-room-image {
@@ -37,7 +41,7 @@
   
   .pinterest-room-label {
     position: absolute;
-    bottom: 392px;
+    bottom: 388px;
     left: 8px;
     color: var(--White);
     background-color: var(--Orange);
@@ -57,7 +61,7 @@
   }
   
   .pinterest-room-details {
-    margin-top: 8px;
+    margin-top: 0px;
     padding: 12px;
     background-color: var(--White);
   }

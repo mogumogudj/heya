@@ -52,7 +52,7 @@
   
   .room-favorite-icon {
     position: relative;
-    top: -232px;
+    top: -238px;
     right: -260px;
     color: var(--White);
     cursor: pointer;
@@ -69,3 +69,82 @@
     margin-top: -40px;
   }
   
+
+  /* Medium screens */
+@media screen and (max-width: 1200px) {
+  .room-card {
+      width: 250px;
+  }
+
+  .room-image {
+      height: 180px;
+  }
+
+  .room-label {
+      bottom: 172px;
+      width: 100px;
+  }
+  
+  .room-favorite-icon {
+      top: -220px;
+      right: -216px;
+  }
+}
+
+/* Small screens */
+@media screen and (max-width: 800px) {
+  .room-card {
+      width: 200px;
+  }
+
+  .room-image {
+      height: 150px;
+  }
+
+  .room-label {
+      bottom: 142px;
+      width: 80px;
+  }
+
+  .room-favorite-icon {
+      top: -188px;
+      right: -172px;
+  }
+}
+
+/* Very small screens */
+@media screen and (max-width: 400px) {
+  .room-card {
+      width: 150px;
+  }
+
+  .room-image {
+      height: 120px;
+  }
+
+  .room-label {
+      bottom: 112px;
+      width: 60px;
+  }
+
+  .room-favorite-icon {
+      top: -154px;
+      right: -128px;
+  }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 300px) {
+  .room-card {
+      width: 120px;
+  }
+
+  .room-image {
+      height: 100px;
+  }
+
+  .room-label {
+      bottom: 92px;
+      width: 50px;
+  }
+}
