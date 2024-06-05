@@ -18,6 +18,10 @@ import HotelRoundedIcon from '@mui/icons-material/HotelRounded';
 import ChairRoundedIcon from '@mui/icons-material/ChairRounded';
 import CottageRoundedIcon from '@mui/icons-material/CottageRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import PieChartIcon from '@mui/icons-material/PieChart';
+import DonutLargeIcon from '@mui/icons-material/DonutLarge';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 function Rooms() {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -306,14 +310,35 @@ function Rooms() {
                                         <p className="in-use__text">in use</p>
                                     </div>
                                 </div>
-                                <div className="room__basic-info__cards">
-                                    <div className='basic-info__card basic-info__card--rating'>
-                                        <AutoAwesomeRoundedIcon sx={{ fontSize: 72 }} className='basic-info__card__icon rating__icon' />
-                                        <p className='basic-info__card__text rating__title'>Rate your room</p>
+                                <div className="room__basic-info__cards owner">
+                                    <div className='basic-info__cards--top'>
+                                        <div className='basic-info__card basic-info__card--occupancy'>
+                                            <BarChartIcon sx={{ fontSize: 100 }} className='basic-info__card__icon occupancy__icon' />
+                                            <div>
+                                                <p className='basic-info__card__text occupancy__title'>Occupancy & Rental</p>
+                                                <h6 className='occupancy__text no__padding'>On listing</h6>
+                                            </div>
+                                        </div>
+                                        <div className='basic-info__cards--right'>
+                                            <div className='basic-info__card basic-info__card--engage'>
+                                                <PieChartIcon sx={{ fontSize: 72 }} className='basic-info__card__icon engage__icon' />
+                                                <div>
+                                                    <h5 className='engage__title no__padding'>Engage Metrics</h5>
+                                                    <p className='engage__value no__padding'>€235,54</p>
+                                                </div>
+                                            </div>
+                                            <div className='basic-info__card basic-info__card--income'>
+                                                <DonutLargeIcon sx={{ fontSize: 72 }} className='basic-info__card__icon income__icon' />
+                                                <div>
+                                                    <h5 className='income__title no__padding'>Income</h5>
+                                                    <p className='income__value no__padding'>€235,54</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className='basic-info__card basic-info__card--unpaid'>
-                                        <p className='basic-info__card__text unpaid__title'>Unpaid rent: June</p>
-                                        <p className='basic-info__card__text unpaid__value'>€340</p>
+                                    <div className='basic-info__card basic-info__card--satisfaction'>
+                                        <AutoAwesomeRoundedIcon sx={{ fontSize: 72 }} className='basic-info__card__icon rating__icon' />
+                                        <p className='basic-info__card__text rating__title'>Tennant Satisfaction</p>
                                     </div>
                                 </div>
                             </div>
