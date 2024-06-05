@@ -380,6 +380,13 @@ textarea{
     object-fit: cover;
 }
 
+.person__card--image--small {
+    height: 52px;
+    width: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .person__card--info {
     display: flex;
     flex-direction: column;

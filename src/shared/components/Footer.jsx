@@ -49,7 +49,7 @@ const Footer = () => {
                             <a href="faq">FAQ</a>
                         </li>
                         <li className="footer-nav-small">
-                            <a href="blog">Blog</a>
+                            <a href="blogs">Blogs</a>
                         </li>
                     </ul>
                 </nav>

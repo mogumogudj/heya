@@ -23,22 +23,6 @@
     height: auto;
     object-fit: cover;
   }
-
-  /*.pinterest-room-card:nth-child(4n+1) .pinterest-room-image {
-    height: 250px;
-  }
-  
-  .pinterest-room-card:nth-child(4n+2) .pinterest-room-image {
-    height: 300px;
-  }
-  
-  .pinterest-room-card:nth-child(4n+3) .pinterest-room-image {
-    height: 200px;
-  }
-  
-  .pinterest-room-card:nth-child(4n+4) .pinterest-room-image {
-    height: 350px;
-  }*/
   
   .pinterest-room-label {
     position: absolute;
