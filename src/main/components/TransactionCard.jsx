@@ -5,11 +5,14 @@ import '../../main/css/rooms.css';
 const imageMap = {
     "Tjerk Symens": "../tjerk.webp",
     "Wolf Ver Elst": "../wolf.webp",
-    "Wouter Waumans": "../wouter.webp"
+    "Wouter Waumans": "../wouter.webp",
+    "Leuven": "../leuven.webp",
+    "Antwerp": "../antwerpen.webp",
+    "Brussels": "../brussel.webp"
 };
 
 function TransactionCard ({ transactionAmount, transactionDate, transactionTime, transactionUser, cardType }) {
-    const userImage = imageMap[transactionUser] || "../default.webp";
+    const userImage = imageMap[transactionUser] || "../apartment.webp";
 
     if (cardType === "small") {
         return (

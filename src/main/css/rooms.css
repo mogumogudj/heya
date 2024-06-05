@@ -183,6 +183,10 @@
     margin-bottom: 32px;
 }
 
+.transactions__list.small {
+    margin-bottom: 0;
+}
+
 .transaction__item {
     display: flex;
     flex-direction: row;
@@ -269,6 +273,21 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+.side-content--transactions, .side-content--top-months, .side-content--top-cities  {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.side-content--top-cities  {
+    margin-bottom: 64px;
+}
+
+.see-more {
+    color: var(--Black);
 }
 
 @media screen and (max-width: 800px) {

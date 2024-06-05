@@ -417,12 +417,38 @@ function Rooms() {
                                             <h4 className='side-content--transactions__title text__container__title'>Transactions</h4>
                                             <SearchRoundedIcon />
                                         </div>
-                                        <div className='transactions__list'>
+                                        <div className='transactions__list small'>
                                             <TransactionCard transactionAmount="€32,50" transactionDate="June 2024" transactionTime="2:42 PM" transactionUser="Tjerk Symens" cardType="small" />
-                                            <TransactionCard transactionAmount="€34,50" transactionDate="May 2024" transactionTime="1:33 PM" transactionUser="Wolf Ver Elst" cardType="small" />
-                                            <TransactionCard transactionAmount="€32,50" transactionDate="May 2024" transactionTime="8:22 PM" transactionUser="Tjerk Symens" cardType="small" />
+                                            <TransactionCard transactionAmount="€23,50" transactionDate="May 2024" transactionTime="1:33 PM" transactionUser="Wolf Ver Elst" cardType="small" />
+                                            <TransactionCard transactionAmount="€44,50" transactionDate="May 2024" transactionTime="8:22 PM" transactionUser="Tjerk Symens" cardType="small" />
                                         </div>
-
+                                        <a href="#" className='see-more'>See more</a>
+                                    </div>
+                                    <div className='divider divider--room'></div>
+                                    <div className='side-content--top-months text__container'>
+                                        <div className='transactions__title'>
+                                            <h4 className='side-content--transactions__title text__container__title'>Top Rent Periods</h4>
+                                            <a href="#" className='see-more'>See all</a>
+                                        </div>
+                                        <div className='transactions__list small'>
+                                            <TransactionCard transactionAmount="€620" transactionDate="2024" transactionTime="11%" transactionUser="December" cardType="small" />
+                                            <TransactionCard transactionAmount="€600" transactionDate="2024" transactionTime="10%" transactionUser="July" cardType="small" />
+                                            <TransactionCard transactionAmount="€590" transactionDate="2024" transactionTime="10%" transactionUser="November" cardType="small" />
+                                        </div>
+                                        <a href="#" className='see-more'>See more</a>
+                                    </div>
+                                    <div className='divider divider--room'></div>
+                                    <div className='side-content--top-cities text__container'>
+                                        <div className='transactions__title'>
+                                            <h4 className='side-content--transactions__title text__container__title'>Top Rent Cities</h4>
+                                            <a href="#" className='see-more'>See all</a>
+                                        </div>
+                                        <div className='transactions__list small'>
+                                            <TransactionCard transactionAmount="€520" transactionDate="2024" transactionTime="11%" transactionUser="Leuven" cardType="small" />
+                                            <TransactionCard transactionAmount="€450" transactionDate="2024" transactionTime="10%" transactionUser="Antwerp" cardType="small" />
+                                            <TransactionCard transactionAmount="€420" transactionDate="2024" transactionTime="10%" transactionUser="Brussels" cardType="small" />
+                                        </div>
+                                        <a href="#" className='see-more'>See more</a>
                                     </div>
                                 </div>
                             </div>
