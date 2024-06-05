@@ -1,5 +1,5 @@
 .room-slider {
-    padding: 16px;
+    padding: 16px 0 16px 16px;
   }
   
   .flex-container {
@@ -11,6 +11,7 @@
   .more-rooms-button {
     margin-left: auto; 
     width: 120px;
+    margin-right: 64px;
   }
   
   .room-card-container {
@@ -19,6 +20,8 @@
     scroll-snap-type: x mandatory;
     width: 100%;
     -webkit-overflow-scrolling: touch;
+    overflow-x: scroll;
+    scrollbar-width: none;
   }
   
   .room-card {

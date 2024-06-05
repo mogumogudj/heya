@@ -438,17 +438,23 @@ textarea{
     background-color: var(--Transparent-Grey);
 }
 
+.home__body {
+    width: calc(100vw - 24px);
+    overflow-x: hidden;
+}
+
 .home__container {
     padding-top: 60px;
 }
 
 .room-slider-container {
     padding-top: 80px;
+    width: calc(75% + calc(100vw - 1200px)/2 + 32px);
 }
 
 .form-control-custom {
     color: red;
-  }
+}
   
   .search-icon {
   }
@@ -575,6 +581,10 @@ textarea{
 @media screen and (max-width: 1200px) {
     .person__card {
         width: 320px;
+    }
+
+    .room-slider-container {
+        width: calc(100vw - 24px);
     }
 }
 

@@ -71,7 +71,7 @@ function Home() {
   };
 
   return (
-    <div className="page__container">
+    <div className="page__container home__body">
       {isLoggedIn ? <NavApp /> : <Nav />}
       <div className="content">
         <div className="home__container">
