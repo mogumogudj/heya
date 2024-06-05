@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/article.css';
 
-const Article = ({ type }) => {
+const Article = ({ type, title, description, imageUrl }) => {
     return (
         <article className="article">
             {type && (
@@ -22,7 +22,7 @@ const Article = ({ type }) => {
                             </defs>
                             <image
                                 className="svg__image"
-                                href="../../ArticleImage.webp"
+                                href="{imageUrl}"
                                 clip-path="url(#shapeClipPath)"
                             />
                             <path
@@ -31,15 +31,20 @@ const Article = ({ type }) => {
                             />
                         </svg>
                     )}
-                    {type === 'Default' && <div className="article__image"></div>}
+                    {type === 'Default' && (
+                    <div 
+                    className="article__image"
+                    style={{ backgroundImage: `url(${imageUrl})` }}
+                    ></div>
+                    )}
                 </>
             )}
             <div className="article__content">
-                <h4 className="article__title">News article title</h4>
+                <h4 className="article__title">
+                    {title}
+                </h4>
                 <p className="article__description">
-                    A small description about the article. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                    {description}
                     <span className="article__ellipsis">...</span>
                 </p>
                 <a href="#" className="article__link">
