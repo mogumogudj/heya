@@ -1,4 +1,3 @@
-/* General styles for the filter container */
 .filter__container {
     display: flex;
 }
@@ -7,7 +6,72 @@
     width: 25%;
     padding: 16px;
     border-right: 2px solid var(--Transparent-Grey);
+    transition: transform 0.3s ease-in-out;
 }
+
+.filter__icon-container {
+    display: none;
+}
+
+.filter__icon-button {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    background-color: var(--Blue);
+    color: white;
+    z-index: 1000;
+}
+
+/* Overlay styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 1000;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.filter__overlay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.cancel__link, .reset__link {
+    color: var(--Mist);
+    cursor: pointer;
+}
+
+.cancel__link:hover, .reset__link:hover {
+    color: var(--Red);
+}
+
+.see-properties-button {
+    width: 100%;
+    margin-top: 16px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .filters {
+        display: none;
+    }
+
+    .filter__icon-container {
+        display: block;
+    }
+
+    .overlay {
+        display: block;
+        transform: translateX(0);
+    }
+}
+
 
 .filter__header {
     display: flex;
@@ -15,16 +79,6 @@
     align-items: center;
     border-bottom: 2px solid var(--Transparent-Grey);
     margin-top: 8px;
-}
-
-.reset__link {
-    color: var(--Mist);
-    cursor: pointer;
-    background: none;
-}
-
-.reset__link:hover {
-    color: var(--Red);
 }
 
 .filter__section {

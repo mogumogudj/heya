@@ -1,19 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../shared/css/filters.css';
 import { 
   Box,
   Divider,
   RadioGroup,
-  TextField
+  TextField,
+  IconButton,
+  Button
 } from '@mui/material';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import CloseIcon from '@mui/icons-material/Close';
 
 function Filter() {
+
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+
+  const handleOpenOverlay = () => setIsOverlayOpen(true);
+  const handleCloseOverlay = () => setIsOverlayOpen(false);
+  const handleReset = () => {
+    // Add reset functionality
+  };
+
   return (
-    <Box width="25%" className="filters">
+    <>
+    <div className="filter__icon-container">
+        <IconButton onClick={handleOpenOverlay} className="filter__icon-button">
+          <FilterListIcon fontSize="large" />
+        </IconButton>
+      </div>
+      <Box className={`filters ${isOverlayOpen ? 'overlay' : ''}`}>
+      {isOverlayOpen && (
+        <Box className="filter__overlay-header">
+        <a onClick={handleCloseOverlay} className="cancel__link">Cancel</a>
+        <a onClick={handleReset} className="reset__link">Reset</a>
+      </Box>
+    )}
+
+
       <Box className="filter__header">
         <h6 className='bold'>FILTERS</h6>
-        <a className='reset__link' onClick={() => {}}>Reset</a>
+        {!isOverlayOpen && <a className='reset__link' onClick={handleReset}>Reset</a>}
       </Box>
+
       <Box className="filter__section">
         <h6>Type</h6>
         <RadioGroup name="type">
@@ -34,16 +62,19 @@ function Filter() {
           </label>
         </RadioGroup>
       </Box>
+
       <Box className="filter__section">
         <h6>Price Range</h6>
         <TextField fullWidth variant="outlined" placeholder="Min €" className="input__price" />
         <TextField fullWidth variant="outlined" placeholder="Max €" className="input__price mt-1" />
       </Box>
+
       <Box className="filter__section">
         <h6>Size of Room</h6>
         <TextField fullWidth variant="outlined" placeholder="Min m²" className="input__size" />
         <TextField fullWidth variant="outlined" placeholder="Max m²" className="input__size mt-1" />
       </Box>
+
       <Box className="filter__section">
         <h6>Availability</h6>
         <label className="radio-label">
@@ -53,6 +84,7 @@ function Filter() {
         </label>
         <TextField fullWidth type="date" variant="outlined" className="date__picker mt-1" />
       </Box>
+
       <Box className="filter__section">
         <h6>Amenities</h6>
         <label className="checkbox-label">
@@ -88,7 +120,14 @@ function Filter() {
         <a className="see__all__amenities">+ See all Amenities</a>
       </Box>
       <button className="white__button medium">More Criteria</button>
+
+      {isOverlayOpen && (
+          <Button variant="contained" className="see-properties-button">
+            See 213 properties
+          </Button>
+        )}
     </Box>
+    </>
   );
 }
   
