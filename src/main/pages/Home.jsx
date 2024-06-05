@@ -22,9 +22,17 @@ import {
 
 
   const cities = [
-    { key: 'amsterdam', value: 'amsterdam', text: 'Amsterdam' },
-    { key: 'rotterdam', value: 'rotterdam', text: 'Rotterdam' },
-    // add more cities as needed
+    { key: 'antwerp', value: 'antwerp', text: 'Antwerp' },
+    { key: 'brussels', value: 'brussels', text: 'Brussels' },
+    { key: 'ghent', value: 'ghent', text: 'Ghent' },
+    { key: 'leuven', value: 'leuven', text: 'Leuven' },
+    { key: 'antwerp', value: 'antwerp', text: 'Antwerp' },
+    { key: 'bruges', value: 'bruges', text: 'Bruges' },
+    { key: 'namur', value: 'namur', text: 'Namur' },
+    { key: 'liege', value: 'liege', text: 'Liege' },
+    { key: 'mons', value: 'mons', text: 'Mons' },
+    { key: 'hasselt', value: 'hasselt', text: 'Hasselt' },
+    { key: 'kortrijk', value: 'kortrijk', text: 'Kortrijk' }
   ];
 
 function Home() {
@@ -75,6 +83,7 @@ function Home() {
       {isLoggedIn ? <NavApp /> : <Nav />}
       <div className="content">
         <div className="home__container">
+          <h1 className="home__title">Discover</h1>
           <Box display="flex" alignItems="center" gap={2} mb={2}>
             <FormControl fullWidth variant="outlined" className="form-control-custom">
               <InputLabel>Choose your city</InputLabel>
@@ -95,7 +104,7 @@ function Home() {
               InputProps={{
                 endAdornment: (
                   <IconButton onClick={handleAddKeyword}>
-                    <SearchIcon className="search-icon" />
+                    <SearchIcon className="search-icon" style={{ fontSize: 40 }} />
                   </IconButton>
                 ),
               }}

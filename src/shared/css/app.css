@@ -447,6 +447,10 @@ textarea{
     padding-top: 60px;
 }
 
+.home__title {
+    margin-top: -44px;
+}
+
 .room-slider-container {
     padding-top: 80px;
     width: calc(75% + calc(100vw - 1200px)/2 + 32px);
@@ -456,9 +460,12 @@ textarea{
     color: red;
 }
   
-  .search-icon {
-  }
-
+.search-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--Black);; 
+}
 
 @media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{
