@@ -194,6 +194,18 @@
     background-color: var(--Transparent-Grey);
 }
 
+.transaction__item.small {
+    width: 100%;
+}
+
+.transactions__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .transaction__main {
     display: flex;
     flex-direction: row;
@@ -204,6 +216,10 @@
 .transaction__price {
     margin-right: 32px;
     text-align: center;
+}
+
+.transaction__price__value--small {
+    font-weight: 700;
 }
 
 .room__more-info {
@@ -228,6 +244,13 @@
     column-gap: 32px;
 }
 
+.room--icons--button {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: end;
+}
+
 .rent__buttons {
     width: 100%;
     margin-top: 64px;
@@ -240,6 +263,12 @@
 .rent__buttons button {
     width: 100%;
     height: 48px;
+}
+
+.side-content--your-rooms {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 @media screen and (max-width: 800px) {
