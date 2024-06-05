@@ -5,6 +5,7 @@ import Footer from '../../shared/components/Footer.jsx';
 import PersonCard from '../components/PersonCard.jsx';
 import RoomCard from '../components/RoomCard.jsx';
 import TransactionCard from '../components/TransactionCard.jsx';
+import RoomStatistics from '../components/RoomStatistics.jsx';
 import '../css/rooms.css';
 import '../../shared/css/app.css';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
@@ -21,7 +22,6 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import PieChartIcon from '@mui/icons-material/PieChart';
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 function Rooms() {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -66,6 +66,36 @@ function Rooms() {
         //nu tijdelijk console.log
         console.log('All rooms');
     };
+
+
+
+    const [activeCard, setActiveCard] = useState('occupancy');
+    const [roomStatistics, setRoomStatistics] = useState('occupancy');
+
+    const openOccupancy = () => { 
+        //de roomStatistics component moet openen met de occupancy data
+        //de reedse geopende roomStatistics component moet sluiten
+        //de basic-info__card--occupancy moet de class active krijgen
+        //de reeds active basic-info__card moet de class active verwijderen
+        setRoomStatistics('occupancy');
+        setActiveCard('occupancy');
+    };
+
+    const openEngage = () => {
+        setRoomStatistics('engage');
+        setActiveCard('engage');
+    };
+
+    const openIncome = () => {
+        setRoomStatistics('income');
+        setActiveCard('income');
+    };
+
+    const openSatisfaction = () => {
+        setRoomStatistics('satisfaction');
+        setActiveCard('satisfaction');
+    };
+
 
 
     if (isLoggedIn) {
@@ -312,7 +342,10 @@ function Rooms() {
                                 </div>
                                 <div className="room__basic-info__cards owner">
                                     <div className='basic-info__cards--top'>
-                                        <div className='basic-info__card basic-info__card--occupancy'>
+                                        <div 
+                                            className={`basic-info__card basic-info__card--occupancy ${activeCard === 'occupancy' ? 'active' : ''}`} 
+                                            onClick={openOccupancy}
+                                        >
                                             <BarChartIcon sx={{ fontSize: 100 }} className='basic-info__card__icon occupancy__icon' />
                                             <div>
                                                 <p className='basic-info__card__text occupancy__title'>Occupancy & Rental</p>
@@ -320,14 +353,20 @@ function Rooms() {
                                             </div>
                                         </div>
                                         <div className='basic-info__cards--right'>
-                                            <div className='basic-info__card basic-info__card--engage'>
+                                            <div 
+                                                className={`basic-info__card basic-info__card--engage ${activeCard === 'engage' ? 'active' : ''}`} 
+                                                onClick={openEngage}
+                                            >
                                                 <PieChartIcon sx={{ fontSize: 72 }} className='basic-info__card__icon engage__icon' />
                                                 <div>
                                                     <h5 className='engage__title no__padding'>Engage Metrics</h5>
                                                     <p className='engage__value no__padding'>€235,54</p>
                                                 </div>
                                             </div>
-                                            <div className='basic-info__card basic-info__card--income'>
+                                            <div 
+                                                className={`basic-info__card basic-info__card--income ${activeCard === 'income' ? 'active' : ''}`}
+                                                onClick={openIncome}
+                                            >
                                                 <DonutLargeIcon sx={{ fontSize: 72 }} className='basic-info__card__icon income__icon' />
                                                 <div>
                                                     <h5 className='income__title no__padding'>Income</h5>
@@ -336,7 +375,10 @@ function Rooms() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className='basic-info__card basic-info__card--satisfaction'>
+                                    <div 
+                                        className={`basic-info__card basic-info__card--satisfaction ${activeCard === 'satisfaction' ? 'active' : ''}`} 
+                                        onClick={openSatisfaction}
+                                    >
                                         <AutoAwesomeRoundedIcon sx={{ fontSize: 72 }} className='basic-info__card__icon rating__icon' />
                                         <p className='basic-info__card__text rating__title'>Tennant Satisfaction</p>
                                     </div>
@@ -353,7 +395,7 @@ function Rooms() {
                             </div>
                             <div className='room__info'>
                                 <div className='room__info__main-content'>
-                                    
+                                    <RoomStatistics state={roomStatistics} />
                                 </div>
                                 <div className='room__info__side-content'>
                                     <div className='side-content--your-rooms'>
