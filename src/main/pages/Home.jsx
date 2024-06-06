@@ -123,8 +123,9 @@ function Home() {
                 onDelete={() => handleRemoveKeyword(keyword)}
                 color="primary"
                 variant="outlined"
+                style={{ color: 'var(--Mist)', backgroundColor: 'var(--Soft-Grey)', border: 'none', borderRadius: '4px', padding: '20px', width: 'auto', position: 'relative', bottom: '40px'}}
                 className="search-keyword"
-                deleteIcon={<CloseIcon />}
+                deleteIcon={<CloseIcon style={{color: 'var(--Mist)'}} />}
               />
             ))}
           </Box>

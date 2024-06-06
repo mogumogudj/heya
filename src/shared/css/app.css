@@ -470,6 +470,11 @@ textarea{
     color: var(--Black);; 
 }
 
+.custom-chip {
+    color: red;
+    background-color: blue;
+}
+
 @media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{
         display: flex;

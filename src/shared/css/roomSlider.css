@@ -8,11 +8,7 @@
     align-items: center;
   }
   
-  .more-rooms-button {
-    margin-left: auto; 
-    width: 120px;
-    margin-right: 40px;
-  }
+ 
   
   .room-card-container {
     display: flex;
@@ -71,6 +67,13 @@
     color: var(--Black);
     margin-top: -40px;
   }
+
+
+  .more-rooms-button {
+    margin-left: auto; 
+    width: 120px;
+    margin-right: 40px;
+  }
   
 
   /* Medium screens */
@@ -91,6 +94,15 @@
   .room-favorite-icon {
       top: -220px;
       right: -216px;
+  }
+
+  h3 {
+    width: 500px;
+  }
+
+  .more-rooms-button {
+    margin-right: 400px;
+    width: 152px;
   }
 }
 
@@ -114,11 +126,16 @@
       right: -172px;
   }
 
+  h3 {
+    width: 400px;
+  }
+
   .more-rooms-button {
     background-color: var(--White);
     color: var(--Black);
-    margin-left: 180px;
     width: 140px;
+    margin-left: auto;
+    margin-right: 16px;
     
   }
 
@@ -143,6 +160,11 @@
       top: -154px;
       right: -128px;
   }
+
+  h3 {
+    width: 400px;
+  }
+  
 }
 
 /* Extra small screens */
