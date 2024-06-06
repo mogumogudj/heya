@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import RecentChats from '../components/RecentChats';
+import NavApp from '../components/NavApp.jsx';
 
 function Chat() {
     const { userId } = useParams();
@@ -28,6 +29,7 @@ function Chat() {
 
     return (
         <div className="page__container">
+            <NavApp />
             <div className="content">
                 <div className="chat-container">
                     <div className="recent-chats">

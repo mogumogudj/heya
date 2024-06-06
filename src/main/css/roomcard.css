@@ -18,7 +18,7 @@
 }
 
 .your-room--location {
-    font-family: var(--heading-font);
+    font-family: var(--heading-font), serif;
     font-size: 18px;
     font-weight: 700;
 }
