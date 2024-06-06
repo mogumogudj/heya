@@ -462,10 +462,6 @@ textarea{
     padding-top: 80px;
     width: calc(75% + calc(100vw - 1200px)/2 + 32px);
 }
-
-.form-control-custom {
-    color: red;
-}
   
 .search-icon {
     position: absolute;
@@ -590,6 +586,8 @@ textarea{
     .twoGrid{
         grid-template-columns: 1fr 1fr;
     }
+
+    
 }
 
 @media screen and (max-width: 1200px) {
@@ -654,6 +652,12 @@ textarea{
     .normal__header {
         margin-top: 32px;
     }
+
+    .room-slider-container {
+        padding-top: 0px;
+    
+    }
+    
 }
 
 @media screen and (max-width: 400px) {

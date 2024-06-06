@@ -25,7 +25,7 @@ function Filter() {
     <>
     <div className="filter__icon-container">
         <IconButton onClick={handleOpenOverlay} className="filter__icon-button">
-          <FilterListIcon fontSize="large" />
+          <FilterListIcon className="filter-icon" fontSize="large"/>
         </IconButton>
       </div>
       <Box className={`filters ${isOverlayOpen ? 'overlay' : ''}`}>
@@ -39,6 +39,7 @@ function Filter() {
 
       <Box className="filter__header">
         <h6 className='bold'>FILTERS</h6>
+        <h1 className="search__title">Search</h1>
         {!isOverlayOpen && <a className='reset__link' onClick={handleReset}>Reset</a>}
       </Box>
 
@@ -119,12 +120,12 @@ function Filter() {
         </label>
         <a className="see__all__amenities">+ See all Amenities</a>
       </Box>
-      <button className="white__button medium">More Criteria</button>
+      <button className="white__button medium more-criteria-button">More Criteria</button>
 
       {isOverlayOpen && (
-          <Button variant="contained" className="see-properties-button">
+          <button variant="contained" className="see-properties-button blue__button small">
             See 213 properties
-          </Button>
+          </button>
         )}
     </Box>
     </>

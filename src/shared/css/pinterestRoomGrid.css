@@ -6,6 +6,10 @@
   width: 75%;
   }  
 
+  .pinterest-room-total {
+    margin-top: 40px;
+  }
+
   .pinterest-room-card {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

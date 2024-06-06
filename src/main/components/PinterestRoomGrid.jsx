@@ -91,7 +91,7 @@ const rooms = [
 
 function PinterestRoomGrid({ title }) {
   return (
-    <div>
+    <div className='pinterest-room-total'>
        <h3>{title}</h3>
     <div className="pinterest-room-grid">
       {rooms.map((room) => (

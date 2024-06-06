@@ -3,7 +3,7 @@
 }
 
 .filters {
-    width: 25%;
+    width: 40%;
     padding: 16px;
     border-right: 2px solid var(--Transparent-Grey);
     transition: transform 0.3s ease-in-out;
@@ -11,16 +11,23 @@
 
 .filter__icon-container {
     display: none;
+    position: absolute;
+    right: 16px;
+    top: 20px;
 }
 
-.filter__icon-button {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    background-color: var(--Blue);
-    color: white;
-    z-index: 1000;
+.filter__icon-container .filter__icon-button .filter-icon {
+    color: var(--Black);
+    cursor: pointer;
 }
+
+.more-criteria-button {
+    position: relative;
+    top: 20px;
+}
+
+
+
 
 /* Overlay styles */
 .overlay {
@@ -42,24 +49,52 @@
     margin-bottom: 16px;
 }
 
-.cancel__link, .reset__link {
-    color: var(--Mist);
+.cancel__link {
+    color: var(--Black);
     cursor: pointer;
 }
 
-.cancel__link:hover, .reset__link:hover {
+.reset__link {
+    color: var(--Red);
+    cursor: pointer;
+}
+
+.cancel__link:hover {
+    color: var(--Mist);
+}
+
+.reset__link:hover {
     color: var(--Red);
 }
 
 .see-properties-button {
     width: 100%;
-    margin-top: 16px;
+    margin-top: 32px;
 }
 
+.search__title {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-left: 44%;
+}
+
+
 /* Responsive styles */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .filters {
         display: none;
+    }
+
+    .filter__header h6 {
+        display: none;
+    }
+
+    .search__title {
+        display: block;
+        margin-bottom: 16px;
+        text-align: center;
+        justify-content: center;
     }
 
     .filter__icon-container {
@@ -86,7 +121,7 @@
     top: 20px;
     padding-top: 8px;
     padding-bottom: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 32px;
     border-bottom: 2px solid var(--Transparent-Grey);
    
 }

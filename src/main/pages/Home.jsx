@@ -26,7 +26,6 @@ import {
     { key: 'brussels', value: 'brussels', text: 'Brussels' },
     { key: 'ghent', value: 'ghent', text: 'Ghent' },
     { key: 'leuven', value: 'leuven', text: 'Leuven' },
-    { key: 'antwerp', value: 'antwerp', text: 'Antwerp' },
     { key: 'bruges', value: 'bruges', text: 'Bruges' },
     { key: 'namur', value: 'namur', text: 'Namur' },
     { key: 'liege', value: 'liege', text: 'Liege' },
@@ -86,8 +85,8 @@ function Home() {
           <h1 className="home__title">Discover</h1>
           <Box display="flex" alignItems="center" gap={2} mb={2}>
             <FormControl fullWidth variant="outlined" className="form-control-custom">
-              <InputLabel>Choose your city</InputLabel>
-              <Select label="Choose your city" defaultValue="">
+              <InputLabel >Choose your city</InputLabel>
+              <Select className="city-selector-label" label="Choose your city" defaultValue="">
                 {cities.map((city) => (
                   <MenuItem key={city.key} value={city.value}>{city.text}</MenuItem>
                 ))}
@@ -133,7 +132,7 @@ function Home() {
             <Divider />
             <RoomSlider title="Best match for you" />
             <Divider />
-            <PinterestRoomGrid title="29 listings found for bike"/>
+            <PinterestRoomGrid title="29 listings found for bike" className="pinterest-room-grid"/>
           </div>
         </Box>    
       </div>
