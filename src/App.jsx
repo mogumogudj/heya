@@ -55,6 +55,7 @@ function App() {
                         <Route path="/rooms" element={<Rooms />} />
                         <Route path="/calendar" element={<Calendar />} />
                         <Route path="/chat" element={<Chat />} />
+                        <Route path="/chat/:userId" element={<Chat />} />
                         <Route path="/profile" element={<Profile />} />
                     </Route>
                 </Routes>
