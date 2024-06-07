@@ -121,7 +121,7 @@ function RoomSlider({title}) {
     <div className="room-slider">
       <div className="flex-container mb-4">
         <h3>{title}</h3>
-        <button className="more-rooms-button blue__button small">More rooms</button>
+        <button className="more-rooms-button blue__button small">See more</button>
       </div>
 
       <div
