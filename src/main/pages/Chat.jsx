@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import io from 'socket.io-client';
 import RecentChats from '../components/RecentChats';
@@ -15,6 +15,7 @@ function Chat() {
     const [messageInput, setMessageInput] = useState('');
     const [otherUserId, setOtherUserId] = useState(urlOtherUserId);
     const [otherUserInfo, setOtherUserInfo] = useState({ firstName: 'User', lastName: '' });
+    const messagesEndRef = useRef(null);
 
     useEffect(() => {
         const fetchChats = async () => {
@@ -66,6 +67,10 @@ function Chat() {
         };
     }, [userId, otherUserId]);
 
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
+
     const sendMessage = () => {
         const newMessage = {
             content: messageInput,
@@ -74,7 +79,7 @@ function Chat() {
             sentToUserId: urlOtherUserId,
         };
         socket.emit('sendMessage', newMessage);
-        setMessages((prevMessages) => [...prevMessages, newMessage]);
+        setMessages((prevMessages) => [newMessage, ...prevMessages]);
         setMessageInput('');
     };
 
@@ -97,20 +102,16 @@ function Chat() {
                                 {messages
                                     .slice()
                                     .reverse()
-                                    .map(
-                                        (
-                                            msg,
-                                            index, // Reversed the order here
-                                        ) => (
-                                            <div
-                                                key={index}
-                                                className={`message ${msg.userId === userId ? 'sender' : 'receiver'}`}
-                                            >
-                                                <p>{msg.content}</p>
-                                                <span>{new Date(msg.timestamp).toLocaleTimeString()}</span>
-                                            </div>
-                                        ),
-                                    )}
+                                    .map((msg, index) => (
+                                        <div
+                                            key={index}
+                                            className={`message ${msg.userId === userId ? 'sender' : 'receiver'}`}
+                                        >
+                                            <p>{msg.content}</p>
+                                            <span>{new Date(msg.timestamp).toLocaleTimeString()}</span>
+                                        </div>
+                                    ))}
+                                <div ref={messagesEndRef} />
                             </div>
                             <div className="input-box">
                                 <input
