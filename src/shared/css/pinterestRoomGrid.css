@@ -1,5 +1,5 @@
 .pinterest-room-grid {
-  columns: 4;
+  columns: 5;
   gap: 16px;
   justify-content: space-between;
   padding: 16px; 
@@ -59,6 +59,14 @@
   .pinterest-room-city {
     color: var(--Black);
     margin-top: -40px;
+  }
+
+  .filters-title {
+    padding: 0px 16px;
+  }
+  
+  .filters-title h4 span {
+    margin: 0px 8px;
   }
 
 

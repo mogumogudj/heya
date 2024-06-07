@@ -133,11 +133,11 @@ function Home() {
             <Divider />
             <RoomSlider title="Best match for you" />
             <Divider />
-            <PinterestRoomGrid title="29 listings found for bike" className="pinterest-room-grid"/>
+            <PinterestRoomGrid title="listings found" className="pinterest-room-grid"/>
             <Divider />
             <RoomSlider title="Closest to you" />
             <Divider />
-            <PinterestRoomGrid title="29 listings found for private bathroom" className="pinterest-room-grid"/>
+            <PinterestRoomGrid title="listings found" className="pinterest-room-grid"/>
             <Divider />
             <RoomSlider title="Most popular" />
           </div>
