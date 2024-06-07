@@ -2,64 +2,75 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function RecentChats() {
-    const [latestChat, setLatestChat] = useState(null);
+    const [chats, setChats] = useState([]);
+    const [loading, setLoading] = useState(true);
     const userId = localStorage.getItem('userId');
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchChats = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/messages/all/{userId}`);
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/messages/all/${userId}`);
                 const data = await response.json();
-                console.log(data);
-                const uniqueChats = [];
-                const uniqueUserIds = new Set();
+
+                const chatsByUser = new Map();
+
                 data.forEach((chat) => {
-                    if (!uniqueUserIds.has(chat.userId)) {
-                        uniqueUserIds.add(chat.userId);
-                        uniqueChats.push(chat);
+                    const otherUserId = chat.sender._id !== userId ? chat.sender._id : chat.receiver._id;
+
+                    if (
+                        !chatsByUser.has(otherUserId) ||
+                        new Date(chat.timestamp) > new Date(chatsByUser.get(otherUserId).timestamp)
+                    ) {
+                        chatsByUser.set(otherUserId, chat);
                     }
                 });
 
-                const sortedChats = uniqueChats.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-                const latestChat = sortedChats[0];
+                const allChats = Array.from(chatsByUser.values());
 
-                const timestamp = new Date(latestChat.timestamp);
-                const now = new Date();
-                if (timestamp.toDateString() === now.toDateString()) {
-                    const hours = timestamp.getHours();
-                    const minutes = timestamp.getMinutes().toString().padStart(2, '0');
-                    latestChat.timestamp = `${hours % 12 || 12}:${minutes} ${hours >= 12 ? 'PM' : 'AM'}`;
-                } else {
-                    const options = { day: 'numeric', month: 'long' };
-                    latestChat.timestamp = timestamp.toLocaleDateString(undefined, options);
-                }
-
-                setLatestChat(latestChat);
+                setChats(allChats);
             } catch (error) {
                 console.error('Failed to fetch recent chats:', error);
+            } finally {
+                setLoading(false);
             }
         };
 
         fetchChats();
     }, [userId]);
 
-    const handleClick = (userId) => {
-        navigate(`/chat/${userId}`);
+    const handleClick = (otherUserId) => {
+        navigate(`/chat/${otherUserId}`);
     };
 
     return (
         <div>
             <h2>Recent Chats</h2>
-            {latestChat && (
+            {loading ? (
+                <p>Loading...</p>
+            ) : chats.length > 0 ? (
                 <ul>
-                    <li key={latestChat.sender.id} onClick={() => handleClick(latestChat.sender.id)}>
-                        <img src={latestChat.sender.imageLink} alt="" />
-                        <h3>{`${latestChat.sender.firstName} ${latestChat.sender.lastName} `}</h3>
-                        <span>{latestChat.timestamp}</span>
-                        <p>{latestChat.content}</p>
-                    </li>
+                    {chats.map((chat) => {
+                        const otherUserId = chat.sender._id === userId ? chat.receiver._id : chat.sender._id;
+                        const otherUserName =
+                            chat.sender._id === userId
+                                ? `${chat.receiver.firstName} ${chat.receiver.lastName}`
+                                : `${chat.sender.firstName} ${chat.sender.lastName}`;
+                        const otherUserImage =
+                            chat.sender._id === userId ? chat.receiver.imageLink : chat.sender.imageLink;
+
+                        return (
+                            <li key={chat.id} onClick={() => handleClick(otherUserId)}>
+                                <img src={otherUserImage} alt="" />
+                                <h3>{otherUserName}</h3>
+                                <span>{new Date(chat.timestamp).toLocaleString()}</span>
+                                <p>{chat.content}</p>
+                            </li>
+                        );
+                    })}
                 </ul>
+            ) : (
+                <p>No recent chats</p>
             )}
         </div>
     );
