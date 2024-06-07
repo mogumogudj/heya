@@ -123,7 +123,7 @@ function Home() {
                 onDelete={() => handleRemoveKeyword(keyword)}
                 color="primary"
                 variant="outlined"
-                style={{ color: 'var(--Mist)', backgroundColor: 'var(--Soft-Grey)', border: 'none', borderRadius: '4px', padding: '20px', width: 'auto', position: 'relative', bottom: '40px'}}
+                style={{ color: 'var(--Mist)', backgroundColor: 'var(--Soft-Grey)', border: 'none', borderRadius: '4px', padding: '20px', marginTop: '40px', width: 'auto', position: 'relative', bottom: '40px'}}
                 className="search-keyword"
                 deleteIcon={<CloseIcon style={{color: 'var(--Mist)'}} />}
               />
@@ -134,6 +134,12 @@ function Home() {
             <RoomSlider title="Best match for you" />
             <Divider />
             <PinterestRoomGrid title="29 listings found for bike" className="pinterest-room-grid"/>
+            <Divider />
+            <RoomSlider title="Closest to you" />
+            <Divider />
+            <PinterestRoomGrid title="29 listings found for private bathroom" className="pinterest-room-grid"/>
+            <Divider />
+            <RoomSlider title="Most popular" />
           </div>
         </Box>    
       </div>

@@ -43,10 +43,11 @@
   
   .pinterest-room-favorite-icon {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 8px;
+    right: 8px;
     color: var(--White);
     cursor: pointer;
+    
   }
   
   .pinterest-room-details {
@@ -59,4 +60,13 @@
     color: var(--Black);
     margin-top: -40px;
   }
+
+
+  /* Small screens */
+@media screen and (max-width: 800px) {
+  .pinterest-room-total {
+    display: none;
+  }
+
+}
   
