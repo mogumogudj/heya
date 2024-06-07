@@ -4,7 +4,9 @@ import io from 'socket.io-client';
 import RecentChats from '../components/RecentChats';
 import NavApp from '../components/NavApp.jsx';
 
-const socket = io(import.meta.env.VITE_API_URL);
+const socket = io(`${import.meta.env.VITE_API_URL}`, {
+    path: '/socket.io/',
+});
 
 function Chat() {
     const { otherUserId: urlOtherUserId } = useParams();
@@ -71,9 +73,9 @@ function Chat() {
             content: messageInput,
             timestamp: new Date().toISOString(),
             userId: userId,
-            sentToUserId: otherUserId,
+            sentToUserId: urlOtherUserId,
         };
-        socket.emit('chat message', newMessage);
+        socket.emit('sendMessage', newMessage);
         setMessages((prevMessages) => [...prevMessages, newMessage]);
         setMessageInput('');
     };
