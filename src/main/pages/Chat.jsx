@@ -58,12 +58,12 @@ function Chat() {
 
         fetchChats();
 
-        socket.on('chat message', (msg) => {
+        socket.on('receiveMessage', (msg) => {
             setMessages((prevMessages) => [...prevMessages, msg]);
         });
 
         return () => {
-            socket.off('chat message');
+            socket.off('receiveMessage');
         };
     }, [userId, otherUserId]);
 
