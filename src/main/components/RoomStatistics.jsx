@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { LineChart } from '@mui/x-charts/LineChart';
 import { PieChart } from '@mui/x-charts/PieChart';
@@ -16,7 +16,17 @@ function RoomStatistics ({ state }) {
         'May',
         'Jun',
         'Jul',
-      ];
+    ];
+
+    const [chartWidth, setChartWidth ] = useState(600);
+    
+    useEffect(() => {
+        if (window.innerWidth < 700) {
+            setChartWidth(400);
+        } else {
+            setChartWidth(600);
+        }
+    }, []);
 
     if (state === "occupancy") {
         return (
@@ -30,7 +40,7 @@ function RoomStatistics ({ state }) {
                         { data: [25, 30, 50, 48] },
                     ]}
                     height={290}
-                    width={600}
+                    width={chartWidth}
                     xAxis={[{ data: ['Jan', 'Feb', 'Mar', 'Apr'], scaleType: 'band' }]}
                     margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
                     borderRadius={8}
@@ -50,7 +60,7 @@ function RoomStatistics ({ state }) {
                         data: [null, 1200, 1700, 2300, 3100, 5000, 4800, 5600],
                         },
                     ]}
-                    width={600}
+                    width={chartWidth}
                     height={300}
                 />
                 <p>More details comming soon</p>
@@ -73,7 +83,7 @@ function RoomStatistics ({ state }) {
                             cornerRadius: 4,
                         },
                     ]}
-                    width={500}
+                    width={chartWidth}
                     height={200}
                 />
                 <p>More details comming soon</p>
