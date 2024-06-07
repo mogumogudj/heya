@@ -461,6 +461,12 @@
     color: var(--Mist);
 }
 
+.room-statistics {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 @media screen and (max-width: 800px) {
     .student__no-room {
         flex-direction: column;
