@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 function RecentChats() {
     const [chats, setChats] = useState([]);
     const [loading, setLoading] = useState(true);
     const userId = localStorage.getItem('userId');
-    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchChats = async () => {
@@ -40,7 +38,7 @@ function RecentChats() {
     }, [userId]);
 
     const handleClick = (otherUserId) => {
-        navigate(`/chat/${otherUserId}`);
+        window.location.href = `/chat/${otherUserId}`;
     };
 
     return (
@@ -50,7 +48,8 @@ function RecentChats() {
                 <p>Loading...</p>
             ) : chats.length > 0 ? (
                 <ul>
-                    {chats.map((chat) => {
+                    {chats.reverse().map((chat) => {
+                        // Reverse the array here
                         const otherUserId = chat.sender._id === userId ? chat.receiver._id : chat.sender._id;
                         const otherUserName =
                             chat.sender._id === userId

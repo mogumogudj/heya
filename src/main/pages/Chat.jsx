@@ -4,7 +4,9 @@ import io from 'socket.io-client';
 import RecentChats from '../components/RecentChats';
 import NavApp from '../components/NavApp.jsx';
 
-const socket = io(import.meta.env.VITE_API_URL);
+const socket = io(`${import.meta.env.VITE_API_URL}`, {
+    path: '/socket.io/',
+});
 
 function Chat() {
     const { otherUserId: urlOtherUserId } = useParams();
@@ -42,7 +44,6 @@ function Chat() {
                 const userInfoResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${id}`);
                 const userInfoData = await userInfoResponse.json();
                 setOtherUserInfo(userInfoData);
-                console.log(userInfoData);
             } catch (error) {
                 console.error('Failed to fetch user info:', error);
                 if (messages && messages.length > 0) {
@@ -50,7 +51,6 @@ function Chat() {
                     const fallbackUserInfo =
                         recentMessage.sender._id === userId ? recentMessage.receiver : recentMessage.sender;
                     setOtherUserInfo(fallbackUserInfo);
-                    console.log(fallbackUserInfo);
                 }
             }
         };
@@ -71,13 +71,12 @@ function Chat() {
             content: messageInput,
             timestamp: new Date().toISOString(),
             userId: userId,
-            sentToUserId: otherUserId,
+            sentToUserId: urlOtherUserId,
         };
-        socket.emit('chat message', newMessage);
+        socket.emit('sendMessage', newMessage);
         setMessages((prevMessages) => [...prevMessages, newMessage]);
         setMessageInput('');
     };
-    console.log(sendMessage);
 
     const handleInputChange = (event) => {
         setMessageInput(event.target.value);
@@ -87,31 +86,46 @@ function Chat() {
         <div className="page__container">
             <NavApp />
             <div className="content">
-                <div className="chat-container">
-                    <div className="recent-chats">
-                        <RecentChats />
-                    </div>
-                    <div className="chat-messages">
-                        <h2>Chat with {`${otherUserInfo.firstName} ${otherUserInfo.lastName}`}</h2>
-                        <div className="messages">
-                            {messages.map((msg, index) => (
-                                <div key={index} className={`message ${msg.userId === userId ? 'sender' : 'receiver'}`}>
-                                    <p>{msg.content}</p>
-                                    <span>{new Date(msg.timestamp).toLocaleTimeString()}</span>
-                                </div>
-                            ))}
+                {urlOtherUserId ? (
+                    <div className="chat-container" key={urlOtherUserId}>
+                        <div className="recent-chats">
+                            <RecentChats />
                         </div>
-                        <div className="input-box">
-                            <input
-                                type="text"
-                                value={messageInput}
-                                onChange={handleInputChange}
-                                placeholder="Type your message..."
-                            />
-                            <button onClick={sendMessage}>Send</button>
+                        <div className="chat-messages">
+                            <h2>Chat with {`${otherUserInfo.firstName} ${otherUserInfo.lastName}`}</h2>
+                            <div className="messages">
+                                {messages
+                                    .slice()
+                                    .reverse()
+                                    .map(
+                                        (
+                                            msg,
+                                            index, // Reversed the order here
+                                        ) => (
+                                            <div
+                                                key={index}
+                                                className={`message ${msg.userId === userId ? 'sender' : 'receiver'}`}
+                                            >
+                                                <p>{msg.content}</p>
+                                                <span>{new Date(msg.timestamp).toLocaleTimeString()}</span>
+                                            </div>
+                                        ),
+                                    )}
+                            </div>
+                            <div className="input-box">
+                                <input
+                                    type="text"
+                                    value={messageInput}
+                                    onChange={handleInputChange}
+                                    placeholder="Type your message..."
+                                />
+                                <button onClick={sendMessage}>Send</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                ) : (
+                    <RecentChats key={urlOtherUserId} />
+                )}
             </div>
         </div>
     );
