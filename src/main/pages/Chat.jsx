@@ -1,27 +1,83 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import io from 'socket.io-client';
 import RecentChats from '../components/RecentChats';
 import NavApp from '../components/NavApp.jsx';
 
+const socket = io(import.meta.env.VITE_API_URL);
+
 function Chat() {
-    const { userId } = useParams();
+    const { otherUserId: urlOtherUserId } = useParams();
+    const userId = localStorage.getItem('userId');
     const [messages, setMessages] = useState([]);
     const [messageInput, setMessageInput] = useState('');
+    const [otherUserId, setOtherUserId] = useState(urlOtherUserId);
+    const [otherUserInfo, setOtherUserInfo] = useState({ firstName: 'User', lastName: '' });
 
     useEffect(() => {
-        setMessages([
-            { content: 'Hello!', timestamp: '2022-01-01T12:00:00.000Z', sentByUserId: 'user123' },
-            { content: 'Hi there!', timestamp: '2022-01-01T12:05:00.000Z', sentByUserId: userId },
-        ]);
-    }, [userId]);
+        const fetchChats = async () => {
+            try {
+                let response;
+                if (otherUserId) {
+                    response = await fetch(`${import.meta.env.VITE_API_URL}/messages/all/${userId}/${otherUserId}`);
+                } else {
+                    response = await fetch(`${import.meta.env.VITE_API_URL}/messages/recent/${userId}`);
+                }
+                const data = await response.json();
+                setMessages(data);
+
+                if (data.length > 0) {
+                    const recentOtherUserId =
+                        otherUserId || (data[0].sender._id === userId ? data[0].receiver._id : data[0].sender._id);
+                    setOtherUserId(recentOtherUserId);
+                    await fetchUserInfo(recentOtherUserId, data);
+                }
+            } catch (error) {
+                console.error('Failed to fetch recent chats:', error);
+            }
+        };
+
+        const fetchUserInfo = async (id, messages) => {
+            try {
+                const userInfoResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${id}`);
+                const userInfoData = await userInfoResponse.json();
+                setOtherUserInfo(userInfoData);
+                console.log(userInfoData);
+            } catch (error) {
+                console.error('Failed to fetch user info:', error);
+                if (messages && messages.length > 0) {
+                    const recentMessage = messages[0];
+                    const fallbackUserInfo =
+                        recentMessage.sender._id === userId ? recentMessage.receiver : recentMessage.sender;
+                    setOtherUserInfo(fallbackUserInfo);
+                    console.log(fallbackUserInfo);
+                }
+            }
+        };
+
+        fetchChats();
+
+        socket.on('chat message', (msg) => {
+            setMessages((prevMessages) => [...prevMessages, msg]);
+        });
+
+        return () => {
+            socket.off('chat message');
+        };
+    }, [userId, otherUserId]);
 
     const sendMessage = () => {
-        setMessages([
-            ...messages,
-            { content: messageInput, timestamp: new Date().toISOString(), sentByUserId: 'currentUserId' },
-        ]);
+        const newMessage = {
+            content: messageInput,
+            timestamp: new Date().toISOString(),
+            userId: userId,
+            sentToUserId: otherUserId,
+        };
+        socket.emit('chat message', newMessage);
+        setMessages((prevMessages) => [...prevMessages, newMessage]);
         setMessageInput('');
     };
+    console.log(sendMessage);
 
     const handleInputChange = (event) => {
         setMessageInput(event.target.value);
@@ -36,10 +92,10 @@ function Chat() {
                         <RecentChats />
                     </div>
                     <div className="chat-messages">
-                        <h2>Chat with User {userId}</h2>
+                        <h2>Chat with {`${otherUserInfo.firstName} ${otherUserInfo.lastName}`}</h2>
                         <div className="messages">
                             {messages.map((msg, index) => (
-                                <div key={index} className="message">
+                                <div key={index} className={`message ${msg.userId === userId ? 'sender' : 'receiver'}`}>
                                     <p>{msg.content}</p>
                                     <span>{new Date(msg.timestamp).toLocaleTimeString()}</span>
                                 </div>
