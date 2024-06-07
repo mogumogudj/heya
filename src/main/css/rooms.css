@@ -404,6 +404,80 @@
     color: var(--Black);
 }
 
+.overall-statistics--head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-right: 32px;
+}
+
+.overall-statistics__filters {
+    display: flex;
+    flex-direction: row;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 50%;
+    gap: 16px;
+}
+
+.overall-statistics__filter {
+    width: 100%;
+}
+
+.overall-statistics__filter.active:hover {
+    cursor: default;
+    background-color: var(--Dark_Blue);
+}
+
+.overall-statistics--content {
+    display: flex;
+    flex-direction: row;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+    width: 100%;
+}
+
+.stats__card {
+    width: 100%;
+    border: var(--Mist) 1px solid;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.overall-statistics--current__value, .overall-statistics--yearly__value, .overall-statistics--users__value {
+    font-weight: 700;
+}
+
+.overall-statistics--yearly__title::first-letter, .overall-statistics--users__title::first-letter {
+    text-transform: uppercase;
+}
+
+.overall-statistics--current__grow, .overall-statistics--yearly__grow, .overall-statistics--users__grow {
+    color: var(--Mist);
+}
+
+.room-statistics {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .room__basic-info {
+        width: 100%;
+    }
+
+    .room__info__side-content {
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 800px) {
     .student__no-room {
         flex-direction: column;

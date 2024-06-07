@@ -18,6 +18,7 @@
     "@mui/lab": "^5.0.0-alpha.170",
     "@mui/material": "^5.15.18",
     "@mui/styles": "^5.15.18",
+    "@mui/x-charts": "^7.6.2",
     "@mui/x-date-pickers": "^7.4.0",
     "antd": "^4.22.6",
     "dotenv": "^16.4.5",

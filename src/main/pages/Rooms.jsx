@@ -6,6 +6,7 @@ import PersonCard from '../components/PersonCard.jsx';
 import RoomCard from '../components/RoomCard.jsx';
 import TransactionCard from '../components/TransactionCard.jsx';
 import RoomStatistics from '../components/RoomStatistics.jsx';
+import OverallStatistics from '../components/OverallStatistics.jsx';
 import '../css/rooms.css';
 import '../../shared/css/app.css';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
@@ -395,6 +396,8 @@ function Rooms() {
                             </div>
                             <div className='room__info'>
                                 <div className='room__info__main-content'>
+                                    <div className='divider divider--room'></div>
+                                    <OverallStatistics />
                                     <RoomStatistics state={roomStatistics} />
                                 </div>
                                 <div className='room__info__side-content'>

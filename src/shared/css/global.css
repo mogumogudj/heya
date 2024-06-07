@@ -48,6 +48,20 @@
         font-family: 'degular', sans-serif;
     }
 
+    h5{
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        font-family: 'degular', sans-serif;
+    }
+
+    h6{
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 400;
+        font-family: 'degular', sans-serif;
+    }
+
     p{
         font-size: 16px;
         line-height: 20px;
@@ -103,7 +117,7 @@
     }
 
     h6{
-        font-size: 28px;
+        font-size: 22px;
         line-height: 26px;
         font-weight: 400;
         font-family: 'merel', serif;
