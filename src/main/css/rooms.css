@@ -467,6 +467,16 @@
     gap: 16px;
 }
 
+@media screen and (max-width: 1000px) {
+    .room__basic-info {
+        width: 100%;
+    }
+
+    .room__info__side-content {
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 800px) {
     .student__no-room {
         flex-direction: column;
