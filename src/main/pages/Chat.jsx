@@ -59,7 +59,7 @@ function Chat() {
         fetchChats();
 
         socket.on('receiveMessage', (msg) => {
-            setMessages((prevMessages) => [...prevMessages, msg]);
+            setMessages((prevMessages) => [msg, ...prevMessages]);
         });
 
         return () => {
@@ -79,7 +79,6 @@ function Chat() {
             sentToUserId: urlOtherUserId,
         };
         socket.emit('sendMessage', newMessage);
-        setMessages((prevMessages) => [newMessage, ...prevMessages]);
         setMessageInput('');
     };
 
