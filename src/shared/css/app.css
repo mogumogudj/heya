@@ -49,6 +49,22 @@ h1, h2, h3, h4, h5, h6{
     padding: 8px 16px;
 }
 
+.input__field.small {
+    border: none;
+    color: var(--Black);
+    background-color: var(--Transparent-Grey);
+    border-radius: 8px;
+    margin: 0.5em 0;
+    width: 60px;
+    padding: 8px 16px;
+}
+
+.pets__radio__button {
+    display: flex;
+    gap: 16px;
+    margin: 0 8px 12px 0;
+
+}
 .form__group__confirm__password {
     margin-top: -40px;
 }
@@ -259,6 +275,91 @@ textarea{
     text-decoration: underline;
     text-underline-offset: 3px;
 }
+
+/* Select accommodation container */
+.select__accommodation {
+    width: 100%;
+        display: flex;
+}
+
+/* Individual accommodation option */
+.accommodation__option {
+    border: 1px solid var(--Grey_Blue);
+    border-radius: 8px;
+    text-align: center;
+    padding: 12px;
+    margin: 8px;
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+}
+
+/* Action buttons container */
+.action__buttons {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Next step button styling */
+.next-step-button {
+    padding: 12px 24px;
+    background-color: var(--Dark_Blue);
+    color: var(--Beige);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/* Contact us span styling */
+.contact__us {
+    position: relative;
+    bottom: 20px;
+    text-align: center;
+    color: var(--Black);
+    cursor: pointer;
+}
+
+.contact__us__span {
+    color: var(--Dark_Blue);
+    cursor: pointer;
+}
+
+/* Responsive design */
+@media screen and (max-width: 1200px) {
+    .content {
+        padding: 0 32px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .content {
+        padding: 0 16px;
+    }
+    .select__accommodation {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.room-select {
+    width: 200px; 
+}
+
+.people-living-inputs {
+    width: 100%; 
+}
+
+.pets-radio-buttons {
+    display: flex;
+    justify-content: space-between; 
+}
+
+
+
 
 .ellipse--image {
     width: 1000px;

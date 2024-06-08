@@ -26,6 +26,14 @@ import UserExpectations from './users/pages/UserExpectations.jsx';
 import RoomInfo from './main/pages/RoomInfo.jsx';
 import PreferredAccommodation from './users/pages/PreferredAccommodation.jsx';
 import ProfileOverview from './users/pages/ProfileOverview.jsx';
+
+import ProfileOverviewHomeOwner from './homeowner/pages/ProfileOverview.jsx';
+import AboutYourselfHomeOwner from './homeowner/pages/AboutYourself.jsx';
+import UploadImageHomeOwner from './homeowner/pages/UploadImage.jsx';
+import AccommodationTypeHomeOwner from './homeowner/pages/AccommodationType.jsx';
+import AccommodationInformationHomeOwner from './homeowner/pages/AccommodationInformation.jsx';
+import HouseholdDetailsHomeOwner from './homeowner/pages/HouseholdDetails.jsx';
+
 import { UserProvider } from './shared/contexts/UserContext.jsx';
 
 function App() {
@@ -52,6 +60,14 @@ function App() {
                         <Route path="/user-expectations" element={<UserExpectations />} />
                         <Route path="/preferred-accommodation" element={<PreferredAccommodation />} />
                         <Route path="/profile-overview" element={<ProfileOverview />} />
+
+                        <Route path="/profile-overview-homeowner" element={<ProfileOverviewHomeOwner />} />
+                        <Route path="/about-yourself-homeowner" element={<AboutYourselfHomeOwner />} />
+                        <Route path="/upload-image-homeowner" element={<UploadImageHomeOwner />} />
+                        <Route path="/accommodation-type-homeowner" element={<AccommodationTypeHomeOwner />} />
+                        <Route path="/accommodation-information-homeowner" element={<AccommodationInformationHomeOwner />} />
+                        <Route path="/household-details-homeowner" element={<HouseholdDetailsHomeOwner />} />
+
                         <Route path="/rooms" element={<Rooms />} />
                         <Route path="/calendar" element={<Calendar />} />
                         <Route path="/chat" element={<Chat />} />
