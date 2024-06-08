@@ -1,4 +1,4 @@
-import 'antd/dist/antd.min.css';
+import 'antd/dist/reset.css';
 import './shared/css/global.css';
 import './shared/css/app.css';
 import React from 'react';

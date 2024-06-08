@@ -83,7 +83,7 @@
     flex-direction: column;
     width: 60%;
     gap: 32px;
-    margin-top: 64px;
+    margin-top: 32px;
 }
 
 .room__basic-info__text {

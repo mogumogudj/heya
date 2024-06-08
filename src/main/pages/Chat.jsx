@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, searchQuery } from 'react';
 import { useParams } from 'react-router-dom';
 import io from 'socket.io-client';
 import RecentChats from '../components/RecentChats';
 import NavApp from '../components/NavApp.jsx';
+import '../css/chat.css';
+import {  Divider } from '@mui/material';
+import SendRoundedIcon from '@mui/icons-material/SendRounded';
 
 const socket = io(`${import.meta.env.VITE_API_URL}`, {
     path: '/socket.io/',
@@ -90,42 +93,49 @@ function Chat() {
         <div className="page__container">
             <NavApp />
             <div className="content">
-                {urlOtherUserId ? (
-                    <div className="chat-container" key={urlOtherUserId}>
-                        <div className="recent-chats">
-                            <RecentChats />
+                <div className='chat__content'>
+                    <RecentChats />
+                    <Divider orientation="vertical" variant="middle" />
+                    <div className='chat--active'>
+                        <div className='active--chat__header'>
+                            <div className='active--chat__person'>
+                                <div className='chat__lists--chat__image'>
+                                    <img src="../tjerk.webp" alt="Tjerk Symens" />
+                                </div>
+                                <h6 className='chat__info--name no__padding h6__strong'>{`${otherUserInfo.firstName} ${otherUserInfo.lastName}`}</h6>
+                            </div>
                         </div>
-                        <div className="chat-messages">
-                            <h2>Chat with {`${otherUserInfo.firstName} ${otherUserInfo.lastName}`}</h2>
-                            <div className="messages">
-                                {messages
-                                    .slice()
-                                    .reverse()
-                                    .map((msg, index) => (
-                                        <div
-                                            key={index}
-                                            className={`message ${msg.userId === userId ? 'sender' : 'receiver'}`}
-                                        >
-                                            <p>{msg.content}</p>
-                                            <span>{new Date(msg.timestamp).toLocaleTimeString()}</span>
-                                        </div>
-                                    ))}
-                                <div ref={messagesEndRef} />
-                            </div>
-                            <div className="input-box">
-                                <input
-                                    type="text"
-                                    value={messageInput}
-                                    onChange={handleInputChange}
-                                    placeholder="Type your message..."
-                                />
-                                <button onClick={sendMessage}>Send</button>
-                            </div>
+                        <div className="messages chat__messages">
+                            {messages
+                                .slice()
+                                .reverse()
+                                .map((msg, index) => (
+                                    <div
+                                        key={index}
+                                        className={`message ${msg.userId === userId ? 'sender' : 'receiver'}`}
+                                    >
+                                        <h6 className='no__padding message__text'>{msg.content}</h6>
+                                        <svg className='message__balloon--svg' width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.0285 0H0C0 7.73199 6.26801 14 14 14H20V13.6709C18.5689 12.4697 17.3842 10.9871 16.5262 9.30324C15.4038 7.10032 15.107 4.39657 15.0285 0Z"/>
+                                        </svg>
+                                        <img className='message__image' src="../tjerk.webp" />
+                                    </div>
+                                ))}
+                            <div ref={messagesEndRef} />
+                        </div>
+                        <div className="input-box chat__input">
+                            <input
+                                type="text"
+                                value={messageInput}
+                                onChange={handleInputChange}
+                                placeholder="Type your message..."
+                            />
+                            <button onClick={sendMessage}>
+                                <SendRoundedIcon />
+                            </button>
                         </div>
                     </div>
-                ) : (
-                    <RecentChats key={urlOtherUserId} />
-                )}
+                </div>
             </div>
         </div>
     );

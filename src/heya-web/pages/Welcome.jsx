@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/welcome.css';
 import Nav from '../components/Nav.jsx';
 import Footer from '../../shared/components/Footer.jsx';
@@ -15,6 +15,13 @@ function Welcome() {
     const handleGetStarted = () => {
         navigate('/create-account');
     };
+
+    useEffect(() => {
+        const userId = localStorage.getItem('userId');
+        if (userId) {
+            navigate('/home');
+        }
+    }, [navigate]);
 
     return (
         <div className="page__container">

@@ -552,7 +552,7 @@ textarea{
 }
 
 .home__container {
-    padding-top: 60px;
+    padding-top: 44px;
 }
 
 .home__title {
@@ -560,7 +560,6 @@ textarea{
 }
 
 .room-slider-container {
-    padding-top: 80px;
     width: calc(75% + calc(100vw - 1200px)/2 + 32px);
 }
   
