@@ -120,7 +120,7 @@
     position: relative;
     top: 20px;
     padding-top: 8px;
-    padding-bottom: 16px;
+    padding-bottom: 32px;
     margin-bottom: 32px;
     border-bottom: 2px solid var(--Transparent-Grey);
    
@@ -139,6 +139,10 @@
     border: 1px solid var(--Grey_Blue);
     border-radius: 8px;
     background-color: var(--Transparent-Grey);
+}
+
+.date__picker {
+    height: 56px;
 }
 
 .mt-1 {

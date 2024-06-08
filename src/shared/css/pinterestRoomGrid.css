@@ -1,5 +1,5 @@
 .pinterest-room-grid {
-  columns: 5;
+  columns: 3;
   gap: 16px;
   justify-content: space-between;
   padding: 16px; 
@@ -28,7 +28,7 @@
     object-fit: cover;
   }
   
-  .pinterest-room-label {
+  /* .pinterest-room-label {
     position: absolute;
     bottom: 388px;
     left: 8px;
@@ -39,7 +39,7 @@
     width: 120px;
     text-align: center;
     z-index: 0;
-  }
+  } */
   
   .pinterest-room-favorite-icon {
     position: absolute;
@@ -63,6 +63,7 @@
 
   .filters-title {
     padding: 0px 16px;
+
   }
   
   .filters-title h4 span {

@@ -8,8 +8,6 @@
     align-items: center;
   }
   
- 
-  
   .room-card-container {
     display: flex;
     overflow-x: auto;
@@ -18,16 +16,18 @@
     -webkit-overflow-scrolling: touch;
     overflow-x: scroll;
     scrollbar-width: none;
+    padding: 0 0 16px;
   }
   
   .room-card {
-    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin-right: 16px;
     flex: 0 0 auto;
     width: 300px;
     scroll-snap-align: start;
+    border-radius: 8px;
+    cursor: pointer;
   }
   
   .room-image {
@@ -58,7 +58,7 @@
   }
   
   .room-details {
-    margin-top: -74px;
+    margin-top: -80px;
     padding: 12px;
     background-color: var(--White);
   }
