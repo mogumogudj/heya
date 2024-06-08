@@ -1,0 +1,60 @@
+.calendarGrid{
+    display: grid;
+    grid-template-columns: 40% 70%;
+}
+
+.calendar__container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.MuiPickersLayout-root,
+.MuiDateCalendar-root,
+.MuiPickersCalendarHeader-root,
+.calendar__container .css-1rtg91x-MuiDateCalendar-root,
+.MuiDayCalendar-weekContainer .css-flbe84-MuiDayCalendar-weekContainer {
+    width: 100%;
+
+}
+
+.MuiTypography-root {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: #333;
+}
+
+.MuiPickerStaticWrapper-root {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.MuiPickersDay-root {
+    color: #1976d2;
+}
+
+.MuiPickersDay-root.Mui-selected {
+    background-color: #1976d2;
+    color: white;
+}
+
+.MuiPickersDay-root.Mui-disabled {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+.MuiSvgIcon-root {
+    color: #1976d2;
+}
+
+@media (max-width: 1000px) {
+    .calendarGrid{
+        display: block;
+        grid-template-columns: 100%;
+    }
+}
