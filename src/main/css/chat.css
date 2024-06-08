@@ -57,6 +57,7 @@
 
 .chat__lists--chat {
     width: 100%;
+    max-width: 390px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -88,6 +89,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 220px;
 }
 
 .more-people__button {
@@ -119,6 +121,7 @@
     align-items: center;
     background-color: var(--Transparent-Grey);
     border-radius: 24px;
+    margin-bottom: 12px;
 }
 
 .active--chat__person {
@@ -142,4 +145,102 @@
 .looped-chats__list {
     padding: 0;
     margin: 0;
+}
+
+.chat--active {
+    height: 80vh;
+}
+
+.chat__messages {
+    height: calc(100% - 132px);
+    overflow-y: scroll;
+    scrollbar-width: none;
+    border-bottom: 1px solid var(--Transparent-Grey);
+    border-top: 1px solid var(--Transparent-Grey);
+}
+
+.chat__input {
+    position: relative;
+    height: 52px;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.chat__input input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 8px;
+    color: var(--Black);
+    font-family: var(--body-font);
+    background-color: var(--Transparent-Grey);
+}
+
+.chat__input button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 52px;
+    border: none;
+    border-radius: 8px;
+    color: var(--Dark_Blue);
+    font-size: 16px;
+    font-family: var(--body-font);
+}
+
+.chat__input button:hover {
+    cursor: pointer;
+}
+
+.message {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.message.sender {
+    margin-left: 50%;
+    align-items: end;
+}
+
+.message__text {
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.message.sender .message__text {
+    margin-right: 32px;
+    background-color: #007AFF;
+    color: var(--White);
+}
+
+.message.sender .message__balloon--svg {
+    fill: #007AFF;
+    position: relative;
+    left: -28px;
+    top: -10px;
+}
+
+.message.receiver .message__text {
+    margin-left: 32px;
+    background-color: var(--Transparent-Grey);
+}
+
+.message.receiver .message__balloon--svg {
+    fill: var(--Transparent-Grey);
+    position: relative;
+    left: 28px;
+    top: -10px;
+    transform: scaleX(-1);
+}
+
+.message__image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    position: relative;
+    top: -10px;
 }
