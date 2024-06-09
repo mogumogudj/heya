@@ -33,6 +33,7 @@ import UploadImageHomeOwner from './homeowner/pages/UploadImage.jsx';
 import AccommodationTypeHomeOwner from './homeowner/pages/AccommodationType.jsx';
 import AccommodationInformationHomeOwner from './homeowner/pages/AccommodationInformation.jsx';
 import HouseholdDetailsHomeOwner from './homeowner/pages/HouseholdDetails.jsx';
+import PropertyDetailsHomeOwner from './homeowner/pages/PropertyDetails.jsx';
 
 import { UserProvider } from './shared/contexts/UserContext.jsx';
 
@@ -67,6 +68,7 @@ function App() {
                         <Route path="/accommodation-type-homeowner" element={<AccommodationTypeHomeOwner />} />
                         <Route path="/accommodation-information-homeowner" element={<AccommodationInformationHomeOwner />} />
                         <Route path="/household-details-homeowner" element={<HouseholdDetailsHomeOwner />} />
+                        <Route path="/property-details-homeowner" element={<PropertyDetailsHomeOwner />} />
 
                         <Route path="/rooms" element={<Rooms />} />
                         <Route path="/calendar" element={<Calendar />} />
