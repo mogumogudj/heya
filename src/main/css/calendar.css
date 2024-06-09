@@ -1,6 +1,7 @@
-.calendarGrid{
+.calendarGrid {
     display: grid;
-    grid-template-columns: 40% 70%;
+    grid-template-columns: 40% 60%;
+    gap: 20px;
 }
 
 .calendar__container {
@@ -13,13 +14,47 @@
     background-color: #fff;
 }
 
+.daily-tasks, .next-day-task {
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.daily-tasks {
+    margin-top: 20px;
+}
+
+.daily-tasks h2, .next-day-task h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: #333;
+}
+
+.daily-tasks ul, .next-day-task ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.daily-tasks ul li, .next-day-task ul li {
+    background-color: #e3f2fd;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.next-days-tasks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
 .MuiPickersLayout-root,
 .MuiDateCalendar-root,
 .MuiPickersCalendarHeader-root,
 .calendar__container .css-1rtg91x-MuiDateCalendar-root,
 .MuiDayCalendar-weekContainer .css-flbe84-MuiDayCalendar-weekContainer {
     width: 100%;
-
 }
 
 .MuiTypography-root {
@@ -53,7 +88,7 @@
 }
 
 @media (max-width: 1000px) {
-    .calendarGrid{
+    .calendarGrid {
         display: block;
         grid-template-columns: 100%;
     }
