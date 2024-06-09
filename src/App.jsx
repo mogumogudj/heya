@@ -35,6 +35,7 @@ import AccommodationInformationHomeOwner from './homeowner/pages/AccommodationIn
 import HouseholdDetailsHomeOwner from './homeowner/pages/HouseholdDetails.jsx';
 import PropertyDetailsHomeOwner from './homeowner/pages/PropertyDetails.jsx';
 import SharedSpacesHomeOwner from './homeowner/pages/SharedSpaces.jsx';
+import RoomDetailsHomeOwner from './homeowner/pages/RoomDetails.jsx';
 
 import { UserProvider } from './shared/contexts/UserContext.jsx';
 
@@ -71,6 +72,7 @@ function App() {
                         <Route path="/household-details-homeowner" element={<HouseholdDetailsHomeOwner />} />
                         <Route path="/property-details-homeowner" element={<PropertyDetailsHomeOwner />} />
                         <Route path="/shared-spaces-homeowner" element={<SharedSpacesHomeOwner />} />
+                        <Route path="/room-details-homeowner" element={<RoomDetailsHomeOwner />} />
 
                         <Route path="/rooms" element={<Rooms />} />
                         <Route path="/calendar" element={<Calendar />} />
