@@ -575,6 +575,82 @@ textarea{
     background-color: blue;
 }
 
+
+/* Upload Place Images */
+.image-upload-container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.image-upload {
+    position: relative;
+    border: 1px dashed var(--Mist);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.image-preview {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-preview .MuiIconButton-root {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.info-section {
+    margin-top: 80px;
+    background-color: var(--Transparent-Grey);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.info-section h5 {
+    padding: 32px;
+    margin-bottom: 16px;
+}
+
+.info-section ul {
+    padding: 0 32px;
+    text-align: left;
+}
+
+.info-section ul li {
+    margin-bottom: 0px;
+    
+}
+
+.read-more-button {
+    display: block;
+}
+
+
+
 @media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{
         display: flex;
