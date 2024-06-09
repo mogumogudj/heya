@@ -37,6 +37,7 @@ import PropertyDetailsHomeOwner from './homeowner/pages/PropertyDetails.jsx';
 import SharedSpacesHomeOwner from './homeowner/pages/SharedSpaces.jsx';
 import RoomDetailsHomeOwner from './homeowner/pages/RoomDetails.jsx';
 import PersonalRoomDetailsHomeOwner from './homeowner/pages/PersonalRoomDetails.jsx';
+import UniqueRoomDetailsHomeOwner from './homeowner/pages/UniqueRoomDetails.jsx';
 
 import { UserProvider } from './shared/contexts/UserContext.jsx';
 
@@ -75,6 +76,7 @@ function App() {
                         <Route path="/shared-spaces-homeowner" element={<SharedSpacesHomeOwner />} />
                         <Route path="/room-details-homeowner" element={<RoomDetailsHomeOwner />} />
                         <Route path="/personal-room-details-homeowner" element={<PersonalRoomDetailsHomeOwner />} />
+                        <Route path="/unique-room-details-homeowner" element={<UniqueRoomDetailsHomeOwner />} />
 
 
                         <Route path="/rooms" element={<Rooms />} />
