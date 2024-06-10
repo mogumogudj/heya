@@ -782,6 +782,65 @@ textarea{
         grid-template-columns: 1fr 1fr;
     }
 
+
+
+    .pricing__page {
+        padding: 20px;
+    }
+    
+    .pricing__sections {
+        display: flex;
+        justify-content: space-between;
+        gap: 80px;
+    }
+    
+    .pricing__inputs, .pricing__summary {
+        flex: 1;
+    }
+    
+    .flex {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    
+    .inputWrapper {
+        position: relative;
+        margin-top: -24px;
+    }
+    
+    .input__field {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    
+    .pricing__summary {
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        background-color: var(--Transparent-Grey);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .summary__header {
+        align-self: flex-end;
+    }
+    
+    .total__amount {
+        margin: 20px 0;
+        color: var(--Lime_Green);
+    }
+    
+    .total__price {
+    }
+    
+
     
 }
 
