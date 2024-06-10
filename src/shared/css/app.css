@@ -650,6 +650,20 @@ textarea{
 }
 
 
+/* Availability */
+.availbilityGrid {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 20px;
+}
+
+.availability__container {
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+}
 
 @media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{
