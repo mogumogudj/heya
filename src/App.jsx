@@ -86,6 +86,7 @@ function App() {
 
 
                         <Route path="/rooms" element={<Rooms />} />
+                        <Route path="/rooms/:roomId" element={<Rooms />} />
                         <Route path="/calendar" element={<Calendar />} />
                         <Route path="/chat" element={<Chat />} />
                         <Route path="/chat/:otherUserId" element={<Chat />} />

@@ -11,10 +11,41 @@
     padding: 8px 16px;
 }
 
+.room__card--big {
+    height: 412px;
+    padding: 16px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 .your-room--image {
     width: 108px;
     height: 120px;
     border-radius: 8px;
+}
+
+.your-room--image--big {
+    width: 100%;
+    height: auto;
+}
+
+.room__card--big__banner {
+    width: 100%;
+    min-height: 148px;
+    border-radius: 8px;
+    background-color: var(--Transparent-Grey);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.room__card__tag {
+    position: relative;
+    left: calc(8px - 100%);
+    top: -42px;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 .your-room--location {
@@ -38,4 +69,43 @@
     flex-direction: column;
     height: 92%;
     justify-content: space-between;
+}
+
+.houseowner__image {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.room__card--big__status {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.room__card--big__owner {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.owner--visual {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+}
+
+.status--big {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.card__button--big {
+    padding: 8px 16px;
 }
