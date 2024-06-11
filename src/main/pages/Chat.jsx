@@ -6,6 +6,7 @@ import NavApp from '../components/NavApp.jsx';
 import '../css/chat.css';
 import { Divider } from '@mui/material';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
+import Footer from '../../shared/components/Footer.jsx';
 
 const socket = io(`${import.meta.env.VITE_API_URL}`, {
     path: '/socket.io/',
@@ -19,6 +20,7 @@ function Chat() {
     const [otherUserId, setOtherUserId] = useState(urlOtherUserId);
     const [otherUserInfo, setOtherUserInfo] = useState({ firstName: 'User', lastName: '' });
     const messagesEndRef = useRef(null);
+    const messagesContainerRef = useRef(null);
 
     useEffect(() => {
         const fetchChats = async () => {
@@ -77,6 +79,7 @@ function Chat() {
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        messagesContainerRef.current?.scrollTo({ top: messagesContainerRef.current.scrollHeight, behavior: 'smooth' });
     };
 
     const sendMessage = () => {
@@ -110,7 +113,7 @@ function Chat() {
                                 <h6 className="chat__info--name no__padding h6__strong">{`${otherUserInfo.firstName} ${otherUserInfo.lastName}`}</h6>
                             </div>
                         </div>
-                        <div className="messages chat__messages">
+                        <div className="messages chat__messages" ref={messagesContainerRef}>
                             {messages.map((msg, index) => (
                                 <div key={index} className={`message ${msg.userId === userId ? 'sender' : 'receiver'}`}>
                                     <h6 className="no__padding message__text">{msg.content}</h6>
@@ -147,6 +150,7 @@ function Chat() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 }
