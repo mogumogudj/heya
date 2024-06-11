@@ -28,7 +28,7 @@ function AccommodationInformation() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content">
+            <div className="content" style={{minHeight: '112vh'}}>
                 <div className="center-container">
                     <div className="accommodation__information__page">
                         <div className="homeowner__register__header">

@@ -288,7 +288,7 @@ textarea{
 /* Select accommodation container */
 .select__accommodation {
     width: 100%;
-        display: flex;
+    display: flex;
 }
 
 /* Individual accommodation option */
