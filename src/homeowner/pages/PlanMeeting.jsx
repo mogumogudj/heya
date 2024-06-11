@@ -41,8 +41,8 @@ function PlanMeeting() {
                         </div>
 
                         <div className="availability-info">
+                        <a>Skip this for now</a>
                             <button className="blue__button small">Plan meeting</button>
-                            <p>Skip this for now</p>
                             <p>Selected Date and Time: {selectedDateTime ? selectedDateTime.toLocaleString() : 'None'}</p>
                         </div>
                         <div className="next__help">
