@@ -773,8 +773,15 @@ textarea{
     }
 
 
+
+    /* Homeowner UploadImage.jsx */
     .upload__image__page {
         margin-top: 224px;
+    }
+
+    .upload__image__page .center p {
+        width: auto;
+        justify-content: center;
     }
 
 

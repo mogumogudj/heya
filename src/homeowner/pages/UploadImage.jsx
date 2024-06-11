@@ -88,7 +88,7 @@ function UploadImage() {
             <NavLogin />
             <div className="content">
                 <div className="center-container">
-                    <div>
+                    <div className="upload__image__page">
                         <h1 className="photo__h1">Give us a photo of yourself</h1>
                         <h2>Upload your profile picture</h2>
                         <div className="center">
@@ -115,7 +115,7 @@ function UploadImage() {
                                         borderRadius: '8px',
                                         color: '#A3B9EA',
                                         margin: '32px 0 0 0',
-                                    }}
+                                    }} className='AddPhotoAlternateIcon' onClick={handleButtonClick}
                                 />
                             )}
                             <h2>A photo of you</h2>
