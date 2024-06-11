@@ -83,10 +83,6 @@
     color: rgba(0, 0, 0, 0.26);
 }
 
-.MuiSvgIcon-root {
-    color: #1976d2;
-}
-
 @media (max-width: 1000px) {
     .calendarGrid {
         display: block;
