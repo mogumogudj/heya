@@ -36,9 +36,9 @@ function IdealAttendant() {
     }
 
     return (
-    <div>
-        <p>Preferred Characteristics</p>
-        <div className="forGrid grid"></div>
+
+<div className="page__container">
+            <NavLogin />
             <div className="content">
                 <div className="center-container-always">
                     <div className="accommodation__type__page">
@@ -47,7 +47,7 @@ function IdealAttendant() {
                         
                         <div className="about__yourself__inputs">
                                     <div className="form__group">
-                                        <p>People living in this place</p>
+                                        <p>Preffered Age</p>
                                         <div className="">
                                             <input type="number" placeholder="18" {...methods.register('age', { required: true })} className='input__field small bold'/>
                                             <p className='bold'>-</p>
