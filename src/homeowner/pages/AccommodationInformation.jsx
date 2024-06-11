@@ -109,7 +109,7 @@ function AccommodationInformation() {
                                     <div className='TextBoxWithMaxInput'>
                                         <div className="TextBoxWithMaxInput__flex">
                                         <p>Extra information you would like us to know?</p>
-                                        <InfoOutlinedIcon className='TextBoxWithMaxInput__flex__icon' style={{marginTop:'24px', fontSize:'20', marginRight:'24px' }}/>
+                                        <InfoOutlinedIcon className='TextBoxWithMaxInput__flex__icon' style={{marginTop:'24px', fontSize:'20', marginRight:'16px' }}/>
                                         </div>
                                         <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
                                     </div>
