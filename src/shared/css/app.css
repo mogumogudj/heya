@@ -141,6 +141,11 @@ h1, h2, h3, h4, h5, h6{
 
 .form__group p {
     padding-top: 16px;
+    margin-bottom: 4px;
+}
+
+.form__group .date__picker {
+    height: 42px;
 }
 
 .about__yourself__inputs input {
@@ -157,7 +162,7 @@ select {
     border-radius: 8px;
     border: none;
     background-color: var(--Transparent-Grey);
-    color: #797979;
+    color: var(--Black);
     width: 100%;
 }
 
@@ -168,6 +173,8 @@ select {
     height: 42px;
     border-radius: 8px;
 }
+
+
 
 .next__help {
     float: right;
@@ -764,6 +771,16 @@ textarea{
     .about__yourself__inputs .MuiFormControl-root {
         width: 384px;
     }
+
+
+    .upload__image__page {
+        margin-top: 224px;
+    }
+
+
+
+
+
 
     .blue__button.medium {
         width: 210px;
