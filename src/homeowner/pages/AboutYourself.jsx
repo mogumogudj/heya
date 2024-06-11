@@ -76,8 +76,10 @@ function AboutYourself() {
             <div className="content">
                 <div className="center-container">
                     <div className="about__yourself__page">
+                        <div className="homeowner__register__header">
                         <h1>Tell us about yourself</h1>
                         <h2>Personal information</h2>
+                        </div>
                         <FormProvider {...methods}>
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className={'about__yourself__inputs'}>

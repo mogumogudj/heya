@@ -19,7 +19,7 @@ function AccommodationType() {
             <div className="content">
                 <div className="center-container">
                     <div className="accommodation__type__page">
-                        <div className="accommodation__type__header">
+                        <div className="homeowner__register__header">
                         <h1>What do you offer?</h1>
                         <h2>Type of accommodation</h2>
                         </div>
