@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 import { makeStyles } from '@mui/styles';
 
@@ -106,7 +107,10 @@ function AccommodationInformation() {
                                     </div>
 
                                     <div className='TextBoxWithMaxInput'>
+                                        <div className="TextBoxWithMaxInput__flex">
                                         <p>Extra information you would like us to know?</p>
+                                        <InfoOutlinedIcon className='TextBoxWithMaxInput__flex__icon' style={{marginTop:'24px', fontSize:'20', marginRight:'24px' }}/>
+                                        </div>
                                         <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
                                     </div>
 
