@@ -42,6 +42,7 @@ import UploadPlaceImagesHomeOwner from './homeowner/pages/UploadPlaceImages.jsx'
 import PlaceAvailabilityHomeOwner from './homeowner/pages/PlaceAvailability.jsx';
 import PricingHomeOwner from './homeowner/pages/Pricing.jsx';
 import IdealAttendantHomeOwner from './homeowner/pages/IdealAttendant.jsx';
+import PrivacyHomeOwner from './homeowner/pages/Privacy.jsx';
 
 import { UserProvider } from './shared/contexts/UserContext.jsx';
 
@@ -85,6 +86,7 @@ function App() {
                         <Route path="/place-availability-homeowner" element={<PlaceAvailabilityHomeOwner />} />
                         <Route path="/pricing-homeowner" element={<PricingHomeOwner />} />
                         <Route path="/ideal-attendant-homeowner" element={<IdealAttendantHomeOwner />} />
+                        <Route path="/privacy-homeowner" element={<PrivacyHomeOwner />} />
 
                         <Route path="/rooms" element={<Rooms />} />
                         <Route path="/rooms/:roomId" element={<Rooms />} />
