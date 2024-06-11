@@ -7,6 +7,8 @@
     margin: 0 120px 16px 120px;
 }
 
+
+
 .center-container-always{
     display: flex;
     align-items: center;
@@ -300,6 +302,17 @@ textarea{
     min-width: 250px;
     max-width: 300px;
 }
+
+
+/* Accommodation option image */
+.accommodation__type__page {
+    margin-bottom: 0px;
+}
+
+.accommodation__type__header h2 {
+    margin-top: -24px;
+}
+
 
 /* Action buttons container */
 .action__buttons {

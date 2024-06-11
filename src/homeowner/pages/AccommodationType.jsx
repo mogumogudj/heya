@@ -17,10 +17,12 @@ function AccommodationType() {
         <div className="page__container">
             <NavLogin />
             <div className="content">
-                <div className="center-container-always">
+                <div className="center-container">
                     <div className="accommodation__type__page">
+                        <div className="accommodation__type__header">
                         <h1>What do you offer?</h1>
                         <h2>Type of accommodation</h2>
+                        </div>
                         <div className="select__accommodation">
                             <div className="accommodation__option">
                                 <HotelIcon style={{ width: 80, height: 80 }} />
