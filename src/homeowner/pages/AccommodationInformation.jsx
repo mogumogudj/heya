@@ -105,7 +105,7 @@ function AccommodationInformation() {
                                         </select>
                                     </div>
 
-                                    <div>
+                                    <div className='TextBoxWithMaxInput'>
                                         <p>Extra information you would like us to know?</p>
                                         <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
                                     </div>

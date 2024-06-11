@@ -150,6 +150,10 @@ h1, h2, h3, h4, h5, h6{
     height: 42px;
 }
 
+/* .TextBoxWithMaxInput p {
+    margin-top: 4px;
+} */
+
 .about__yourself__inputs input {
     width: 100%;
     margin: 0;

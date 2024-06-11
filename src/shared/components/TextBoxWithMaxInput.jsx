@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/TextBoxWithMaxInput.css';
 
 const TextBoxWithMaxInput = ({ value, onChange }) => {
     return (
