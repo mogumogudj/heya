@@ -303,6 +303,17 @@ textarea{
     max-width: 300px;
 }
 
+.accommodation__information__page {
+    margin-top: 260px;
+}
+
+@media screen and (max-width: 800px) {
+    .accommodation__information__page {
+        margin-top: 0px;
+    } 
+    
+}
+
 
 /* Accommodation option image */
 .accommodation__type__page {

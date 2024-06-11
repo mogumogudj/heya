@@ -26,13 +26,15 @@ function AccommodationInformation() {
     };
 
     return (
-        <div className="page__container" style={{ marginTop: '148px' }}>
+        <div className="page__container">
             <NavLogin />
             <div className="content">
                 <div className="center-container">
-                    <div className="about__yourself__page ">
+                    <div className="accommodation__information__page">
+                        <div className="homeowner__register__header">
                         <h1>Tell us something about</h1>
                         <h2>Your Accommodation</h2>
+                        </div>
                         <FormProvider {...methods}>
                             <form onSubmit={methods.handleSubmit(onSubmit)}>
                                 <div className={'about__yourself__inputs'}>
