@@ -119,6 +119,7 @@
   .room-label {
       bottom: 142px;
       width: 80px;
+      min-width: 80px;
   }
 
   .room-favorite-icon {
@@ -135,7 +136,7 @@
     color: var(--Black);
     width: 140px;
     margin-left: auto;
-    margin-right: 16px;
+    margin-right: 32px;
     
   }
 
