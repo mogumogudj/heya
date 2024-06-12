@@ -11,6 +11,10 @@ function SelectSituation() {
         navigate('/about-yourself');
     }
 
+    function aboutYourselfHomeOwner() {
+        navigate('/about-yourself-homeowner');
+    }
+
     return (
         <div className="page__container">
             <NavLogin />
@@ -20,10 +24,10 @@ function SelectSituation() {
                         <h1>How can we assist you?</h1>
                         <h2>Select your situation</h2>
                         <div className="select__situation">
-                            <div className="place__to__offer">
+                            <div onClick={aboutYourselfHomeOwner} className="place__to__offer">
                                 <HomeRoundedIcon style={{ width: 80, height: 80 }} />
                                 <h2>I have a place to offer</h2>
-                                <p>Rent out your room, studio of your entire hous. Everything is possible!</p>
+                                <p>Rent out your room, studio of your entire house. Everything is possible!</p>
                             </div>
                             <div onClick={aboutYourself} className="looking__for__a__place">
                                 <SearchRoundedIcon style={{ width: 80, height: 80 }} />

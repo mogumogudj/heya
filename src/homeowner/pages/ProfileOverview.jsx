@@ -10,7 +10,7 @@ function ProfileOverview() {
     const { userData, isLoading } = useContext(UserContext);
 
     const handleSubmit = () => {
-        navigate('/home');
+        navigate('/accommodation-type-homeowner');
     };
 
     return (

@@ -61,7 +61,7 @@ function AboutYourself() {
             const result = await response.json();
             if (response.ok) {
                 localStorage.setItem('userId', result._id);
-                navigate('/upload-image');
+                navigate('/upload-image-homeowner');
             } else {
                 throw new Error(result.message || 'Failed to create user');
             }
@@ -77,8 +77,8 @@ function AboutYourself() {
                 <div className="center-container">
                     <div className="about__yourself__page">
                         <div className="homeowner__register__header">
-                        <h1>Tell us about yourself</h1>
-                        <h2>Personal information</h2>
+                            <h1>Tell us about yourself</h1>
+                            <h2>Personal information</h2>
                         </div>
                         <FormProvider {...methods}>
                             <form onSubmit={handleSubmit(onSubmit)}>

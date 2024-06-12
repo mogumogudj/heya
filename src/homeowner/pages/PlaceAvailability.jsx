@@ -20,7 +20,7 @@ function Availability() {
     };
 
     const handleNextStep = () => {
-        navigate('/next-step');
+        navigate('/pricing-homeowner');
     };
 
     return (
@@ -29,36 +29,36 @@ function Availability() {
             <div className="content">
                 <div className="center-container-always">
                     <div className="accommodation__type__page">
-                    <h1>Availability</h1>
-                    <h2>When is your Place Available?</h2>
+                        <h1>Availability</h1>
+                        <h2>When is your Place Available?</h2>
 
-                <div className="availabilityGrid">
-                    <div className="availability__container">
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <StaticDatePicker
-                                displayStaticWrapperAs="desktop"
-                                value={selectedEndDate || selectedStartDate}
-                                onChange={handleDateChange}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
-                    </div>
-                </div>
-                
-                <div className="availability-info">
-                    <h2>Selected Dates</h2>
-                    <p>Start Date: {selectedStartDate ? selectedStartDate.toLocaleDateString() : 'None'}</p>
-                    <p>End Date: {selectedEndDate ? selectedEndDate.toLocaleDateString() : 'None'}</p>
-                </div>
-                <div className="next__help">
+                        <div className="availabilityGrid">
+                            <div className="availability__container">
+                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                    <StaticDatePicker
+                                        displayStaticWrapperAs="desktop"
+                                        value={selectedEndDate || selectedStartDate}
+                                        onChange={handleDateChange}
+                                        renderInput={(params) => <TextField {...params} />}
+                                    />
+                                </LocalizationProvider>
+                            </div>
+                        </div>
+
+                        <div className="availability-info">
+                            <h2>Selected Dates</h2>
+                            <p>Start Date: {selectedStartDate ? selectedStartDate.toLocaleDateString() : 'None'}</p>
+                            <p>End Date: {selectedEndDate ? selectedEndDate.toLocaleDateString() : 'None'}</p>
+                        </div>
+                        <div className="next__help">
                             <button className="blue__button medium" type="button" onClick={handleNextStep}>
                                 Next step
                             </button>
                             <span className="help">I need help</span>
                         </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
             <Footer />
         </div>
     );

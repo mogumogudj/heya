@@ -9,43 +9,39 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 import { makeStyles } from '@mui/styles';
 
-
-const useStyles = makeStyles({
-
-});
+const useStyles = makeStyles({});
 
 function AccommodationInformation() {
-    const [otherInfo, setOtherInfo] = useState(''); 
+    const [otherInfo, setOtherInfo] = useState('');
 
-    const handleOtherInfoChange = (e) => setOtherInfo(e.target.value); 
+    const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
 
     const methods = useForm();
     const navigate = useNavigate();
 
     const onSubmit = () => {
-       
+        navigate('/household-details-homeowner');
     };
 
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content" style={{minHeight: '112vh'}}>
+            <div className="content" style={{ minHeight: '112vh' }}>
                 <div className="center-container">
                     <div className="accommodation__information__page">
                         <div className="homeowner__register__header">
-                        <h1>Tell us something about</h1>
-                        <h2>Your Accommodation</h2>
+                            <h1>Tell us something about</h1>
+                            <h2>Your Accommodation</h2>
                         </div>
                         <FormProvider {...methods}>
                             <form onSubmit={methods.handleSubmit(onSubmit)}>
-                                <div className={'about__yourself__inputs'}>
-                                </div>
+                                <div className={'about__yourself__inputs'}></div>
                                 <div className="about__yourself__inputs">
                                     <div className="form__group">
                                         <p>Street Name</p>
                                         <input
                                             type="text"
-                                            placeholder='Mussenstraat'
+                                            placeholder="Mussenstraat"
                                             className="input__field"
                                             {...methods.register('streetname', { required: true })}
                                         />
@@ -54,7 +50,7 @@ function AccommodationInformation() {
                                         <p>Street Number</p>
                                         <input
                                             type="text"
-                                            placeholder='1'
+                                            placeholder="1"
                                             className="input__field"
                                             {...methods.register('streetnumber', { required: true })}
                                         />
@@ -63,7 +59,7 @@ function AccommodationInformation() {
                                         <p>Bus</p>
                                         <input
                                             type="text"
-                                            placeholder='A'
+                                            placeholder="A"
                                             className="input__field"
                                             {...methods.register('bus')}
                                         />
@@ -74,7 +70,7 @@ function AccommodationInformation() {
                                         <p>City</p>
                                         <input
                                             type="text"
-                                            placeholder='Leuven'
+                                            placeholder="Leuven"
                                             className="input__field"
                                             {...methods.register('city', { required: true })}
                                         />
@@ -83,7 +79,7 @@ function AccommodationInformation() {
                                         <p>Postal Code</p>
                                         <input
                                             type="text"
-                                            placeholder='3000'
+                                            placeholder="3000"
                                             className="input__field"
                                             {...methods.register('postalcode', { required: true })}
                                         />
@@ -92,7 +88,7 @@ function AccommodationInformation() {
                                         <p>Place</p>
                                         <input
                                             type="text"
-                                            placeholder='Vlaams Brabant'
+                                            placeholder="Vlaams Brabant"
                                             className="input__field"
                                             {...methods.register('place', { required: true })}
                                         />
@@ -106,14 +102,16 @@ function AccommodationInformation() {
                                         </select>
                                     </div>
 
-                                    <div className='TextBoxWithMaxInput'>
+                                    <div className="TextBoxWithMaxInput">
                                         <div className="TextBoxWithMaxInput__flex">
-                                        <p>Extra information you would like us to know?</p>
-                                        <InfoOutlinedIcon className='TextBoxWithMaxInput__flex__icon' style={{marginTop:'24px', fontSize:'20', marginRight:'16px' }}/>
+                                            <p>Extra information you would like us to know?</p>
+                                            <InfoOutlinedIcon
+                                                className="TextBoxWithMaxInput__flex__icon"
+                                                style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }}
+                                            />
                                         </div>
                                         <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
                                     </div>
-
                                 </div>
                                 <div className="next__help">
                                     <button className="blue__button medium" type="submit">

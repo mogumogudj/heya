@@ -28,7 +28,7 @@ function PropertyDetails() {
     };
 
     function handleNextStep() {
-        navigate('/next-step');
+        navigate('/shared-spaces-homeowner');
     }
 
     return (
@@ -40,49 +40,42 @@ function PropertyDetails() {
                         <h1>Tell us something more about</h1>
                         <h2>Your Property Details</h2>
                         <div className="forGrid grid">
-                        {['House', 'Appartement', 'Garden', 'No Garden'].map((option) => (
-                            <div
-                                key={option}
-                                className={isChecked('activities', option) ? 'checked' : ''}
-                                onClick={() => handleClick('activities', option)}
-                            >
-                                <span>{option}</span>
-                            </div>
-                        ))}
-                    </div>
-                        
-                    <div className='flex'>
-                        <p>Surface area of the house/apartment in m²</p>
-                        <div className="inputWrapper">
-                            <input
-                                type="text"
-                                maxLength="4"
-                                placeholder="20"
-                                className={'input__field'}
-                            />
-                        </div>
-                        
-                        <p>Garden size in m²</p>
-                        <div className="inputWrapper">
-                            <input
-                                type="text"
-                                maxLength="4"
-                                placeholder="20"
-                                className={'input__field'}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="about__yourself__inputs">
-                                    <div className="form__group">
-                                        <p>Total available rooms in the house/apartment</p><InfoOutlinedIcon />
-                                        <select className="input__field small">
-                                            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-                                                <option key={num} value={num}>{num}</option>
-                                            ))}
-                                        </select>
-                                    </div>
+                            {['House', 'Appartement', 'Garden', 'No Garden'].map((option) => (
+                                <div
+                                    key={option}
+                                    className={isChecked('activities', option) ? 'checked' : ''}
+                                    onClick={() => handleClick('activities', option)}
+                                >
+                                    <span>{option}</span>
                                 </div>
+                            ))}
+                        </div>
+
+                        <div className="flex">
+                            <p>Surface area of the house/apartment in m²</p>
+                            <div className="inputWrapper">
+                                <input type="text" maxLength="4" placeholder="20" className={'input__field'} />
+                            </div>
+
+                            <p>Garden size in m²</p>
+                            <div className="inputWrapper">
+                                <input type="text" maxLength="4" placeholder="20" className={'input__field'} />
+                            </div>
+                        </div>
+
+                        <div className="about__yourself__inputs">
+                            <div className="form__group">
+                                <p>Total available rooms in the house/apartment</p>
+                                <InfoOutlinedIcon />
+                                <select className="input__field small">
+                                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+                                        <option key={num} value={num}>
+                                            {num}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
 
                         <div className="next__help">
                             <button className="blue__button medium" type="button" onClick={handleNextStep}>

@@ -29,7 +29,7 @@ function RoomDetails() {
     };
 
     function handleNextStep() {
-        navigate('/next-step');
+        navigate('/personal-room-details-homeowner');
     }
 
     return (
@@ -40,58 +40,60 @@ function RoomDetails() {
                     <div className="accommodation__type__page">
                         <h1>Tell us about your Room</h1>
                         <h2>Your Room Details</h2>
-                        
+
                         <div className="">
-                        <p>Size of the Room in m²</p>
-                        <div className="forGrid grid">
-                            
-                        {['Furnished', 'Not Furnished'].map((option) => (
-                            <div
-                                key={option}
-                                className={isChecked('activities', option) ? 'checked' : ''}
-                                onClick={() => handleClick('activities', option)}
-                            >
-                                <span>{option}</span>
-                            </div>
-                        ))}
-                    </div>
-                    </div>
-
-                    <div className='flex'>
-                        <p>Size of the Room in m²</p>
-                        <div className="inputWrapper">
-                            <input
-                                type="text"
-                                maxLength="4"
-                                placeholder="20"
-                                className={'input__field'}
-                            />
-                        </div>
-                    </div>
-
-                    <div>
-                    <p>Size of the Room in m²</p>
-                    <div className="forGrid grid">
-                        
-                        {['Bed', 'Sofa', 'Desk', 'Chair', 'Wardrobe', 'Bookhelf', 'Nighstand', 'Other (please specify in textbox)'].map((option) => (
-                            <div
-                                key={option}
-                                className={isChecked('activities', option) ? 'checked' : ''}
-                                onClick={() => handleClick('activities', option)}
-                            >
-                                <span>{option}</span>
-                            </div>
-                        ))}
-                    </div>
-                    </div>
-
-                    <div className="about__yourself__inputs">
-                                    <div className="form__group">
-                                        <p>Extra information</p>
-                                        <InfoOutlinedIcon />
-                                        <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
+                            <p>Size of the Room in m²</p>
+                            <div className="forGrid grid">
+                                {['Furnished', 'Not Furnished'].map((option) => (
+                                    <div
+                                        key={option}
+                                        className={isChecked('activities', option) ? 'checked' : ''}
+                                        onClick={() => handleClick('activities', option)}
+                                    >
+                                        <span>{option}</span>
                                     </div>
-                                </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="flex">
+                            <p>Size of the Room in m²</p>
+                            <div className="inputWrapper">
+                                <input type="text" maxLength="4" placeholder="20" className={'input__field'} />
+                            </div>
+                        </div>
+
+                        <div>
+                            <p>Size of the Room in m²</p>
+                            <div className="forGrid grid">
+                                {[
+                                    'Bed',
+                                    'Sofa',
+                                    'Desk',
+                                    'Chair',
+                                    'Wardrobe',
+                                    'Bookhelf',
+                                    'Nighstand',
+                                    'Other (please specify in textbox)',
+                                ].map((option) => (
+                                    <div
+                                        key={option}
+                                        className={isChecked('activities', option) ? 'checked' : ''}
+                                        onClick={() => handleClick('activities', option)}
+                                    >
+                                        <span>{option}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="about__yourself__inputs">
+                            <div className="form__group">
+                                <p>Extra information</p>
+                                <InfoOutlinedIcon />
+                                <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
+                            </div>
+                        </div>
 
                         <div className="next__help">
                             <button className="blue__button medium" type="button" onClick={handleNextStep}>

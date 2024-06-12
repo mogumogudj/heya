@@ -1,9 +1,10 @@
 import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import { 
+import {
     RadioGroup,
     Box
   } from '@mui/material';
@@ -15,10 +16,11 @@ import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx
 function HouseholdDetails() {
     const methods = useForm();
     const [otherInfo, setOtherInfo] = useState('');
-    const handleOtherInfoChange = (e) => setOtherInfo(e.target.value); 
+    const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        // Handle form submission
+        navigate('/property-details-homeowner');
     };
 
     return (
@@ -37,9 +39,14 @@ function HouseholdDetails() {
                             <div className="household__details__inputs">
                                     <div className="form__group">
                                         <p>Room for student(s)</p>
-                                        <select {...methods.register('room', { required: true })} className="input__field small">
+                                        <select
+                                            {...methods.register('room', { required: true })}
+                                            className="input__field small"
+                                        >
                                             {[1, 2, 3, 4, 5].map((num) => (
-                                                <option key={num} value={num}>{num}</option>
+                                                <option key={num} value={num}>
+                                                    {num}
+                                                </option>
                                             ))}
                                         </select>
                                 </div>
@@ -81,7 +88,23 @@ function HouseholdDetails() {
                                                 </label>
                                             </RadioGroup>
                                         </Box>
-                                        
+
+                                            <label>
+                                                <input
+                                                    type="radio"
+                                                    value="yes"
+                                                    {...methods.register('pets', { required: true })}
+                                                />
+                                                Yes
+                                            </label>
+                                            <label>
+                                                <input
+                                                    type="radio"
+                                                    value="no"
+                                                    {...methods.register('pets', { required: true })}
+                                                />
+                                                No
+                                            </label>
                                         </div>
                                     </div>
                                 </div>

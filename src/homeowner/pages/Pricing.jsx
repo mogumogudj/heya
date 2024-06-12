@@ -18,12 +18,12 @@ function Pricing() {
     };
 
     const calculateTotal = () => {
-        const values = [rent, additionalCosts, serviceCost, deposit].map(value => parseFloat(value) || 0);
+        const values = [rent, additionalCosts, serviceCost, deposit].map((value) => parseFloat(value) || 0);
         return values.reduce((acc, value) => acc + value, 0).toFixed(2);
     };
 
     const handleNextStep = () => {
-        navigate('/next-step');
+        navigate('/ideal-attendant-homeowner');
     };
 
     return (
@@ -36,7 +36,6 @@ function Pricing() {
                         <h2>Enter the details below</h2>
                         <div className="pricing__sections">
                             <div className="pricing__inputs">
-                                
                                 <div className="flex">
                                     <p>Rent (€ / month)</p>
                                     <div className="inputWrapper">
@@ -64,7 +63,9 @@ function Pricing() {
                                     </div>
                                 </div>
                                 <div className="flex">
-                                    <p>Service cost <InfoOutlinedIcon /></p>
+                                    <p>
+                                        Service cost <InfoOutlinedIcon />
+                                    </p>
                                     <div className="inputWrapper">
                                         <input
                                             type="text"
@@ -77,7 +78,9 @@ function Pricing() {
                                     </div>
                                 </div>
                                 <div className="flex">
-                                    <p>Deposit/Warranty <InfoOutlinedIcon /></p>
+                                    <p>
+                                        Deposit/Warranty <InfoOutlinedIcon />
+                                    </p>
                                     <div className="inputWrapper">
                                         <input
                                             type="text"
@@ -92,9 +95,9 @@ function Pricing() {
                             </div>
                             <div className="pricing__summary">
                                 <div className="summary__header">
-                                    <button className='white__button small'>Help</button>
+                                    <button className="white__button small">Help</button>
                                 </div>
-                                <h2 className='bold'>Total Amount</h2>
+                                <h2 className="bold">Total Amount</h2>
                                 <h4>Of your Room</h4>
                                 <div className="total__amount">
                                     <h4 className="total__price bold">€{calculateTotal()}</h4>

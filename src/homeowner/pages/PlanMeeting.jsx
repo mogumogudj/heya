@@ -5,7 +5,7 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { TextField } from '@mui/material';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 import Footer from '../../shared/components/Footer.jsx';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
 function PlanMeeting() {
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ function PlanMeeting() {
     };
 
     const handleNextStep = () => {
-        navigate('/next-step');
+        navigate('/home');
     };
 
     return (
@@ -41,9 +41,11 @@ function PlanMeeting() {
                         </div>
 
                         <div className="availability-info">
-                        <a>Skip this for now</a>
+                            <a>Skip this for now</a>
                             <button className="blue__button small">Plan meeting</button>
-                            <p>Selected Date and Time: {selectedDateTime ? selectedDateTime.toLocaleString() : 'None'}</p>
+                            <p>
+                                Selected Date and Time: {selectedDateTime ? selectedDateTime.toLocaleString() : 'None'}
+                            </p>
                         </div>
                         <div className="next__help">
                             <button className="blue__button medium" type="button" onClick={handleNextStep}>

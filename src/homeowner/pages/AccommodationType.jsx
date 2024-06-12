@@ -10,7 +10,7 @@ function AccommodationType() {
     const navigate = useNavigate();
 
     function handleNextStep() {
-        navigate('/next-step');
+        navigate('/accommodation-information-homeowner');
     }
 
     return (
@@ -20,8 +20,8 @@ function AccommodationType() {
                 <div className="center-container">
                     <div className="accommodation__type__page">
                         <div className="homeowner__register__header">
-                        <h1>What do you offer?</h1>
-                        <h2>Type of accommodation</h2>
+                            <h1>What do you offer?</h1>
+                            <h2>Type of accommodation</h2>
                         </div>
                         <div className="select__accommodation">
                             <div className="accommodation__option">
@@ -38,7 +38,9 @@ function AccommodationType() {
                             </div>
                         </div>
                         <div className="contact__us">
-                            <p>Not seeing your option? <span className="contact__us__span bold">Contact us</span></p>
+                            <p>
+                                Not seeing your option? <span className="contact__us__span bold">Contact us</span>
+                            </p>
                         </div>
                         <div className="next__help">
                             <button className="blue__button medium" type="button" onClick={handleNextStep}>
