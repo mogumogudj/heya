@@ -104,7 +104,7 @@ function About() {
                             <div className="about__ideal-room-image ideal-room-image"></div>
                         </div>
                         <div className="about__slogan">
-                            <h3>
+                            <h3 className='about__slogan__text'>
                                 At Heya, we're more than just a housing platform. We're your partner in creating
                                 unforgettable experiences during your student journey. From seamless room management to
                                 thoughtful surprises, we're here to make every moment in your student accommodation
