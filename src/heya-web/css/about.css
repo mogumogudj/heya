@@ -24,7 +24,6 @@
 .about__intro-text, .about__mission-text, .about__ideal-room-text {
     display: flex;
     flex-direction: column;
-    align-items: left;
     justify-content: center;
     width: 100%;
 }
@@ -66,7 +65,7 @@
 }
 
 .intro-image__1 {
-    background-image: url(./Aula.webp);
+    background-image: url(../Aula.webp);
 }
 
 .intro-image__2 {
@@ -145,7 +144,7 @@
 .team-member__name {
     font-size: 24px;
     font-weight: 700;
-    font-family: var(--heading-font);
+    font-family: var(--heading-font), serif;
     color: var(--Black);
     text-align: center;
 }
@@ -153,7 +152,7 @@
 .team-member__role {
     font-size: 20px;
     font-weight: 400;
-    font-family: var(--heading-font);
+    font-family: var(--heading-font), serif;
     color: var(--Mist);
     text-align: center;
 }
