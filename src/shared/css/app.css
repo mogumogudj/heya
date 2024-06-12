@@ -136,6 +136,16 @@ h1, h2, h3, h4, h5, h6{
     padding-top: 32px;
 }
 
+.form__group {
+    margin-top: 16px;
+}
+
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+
+
 .form__group p {
     padding-top: 16px;
     margin-bottom: 4px;
@@ -218,6 +228,9 @@ select {
     display: block;
 }
 
+
+
+
 .grid {
     width: 100%;
     display: grid;
@@ -228,9 +241,13 @@ select {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+.twoGrid{
+    grid-template-columns: 1fr 1fr;
+}
+
 .forGrid div{
     width: 100%;
-    padding: 16px;
+    padding: 24px;
     border: 1px solid var(--Grey_Blue);
     border-radius: 8px;
     text-align: center;
@@ -244,13 +261,7 @@ select {
     text-align: center;
 }
 
-.checked {
-    background-color: var(--Dark_Blue);
-    color: var(--Beige);
-}
-
-
-.twoGrid input{
+.twoGrid div{
     width: 100%;
     margin: 0;
     padding: 10px 12px;
@@ -258,6 +269,14 @@ select {
     border: none;
     background-color: var(--Transparent-Grey);
 }
+
+.checked {
+    background-color: var(--Dark_Blue);
+    color: var(--Beige);
+}
+
+
+
 
 .textarea-container {
     position: relative;
@@ -334,12 +353,7 @@ textarea{
 }
 
 
-@media screen and (max-width: 800px) {
-    .household__details__page {
-        margin-top: 0px;
-    }    
-    
-}
+
 
 
 /* Action buttons container */
@@ -908,6 +922,21 @@ textarea{
         flex-direction: row;
         gap: 16px;
     }
+
+    @media screen and (max-width: 800px) {
+        .household__details__page {
+            margin-top: 0px;
+        }    
+        
+    }
+
+    .title__with__icon {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+
 
 
     
