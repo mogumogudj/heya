@@ -90,6 +90,10 @@ const rooms = [
 ];
 
 function PinterestRoomGrid({ title }) {
+  const openRoom = () => {
+    location.href = "/room-info";
+  }
+  
   return (
     <div className='pinterest-room-total'>
       <div className="filters-title">
@@ -97,7 +101,7 @@ function PinterestRoomGrid({ title }) {
       </div>   
     <div className="pinterest-room-grid">
       {rooms.map((room) => (
-        <div key={room.id} className="pinterest-room-card">
+        <div key={room.id} className="pinterest-room-card" onClick={openRoom}>
           <img
             src={room.image}
             alt={`Room in ${room.city}`}
