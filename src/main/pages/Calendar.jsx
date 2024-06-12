@@ -12,6 +12,7 @@ import '../css/calendar.css';
 function Calendar() {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [allTasks, setAllTasks] = useState([]);
+    const [otherUserNames, setOtherUserNames] = useState({});
     const navigate = useNavigate();
     const userId = localStorage.getItem('userId');
 
@@ -21,6 +22,10 @@ function Calendar() {
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/calendar/${userId}`);
                 const data = await response.json();
                 setAllTasks(data);
+
+                const userIds = data.flatMap((event) => event.otherUsersId || []);
+                const names = await getOtherUserNames(userIds);
+                setOtherUserNames(Object.fromEntries(names));
             } catch (error) {
                 console.error('Failed to fetch user calendar:', error);
             }
@@ -52,6 +57,16 @@ function Calendar() {
 
     const handleAddIconClick = () => {
         navigate('/create-calendar-event');
+    };
+
+    const getOtherUserNames = async (otherUserIds) => {
+        const promises = otherUserIds.map(async (userId) => {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`);
+            const userData = await response.json();
+            return [userId, userData.firstName];
+        });
+
+        return Promise.all(promises);
     };
 
     const tasksForSelectedDate = filterTasksByDate(selectedDate);
@@ -86,7 +101,32 @@ function Calendar() {
                             <h2>Tasks for {formatDate(selectedDate)}</h2>
                             <ul>
                                 {tasksForSelectedDate.length > 0 ? (
-                                    tasksForSelectedDate.map((task, index) => <li key={index}>{task.title}</li>)
+                                    tasksForSelectedDate.map((task, index) => (
+                                        <li key={index} className={task.event === 'Event' ? 'event' : 'task'}>
+                                            <b className={task.event === 'Event' ? 'event-title' : 'task-title'}>
+                                                {task.title}
+                                            </b>
+                                            {task.description && (
+                                                <p
+                                                    className={
+                                                        task.event === 'Event'
+                                                            ? 'event-description'
+                                                            : 'task-description'
+                                                    }
+                                                >
+                                                    {task.description}
+                                                </p>
+                                            )}
+                                            <p className="timestamp">{new Date(task.timestamp).toLocaleString()}</p>
+                                            {task.otherUsersId && (
+                                                <p className="other-users">
+                                                    {task.otherUsersId
+                                                        .map((userId) => otherUserNames[userId])
+                                                        .join(', ')}
+                                                </p>
+                                            )}
+                                        </li>
+                                    ))
                                 ) : (
                                     <li>No tasks or events today</li>
                                 )}
@@ -98,7 +138,32 @@ function Calendar() {
                             <h2>Tasks for {formatDate(getTomorrow())}</h2>
                             <ul>
                                 {tasksForTomorrow.length > 0 ? (
-                                    tasksForTomorrow.map((task, index) => <li key={index}>{task.title}</li>)
+                                    tasksForTomorrow.map((task, index) => (
+                                        <li key={index} className={task.event === 'Event' ? 'event' : 'task'}>
+                                            <b className={task.event === 'Event' ? 'event-title' : 'task-title'}>
+                                                {task.title}
+                                            </b>
+                                            {task.description && (
+                                                <p
+                                                    className={
+                                                        task.event === 'Event'
+                                                            ? 'event-description'
+                                                            : 'task-description'
+                                                    }
+                                                >
+                                                    {task.description}
+                                                </p>
+                                            )}
+                                            <p className="timestamp">{new Date(task.timestamp).toLocaleString()}</p>
+                                            {task.otherUsersId && (
+                                                <p className="other-users">
+                                                    {task.otherUsersId
+                                                        .map((userId) => otherUserNames[userId])
+                                                        .join(', ')}
+                                                </p>
+                                            )}
+                                        </li>
+                                    ))
                                 ) : (
                                     <li>No tasks or events tomorrow</li>
                                 )}
@@ -108,7 +173,32 @@ function Calendar() {
                             <h2>Tasks for {formatDate(getDayAfterTomorrow())}</h2>
                             <ul>
                                 {tasksForDayAfterTomorrow.length > 0 ? (
-                                    tasksForDayAfterTomorrow.map((task, index) => <li key={index}>{task.title}</li>)
+                                    tasksForDayAfterTomorrow.map((task, index) => (
+                                        <li key={index} className={task.event === 'Event' ? 'event' : 'task'}>
+                                            <b className={task.event === 'Event' ? 'event-title' : 'task-title'}>
+                                                {task.title}
+                                            </b>
+                                            {task.description && (
+                                                <p
+                                                    className={
+                                                        task.event === 'Event'
+                                                            ? 'event-description'
+                                                            : 'task-description'
+                                                    }
+                                                >
+                                                    {task.description}
+                                                </p>
+                                            )}
+                                            <p className="timestamp">{new Date(task.timestamp).toLocaleString()}</p>
+                                            {task.otherUsersId && (
+                                                <p className="other-users">
+                                                    {task.otherUsersId
+                                                        .map((userId) => otherUserNames[userId])
+                                                        .join(', ')}
+                                                </p>
+                                            )}
+                                        </li>
+                                    ))
                                 ) : (
                                     <li>No tasks or events the day after tomorrow</li>
                                 )}

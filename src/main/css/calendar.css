@@ -21,6 +21,16 @@
     background-color: #fff;
 }
 
+.daily-tasks p{
+    padding: 0;
+    margin: 0;
+}
+
+.next-day-task p{
+    padding: 4px;
+    margin: 0;
+}
+
 .daily-tasks, .next-day-task {
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -89,6 +99,23 @@
 .MuiPickersDay-root.Mui-disabled {
     color: rgba(0, 0, 0, 0.26);
 }
+
+.daily-tasks ul li.event {
+    background-color: #f7934c;
+}
+
+.daily-tasks ul li.task {
+    background-color: #f32a5e;
+}
+
+.next-day-task ul li.event {
+    background-color: #f7934c;
+}
+
+.next-day-task ul li.task {
+    background-color: #f32a5e;
+}
+
 
 @media (max-width: 1000px) {
     .calendarGrid {
