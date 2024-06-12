@@ -10,6 +10,7 @@ import AboutYourself from './users/pages/AboutYourself.jsx';
 import Home from './main/pages/Home.jsx';
 import Rooms from './main/pages/Rooms.jsx';
 import Calendar from './main/pages/Calendar.jsx';
+import CreateCalendarEvent from './main/pages/CreateCalendarEvent.jsx';
 import Chat from './main/pages/Chat.jsx';
 import Profile from './main/pages/Profile.jsx';
 import Logout from './users/pages/Logout.jsx';
@@ -77,7 +78,10 @@ function App() {
                         <Route path="/about-yourself-homeowner" element={<AboutYourselfHomeOwner />} />
                         <Route path="/upload-image-homeowner" element={<UploadImageHomeOwner />} />
                         <Route path="/accommodation-type-homeowner" element={<AccommodationTypeHomeOwner />} />
-                        <Route path="/accommodation-information-homeowner" element={<AccommodationInformationHomeOwner />} />
+                        <Route
+                            path="/accommodation-information-homeowner"
+                            element={<AccommodationInformationHomeOwner />}
+                        />
                         <Route path="/household-details-homeowner" element={<HouseholdDetailsHomeOwner />} />
                         <Route path="/property-details-homeowner" element={<PropertyDetailsHomeOwner />} />
                         <Route path="/shared-spaces-homeowner" element={<SharedSpacesHomeOwner />} />
@@ -95,6 +99,7 @@ function App() {
                         <Route path="/rooms" element={<Rooms />} />
                         <Route path="/rooms/:roomId" element={<Rooms />} />
                         <Route path="/calendar" element={<Calendar />} />
+                        <Route path="/create-calendar-event" element={<CreateCalendarEvent />} />
                         <Route path="/chat" element={<Chat />} />
                         <Route path="/chat/:otherUserId" element={<Chat />} />
                         <Route path="/profile" element={<Profile />} />

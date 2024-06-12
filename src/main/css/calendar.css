@@ -1,7 +1,14 @@
+.addIcon{
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 80px;
+}
+
 .calendarGrid {
     display: grid;
     grid-template-columns: 40% 60%;
-    gap: 20px;
+    gap: 16px;
 }
 
 .calendar__container {
@@ -22,7 +29,7 @@
 }
 
 .daily-tasks {
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 .daily-tasks h2, .next-day-task h2 {
@@ -38,15 +45,15 @@
 
 .daily-tasks ul li, .next-day-task ul li {
     background-color: #e3f2fd;
-    margin: 5px 0;
-    padding: 10px;
+    margin: 8px 0;
+    padding: 8px;
     border-radius: 5px;
 }
 
 .next-days-tasks {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 16px;
 }
 
 .MuiPickersLayout-root,
@@ -87,5 +94,9 @@
     .calendarGrid {
         display: block;
         grid-template-columns: 100%;
+    }
+
+    .next-days-tasks {
+        margin-top: 16px;
     }
 }
