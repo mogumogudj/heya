@@ -8,7 +8,7 @@ function Blogs() {
     return (
         <div className="page__container">
             <Nav />
-            <div className="content">
+            <div className="content blogs__content">
                 <header className="title__center normal__header">
                     <h6>Heya</h6>
                     <h1>Blogs</h1>

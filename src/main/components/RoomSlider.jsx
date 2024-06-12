@@ -117,6 +117,10 @@ function RoomSlider({title}) {
     roomCardContainerRef.current.scrollLeft = scrollLeft - walk;
   };
 
+  const openRoom = () => {
+    location.href = "/room-info";
+  }
+
   return (
     <div className="room-slider">
       <div className="flex-container mb-4">
@@ -133,7 +137,7 @@ function RoomSlider({title}) {
         onMouseMove={handleMouseMove}
       >
         {rooms.map((room) => (
-          <div key={room.id} className="room-card">
+          <div key={room.id} className="room-card" onClick={openRoom}>
             <img
               src={room.image}
               alt={`Room in ${room.city}`}
