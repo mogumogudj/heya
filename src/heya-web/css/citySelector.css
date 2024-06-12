@@ -67,3 +67,9 @@
     background-size: cover;
     background-position: center;
 }
+
+@media screen and (max-width: 600px) {
+    .city__select-cities {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

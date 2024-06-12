@@ -18,11 +18,16 @@
   padding-top: 40px;
 }
 
+.blogs__content {
+    padding-bottom: 32px;
+}
 
 
 /* Medium screens */
 @media screen and (max-width: 1200px) {
-    
+    .blogs__content {
+        padding-bottom: 48px;
+    }
 
     .blogs__articles__50{
         grid-template-columns: 1fr 1fr;
@@ -35,6 +40,10 @@
 
 /* Small screens */
 @media screen and (max-width: 800px) {
+    .blogs__content {
+        padding-bottom: 120px;
+    }
+    
     .blogs__articles__50{
         grid-template-columns: 1fr;
         text-align: center;
