@@ -61,12 +61,7 @@ h1, h2, h3, h4, h5, h6{
     padding: 8px 16px;
 }
 
-.pets__radio__button {
-    display: flex;
-    gap: 16px;
-    margin: 0 8px 12px 0;
 
-}
 .form__group__confirm__password {
     margin-top: -40px;
 }
@@ -319,10 +314,8 @@ textarea{
 @media screen and (max-width: 800px) {
     .accommodation__information__page {
         margin-top: 0px;
-    } 
-    
+    }    
 }
-
 
 /* Accommodation option image */
 .accommodation__type__page {
@@ -331,6 +324,14 @@ textarea{
 
 .homeowner__register__header h2 {
     margin-top: -24px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .household__details__page {
+        margin-top: 0px;
+    }    
+    
 }
 
 
@@ -860,6 +861,48 @@ textarea{
         flex-direction: column;
         margin-bottom: 20px;
     }
+
+
+    /* HouseholdDetails.jsx */
+.household__details__page {
+    margin-top: 132px;
+}
+
+.household__details__inputs .input__field.small {
+    margin-top: 0px;
+}
+
+.pets__radio__button {
+    display: flex;
+    gap: 16px;
+    margin: 0 8px 12px 0;
+
+}
+
+    .household__details__flex {
+        display: flex;
+        gap: 16px; /* Adjust the gap as needed */
+    }
+    
+    .household__details__inputs {
+        flex: 1;
+    }
+    
+    .household__details__item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        margin-top: -16px;
+    }
+
+    .household__details__radio__section .radio__button__section {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+    }
+
+
     
     .inputWrapper {
         position: relative;
