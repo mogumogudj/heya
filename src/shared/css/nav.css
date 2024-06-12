@@ -182,7 +182,8 @@ body {
     }
 
     .nav {
-        top: calc(100vh - 100px);
+        top: 0;
+        top: auto;
         box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
         grid-template-columns: repeat(5, 1fr);
     }
