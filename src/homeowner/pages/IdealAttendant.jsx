@@ -32,104 +32,121 @@ function IdealAttendant() {
     };
 
     function handleNextStep() {
-        navigate('/next-step');
+        navigate('/privacy-homeowner');
     }
 
     return (
-
-<div className="page__container">
+        <div className="page__container">
             <NavLogin />
             <div className="content">
                 <div className="center-container-always">
                     <div className="accommodation__type__page">
                         <h1>Perfect Attendant</h1>
                         <h2>Describe Your Ideal Attendant</h2>
-                        
+
                         <div className="about__yourself__inputs">
-                                    <div className="form__group">
-                                        <p>Preffered Age</p>
-                                        <div className="">
-                                            <input type="number" placeholder="18" {...methods.register('age', { required: true })} className='input__field small bold'/>
-                                            <p className='bold'>-</p>
-                                            <input type="number" placeholder="64" {...methods.register('age', { required: true })} className='input__field small bold' />
-                                        </div>
-                                    </div>
+                            <div className="form__group">
+                                <p>Preffered Age</p>
+                                <div className="">
+                                    <input
+                                        type="number"
+                                        placeholder="18"
+                                        {...methods.register('age', { required: true })}
+                                        className="input__field small bold"
+                                    />
+                                    <p className="bold">-</p>
+                                    <input
+                                        type="number"
+                                        placeholder="64"
+                                        {...methods.register('age', { required: true })}
+                                        className="input__field small bold"
+                                    />
                                 </div>
+                            </div>
+                        </div>
 
                         <div className="form__group">
-                                        <p>Gender</p>
-                                        <select {...methods.register('gender', { required: true })}>
-                                            {Object.values(Gender).map((genderOption) => (
-                                                <option key={genderOption} value={genderOption}>
-                                                    {genderOption}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
+                            <p>Gender</p>
+                            <select {...methods.register('gender', { required: true })}>
+                                {Object.values(Gender).map((genderOption) => (
+                                    <option key={genderOption} value={genderOption}>
+                                        {genderOption}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
 
-                                    <div className="form__group">
-                                        <p>Language</p>
-                                        <select {...methods.register('language', { required: true })}>
-                                            <option value="English">English</option>
-                                            <option value="Spanish">Spanish</option>
-                                            <option value="French">French</option>
-                                            <option value="German">German</option>
-                                            <option value="Italian">Italian</option>
-                                            <option value="Portuguese">Portuguese</option>
-                                            <option value="Dutch">Dutch</option>
-                                            <option value="Russian">Russian</option>
-                                            <option value="Chinese">Chinese</option>
-                                        </select>
-                                    </div>
+                        <div className="form__group">
+                            <p>Language</p>
+                            <select {...methods.register('language', { required: true })}>
+                                <option value="English">English</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="French">French</option>
+                                <option value="German">German</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Portuguese">Portuguese</option>
+                                <option value="Dutch">Dutch</option>
+                                <option value="Russian">Russian</option>
+                                <option value="Chinese">Chinese</option>
+                            </select>
+                        </div>
 
-                    <div>
-                    <p>Preferred Characteristics</p>
-                    <div className="forGrid grid">
-                        
-                        {['Friendly', 'Reliable', 'Professional', 'Adaptable', 'Organized', 'Patient', 'Thrustworthy', 'Other (please specify in textbox)'].map((option) => (
-                            <div
-                                key={option}
-                                className={isChecked('activities', option) ? 'checked' : ''}
-                                onClick={() => handleClick('activities', option)}
-                            >
-                                <span>{option}</span>
+                        <div>
+                            <p>Preferred Characteristics</p>
+                            <div className="forGrid grid">
+                                {[
+                                    'Friendly',
+                                    'Reliable',
+                                    'Professional',
+                                    'Adaptable',
+                                    'Organized',
+                                    'Patient',
+                                    'Thrustworthy',
+                                    'Other (please specify in textbox)',
+                                ].map((option) => (
+                                    <div
+                                        key={option}
+                                        className={isChecked('activities', option) ? 'checked' : ''}
+                                        onClick={() => handleClick('activities', option)}
+                                    >
+                                        <span>{option}</span>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-                    </div>
+                        </div>
 
-                    <div className="about__yourself__inputs">
-                                    <div className="form__group">
-                                        <p>Extra information</p>
-                                        <InfoOutlinedIcon />
-                                        <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
-                                    </div>
-                                </div>
-
-
-                                <div>
-                    <p>Must bes</p>
-                    <div className="forGrid grid">
-                        
-                        {['Non Smoker', 'Vegetarian', 'Vegan', 'Other (please specify in textbox)'].map((option) => (
-                            <div
-                                key={option}
-                                className={isChecked('activities', option) ? 'checked' : ''}
-                                onClick={() => handleClick('activities', option)}
-                            >
-                                <span>{option}</span>
+                        <div className="about__yourself__inputs">
+                            <div className="form__group">
+                                <p>Extra information</p>
+                                <InfoOutlinedIcon />
+                                <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
                             </div>
-                        ))}
-                    </div>
-                    </div>
+                        </div>
 
-                    <div className="about__yourself__inputs">
-                                    <div className="form__group">
-                                        <p>Extra information</p>
-                                        <InfoOutlinedIcon />
-                                        <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
-                                    </div>
-                                </div>
+                        <div>
+                            <p>Must bes</p>
+                            <div className="forGrid grid">
+                                {['Non Smoker', 'Vegetarian', 'Vegan', 'Other (please specify in textbox)'].map(
+                                    (option) => (
+                                        <div
+                                            key={option}
+                                            className={isChecked('activities', option) ? 'checked' : ''}
+                                            onClick={() => handleClick('activities', option)}
+                                        >
+                                            <span>{option}</span>
+                                        </div>
+                                    ),
+                                )}
+                            </div>
+                        </div>
+
+                        <div className="about__yourself__inputs">
+                            <div className="form__group">
+                                <p>Extra information</p>
+                                <InfoOutlinedIcon />
+                                <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
+                            </div>
+                        </div>
 
                         <div className="next__help">
                             <button className="blue__button medium" type="button" onClick={handleNextStep}>

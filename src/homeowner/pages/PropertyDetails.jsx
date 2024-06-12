@@ -29,7 +29,7 @@ function PropertyDetails() {
     };
 
     function handleNextStep() {
-        navigate('/next-step');
+        navigate('/shared-spaces-homeowner');
     }
 
     return (
@@ -41,6 +41,7 @@ function PropertyDetails() {
                 <div className='homeowner__register__header'>
                         <h1>Tell us something more about</h1>
                         <h2>Your Property Details</h2>
+<<<<<<< HEAD
                         </div>
                         <div className="forGrid grid" style={{gridTemplateColumns:'1fr 1fr', marginTop: '40px'}}>
                         {['House', 'Appartement', 'Garden', 'No Garden'].map((option) => (
@@ -95,7 +96,45 @@ function PropertyDetails() {
                                             ))}
                                         </select>
                                     </div>
+=======
+                        <div className="forGrid grid">
+                            {['House', 'Appartement', 'Garden', 'No Garden'].map((option) => (
+                                <div
+                                    key={option}
+                                    className={isChecked('activities', option) ? 'checked' : ''}
+                                    onClick={() => handleClick('activities', option)}
+                                >
+                                    <span>{option}</span>
+>>>>>>> d82847a04ebd1b426b15e2d55b1061cdf3ed9e61
                                 </div>
+                            ))}
+                        </div>
+
+                        <div className="flex">
+                            <p>Surface area of the house/apartment in m²</p>
+                            <div className="inputWrapper">
+                                <input type="text" maxLength="4" placeholder="20" className={'input__field'} />
+                            </div>
+
+                            <p>Garden size in m²</p>
+                            <div className="inputWrapper">
+                                <input type="text" maxLength="4" placeholder="20" className={'input__field'} />
+                            </div>
+                        </div>
+
+                        <div className="about__yourself__inputs">
+                            <div className="form__group">
+                                <p>Total available rooms in the house/apartment</p>
+                                <InfoOutlinedIcon />
+                                <select className="input__field small">
+                                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+                                        <option key={num} value={num}>
+                                            {num}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
 
                         <div className="next__help">
                             <button className="blue__button medium" type="button" onClick={handleNextStep}>

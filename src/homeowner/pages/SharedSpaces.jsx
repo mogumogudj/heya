@@ -29,7 +29,7 @@ function SharedSpaces() {
     };
 
     function handleNextStep() {
-        navigate('/next-step');
+        navigate('/room-details-homeowner');
     }
 
     return (
@@ -41,24 +41,37 @@ function SharedSpaces() {
                         <h1>Tell us something more about</h1>
                         <h2>Your Shared Spaces</h2>
                         <div className="forGrid grid">
-                        {['Bathroom', 'Kitchen', 'Toilet', 'Basement', 'Living Room', 'Dining Room', 'Study/Office Room', 'Laundry Room', 'Gym/Fitness Area', 'Common Outdoor Area', 'Play Area for Children', 'Other (please specify in textbox)'].map((option) => (
-                            <div
-                                key={option}
-                                className={isChecked('activities', option) ? 'checked' : ''}
-                                onClick={() => handleClick('activities', option)}
-                            >
-                                <span>{option}</span>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="about__yourself__inputs">
-                                    <div className="form__group">
-                                        <p>Extra information</p>
-                                        <InfoOutlinedIcon />
-                                        <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
-                                    </div>
+                            {[
+                                'Bathroom',
+                                'Kitchen',
+                                'Toilet',
+                                'Basement',
+                                'Living Room',
+                                'Dining Room',
+                                'Study/Office Room',
+                                'Laundry Room',
+                                'Gym/Fitness Area',
+                                'Common Outdoor Area',
+                                'Play Area for Children',
+                                'Other (please specify in textbox)',
+                            ].map((option) => (
+                                <div
+                                    key={option}
+                                    className={isChecked('activities', option) ? 'checked' : ''}
+                                    onClick={() => handleClick('activities', option)}
+                                >
+                                    <span>{option}</span>
                                 </div>
+                            ))}
+                        </div>
+
+                        <div className="about__yourself__inputs">
+                            <div className="form__group">
+                                <p>Extra information</p>
+                                <InfoOutlinedIcon />
+                                <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
+                            </div>
+                        </div>
 
                         <div className="next__help">
                             <button className="blue__button medium" type="button" onClick={handleNextStep}>

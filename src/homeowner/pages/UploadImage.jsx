@@ -68,7 +68,7 @@ function UploadImage() {
 
             if (updateUserResponse.ok) {
                 console.log('Image uploaded successfully');
-                navigate('/customize-stay');
+                navigate('/profile-overview-homeowner');
             } else {
                 console.error('Failed to update user with image link');
                 setError('Failed to upload image');
@@ -89,9 +89,9 @@ function UploadImage() {
             <div className="content">
                 <div className="center-container">
                     <div className="upload__image__page">
-                        <div className='homeowner__register__header'>
-                        <h1 className="photo__h1">Give us a photo of yourself</h1>
-                        <h2>Upload your profile picture</h2>
+                        <div className="homeowner__register__header">
+                            <h1 className="photo__h1">Give us a photo of yourself</h1>
+                            <h2>Upload your profile picture</h2>
                         </div>
                         <div className="center">
                             {preview ? (
@@ -117,7 +117,9 @@ function UploadImage() {
                                         borderRadius: '8px',
                                         color: '#A3B9EA',
                                         margin: '32px 0 0 0',
-                                    }} className='AddPhotoAlternateIcon' onClick={handleButtonClick}
+                                    }}
+                                    className="AddPhotoAlternateIcon"
+                                    onClick={handleButtonClick}
                                 />
                             )}
                             <h2>A photo of you</h2>

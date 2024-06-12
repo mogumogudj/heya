@@ -8,7 +8,7 @@ function PlaceOverview() {
     const navigate = useNavigate();
 
     const handleSubmit = () => {
-        navigate('/home');
+        navigate('/place-availability-homeowner');
     };
 
     return (
@@ -18,10 +18,8 @@ function PlaceOverview() {
                 <h1>Okay, John your place is ready.</h1>
                 <h2>Here are all the important details </h2>
                 <div>
-                    <img className={ 'userImage'} src="" alt="User Image" />
-                    <h3 className={'centered'}>
-                        John Doe
-                    </h3>
+                    <img className={'userImage'} src="" alt="User Image" />
+                    <h3 className={'centered'}>John Doe</h3>
                 </div>
                 <div>
                     <h3>Room overview</h3>
@@ -107,7 +105,6 @@ function PlaceOverview() {
                                 <br />
                                 <span>TV Room</span>
                             </div>
-                            
 
                             <div>
                                 <b>Available Amentities</b>
@@ -144,9 +141,11 @@ function PlaceOverview() {
                             <div>
                                 <b>Rent</b>
                                 <br />
-                                <span>€390</span><span>/month</span>
+                                <span>€390</span>
+                                <span>/month</span>
                                 <br />
-                                <span>€1200</span><span>/deposit</span>
+                                <span>€1200</span>
+                                <span>/deposit</span>
                             </div>
                         </div>
 
@@ -163,7 +162,6 @@ function PlaceOverview() {
                                 <br />
                                 <span>01/06/2024</span>
                             </div>
-                            
                         </div>
                         <button className="white__button small">More details..</button>
                     </div>

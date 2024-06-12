@@ -32,7 +32,7 @@ function Privacy() {
     };
 
     function handleNextStep() {
-        navigate('/next-step');
+        navigate('/plan-meeting-homeowner');
     }
 
     return (
@@ -45,42 +45,42 @@ function Privacy() {
                         <h2>Level of Privacy and Independance</h2>
 
                         <div>
-                    <p>How much time do you want to spend together?</p>
-                    <div className="forGrid grid">
-                        {['Daily', 'Weekly', 'Monthly', 'Just sometimes','Never'].map((option) => (
-                            <div
-                                key={option}
-                                className={isChecked('activities', option) ? 'checked' : ''}
-                                onClick={() => handleClick('activities', option)}
-                            >
-                                <span>{option}</span>
-                            </div>
-                        ))}
-                    </div>
-                    </div>
-
-                                <div>
-                    <p>How much help do you want from your attendant?</p>
-                    <div className="forGrid grid">
-                        {['Daily', 'Weekly', 'Monthly', 'Just sometimes','Never'].map((option) => (
-                            <div
-                                key={option}
-                                className={isChecked('activities', option) ? 'checked' : ''}
-                                onClick={() => handleClick('activities', option)}
-                            >
-                                <span>{option}</span>
-                            </div>
-                        ))}
-                    </div>
-                    </div>
-
-                    <div className="about__yourself__inputs">
-                                    <div className="form__group">
-                                        <p>Tell us something about your Privacy Values</p>
-                                        <InfoOutlinedIcon />
-                                        <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
+                            <p>How much time do you want to spend together?</p>
+                            <div className="forGrid grid">
+                                {['Daily', 'Weekly', 'Monthly', 'Just sometimes', 'Never'].map((option) => (
+                                    <div
+                                        key={option}
+                                        className={isChecked('activities', option) ? 'checked' : ''}
+                                        onClick={() => handleClick('activities', option)}
+                                    >
+                                        <span>{option}</span>
                                     </div>
-                                </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div>
+                            <p>How much help do you want from your attendant?</p>
+                            <div className="forGrid grid">
+                                {['Daily', 'Weekly', 'Monthly', 'Just sometimes', 'Never'].map((option) => (
+                                    <div
+                                        key={option}
+                                        className={isChecked('activities', option) ? 'checked' : ''}
+                                        onClick={() => handleClick('activities', option)}
+                                    >
+                                        <span>{option}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="about__yourself__inputs">
+                            <div className="form__group">
+                                <p>Tell us something about your Privacy Values</p>
+                                <InfoOutlinedIcon />
+                                <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
+                            </div>
+                        </div>
 
                         <div className="next__help">
                             <button className="blue__button medium" type="button" onClick={handleNextStep}>
@@ -90,7 +90,7 @@ function Privacy() {
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
             <Footer />
         </div>
     );
