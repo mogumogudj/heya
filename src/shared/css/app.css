@@ -234,11 +234,11 @@ select {
 .grid {
     width: 100%;
     display: grid;
-    gap: 16px
+    gap: 16px;
 }
 
 .forGrid{
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .twoGrid{
@@ -863,6 +863,7 @@ textarea{
 
 
 
+
     .pricing__page {
         padding: 20px;
     }
@@ -926,7 +927,8 @@ textarea{
     @media screen and (max-width: 800px) {
         .household__details__page {
             margin-top: 0px;
-        }    
+        }   
+    
         
     }
 
@@ -944,7 +946,7 @@ textarea{
 
     /* SharedSpaces.jsx */
     .shared__spaces__page {
-        margin-top: 72px;
+        margin-top: 264px;
     }
 
 

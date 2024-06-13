@@ -38,8 +38,8 @@ function SharedSpaces() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content">
-                <div className="center-container-always">
+            <div className="content" style={{ minHeight: '112vh' }}>
+                <div className="center-container">
                     <div className="shared__spaces__page">
                         <div className='homeowner__register__header'>
                         <h1>Tell us something more about</h1>
