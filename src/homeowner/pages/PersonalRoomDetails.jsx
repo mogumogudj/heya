@@ -8,6 +8,8 @@ import NavLogin from '../../shared/components/NavLogin.jsx';
 
 function PersonalRoomDetails() {
     const navigate = useNavigate();
+    const [otherInfo, setOtherInfo] = useState('');
+    const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
 
     const [selectedOptions, setSelectedOptions] = useState({
         activities: [],
@@ -35,13 +37,14 @@ function PersonalRoomDetails() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content">
-                <div className="center-container-always">
-                    <div className="accommodation__type__page">
+            <div className="content" style={{ minHeight: '128vh' }}>
+                <div className="center-container">
+                    <div className="personal__room__details__page">
+                        <div className="homeowner__register__header">
                         <h1>Tell us about your Room</h1>
                         <h2>Your Personal Room Details</h2>
-
-                        <div className="">
+                        </div>
+                        <div className="form__group">
                             <p>Room Amentities</p>
                             <div className="forGrid grid">
                                 {[
@@ -55,6 +58,7 @@ function PersonalRoomDetails() {
                                     'Attic',
                                     'Laundry Machine',
                                     'Washing Machine',
+                                    'Dryer',
                                     'Other (please specify in textbox)',
                                 ].map((option) => (
                                     <div
@@ -68,15 +72,15 @@ function PersonalRoomDetails() {
                             </div>
                         </div>
 
-                        <div className="about__yourself__inputs">
-                            <div className="form__group">
-                                <p>Extra information</p>
-                                <InfoOutlinedIcon />
-                                <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
+                        <div className='TextBoxWithMaxInput'>
+                            <div className="TextBoxWithMaxInput__flex">
+                                <p>Extra information of the available Amentities</p>
+                                <InfoOutlinedIcon className='TextBoxWithMaxInput__flex__icon' style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }} />
                             </div>
+                            <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
                         </div>
 
-                        <div className="">
+                        <div className="form__group">
                             <p>Additional Amentities</p>
                             <div className="forGrid grid">
                                 {['Available Bike', 'Dishwasher', 'Available Car to Use'].map((option) => (
