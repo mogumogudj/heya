@@ -8,6 +8,8 @@ import NavLogin from '../../shared/components/NavLogin.jsx';
 
 function RoomDetails() {
     const navigate = useNavigate();
+    const [otherInfo, setOtherInfo] = useState('');
+    const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
 
     const [selectedOptions, setSelectedOptions] = useState({
         activities: [],
@@ -35,14 +37,15 @@ function RoomDetails() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content">
-                <div className="center-container-always">
-                    <div className="accommodation__type__page">
+            <div className="content" style={{ minHeight: '128vh' }}>
+                <div className="center-container">
+                    <div className="room__details__page">
+                    <div className="homeowner__register__header">
                         <h1>Tell us about your Room</h1>
                         <h2>Your Room Details</h2>
-
-                        <div className="">
-                            <p>Size of the Room in m²</p>
+                    </div>
+                        <div className="form__group">
+                            <p>Furnishing</p>
                             <div className="forGrid grid">
                                 {['Furnished', 'Not Furnished'].map((option) => (
                                     <div
@@ -56,15 +59,23 @@ function RoomDetails() {
                             </div>
                         </div>
 
-                        <div className="flex">
-                            <p>Size of the Room in m²</p>
-                            <div className="inputWrapper">
-                                <input type="text" maxLength="4" placeholder="20" className={'input__field'} />
+                        <div className="about__yourself__inputs">
+                            <div className="form__group">
+                                <p>Size of the Room</p>
+                                <div className="input-container">
+                                    <input
+                                        type="text"
+                                        placeholder="240"
+                                        className="input__field"
+                                        style={{ paddingRight: '30px' }}
+                                    />
+                                    <span className="input-unit" style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)' }}>m²</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div>
-                            <p>Size of the Room in m²</p>
+                        <div className='form__group'>
+                            <p>Amentities already available in the Room</p>
                             <div className="forGrid grid">
                                 {[
                                     'Bed',
@@ -74,6 +85,7 @@ function RoomDetails() {
                                     'Wardrobe',
                                     'Bookhelf',
                                     'Nighstand',
+                                    'TV',
                                     'Other (please specify in textbox)',
                                 ].map((option) => (
                                     <div
@@ -87,12 +99,12 @@ function RoomDetails() {
                             </div>
                         </div>
 
-                        <div className="about__yourself__inputs">
-                            <div className="form__group">
+                        <div className='TextBoxWithMaxInput'>
+                            <div className="TextBoxWithMaxInput__flex">
                                 <p>Extra information</p>
-                                <InfoOutlinedIcon />
-                                <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
+                                <InfoOutlinedIcon className='TextBoxWithMaxInput__flex__icon' style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }} />
                             </div>
+                            <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
                         </div>
 
                         <div className="next__help">
