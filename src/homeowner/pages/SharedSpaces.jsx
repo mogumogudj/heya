@@ -6,8 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 
+
 function SharedSpaces() {
     const navigate = useNavigate();
+    const [otherInfo, setOtherInfo] = useState('');
+    const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
 
     const [selectedOptions, setSelectedOptions] = useState({
         activities: [],
@@ -37,9 +40,13 @@ function SharedSpaces() {
             <NavLogin />
             <div className="content">
                 <div className="center-container-always">
-                    <div className="accommodation__type__page">
+                    <div className="shared__spaces__page">
+                        <div className='homeowner__register__header'>
                         <h1>Tell us something more about</h1>
                         <h2>Your Shared Spaces</h2>
+                        </div>
+                        <div className="form__group">
+                        <p>What shared spaces are available?</p>
                         <div className="forGrid grid">
                             {[
                                 'Bathroom',
@@ -64,14 +71,15 @@ function SharedSpaces() {
                                 </div>
                             ))}
                         </div>
-
-                        <div className="about__yourself__inputs">
-                            <div className="form__group">
-                                <p>Extra information</p>
-                                <InfoOutlinedIcon />
-                                <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
-                            </div>
                         </div>
+
+                        <div className='TextBoxWithMaxInput'>
+                                        <div className="TextBoxWithMaxInput__flex">
+                                        <p>Additional information about the animal(s)</p>
+                                        <InfoOutlinedIcon className='TextBoxWithMaxInput__flex__icon' style={{marginTop:'24px', fontSize:'20', marginRight:'16px' }}/>
+                                        </div>
+                                        <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
+                                    </div>
 
                         <div className="next__help">
                             <button className="blue__button medium" type="button" onClick={handleNextStep}>
