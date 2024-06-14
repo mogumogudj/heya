@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm, FormProvider, Controller } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
@@ -15,12 +15,20 @@ function AccommodationInformation() {
 
     const methods = useForm();
     const navigate = useNavigate();
+    const location = useLocation();
+    const [accommodationType, setAccommodationType] = useState('');
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        setAccommodationType(params.get('type') || '');
+    }, [location]);
 
     const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
 
     const onSubmit = async (data) => {
         const roomDto = {
             owner: userId,
+            type: accommodationType,
             streetname: data.streetname,
             houseNumber: data.streetnumber,
             bus: data.bus,

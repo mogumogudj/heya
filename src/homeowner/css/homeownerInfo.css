@@ -21,6 +21,15 @@ p {
     border: 2px solid var(--Dark_Blue)
 }
 
+.selected {
+    background-color: var(--Dark_Blue);
+    color: var(--White);
+}
+
+.selected h2 {
+    color: var(--White);
+}
+
 @media (min-width: 1200px) {
     .content {
         max-width: 1200px;
