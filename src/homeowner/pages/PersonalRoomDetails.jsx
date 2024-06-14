@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 
 function PersonalRoomDetails() {
     const navigate = useNavigate();
+    const location = useLocation();
+    const [roomId, setRoomId] = useState(null);
     const [otherInfo, setOtherInfo] = useState('');
-    const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
-
     const [selectedOptions, setSelectedOptions] = useState({
         activities: [],
-        experiences: [],
+        additionalAmenities: [],
     });
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const roomIdFromParams = params.get('roomId');
+        if (roomIdFromParams) {
+            setRoomId(roomIdFromParams);
+        }
+    }, [location]);
 
     const isChecked = (category, option) => selectedOptions[category].includes(option);
 
@@ -30,22 +37,56 @@ function PersonalRoomDetails() {
         });
     };
 
-    function handleNextStep() {
-        navigate('/unique-room-details-homeowner');
-    }
+    const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
+
+    const handleNextStep = async () => {
+        const personalRoomDetails = {
+            activities: selectedOptions.activities,
+            additionalAmenities: selectedOptions.additionalAmenities,
+            otherInfo: otherInfo,
+        };
+
+        const roomUpdateDto = {
+            personalRoomDetails: personalRoomDetails,
+        };
+
+        try {
+            if (!roomId) {
+                console.error('Room ID is missing');
+                return;
+            }
+
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${roomId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(roomUpdateDto),
+            });
+
+            if (response.ok) {
+                navigate(`/unique-room-details-homeowner?roomId=${roomId}`);
+            } else {
+                const result = await response.json();
+                throw new Error(result.message || 'Failed to save personal room details');
+            }
+        } catch (error) {
+            console.error(error.message || 'Failed to save personal room details');
+        }
+    };
 
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content" style={{ minHeight: '128vh' }}>
-                <div className="center-container">
+            <div className="content" style={{ minHeight: '100vh', marginTop: '-380px' }}>
+                <div className="center-container" style={{ height: '100%' }}>
                     <div className="personal__room__details__page">
                         <div className="homeowner__register__header">
-                        <h1>Tell us about your Room</h1>
-                        <h2>Your Personal Room Details</h2>
+                            <h1>Tell us about your Room</h1>
+                            <h2>Your Personal Room Details</h2>
                         </div>
                         <div className="form__group">
-                            <p>Room Amentities</p>
+                            <p>Room Amenities</p>
                             <div className="forGrid grid">
                                 {[
                                     'Private Bathroom',
@@ -72,22 +113,25 @@ function PersonalRoomDetails() {
                             </div>
                         </div>
 
-                        <div className='TextBoxWithMaxInput'>
+                        <div className="TextBoxWithMaxInput">
                             <div className="TextBoxWithMaxInput__flex">
-                                <p>Extra information of the available Amentities</p>
-                                <InfoOutlinedIcon className='TextBoxWithMaxInput__flex__icon' style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }} />
+                                <p>Extra information of the available Amenities</p>
+                                <InfoOutlinedIcon
+                                    className="TextBoxWithMaxInput__flex__icon"
+                                    style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }}
+                                />
                             </div>
                             <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
                         </div>
 
                         <div className="form__group">
-                            <p>Additional Amentities</p>
+                            <p>Additional Amenities</p>
                             <div className="forGrid grid">
                                 {['Available Bike', 'Dishwasher', 'Available Car to Use'].map((option) => (
                                     <div
                                         key={option}
-                                        className={isChecked('activities', option) ? 'checked' : ''}
-                                        onClick={() => handleClick('activities', option)}
+                                        className={isChecked('additionalAmenities', option) ? 'checked' : ''}
+                                        onClick={() => handleClick('additionalAmenities', option)}
                                     >
                                         <span>{option}</span>
                                     </div>
