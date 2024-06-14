@@ -82,7 +82,7 @@ function UploadPlaceImages() {
 
             if (updateRoomResponse.ok) {
                 console.log('Room updated successfully:', await updateRoomResponse.json());
-                navigate(`/place-overview-homeowner/?roomId=${roomId}`);
+                navigate(`/place-availability-homeowner/?roomId=${roomId}`);
             } else {
                 const result = await updateRoomResponse.json();
                 console.error('Failed to update room:', result);

@@ -25,9 +25,6 @@ function PlaceOverview() {
                 if (response.ok) {
                     const data = await response.json();
                     setRoomData(data);
-                    if (data.owner && data.owner.userId) {
-                        await fetchUserData(data.owner.userId);
-                    }
                 } else {
                     console.error('Failed to fetch room data');
                 }
@@ -44,7 +41,7 @@ function PlaceOverview() {
     }, [roomId]);
 
     const handleSubmit = () => {
-        navigate(`/place-availability-homeowner?roomId=${roomId}`);
+        navigate(`/home`);
     };
 
     if (loading) {
@@ -59,8 +56,8 @@ function PlaceOverview() {
         <div className="page__container">
             <NavLogin />
             <div className="content">
-                <h1>Okay, {userData?.firstName} your place is ready.</h1>
-                <h2>Here are all the important details </h2>
+                <h1>Okay, {userData?.firstName}, your place is ready.</h1>
+                <h2>Here are all the important details:</h2>
                 <div>
                     <img className={'userImage'} src={userData?.imageLink || ''} alt="User Image" />
                     <h3 className={'centered'}>
@@ -145,8 +142,8 @@ function PlaceOverview() {
                             <div>
                                 <b>For Shared Use</b>
                                 <br />
-                                {roomData.sharedSpaces[0]?.sharedSpaces.map((space) => (
-                                    <span key={space}>
+                                {roomData.sharedSpaces[0]?.sharedSpaces.map((space, index) => (
+                                    <span key={index}>
                                         {space}
                                         <br />
                                     </span>
@@ -155,8 +152,8 @@ function PlaceOverview() {
                             <div>
                                 <b>Available Amentities</b>
                                 <br />
-                                {roomData.roomDetails[0]?.amenities.map((amenity) => (
-                                    <span key={amenity}>
+                                {roomData.roomDetails[0]?.amenities.map((amenity, index) => (
+                                    <span key={index}>
                                         {amenity}
                                         <br />
                                     </span>
@@ -165,8 +162,8 @@ function PlaceOverview() {
                             <div>
                                 <b>For Personal Use</b>
                                 <br />
-                                {roomData.personalRoomDetails[0]?.activities.map((activity) => (
-                                    <span key={activity}>
+                                {roomData.personalRoomDetails[0]?.activities.map((activity, index) => (
+                                    <span key={index}>
                                         {activity}
                                         <br />
                                     </span>
@@ -180,11 +177,9 @@ function PlaceOverview() {
                             <div>
                                 <b>Rent</b>
                                 <br />
-                                <span>€390</span>
-                                <span>/month</span>
+                                <span>{roomData.pricing[0]?.rent} €/month</span>
                                 <br />
-                                <span>€1200</span>
-                                <span>/deposit</span>
+                                <span>{roomData.pricing[0]?.deposit} € deposit</span>
                             </div>
                         </div>
 
@@ -194,15 +189,14 @@ function PlaceOverview() {
                             <div>
                                 <b>Available From</b>
                                 <br />
-                                <span>01/06/2023</span>
+                                <span>{new Date(roomData.startDateAvailable).toLocaleDateString()}</span>
                             </div>
                             <div>
                                 <b>Available Till</b>
                                 <br />
-                                <span>01/06/2024</span>
+                                <span>{new Date(roomData.endDateAvailable).toLocaleDateString()}</span>
                             </div>
                         </div>
-                        <button className="white__button small">More details..</button>
                     </div>
                     <div className="next__help">
                         <button className="blue__button medium" type="button" onClick={handleSubmit}>
