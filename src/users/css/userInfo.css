@@ -21,6 +21,32 @@ p {
     border: 2px solid var(--Dark_Blue)
 }
 
+.city__select {
+    max-width: 360px;
+    margin-bottom: 16px;
+}
+
+.option__button:hover {
+    cursor: pointer;
+    color: var(--Dark_Blue);
+}
+
+.option__button.checked {
+    background-color: var(--Dark_Blue);
+}
+
+.option__button.checked:hover {
+    color: var(--White);
+}
+
+.padding__grid {
+    padding-bottom: 16px;
+}
+
+.text__label__margin {
+    margin-bottom: 24px;
+}
+
 @media (min-width: 1200px) {
     .content {
         max-width: 1200px;

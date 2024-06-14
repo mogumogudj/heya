@@ -64,8 +64,14 @@ function AccommodationInformation() {
             });
 
             const result = await response.json();
+            console.log('API Response:', result); // Debugging log
+
             if (response.ok) {
-                navigate(`/household-details-homeowner?roomId=${result.id}`);
+                if (result._id) {
+                    navigate(`/household-details-homeowner?roomId=${result._id}`);
+                } else {
+                    throw new Error('Room ID is missing in the API response');
+                }
             } else {
                 throw new Error(result.message || 'Failed to create room');
             }

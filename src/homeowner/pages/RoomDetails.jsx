@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 
 function RoomDetails() {
     const navigate = useNavigate();
+    const location = useLocation();
+    const [roomId, setRoomId] = useState(null);
     const [otherInfo, setOtherInfo] = useState('');
+    const [roomSize, setRoomSize] = useState('');
     const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
-
     const [selectedOptions, setSelectedOptions] = useState({
         activities: [],
-        experiences: [],
     });
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const roomIdFromParams = params.get('roomId');
+        if (roomIdFromParams) {
+            setRoomId(roomIdFromParams);
+        }
+    }, [location]);
 
     const isChecked = (category, option) => selectedOptions[category].includes(option);
 
@@ -30,9 +38,42 @@ function RoomDetails() {
         });
     };
 
-    function handleNextStep() {
-        navigate('/personal-room-details-homeowner');
-    }
+    const handleNextStep = async () => {
+        if (!roomId) {
+            console.error('Room ID is missing');
+            return;
+        }
+
+        const roomDetails = {
+            furnishing: selectedOptions.activities.includes('Furnished') ? 'Furnished' : 'Not Furnished',
+            size: roomSize,
+            amenities: selectedOptions.activities,
+            otherInfo,
+        };
+
+        const roomUpdateDto = {
+            roomDetails: roomDetails,
+        };
+
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${roomId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(roomUpdateDto),
+            });
+
+            if (response.ok) {
+                navigate(`/personal-room-details-homeowner?roomId=${roomId}`);
+            } else {
+                const result = await response.json();
+                throw new Error(result.message || 'Failed to update room details');
+            }
+        } catch (error) {
+            console.error(error.message || 'Failed to update room details');
+        }
+    };
 
     return (
         <div className="page__container">
@@ -40,10 +81,10 @@ function RoomDetails() {
             <div className="content" style={{ minHeight: '128vh' }}>
                 <div className="center-container">
                     <div className="room__details__page">
-                    <div className="homeowner__register__header">
-                        <h1>Tell us about your Room</h1>
-                        <h2>Your Room Details</h2>
-                    </div>
+                        <div className="homeowner__register__header">
+                            <h1>Tell us about your Room</h1>
+                            <h2>Your Room Details</h2>
+                        </div>
                         <div className="form__group">
                             <p>Furnishing</p>
                             <div className="forGrid grid">
@@ -65,17 +106,29 @@ function RoomDetails() {
                                 <div className="input-container">
                                     <input
                                         type="text"
-                                        placeholder="240"
+                                        placeholder="24"
                                         className="input__field"
+                                        value={roomSize}
+                                        onChange={(e) => setRoomSize(e.target.value)}
                                         style={{ paddingRight: '30px' }}
                                     />
-                                    <span className="input-unit" style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)' }}>m²</span>
+                                    <span
+                                        className="input-unit"
+                                        style={{
+                                            position: 'absolute',
+                                            right: '10px',
+                                            top: '50%',
+                                            transform: 'translateY(-50%)',
+                                        }}
+                                    >
+                                        m²
+                                    </span>
                                 </div>
                             </div>
                         </div>
 
-                        <div className='form__group'>
-                            <p>Amentities already available in the Room</p>
+                        <div className="form__group">
+                            <p>Amenities already available in the Room</p>
                             <div className="forGrid grid">
                                 {[
                                     'Bed',
@@ -83,8 +136,8 @@ function RoomDetails() {
                                     'Desk',
                                     'Chair',
                                     'Wardrobe',
-                                    'Bookhelf',
-                                    'Nighstand',
+                                    'BookShelf',
+                                    'Nightstand',
                                     'TV',
                                     'Other (please specify in textbox)',
                                 ].map((option) => (
@@ -99,10 +152,13 @@ function RoomDetails() {
                             </div>
                         </div>
 
-                        <div className='TextBoxWithMaxInput'>
+                        <div className="TextBoxWithMaxInput">
                             <div className="TextBoxWithMaxInput__flex">
                                 <p>Extra information</p>
-                                <InfoOutlinedIcon className='TextBoxWithMaxInput__flex__icon' style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }} />
+                                <InfoOutlinedIcon
+                                    className="TextBoxWithMaxInput__flex__icon"
+                                    style={{ marginTop: '24px', fontSize: '20px', marginRight: '16px' }}
+                                />
                             </div>
                             <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
                         </div>
