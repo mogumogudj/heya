@@ -65,7 +65,7 @@ function AccommodationInformation() {
 
             const result = await response.json();
             if (response.ok) {
-                navigate('/household-details-homeowner');
+                navigate(`/household-details-homeowner?roomId=${result.id}`);
             } else {
                 throw new Error(result.message || 'Failed to create room');
             }
@@ -144,10 +144,10 @@ function AccommodationInformation() {
                                             type="text"
                                             placeholder="3000"
                                             className="input__field"
-                                            {...methods.register('postalcode', { required: 'Postal code is required' })}
+                                            {...methods.register('postalCode', { required: 'Postal code is required' })}
                                         />
-                                        {methods.formState.errors.postalcode && (
-                                            <span className="error">{methods.formState.errors.postalcode.message}</span>
+                                        {methods.formState.errors.postalCode && (
+                                            <span className="error">{methods.formState.errors.postalCode.message}</span>
                                         )}
                                     </div>
                                     <div className="form__group">
