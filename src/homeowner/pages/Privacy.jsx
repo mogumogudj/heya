@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
 import { useNavigate } from 'react-router-dom';
@@ -9,13 +8,21 @@ import NavLogin from '../../shared/components/NavLogin.jsx';
 
 function Privacy() {
     const navigate = useNavigate();
-    const methods = useForm();
-    const { handleSubmit, control } = methods;
-
+    const { handleSubmit, control } = useForm();
+    const [roomId, setRoomId] = useState(null);
+    const [privacyValues, setPrivacyValues] = useState('');
     const [selectedOptions, setSelectedOptions] = useState({
-        activities: [],
-        experiences: [],
+        timeTogether: [],
+        helpNeeded: [],
     });
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const roomIdFromParams = params.get('roomId');
+        if (roomIdFromParams) {
+            setRoomId(roomIdFromParams);
+        }
+    }, [location]);
 
     const isChecked = (category, option) => selectedOptions[category].includes(option);
 
@@ -31,18 +38,49 @@ function Privacy() {
         });
     };
 
-    function handleNextStep() {
-        navigate('/plan-meeting-homeowner');
-    }
+    const handleNextStep = async (data) => {
+        const privacy = {
+            timeTogether: data.timeTogether,
+            helpNeeded: data.helpNeeded,
+            privacyValues: privacyValues,
+        };
+
+        const roomUpdateDto = {
+            privacy: privacy,
+        };
+
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${roomId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(roomUpdateDto),
+            });
+
+            if (response.ok) {
+                navigate(`/plan-meeting-homeowner?roomId=${roomId}`);
+            } else {
+                const result = await response.json();
+                throw new Error(result.message || 'Failed to update privacy details');
+            }
+        } catch (error) {
+            console.error(error.message || 'Failed to update privacy details');
+        }
+    };
+
+    const handlePrivacyValuesChange = (event) => {
+        setPrivacyValues(event.target.value);
+    };
 
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content">
-                <div className="center-container-always">
+            <div className="content" style={{ height: '100%' }}>
+                <div className="center-container-always" style={{ height: '100%' }}>
                     <div className="accommodation__type__page">
                         <h1>Your Privacy</h1>
-                        <h2>Level of Privacy and Independance</h2>
+                        <h2>Level of Privacy and Independence</h2>
 
                         <div>
                             <p>How much time do you want to spend together?</p>
@@ -50,8 +88,8 @@ function Privacy() {
                                 {['Daily', 'Weekly', 'Monthly', 'Just sometimes', 'Never'].map((option) => (
                                     <div
                                         key={option}
-                                        className={isChecked('activities', option) ? 'checked' : ''}
-                                        onClick={() => handleClick('activities', option)}
+                                        className={isChecked('timeTogether', option) ? 'checked' : ''}
+                                        onClick={() => handleClick('timeTogether', option)}
                                     >
                                         <span>{option}</span>
                                     </div>
@@ -65,8 +103,8 @@ function Privacy() {
                                 {['Daily', 'Weekly', 'Monthly', 'Just sometimes', 'Never'].map((option) => (
                                     <div
                                         key={option}
-                                        className={isChecked('activities', option) ? 'checked' : ''}
-                                        onClick={() => handleClick('activities', option)}
+                                        className={isChecked('helpNeeded', option) ? 'checked' : ''}
+                                        onClick={() => handleClick('helpNeeded', option)}
                                     >
                                         <span>{option}</span>
                                     </div>
@@ -74,16 +112,22 @@ function Privacy() {
                             </div>
                         </div>
 
-                        <div className="about__yourself__inputs">
-                            <div className="form__group">
-                                <p>Tell us something about your Privacy Values</p>
-                                <InfoOutlinedIcon />
-                                <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
-                            </div>
+                        <div className="form__group">
+                            <p>Tell us something about your Privacy Values</p>
+                            <InfoOutlinedIcon />
+                            <TextBoxWithMaxInput
+                                value={privacyValues}
+                                onChange={handlePrivacyValuesChange}
+                                className="input__field"
+                            />
                         </div>
 
                         <div className="next__help">
-                            <button className="blue__button medium" type="button" onClick={handleNextStep}>
+                            <button
+                                className="blue__button medium"
+                                type="button"
+                                onClick={handleSubmit(handleNextStep)}
+                            >
                                 Next step
                             </button>
                             <span className="help">I need help</span>

@@ -9,8 +9,10 @@ import { Gender } from '../../shared/enums/gender.js';
 
 function IdealAttendant() {
     const navigate = useNavigate();
-    const { handleSubmit, control } = useForm();
+    const { handleSubmit, control, register, setValue } = useForm();
     const [roomId, setRoomId] = useState(null);
+    const [extraInformationCharacter, setExtraInformationCharacter] = useState('');
+    const [extraInformation, setExtraInformation] = useState('');
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
@@ -20,7 +22,7 @@ function IdealAttendant() {
         }
     }, [location]);
 
-    const [selectedOptions, setSelectedOptions] = React.useState({
+    const [selectedOptions, setSelectedOptions] = useState({
         activities: [],
         mustBe: [],
     });
@@ -48,9 +50,9 @@ function IdealAttendant() {
             gender: data.gender,
             language: data.language,
             preferredCharacteristics: selectedOptions.activities,
-            extraInformationCharacter: data.extraInformationCharacter,
+            extraInformationCharacter: extraInformationCharacter,
             mustBe: selectedOptions.mustBe,
-            extraInformation: data.extraInformation,
+            extraInformation: extraInformation,
         };
 
         const roomUpdateDto = {
@@ -67,7 +69,7 @@ function IdealAttendant() {
             });
 
             if (response.ok) {
-                navigate('/privacy-homeowner');
+                navigate(`/privacy-homeowner?roomId=${roomId}`);
             } else {
                 const result = await response.json();
                 throw new Error(result.message || 'Failed to update ideal attendant details');
@@ -75,6 +77,14 @@ function IdealAttendant() {
         } catch (error) {
             console.error(error.message || 'Failed to update ideal attendant details');
         }
+    };
+
+    const handleCharacterInputChange = (event) => {
+        setExtraInformationCharacter(event.target.value);
+    };
+
+    const handleMustBeInputChange = (event) => {
+        setExtraInformation(event.target.value);
     };
 
     return (
@@ -95,7 +105,7 @@ function IdealAttendant() {
                                             style={{ width: '100%' }}
                                             type="number"
                                             placeholder="18"
-                                            {...control.register('ageMin', { required: true })}
+                                            {...register('ageMin', { required: true })}
                                             className="input__field small bold"
                                         />
                                     </div>
@@ -104,7 +114,7 @@ function IdealAttendant() {
                                             style={{ width: '100%' }}
                                             type="number"
                                             placeholder="64"
-                                            {...control.register('ageMax', { required: true })}
+                                            {...register('ageMax', { required: true })}
                                             className="input__field small bold"
                                         />
                                     </div>
@@ -114,7 +124,7 @@ function IdealAttendant() {
                             <div className="flex">
                                 <div className="form__group">
                                     <p>Gender</p>
-                                    <select {...control.register('gender', { required: true })}>
+                                    <select {...register('gender', { required: true })}>
                                         {Object.values(Gender).map((genderOption) => (
                                             <option key={genderOption} value={genderOption}>
                                                 {genderOption}
@@ -125,7 +135,7 @@ function IdealAttendant() {
 
                                 <div className="form__group">
                                     <p>Language</p>
-                                    <select {...control.register('language', { required: true })}>
+                                    <select {...register('language', { required: true })}>
                                         <option value="English">English</option>
                                         <option value="Spanish">Spanish</option>
                                         <option value="French">French</option>
@@ -164,10 +174,11 @@ function IdealAttendant() {
                             </div>
 
                             <div className="form__group">
-                                <p>Extra information</p>
+                                <p>Extra information for characteristics</p>
                                 <InfoOutlinedIcon />
                                 <TextBoxWithMaxInput
-                                    {...control.register('extraInformationCharacter')}
+                                    value={extraInformationCharacter}
+                                    onChange={handleCharacterInputChange}
                                     className="input__field"
                                 />
                             </div>
@@ -190,10 +201,11 @@ function IdealAttendant() {
                             </div>
 
                             <div className="form__group">
-                                <p>Extra information</p>
+                                <p>Extra information for must bes</p>
                                 <InfoOutlinedIcon />
                                 <TextBoxWithMaxInput
-                                    {...control.register('extraInformation')}
+                                    value={extraInformation}
+                                    onChange={handleMustBeInputChange}
                                     className="input__field"
                                 />
                             </div>
