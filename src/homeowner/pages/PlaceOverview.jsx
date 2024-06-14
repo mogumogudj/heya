@@ -43,19 +43,6 @@ function PlaceOverview() {
         }
     }, [roomId]);
 
-    const fetchUserData = async (userId) => {
-        try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`);
-            if (response.ok) {
-                const userData = await response.json();
-            } else {
-                console.error('Failed to fetch user information');
-            }
-        } catch (error) {
-            console.error('Error fetching user information:', error);
-        }
-    };
-
     const handleSubmit = () => {
         navigate(`/place-availability-homeowner?roomId=${roomId}`);
     };
