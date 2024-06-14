@@ -59,7 +59,7 @@ function PlaceOverview() {
                 <h1>Okay, {userData?.firstName}, your place is ready.</h1>
                 <h2>Here are all the important details:</h2>
                 <div>
-                    <img className={'userImage'} src={userData?.imageLink || ''} alt="User Image" />
+                    <img className={'userImage'} src={roomData?.images[0] || ''} alt="User Image" />
                     <h3 className={'centered'}>
                         {userData?.firstName} {userData?.lastName}
                     </h3>
@@ -67,7 +67,7 @@ function PlaceOverview() {
                 <div>
                     <h3>Room overview</h3>
                     <div className={'personalInfo'}>
-                        <h4>Details</h4>
+                        <h4>Details owner and room</h4>
                         <div className={'twoGrid grid'}>
                             <div>
                                 <b>Firstname</b>
