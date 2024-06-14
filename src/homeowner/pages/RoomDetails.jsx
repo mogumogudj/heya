@@ -13,7 +13,8 @@ function RoomDetails() {
     const [roomSize, setRoomSize] = useState('');
     const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
     const [selectedOptions, setSelectedOptions] = useState({
-        activities: [],
+        furnishing: [],
+        existingFurnishing: [],
     });
 
     useEffect(() => {
@@ -45,9 +46,9 @@ function RoomDetails() {
         }
 
         const roomDetails = {
-            furnishing: selectedOptions.activities.includes('Furnished') ? 'Furnished' : 'Not Furnished',
+            furnishing: selectedOptions.furnishing.includes('Furnished') ? 'Furnished' : 'Not Furnished',
             size: roomSize,
-            amenities: selectedOptions.activities,
+            existingFurnishing: selectedOptions.existingFurnishing,
             otherInfo,
         };
 
@@ -91,8 +92,8 @@ function RoomDetails() {
                                 {['Furnished', 'Not Furnished'].map((option) => (
                                     <div
                                         key={option}
-                                        className={isChecked('activities', option) ? 'checked' : ''}
-                                        onClick={() => handleClick('activities', option)}
+                                        className={isChecked('furnishing', option) ? 'checked' : ''}
+                                        onClick={() => handleClick('furnishing', option)}
                                     >
                                         <span>{option}</span>
                                     </div>
@@ -128,7 +129,7 @@ function RoomDetails() {
                         </div>
 
                         <div className="form__group">
-                            <p>Amenities already available in the Room</p>
+                            <p>Furnishing already available in the Room</p>
                             <div className="forGrid grid">
                                 {[
                                     'Bed',
@@ -143,8 +144,8 @@ function RoomDetails() {
                                 ].map((option) => (
                                     <div
                                         key={option}
-                                        className={isChecked('activities', option) ? 'checked' : ''}
-                                        onClick={() => handleClick('activities', option)}
+                                        className={isChecked('existingFurnishing', option) ? 'checked' : ''}
+                                        onClick={() => handleClick('existingFurnishing', option)}
                                     >
                                         <span>{option}</span>
                                     </div>

@@ -11,7 +11,7 @@ function PersonalRoomDetails() {
     const [roomId, setRoomId] = useState(null);
     const [otherInfo, setOtherInfo] = useState('');
     const [selectedOptions, setSelectedOptions] = useState({
-        activities: [],
+        amentities: [],
         additionalAmenities: [],
     });
 
@@ -41,7 +41,7 @@ function PersonalRoomDetails() {
 
     const handleNextStep = async () => {
         const personalRoomDetails = {
-            activities: selectedOptions.activities,
+            amentities: selectedOptions.amentities,
             additionalAmenities: selectedOptions.additionalAmenities,
             otherInfo: otherInfo,
         };
@@ -104,8 +104,8 @@ function PersonalRoomDetails() {
                                 ].map((option) => (
                                     <div
                                         key={option}
-                                        className={isChecked('activities', option) ? 'checked' : ''}
-                                        onClick={() => handleClick('activities', option)}
+                                        className={isChecked('amentities', option) ? 'checked' : ''}
+                                        onClick={() => handleClick('amentities', option)}
                                     >
                                         <span>{option}</span>
                                     </div>

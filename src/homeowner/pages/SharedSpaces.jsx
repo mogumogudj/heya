@@ -13,7 +13,7 @@ function SharedSpaces() {
     const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
 
     const [selectedOptions, setSelectedOptions] = useState({
-        activities: [],
+        sharedSpaces: [],
     });
 
     useEffect(() => {
@@ -45,7 +45,7 @@ function SharedSpaces() {
         }
 
         const sharedSpacesDetails = {
-            sharedSpaces: selectedOptions.activities,
+            sharedSpaces: selectedOptions.sharedSpaces,
             otherInfo,
         };
 
@@ -102,8 +102,8 @@ function SharedSpaces() {
                                 ].map((option) => (
                                     <div
                                         key={option}
-                                        className={isChecked('activities', option) ? 'checked' : ''}
-                                        onClick={() => handleClick('activities', option)}
+                                        className={isChecked('sharedSpaces', option) ? 'checked' : ''}
+                                        onClick={() => handleClick('sharedSpaces', option)}
                                     >
                                         <span>{option}</span>
                                     </div>

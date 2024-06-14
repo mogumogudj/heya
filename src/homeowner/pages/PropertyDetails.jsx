@@ -9,7 +9,7 @@ function PropertyDetails() {
     const location = useLocation();
     const [roomId, setRoomId] = useState(null);
     const [selectedOptions, setSelectedOptions] = useState({
-        activities: [],
+        types: [],
     });
 
     useEffect(() => {
@@ -41,8 +41,8 @@ function PropertyDetails() {
         }
 
         const propertyDetails = {
-            type: selectedOptions.activities.includes('House') ? 'House' : 'Apartment',
-            hasGarden: selectedOptions.activities.includes('Garden'),
+            type: selectedOptions.types.includes('House') ? 'House' : 'Apartment',
+            hasGarden: selectedOptions.types.includes('Garden'),
             surfaceArea: document.querySelector("input[placeholder='240']").value,
             gardenSize: document.querySelectorAll("input[placeholder='240']")[1].value,
             totalRooms: document.querySelector('select').value,
@@ -86,8 +86,8 @@ function PropertyDetails() {
                             {['House', 'Appartement', 'Garden', 'No Garden'].map((option) => (
                                 <div
                                     key={option}
-                                    className={isChecked('activities', option) ? 'checked' : ''}
-                                    onClick={() => handleClick('activities', option)}
+                                    className={isChecked('types', option) ? 'checked' : ''}
+                                    onClick={() => handleClick('types', option)}
                                 >
                                     <span>{option}</span>
                                 </div>
