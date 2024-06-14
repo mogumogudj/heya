@@ -82,11 +82,11 @@ function Profile() {
                         <div className="profile__info">
                             <p>
                                 <SchoolOutlinedIcon style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-                                {userData?.userStayInfo[0].study}
+                                {userData?.userStayInfo[0]?.study}
                             </p>
                             <p>
                                 <LocationCityOutlinedIcon style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-                                {userData?.userStayInfo[0].city}
+                                {userData?.userStayInfo[0]?.city}
                             </p>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ function Profile() {
                 <div className="twoGrid grid profile">
                     <div>
                         <h4>About</h4>
-                        <p>{userData?.userInfo[0].shortDescription}</p>
+                        <p>{userData?.userInfo[0]?.shortDescription}</p>
                     </div>
                     <div>
                         <h4>My confirmed information</h4>
