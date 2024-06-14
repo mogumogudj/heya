@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
@@ -6,17 +5,51 @@ import { TextField } from '@mui/material';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 import Footer from '../../shared/components/Footer.jsx';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 function PlanMeeting() {
     const navigate = useNavigate();
     const [selectedDateTime, setSelectedDateTime] = useState(new Date());
+    const [roomId, setRoomId] = useState(null);
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const roomIdFromParams = params.get('roomId');
+        if (roomIdFromParams) {
+            setRoomId(roomIdFromParams);
+        }
+    }, [location]);
 
     const handleDateChange = (newDateTime) => {
         setSelectedDateTime(newDateTime);
     };
 
-    const handleNextStep = () => {
-        navigate('/home');
+    const handleSaveMeeting = async () => {
+        if (!roomId) {
+            console.error('Room ID is missing');
+            return;
+        }
+
+        const meetingDetails = { meeting: selectedDateTime.toISOString() };
+
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${roomId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(meetingDetails),
+            });
+
+            if (response.ok) {
+                navigate(`/place-overview-homeowner?roomId=${roomId}`);
+            } else {
+                const result = await response.json();
+                throw new Error(result.message || 'Failed to save meeting details');
+            }
+        } catch (error) {
+            console.error(error.message || 'Failed to save meeting details');
+        }
     };
 
     return (
@@ -42,13 +75,16 @@ function PlanMeeting() {
 
                         <div className="availability-info">
                             <a>Skip this for now</a>
-                            <button className="blue__button small">Plan meeting</button>
+                            <button className="blue__button small" onClick={handleSaveMeeting}>
+                                Plan meeting
+                            </button>
                             <p>
                                 Selected Date and Time: {selectedDateTime ? selectedDateTime.toLocaleString() : 'None'}
                             </p>
                         </div>
+
                         <div className="next__help">
-                            <button className="blue__button medium" type="button" onClick={handleNextStep}>
+                            <button className="blue__button medium" type="button" onClick={handleSaveMeeting}>
                                 Next step
                             </button>
                             <span className="help">I need help</span>
