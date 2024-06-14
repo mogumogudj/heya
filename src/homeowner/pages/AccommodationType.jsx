@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HotelIcon from '@mui/icons-material/Hotel';
 import CountertopsIcon from '@mui/icons-material/Countertops';
 import ApartmentIcon from '@mui/icons-material/ApartmentRounded';
@@ -8,9 +8,14 @@ import NavLogin from '../../shared/components/NavLogin.jsx';
 
 function AccommodationType() {
     const navigate = useNavigate();
+    const [selectedType, setSelectedType] = useState('');
 
     function handleNextStep() {
-        navigate('/accommodation-information-homeowner');
+        if (selectedType) {
+            navigate(`/accommodation-information-homeowner?type=${selectedType}`);
+        } else {
+            alert('Please select an accommodation type');
+        }
     }
 
     return (
@@ -24,15 +29,24 @@ function AccommodationType() {
                             <h2>Type of accommodation</h2>
                         </div>
                         <div className="select__accommodation">
-                            <div className="accommodation__option">
+                            <div
+                                className={`accommodation__option ${selectedType === 'room' ? 'selected' : ''}`}
+                                onClick={() => setSelectedType('room')}
+                            >
                                 <HotelIcon style={{ width: 80, height: 80 }} />
                                 <h2>Room</h2>
                             </div>
-                            <div className="accommodation__option">
+                            <div
+                                className={`accommodation__option ${selectedType === 'studio' ? 'selected' : ''}`}
+                                onClick={() => setSelectedType('studio')}
+                            >
                                 <CountertopsIcon style={{ width: 80, height: 80 }} />
                                 <h2>Studio</h2>
                             </div>
-                            <div className="accommodation__option">
+                            <div
+                                className={`accommodation__option ${selectedType === 'apartment' ? 'selected' : ''}`}
+                                onClick={() => setSelectedType('apartment')}
+                            >
                                 <ApartmentIcon style={{ width: 80, height: 80 }} />
                                 <h2>Apartment</h2>
                             </div>
