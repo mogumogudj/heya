@@ -8,6 +8,8 @@ import NavLogin from '../../shared/components/NavLogin.jsx';
 
 function UniqueRoomDetails() {
     const navigate = useNavigate();
+    const [otherInfo, setOtherInfo] = useState('');
+    const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
 
     const [selectedOptions, setSelectedOptions] = useState({
         activities: [],
@@ -33,20 +35,22 @@ function UniqueRoomDetails() {
     }
 
     return (
-        <div className="page__container">
+        <div className="page__container" style={{ minHeight: '128vh' }}>
             <NavLogin />
-            <div className="content">
-                <div className="center-container-always">
-                    <div className="accommodation__type__page">
+            <div className="content" style={{ minHeight: '140vh' }}>
+                <div className="center-container">
+                    <div className="unique__room__details__page">
+                        <div className="homeowner__register__header">
                         <h1>Tell us about your Room</h1>
                         <h2>What makes your place unique?</h2>
+                        </div>
 
-                        <div className="">
-                            <p>Room Amentities</p>
+                        <div className="form__group">
+                            <p>Unique Features</p>
                             <div className="forGrid grid">
                                 {[
                                     'Quiet',
-                                    'City Center',
+                                    'Close to City Center',
                                     'Near Public Transport',
                                     'Spacious',
                                     'Cozy',
@@ -69,18 +73,18 @@ function UniqueRoomDetails() {
                             </div>
                         </div>
 
-                        <div className="about__yourself__inputs">
-                            <div className="form__group">
-                                <p>Extra information</p>
-                                <InfoOutlinedIcon />
-                                <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
+                        <div className='TextBoxWithMaxInput'>
+                            <div className="TextBoxWithMaxInput__flex">
+                                <p>Extra information of the available Amentities</p>
+                                <InfoOutlinedIcon className='TextBoxWithMaxInput__flex__icon' style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }} />
                             </div>
+                            <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
                         </div>
 
-                        <div className="">
-                            <p>Additional Amentities</p>
+                        <div className="form__group">
+                            <p>Select Your Ideal Setting</p>
                             <div className="forGrid grid">
-                                {['Available Bike', 'Dishwasher', 'Available Car to Use'].map((option) => (
+                                {['Noise-free environment', 'Vibrant City Life', 'Close to major attractions'].map((option) => (
                                     <div
                                         key={option}
                                         className={isChecked('activities', option) ? 'checked' : ''}
