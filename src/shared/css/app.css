@@ -850,15 +850,7 @@ textarea{
 
 
 
-    /* Homeowner UploadImage.jsx */
-    .upload__image__page {
-        margin-top: 224px;
-    }
 
-    .upload__image__page .center p {
-        width: auto;
-        justify-content: center;
-    }
 
 
 
@@ -987,7 +979,7 @@ textarea{
 
     /* UploadPlaceImages.jsx */
     .upload__place__images__page {
-        margin-top: 380px;
+        margin-top: 348px;
     }
 
 
