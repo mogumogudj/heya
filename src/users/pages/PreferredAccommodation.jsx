@@ -132,6 +132,7 @@ function PreferredAccommodation() {
                     <select
                         {...methods.register('city', { required: true })}
                         onChange={(e) => handleCityChange(e.target.value)}
+                        className='city__select'
                     >
                         {Object.values(Cities).map((cityOption) => (
                             <option key={cityOption} value={cityOption}>
@@ -193,11 +194,11 @@ function PreferredAccommodation() {
                         </div>
                     </div>
                     <p>For how many people are you searching a place for?</p>
-                    <div className="twoGrid selectGrid grid">
+                    <div className="twoGrid selectGrid grid  padding__grid">
                         {['Myself', 'Multiple people'].map((option) => (
                             <div
                                 key={option}
-                                className={isChecked('peopleAmount', option) ? 'checked' : ''}
+                                className={isChecked('peopleAmount', option) ? 'checked option__button' : 'option__button'}
                                 onClick={() => handleClick('peopleAmount', option)}
                             >
                                 <span>{option}</span>
@@ -242,7 +243,7 @@ function PreferredAccommodation() {
                         </div>
                     </div>
                     <div>
-                        <p>Minimum m² of rented space</p>
+                        <p className='text__label__margin'>Minimum m² of rented space</p>
                         <div className="inputWrapper">
                             <input
                                 type="text"
