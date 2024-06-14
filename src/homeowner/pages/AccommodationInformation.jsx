@@ -6,21 +6,49 @@ import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-
-import { makeStyles } from '@mui/styles';
-
-const useStyles = makeStyles({});
+import { Alert } from '@mui/material';
 
 function AccommodationInformation() {
     const [otherInfo, setOtherInfo] = useState('');
-
-    const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
+    const [userId] = useState(localStorage.getItem('userId'));
+    const [error, setLocalError] = useState('');
 
     const methods = useForm();
     const navigate = useNavigate();
 
-    const onSubmit = () => {
-        navigate('/household-details-homeowner');
+    const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
+
+    const onSubmit = async (data) => {
+        const roomDto = {
+            owner: userId,
+            streetname: data.streetname,
+            houseNumber: data.streetnumber,
+            bus: data.bus,
+            city: data.city,
+            postalCode: data.postalcode,
+            place: data.place,
+            country: data.country,
+            otherInfo: otherInfo,
+        };
+
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(roomDto),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                navigate('/household-details-homeowner');
+            } else {
+                throw new Error(result.message || 'Failed to create room');
+            }
+        } catch (error) {
+            setLocalError(error.message || 'Failed to create room');
+        }
     };
 
     return (
@@ -35,7 +63,6 @@ function AccommodationInformation() {
                         </div>
                         <FormProvider {...methods}>
                             <form onSubmit={methods.handleSubmit(onSubmit)}>
-                                <div className={'about__yourself__inputs'}></div>
                                 <div className="about__yourself__inputs">
                                     <div className="form__group">
                                         <p>Street Name</p>
@@ -43,8 +70,11 @@ function AccommodationInformation() {
                                             type="text"
                                             placeholder="Mussenstraat"
                                             className="input__field"
-                                            {...methods.register('streetname', { required: true })}
+                                            {...methods.register('streetname', { required: 'Street name is required' })}
                                         />
+                                        {methods.formState.errors.streetname && (
+                                            <span className="error">{methods.formState.errors.streetname.message}</span>
+                                        )}
                                     </div>
                                     <div className="form__group">
                                         <p>Street Number</p>
@@ -52,8 +82,15 @@ function AccommodationInformation() {
                                             type="text"
                                             placeholder="1"
                                             className="input__field"
-                                            {...methods.register('streetnumber', { required: true })}
+                                            {...methods.register('streetnumber', {
+                                                required: 'Street number is required',
+                                            })}
                                         />
+                                        {methods.formState.errors.streetnumber && (
+                                            <span className="error">
+                                                {methods.formState.errors.streetnumber.message}
+                                            </span>
+                                        )}
                                     </div>
                                     <div className="form__group">
                                         <p>Bus</p>
@@ -72,8 +109,11 @@ function AccommodationInformation() {
                                             type="text"
                                             placeholder="Leuven"
                                             className="input__field"
-                                            {...methods.register('city', { required: true })}
+                                            {...methods.register('city', { required: 'City is required' })}
                                         />
+                                        {methods.formState.errors.city && (
+                                            <span className="error">{methods.formState.errors.city.message}</span>
+                                        )}
                                     </div>
                                     <div className="form__group">
                                         <p>Postal Code</p>
@@ -81,8 +121,11 @@ function AccommodationInformation() {
                                             type="text"
                                             placeholder="3000"
                                             className="input__field"
-                                            {...methods.register('postalcode', { required: true })}
+                                            {...methods.register('postalcode', { required: 'Postal code is required' })}
                                         />
+                                        {methods.formState.errors.postalcode && (
+                                            <span className="error">{methods.formState.errors.postalcode.message}</span>
+                                        )}
                                     </div>
                                     <div className="form__group">
                                         <p>Place</p>
@@ -90,14 +133,20 @@ function AccommodationInformation() {
                                             type="text"
                                             placeholder="Vlaams Brabant"
                                             className="input__field"
-                                            {...methods.register('place', { required: true })}
+                                            {...methods.register('place', { required: 'Place is required' })}
                                         />
+                                        {methods.formState.errors.place && (
+                                            <span className="error">{methods.formState.errors.place.message}</span>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="about__yourself__inputs">
                                     <div className="form__group">
                                         <p>Country</p>
-                                        <select {...methods.register('country', { required: true })}>
+                                        <select
+                                            className="input__field"
+                                            {...methods.register('country', { required: 'Country is required' })}
+                                        >
                                             <option value="Belgium">Belgium</option>
                                         </select>
                                     </div>
@@ -107,7 +156,7 @@ function AccommodationInformation() {
                                             <p>Extra information you would like us to know?</p>
                                             <InfoOutlinedIcon
                                                 className="TextBoxWithMaxInput__flex__icon"
-                                                style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }}
+                                                style={{ marginTop: '24px', fontSize: '20px', marginRight: '16px' }}
                                             />
                                         </div>
                                         <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
@@ -120,6 +169,11 @@ function AccommodationInformation() {
                                     <span className="help">I need help</span>
                                 </div>
                             </form>
+                            {error && (
+                                <Alert className={classes.customAlert} severity="error">
+                                    {error}
+                                </Alert>
+                            )}
                         </FormProvider>
                     </div>
                 </div>
