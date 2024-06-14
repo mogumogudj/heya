@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
-import Button from '@mui/material/Button';
 
 function Pricing() {
     const navigate = useNavigate();
@@ -12,6 +11,15 @@ function Pricing() {
     const [additionalCosts, setAdditionalCosts] = useState('');
     const [serviceCost, setServiceCost] = useState('');
     const [deposit, setDeposit] = useState('');
+    const [roomId, setRoomId] = useState(null);
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const roomIdFromParams = params.get('roomId');
+        if (roomIdFromParams) {
+            setRoomId(roomIdFromParams);
+        }
+    }, [location]);
 
     const handleInputChange = (setFunction) => (event) => {
         setFunction(event.target.value);
@@ -22,15 +30,43 @@ function Pricing() {
         return values.reduce((acc, value) => acc + value, 0).toFixed(2);
     };
 
-    const handleNextStep = () => {
-        navigate('/ideal-attendant-homeowner');
+    const handleNextStep = async () => {
+        const pricingDetails = {
+            rent: parseFloat(rent) || 0,
+            additionalCosts: parseFloat(additionalCosts) || 0,
+            serviceCost: parseFloat(serviceCost) || 0,
+            deposit: parseFloat(deposit) || 0,
+        };
+
+        const roomUpdateDto = {
+            pricing: pricingDetails,
+        };
+
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${roomId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(roomUpdateDto),
+            });
+
+            if (response.ok) {
+                navigate(`/ideal-attendant-homeowner?roomId=${roomId}`);
+            } else {
+                const result = await response.json();
+                throw new Error(result.message || 'Failed to update pricing details');
+            }
+        } catch (error) {
+            console.error(error.message || 'Failed to update pricing details');
+        }
     };
 
     return (
         <div className="page__container">
             <NavLogin />
             <div className="content">
-                <div className="center-container-always">
+                <div className="center-container-always" style={{ height: '100%' }}>
                     <div className="pricing__page">
                         <h1>Set Your Room Pricing</h1>
                         <h2>Enter the details below</h2>
