@@ -638,7 +638,7 @@ textarea{
 }
 
 
-/* Upload Place Images */
+/* UploadPlaceImages.jsx */
 .image-upload-container {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
@@ -650,12 +650,12 @@ textarea{
     position: relative;
     border: 1px dashed var(--Mist);
     border-radius: 8px;
-    overflow: hidden;
     height: 80px;
     width: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
+    top: 20px;
 }
 
 .image-placeholder {
@@ -681,8 +681,19 @@ textarea{
 
 .image-preview .MuiIconButton-root {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: -12px;
+    left: 60px;
+}
+
+.image-preview .remove-image-button {
+    color: var(--Black);
+    background-color: var(--Orange);
+    width: 30px;
+    height: 30px;
+}
+
+.image-preview .remove-image-button:hover {
+    background-color: #c9783d;
 }
 
 .info-section {
@@ -690,9 +701,10 @@ textarea{
     background-color: var(--Transparent-Grey);
     border-radius: 8px;
     text-align: center;
+    padding-bottom: 32px;
 }
 
-.info-section h5 {
+.info-section h4 {
     padding: 32px;
     margin-bottom: 16px;
 }
@@ -703,13 +715,22 @@ textarea{
 }
 
 .info-section ul li {
-    margin-bottom: 0px;
-    
+    margin-bottom: 32px
+}
+
+.info-section ul li h6 {
+    margin-bottom: -24px;
 }
 
 .read-more-button {
     display: block;
+    margin-left: auto;
+    margin-right: 32px;
 }
+
+
+
+
 
 
 /* Availability */
@@ -962,6 +983,11 @@ textarea{
     /* UniqueRoomDetails.jsx */
     .unique__room__details__page {
         margin-top: 410px;
+    }
+
+    /* UploadPlaceImages.jsx */
+    .upload__place__images__page {
+        margin-top: 380px;
     }
 
 

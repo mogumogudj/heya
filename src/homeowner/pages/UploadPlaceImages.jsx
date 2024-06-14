@@ -27,14 +27,18 @@ function UploadPlaceImages() {
     };
 
     return (
-        <div className="page__container">
+        <div className="page__container" style={{ minHeight: '128vh' }}>
             <NavLogin />
-            <div className="content">
-                <div className="center-container-always">
-                    <div className="accommodation__type__page">
+            <div className="content" style={{ minHeight: '140vh' }}>
+                <div className="center-container">
+                    <div className="upload__place__images__page">
+                        <div className="homeowner__register__header">
                         <h1>Upload images</h1>
                         <h2>What does your place looks like?</h2>
-
+                        </div>
+                
+                        <div className="form__group">
+                        <p>Upload your images</p>
                         <div className="image-upload-container">
                             {images.map((image, index) => (
                                 <div key={index} className="image-upload">
@@ -43,7 +47,7 @@ function UploadPlaceImages() {
                                             <img src={image} alt={`Uploaded ${index}`} />
                                             <IconButton
                                                 onClick={() => handleRemoveImage(index)}
-                                                style={{ color: 'black', backgroundColor: 'orange' }}
+                                                className='remove-image-button'
                                             >
                                                 <CloseIcon />
                                             </IconButton>
@@ -67,9 +71,10 @@ function UploadPlaceImages() {
                                 </div>
                             ))}
                         </div>
+                        </div>
 
                         <div className="info-section">
-                            <h5>How to Make Your Place Stand Out</h5>
+                            <h4>How to Make Your Place Stand Out</h4>
                             <ul>
                                 <li>
                                     <h6 className="bold">Good Lighting</h6>
@@ -84,7 +89,7 @@ function UploadPlaceImages() {
                                     <p>Showcase any unique features that make your place special.</p>
                                 </li>
                             </ul>
-                            <button className="white__button medium read-more-button">Read more</button>
+                            <button className="white__button small read-more-button">Read more</button>
                         </div>
 
                         <div className="next__help">
