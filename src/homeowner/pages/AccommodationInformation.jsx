@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useForm, FormProvider, Controller } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import Footer from '../../shared/components/Footer.jsx';
@@ -7,12 +7,27 @@ import NavLogin from '../../shared/components/NavLogin.jsx';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { Alert } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+    customAlert: {
+        borderRadius: '8px',
+        width: '768px',
+        margin: '16px auto 32px auto',
+    },
+    '@media screen and (max-width: 800px)': {
+        customAlert: {
+            width: 'calc(100% - 32px)',
+            margin: '16px 16px 32px 16px',
+        },
+    },
+});
 
 function AccommodationInformation() {
     const [otherInfo, setOtherInfo] = useState('');
     const [userId] = useState(localStorage.getItem('userId'));
     const [error, setLocalError] = useState('');
-
+    const classes = useStyles();
     const methods = useForm();
     const navigate = useNavigate();
     const location = useLocation();
@@ -29,11 +44,11 @@ function AccommodationInformation() {
         const roomDto = {
             owner: userId,
             type: accommodationType,
-            streetname: data.streetname,
-            houseNumber: data.streetnumber,
+            streetName: data.streetName,
+            houseNumber: data.houseNumber,
             bus: data.bus,
             city: data.city,
-            postalCode: data.postalcode,
+            postalCode: data.postalCode,
             place: data.place,
             country: data.country,
             otherInfo: otherInfo,
@@ -62,8 +77,8 @@ function AccommodationInformation() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content" style={{ minHeight: '112vh' }}>
-                <div className="center-container">
+            <div className="content" style={{ height: '100%', marginTop: '-240px' }}>
+                <div className="center-container" style={{ height: '100%' }}>
                     <div className="accommodation__information__page">
                         <div className="homeowner__register__header">
                             <h1>Tell us something about</h1>
@@ -78,25 +93,25 @@ function AccommodationInformation() {
                                             type="text"
                                             placeholder="Mussenstraat"
                                             className="input__field"
-                                            {...methods.register('streetname', { required: 'Street name is required' })}
+                                            {...methods.register('streetName', { required: 'Street name is required' })}
                                         />
-                                        {methods.formState.errors.streetname && (
-                                            <span className="error">{methods.formState.errors.streetname.message}</span>
+                                        {methods.formState.errors.streetName && (
+                                            <span className="error">{methods.formState.errors.streetName.message}</span>
                                         )}
                                     </div>
                                     <div className="form__group">
-                                        <p>Street Number</p>
+                                        <p>House Number</p>
                                         <input
                                             type="text"
                                             placeholder="1"
                                             className="input__field"
-                                            {...methods.register('streetnumber', {
+                                            {...methods.register('houseNumber', {
                                                 required: 'Street number is required',
                                             })}
                                         />
-                                        {methods.formState.errors.streetnumber && (
+                                        {methods.formState.errors.houseNumber && (
                                             <span className="error">
-                                                {methods.formState.errors.streetnumber.message}
+                                                {methods.formState.errors.houseNumber.message}
                                             </span>
                                         )}
                                     </div>
