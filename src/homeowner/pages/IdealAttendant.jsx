@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Gender } from '../../shared/enums/gender.js';
+import React, { useEffect, useState } from 'react';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
+import { useForm } from 'react-hook-form';
+import { Gender } from '../../shared/enums/gender.js';
 
 function IdealAttendant() {
     const navigate = useNavigate();
-    const methods = useForm();
-    const { handleSubmit, control } = methods;
+    const { handleSubmit, control } = useForm();
+    const [roomId, setRoomId] = useState(null);
 
-    const [selectedOptions, setSelectedOptions] = useState({
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const roomIdFromParams = params.get('roomId');
+        if (roomIdFromParams) {
+            setRoomId(roomIdFromParams);
+        }
+    }, [location]);
+
+    const [selectedOptions, setSelectedOptions] = React.useState({
         activities: [],
-        experiences: [],
+        mustBe: [],
     });
 
     const isChecked = (category, option) => selectedOptions[category].includes(option);
@@ -31,103 +39,119 @@ function IdealAttendant() {
         });
     };
 
-    function handleNextStep() {
-        navigate('/privacy-homeowner');
-    }
+    const onSubmit = async (data) => {
+        const idealAttendantDetails = {
+            ageRange: {
+                min: parseInt(data.ageMin),
+                max: parseInt(data.ageMax),
+            },
+            gender: data.gender,
+            language: data.language,
+            preferredCharacteristics: selectedOptions.activities,
+            extraInformationCharacter: data.extraInformationCharacter,
+            mustBe: selectedOptions.mustBe,
+            extraInformation: data.extraInformation,
+        };
+
+        const roomUpdateDto = {
+            idealAttendant: idealAttendantDetails,
+        };
+
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${roomId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(roomUpdateDto),
+            });
+
+            if (response.ok) {
+                navigate('/privacy-homeowner');
+            } else {
+                const result = await response.json();
+                throw new Error(result.message || 'Failed to update ideal attendant details');
+            }
+        } catch (error) {
+            console.error(error.message || 'Failed to update ideal attendant details');
+        }
+    };
 
     return (
         <div className="page__container">
             <NavLogin />
             <div className="content">
-                <div className="center-container-always">
+                <div className="center-container-always" style={{ height: '100%' }}>
                     <div className="accommodation__type__page">
                         <h1>Perfect Attendant</h1>
                         <h2>Describe Your Ideal Attendant</h2>
 
-                        <div className="about__yourself__inputs">
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form__group">
-                                <p>Preffered Age</p>
-                                <div className="">
-                                    <input
-                                        type="number"
-                                        placeholder="18"
-                                        {...methods.register('age', { required: true })}
-                                        className="input__field small bold"
-                                    />
-                                    <p className="bold">-</p>
-                                    <input
-                                        type="number"
-                                        placeholder="64"
-                                        {...methods.register('age', { required: true })}
-                                        className="input__field small bold"
-                                    />
+                                <p>Preferred Age</p>
+                                <div className="flex">
+                                    <div>
+                                        <input
+                                            style={{ width: '100%' }}
+                                            type="number"
+                                            placeholder="18"
+                                            {...control.register('ageMin', { required: true })}
+                                            className="input__field small bold"
+                                        />
+                                    </div>
+                                    <div>
+                                        <input
+                                            style={{ width: '100%' }}
+                                            type="number"
+                                            placeholder="64"
+                                            {...control.register('ageMax', { required: true })}
+                                            className="input__field small bold"
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="form__group">
-                            <p>Gender</p>
-                            <select {...methods.register('gender', { required: true })}>
-                                {Object.values(Gender).map((genderOption) => (
-                                    <option key={genderOption} value={genderOption}>
-                                        {genderOption}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                            <div className="flex">
+                                <div className="form__group">
+                                    <p>Gender</p>
+                                    <select {...control.register('gender', { required: true })}>
+                                        {Object.values(Gender).map((genderOption) => (
+                                            <option key={genderOption} value={genderOption}>
+                                                {genderOption}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
 
-                        <div className="form__group">
-                            <p>Language</p>
-                            <select {...methods.register('language', { required: true })}>
-                                <option value="English">English</option>
-                                <option value="Spanish">Spanish</option>
-                                <option value="French">French</option>
-                                <option value="German">German</option>
-                                <option value="Italian">Italian</option>
-                                <option value="Portuguese">Portuguese</option>
-                                <option value="Dutch">Dutch</option>
-                                <option value="Russian">Russian</option>
-                                <option value="Chinese">Chinese</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <p>Preferred Characteristics</p>
-                            <div className="forGrid grid">
-                                {[
-                                    'Friendly',
-                                    'Reliable',
-                                    'Professional',
-                                    'Adaptable',
-                                    'Organized',
-                                    'Patient',
-                                    'Thrustworthy',
-                                    'Other (please specify in textbox)',
-                                ].map((option) => (
-                                    <div
-                                        key={option}
-                                        className={isChecked('activities', option) ? 'checked' : ''}
-                                        onClick={() => handleClick('activities', option)}
-                                    >
-                                        <span>{option}</span>
-                                    </div>
-                                ))}
+                                <div className="form__group">
+                                    <p>Language</p>
+                                    <select {...control.register('language', { required: true })}>
+                                        <option value="English">English</option>
+                                        <option value="Spanish">Spanish</option>
+                                        <option value="French">French</option>
+                                        <option value="German">German</option>
+                                        <option value="Italian">Italian</option>
+                                        <option value="Portuguese">Portuguese</option>
+                                        <option value="Dutch">Dutch</option>
+                                        <option value="Russian">Russian</option>
+                                        <option value="Chinese">Chinese</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="about__yourself__inputs">
-                            <div className="form__group">
-                                <p>Extra information</p>
-                                <InfoOutlinedIcon />
-                                <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
-                            </div>
-                        </div>
-
-                        <div>
-                            <p>Must bes</p>
-                            <div className="forGrid grid">
-                                {['Non Smoker', 'Vegetarian', 'Vegan', 'Other (please specify in textbox)'].map(
-                                    (option) => (
+                            <div>
+                                <p>Preferred Characteristics</p>
+                                <div className="forGrid grid">
+                                    {[
+                                        'Friendly',
+                                        'Reliable',
+                                        'Professional',
+                                        'Adaptable',
+                                        'Organized',
+                                        'Patient',
+                                        'Thrustworthy',
+                                        'Other (please specify in textbox)',
+                                    ].map((option) => (
                                         <div
                                             key={option}
                                             className={isChecked('activities', option) ? 'checked' : ''}
@@ -135,25 +159,52 @@ function IdealAttendant() {
                                         >
                                             <span>{option}</span>
                                         </div>
-                                    ),
-                                )}
+                                    ))}
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="about__yourself__inputs">
                             <div className="form__group">
                                 <p>Extra information</p>
                                 <InfoOutlinedIcon />
-                                <TextBoxWithMaxInput value="" onChange={() => {}} className="input__field" />
+                                <TextBoxWithMaxInput
+                                    {...control.register('extraInformationCharacter')}
+                                    className="input__field"
+                                />
                             </div>
-                        </div>
 
-                        <div className="next__help">
-                            <button className="blue__button medium" type="button" onClick={handleNextStep}>
-                                Next step
-                            </button>
-                            <span className="help">I need help</span>
-                        </div>
+                            <div>
+                                <p>Must bes</p>
+                                <div className="forGrid grid">
+                                    {['Non Smoker', 'Vegetarian', 'Vegan', 'Other (please specify in textbox)'].map(
+                                        (option) => (
+                                            <div
+                                                key={option}
+                                                className={isChecked('mustBe', option) ? 'checked' : ''}
+                                                onClick={() => handleClick('mustBe', option)}
+                                            >
+                                                <span>{option}</span>
+                                            </div>
+                                        ),
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="form__group">
+                                <p>Extra information</p>
+                                <InfoOutlinedIcon />
+                                <TextBoxWithMaxInput
+                                    {...control.register('extraInformation')}
+                                    className="input__field"
+                                />
+                            </div>
+
+                            <div className="next__help">
+                                <button className="blue__button medium" type="submit">
+                                    Next step
+                                </button>
+                                <span className="help">I need help</span>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

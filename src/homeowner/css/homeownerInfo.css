@@ -30,6 +30,18 @@ p {
     color: var(--White);
 }
 
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 32px;
+}
+
+.flex div {
+    width: 100%;
+}
+
 @media (min-width: 1200px) {
     .content {
         max-width: 1200px;
