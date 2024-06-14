@@ -1,25 +1,84 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 import Footer from '../../shared/components/Footer.jsx';
 import { useNavigate } from 'react-router-dom';
 import { Divider } from '@mui/material';
+import { UserContext } from '../../shared/contexts/UserContext';
 
 function PlaceOverview() {
     const navigate = useNavigate();
+    const [roomId, setRoomId] = useState(null);
+    const [roomData, setRoomData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const { userData } = useContext(UserContext);
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const roomIdFromParams = params.get('roomId');
+        if (roomIdFromParams) {
+            setRoomId(roomIdFromParams);
+        }
+
+        const fetchRoomData = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${roomId}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setRoomData(data);
+                    if (data.owner && data.owner.userId) {
+                        await fetchUserData(data.owner.userId);
+                    }
+                } else {
+                    console.error('Failed to fetch room data');
+                }
+            } catch (error) {
+                console.error('Error fetching room data:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (roomId) {
+            fetchRoomData();
+        }
+    }, [roomId]);
+
+    const fetchUserData = async (userId) => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`);
+            if (response.ok) {
+                const userData = await response.json();
+            } else {
+                console.error('Failed to fetch user information');
+            }
+        } catch (error) {
+            console.error('Error fetching user information:', error);
+        }
+    };
 
     const handleSubmit = () => {
-        navigate('/place-availability-homeowner');
+        navigate(`/place-availability-homeowner?roomId=${roomId}`);
     };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (!roomData || !roomData.owner) {
+        return <div>Room data not found.</div>;
+    }
 
     return (
         <div className="page__container">
             <NavLogin />
             <div className="content">
-                <h1>Okay, John your place is ready.</h1>
+                <h1>Okay, {userData?.firstName} your place is ready.</h1>
                 <h2>Here are all the important details </h2>
                 <div>
-                    <img className={'userImage'} src="" alt="User Image" />
-                    <h3 className={'centered'}>John Doe</h3>
+                    <img className={'userImage'} src={userData?.imageLink || ''} alt="User Image" />
+                    <h3 className={'centered'}>
+                        {userData?.firstName} {userData?.lastName}
+                    </h3>
                 </div>
                 <div>
                     <h3>Room overview</h3>
@@ -29,22 +88,22 @@ function PlaceOverview() {
                             <div>
                                 <b>Firstname</b>
                                 <br />
-                                <span>John</span>
+                                <span>{userData?.firstName}</span>
                             </div>
                             <div>
                                 <b>Lastname</b>
                                 <br />
-                                <span>Doe</span>
+                                <span>{userData?.lastName}</span>
                             </div>
                             <div>
                                 <b>Birthday</b>
                                 <br />
-                                <span>01/01/1990</span>
+                                <span>{userData?.birthday}</span>
                             </div>
                             <div>
                                 <b>Phone number</b>
                                 <br />
-                                <span>123-456-7890</span>
+                                <span>{userData?.phoneNumber}</span>
                             </div>
                         </div>
                         <br />
@@ -53,17 +112,17 @@ function PlaceOverview() {
                             <div>
                                 <b>Languages</b>
                                 <br />
-                                <span>English, Spanish</span>
+                                <span>{userData?.languages?.join(', ')}</span>
                             </div>
                             <div>
                                 <b>Character</b>
                                 <br />
-                                <span>Friendly, Responsible</span>
+                                <span>{userData?.character?.join(', ')}</span>
                             </div>
                             <div>
                                 <b>Short description</b>
                                 <br />
-                                <span>A brief description about John Doe.</span>
+                                <span>{userData?.description}</span>
                             </div>
                         </div>
                         <br />
@@ -72,66 +131,59 @@ function PlaceOverview() {
                             <div>
                                 <b>Practical information</b>
                                 <br />
-                                <span>Lange Noordstraat 66</span>
+                                <span>
+                                    {roomData.streetName} {roomData.houseNumber} {roomData.bus}
+                                </span>
                                 <br />
-                                <span>3000 Antwerp, Belgium</span>
+                                <span>
+                                    {roomData.postalCode} {roomData.city}, {roomData.country}
+                                </span>
                                 <br />
-                                <span>Vlaams Brabant</span>
+                                <span>{roomData.place}</span>
                             </div>
                             <div>
                                 <b>1 Room</b>
                                 <br />
-                                <span>12 m2</span>
+                                <span>{roomData.roomDetails[0]?.size} m²</span>
                             </div>
                             <div>
                                 <b>Measurements</b>
                                 <br />
-                                <span>Entire House: 129m2</span>
+                                <span>Entire House: {roomData.propertyDetails[0]?.surfaceArea}m²</span>
                                 <br />
-                                <span>Garden: 80m2</span>
+                                <span>Garden: {roomData.propertyDetails[0]?.gardenSize}m²</span>
                                 <br />
-                                <span>Room: 12m2</span>
+                                <span>Room: {roomData.roomDetails[0]?.size}m²</span>
                             </div>
                             <div>
                                 <b>For Shared Use</b>
                                 <br />
-                                <span>Kitchen</span>
-                                <br />
-                                <span>Bathroom</span>
-                                <br />
-                                <span>Living room</span>
-                                <br />
-                                <span>Garden</span>
-                                <br />
-                                <span>TV Room</span>
+                                {roomData.sharedSpaces[0]?.sharedSpaces.map((space) => (
+                                    <span key={space}>
+                                        {space}
+                                        <br />
+                                    </span>
+                                ))}
                             </div>
-
                             <div>
                                 <b>Available Amentities</b>
                                 <br />
-                                <span>Kitchen</span>
-                                <br />
-                                <span>Bathroom</span>
-                                <br />
-                                <span>Living room</span>
-                                <br />
-                                <span>Garden</span>
-                                <br />
-                                <span>TV Room</span>
+                                {roomData.roomDetails[0]?.amenities.map((amenity) => (
+                                    <span key={amenity}>
+                                        {amenity}
+                                        <br />
+                                    </span>
+                                ))}
                             </div>
-
                             <div>
                                 <b>For Personal Use</b>
                                 <br />
-                                <span>Kitchen</span>
-                                <br />
-                                <span>Bathroom</span>
-                                <br />
-                                <span>Living room</span>
-                                <br />
-                                <span>Garden</span>
-                                <br />
-                                <span>TV Room</span>
+                                {roomData.personalRoomDetails[0]?.activities.map((activity) => (
+                                    <span key={activity}>
+                                        {activity}
+                                        <br />
+                                    </span>
+                                ))}
                             </div>
                         </div>
                         <br />
