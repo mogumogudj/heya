@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
@@ -9,12 +9,20 @@ import NavLogin from '../../shared/components/NavLogin.jsx';
 function UniqueRoomDetails() {
     const navigate = useNavigate();
     const [otherInfo, setOtherInfo] = useState('');
+    const [roomId, setRoomId] = useState(null);
     const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
-
     const [selectedOptions, setSelectedOptions] = useState({
-        activities: [],
-        experiences: [],
+        features: [],
+        ideals: [],
     });
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const roomIdFromParams = params.get('roomId');
+        if (roomIdFromParams) {
+            setRoomId(roomIdFromParams);
+        }
+    }, [location]);
 
     const isChecked = (category, option) => selectedOptions[category].includes(option);
 
@@ -30,9 +38,41 @@ function UniqueRoomDetails() {
         });
     };
 
-    function handleNextStep() {
-        navigate('/upload-place-images-homeowner');
-    }
+    const handleNextStep = async () => {
+        const uniqueAboutPlace = {
+            features: selectedOptions.features,
+            ideals: selectedOptions.ideals,
+            otherInfo,
+        };
+
+        const roomUpdateDto = {
+            uniqueAboutPlace: uniqueAboutPlace,
+        };
+
+        try {
+            if (!roomId) {
+                console.error('Room ID is missing');
+                return;
+            }
+
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${roomId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(roomUpdateDto),
+            });
+
+            if (response.ok) {
+                navigate(`/upload-place-images-homeowner?roomId=${roomId}`);
+            } else {
+                const result = await response.json();
+                throw new Error(result.message || 'Failed to update unique room details');
+            }
+        } catch (error) {
+            console.error(error.message || 'Failed to save personal room details');
+        }
+    };
 
     return (
         <div className="page__container" style={{ minHeight: '128vh' }}>
@@ -41,8 +81,8 @@ function UniqueRoomDetails() {
                 <div className="center-container">
                     <div className="unique__room__details__page">
                         <div className="homeowner__register__header">
-                        <h1>Tell us about your Room</h1>
-                        <h2>What makes your place unique?</h2>
+                            <h1>Tell us about your Room</h1>
+                            <h2>What makes your place unique?</h2>
                         </div>
 
                         <div className="form__group">
@@ -64,8 +104,8 @@ function UniqueRoomDetails() {
                                 ].map((option) => (
                                     <div
                                         key={option}
-                                        className={isChecked('activities', option) ? 'checked' : ''}
-                                        onClick={() => handleClick('activities', option)}
+                                        className={isChecked('features', option) ? 'checked' : ''}
+                                        onClick={() => handleClick('features', option)}
                                     >
                                         <span>{option}</span>
                                     </div>
@@ -73,10 +113,13 @@ function UniqueRoomDetails() {
                             </div>
                         </div>
 
-                        <div className='TextBoxWithMaxInput'>
+                        <div className="TextBoxWithMaxInput">
                             <div className="TextBoxWithMaxInput__flex">
                                 <p>Extra information of the available Amentities</p>
-                                <InfoOutlinedIcon className='TextBoxWithMaxInput__flex__icon' style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }} />
+                                <InfoOutlinedIcon
+                                    className="TextBoxWithMaxInput__flex__icon"
+                                    style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }}
+                                />
                             </div>
                             <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
                         </div>
@@ -84,15 +127,17 @@ function UniqueRoomDetails() {
                         <div className="form__group">
                             <p>Select Your Ideal Setting</p>
                             <div className="forGrid grid">
-                                {['Noise-free environment', 'Vibrant City Life', 'Close to major attractions'].map((option) => (
-                                    <div
-                                        key={option}
-                                        className={isChecked('activities', option) ? 'checked' : ''}
-                                        onClick={() => handleClick('activities', option)}
-                                    >
-                                        <span>{option}</span>
-                                    </div>
-                                ))}
+                                {['Noise-free environment', 'Vibrant City Life', 'Close to major attractions'].map(
+                                    (option) => (
+                                        <div
+                                            key={option}
+                                            className={isChecked('ideals', option) ? 'checked' : ''}
+                                            onClick={() => handleClick('ideals', option)}
+                                        >
+                                            <span>{option}</span>
+                                        </div>
+                                    ),
+                                )}
                             </div>
                         </div>
 
