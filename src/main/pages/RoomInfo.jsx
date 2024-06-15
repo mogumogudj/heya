@@ -339,10 +339,12 @@ function RoomInfo() {
                         </a>
                         <div className="room__location--info">
                             <p className="room__amount">1 Room</p>
-                            <h1 className="room__location">Rodestraat 52</h1>
+                            <h1 className="room__location">
+                                {room?.streetName} {room?.houseNumber}
+                            </h1>
                         </div>
                         <div className="room__pricing">
-                            <p className="room__price">€350</p>
+                            <p className="room__price">€{room?.pricing[0]?.rent}</p>
                             <p className="room__price__timespan">/month</p>
                         </div>
                         <div className="room--basics">
@@ -350,55 +352,35 @@ function RoomInfo() {
                                 <LocationOnIcon />
                                 <div className="room--basics__item__text">
                                     <p className="room--basics__item__name no__padding">Location</p>
-                                    <span className="room--basics__item__value">Leuven</span>
+                                    <span className="room--basics__item__value">{room?.city}</span>
                                 </div>
                             </div>
                             <div className="room--basics--space room--basics__item">
                                 <SwapHorizontalCircleRoundedIcon />
                                 <div className="room--basics__item__text">
                                     <p className="room--basics__item__name no__padding">Space</p>
-                                    <span className="room--basics__item__value">12m²</span>
+                                    <span className="room--basics__item__value">{room?.roomDetails[0]?.size}m²</span>
                                 </div>
                             </div>
                             <div className="room--basics--type room--basics__item">
                                 <MapsHomeWorkRoundedIcon />
                                 <div className="room--basics__item__text">
                                     <p className="room--basics__item__name no__padding">Type</p>
-                                    <span className="room--basics__item__value">Townhouse</span>
+                                    <span className="room--basics__item__value">{room?.type}</span>
                                 </div>
                             </div>
                         </div>
                         <div className="room__images-all">
-                            <img
-                                className="room__image room__image1 active"
-                                src="../Rodestraat1.webp"
-                                alt="Rodestraat 52, image1"
-                            />
-                            <img
-                                className="room__image room__image2"
-                                src="../Rodestraat2.webp"
-                                alt="Rodestraat 52, image2"
-                            />
-                            <img
-                                className="room__image room__image3"
-                                src="../Rodestraat3.webp"
-                                alt="Rodestraat 52, image3"
-                            />
-                            <img
-                                className="room__image room__image4"
-                                src="../Rodestraat4.webp"
-                                alt="Rodestraat 52, image4"
-                            />
-                            <img
-                                className="room__image room__image5"
-                                src="../Rodestraat5.webp"
-                                alt="Rodestraat 52, image5"
-                            />
-                            <img
-                                className="room__image room__image6"
-                                src="../Rodestraat6.webp"
-                                alt="Rodestraat 52, image6"
-                            />
+                            {room.images &&
+                                room.images.map((image, index) => (
+                                    <img
+                                        key={`image-${index}`}
+                                        className={`room__image ${selectedImage === image ? 'active' : ''}`}
+                                        src={image}
+                                        alt={`image ${index + 1}`}
+                                        onClick={() => handleImageClick(index)}
+                                    />
+                                ))}
                         </div>
                     </div>
                     <div className="room__statistics">
@@ -433,19 +415,28 @@ function RoomInfo() {
                             <div className="room__description--overview__basics">
                                 <div className="overview__basics--box">
                                     <HotelRoundedIcon fontSize="small" />
-                                    <p className="overview__basics--text no__padding">Room, 1 person</p>
+                                    <p className="overview__basics--text no__padding">
+                                        {room?.type}, {room?.propertyDetails[0]?.totalRooms} person(s)
+                                    </p>
                                 </div>
                                 <div className="overview__basics--box">
                                     <SwapHorizontalCircleRoundedIcon fontSize="small" />
-                                    <p className="overview__basics--text no__padding">12m² Personal space</p>
+                                    <p className="overview__basics--text no__padding">
+                                        {' '}
+                                        {room?.roomDetails[0]?.size}m² Personal space
+                                    </p>
                                 </div>
                                 <div className="overview__basics--box">
                                     <ChairRoundedIcon fontSize="small" />
-                                    <p className="overview__basics--text no__padding">Non-furnished</p>
+                                    <p className="overview__basics--text no__padding">
+                                        {room?.roomDetails[0]?.furnishing}
+                                    </p>
                                 </div>
                                 <div className="overview__basics--box">
                                     <CottageRoundedIcon fontSize="small" />
-                                    <p className="overview__basics--text no__padding">150m² Entire house</p>
+                                    <p className="overview__basics--text no__padding">
+                                        {room?.propertyDetails[0]?.surfaceArea}m² Entire house
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -453,44 +444,18 @@ function RoomInfo() {
                             <h3 className="room__description--description__title text__container__title">
                                 Description
                             </h3>
-                            <p className="room__description--description__text no__padding">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer
-                            </p>
-                        </div>
-                        <div className="room--icons">
-                            <div className="room--icon">
-                                <FitnessCenterRoundedIcon />
-                                <p className="room--icon__description">Fitness</p>
-                            </div>
-                            <div className="room--icon">
-                                <TvRoundedIcon />
-                                <p className="room--icon__description">TV</p>
-                            </div>
-                            <div className="room--icon">
-                                <DirectionsBikeRoundedIcon />
-                                <p className="room--icon__description">Bike</p>
-                            </div>
-                            <div className="room--icon">
-                                <WifiRoundedIcon />
-                                <p className="room--icon__description">Wi-Fi</p>
-                            </div>
-                            <div className="room--icon">
-                                <RadioRoundedIcon />
-                                <p className="room--icon__description">Radio</p>
-                            </div>
-                            <div className="remaining--icons">
-                                <h4 className="remaining--icons__amount">+8</h4>
-                            </div>
+                            <p className="room__description--description__text no__padding">{room?.otherInfo}</p>
                         </div>
                         <div className="divider divider--room"></div>
                         <div className="room__info--usage">
                             <div className="room__info--shared text__container">
                                 <h3 className="room__info--shared__title text__container__title">For shared use</h3>
                                 <ul className="room__info--shared__list">
-                                    <li className="room__info--shared__item">Shared kitchen</li>
-                                    <li className="room__info--shared__item">Shared washing machine</li>
+                                    {room?.sharedSpaces[0]?.sharedSpaces.map((space, index) => (
+                                        <li key={index} className="room__info--shared__item">
+                                            {space}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                             <div className="room__info--private text__container">
@@ -498,8 +463,12 @@ function RoomInfo() {
                                     For private use of tenant
                                 </h3>
                                 <ul className="room__info--private__list">
-                                    <li className="room__info--private__item">Private toilet</li>
-                                    <li className="room__info--private__item">Private bathroom</li>
+                                    {room?.personalRoomDetails[0]?.amentities.map((amentity, index) => (
+                                        <li key={index} className="room__info--private__item">
+                                            {amentity}
+                                        </li>
+                                    ))}
+                                    <li>{room?.personalRoomDetails[0]?.additionalAmenities}</li>
                                 </ul>
                             </div>
                         </div>
@@ -507,38 +476,41 @@ function RoomInfo() {
                         <div className="room__info--safety">
                             <div className="room__info--security text__container">
                                 <h3 className="room__info--security__title text__container__title">
-                                    Safety & Security items
+                                    Ideal tenant characteristics
                                 </h3>
-                                <div className="room__info--security__basics">
-                                    <div className="security__basics--box">
-                                        <HotelRoundedIcon fontSize="small" />
-                                        <p className="security__basics--text no__padding">Fire extinguisher</p>
-                                    </div>
-                                    <div className="security__basics--box">
-                                        <SwapHorizontalCircleRoundedIcon fontSize="small" />
-                                        <p className="security__basics--text no__padding">
-                                            Security Camera's around the house
-                                        </p>
-                                    </div>
-                                    <div className="security__basics--box">
-                                        <ChairRoundedIcon fontSize="small" />
-                                        <p className="security__basics--text no__padding">Covered bicycle shed</p>
-                                    </div>
-                                </div>
+                                <ul className="room__info--private__list">
+                                    {room?.idealAttendant[0]?.preferredCharacteristics.map((character, index) => (
+                                        <li key={index} className="room__info--private__item">
+                                            {character}
+                                        </li>
+                                    ))}
+                                    <li>{room?.personalRoomDetails[0]?.additionalAmenities}</li>
+                                </ul>
                             </div>
                             <div className="divider divider--room"></div>
                             <div className="room__info--rules text__container">
-                                <h3 className="room__info--rules__title text__container__title">Rules</h3>
+                                <h3 className="room__info--rules__title text__container__title">Pricing</h3>
                                 <div className="room__info--rules__basics">
                                     <div className="rules__basics--box">
-                                        <HotelRoundedIcon fontSize="small" />
-                                        <p className="rules__basics--text no__padding">
-                                            Please don't come home after midnight
-                                        </p>
+                                        <span className="rules__basics--text no__padding">
+                                            Rent: <b>{room?.pricing[0]?.rent}</b>
+                                        </span>
                                     </div>
                                     <div className="rules__basics--box">
-                                        <SwapHorizontalCircleRoundedIcon fontSize="small" />
-                                        <p className="rules__basics--text no__padding">No loud music</p>
+                                        <span>
+                                            {' '}
+                                            AdditionalCosts: <b>{room?.pricing[0]?.additionalCosts}</b>
+                                        </span>
+                                    </div>
+                                    <div className="rules__basics--box">
+                                        <span>
+                                            ServiceCost: <b>{room?.pricing[0]?.serviceCost}</b>
+                                        </span>
+                                    </div>
+                                    <div className="rules__basics--box">
+                                        <span>
+                                            Deposit: <b>{room?.pricing[0]?.deposit}</b>
+                                        </span>
                                     </div>
                                 </div>
                             </div>

@@ -323,7 +323,7 @@
     .room__images-all {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-start;
         width: 90%;
         margin-left: 5%;
         padding: 8px;
