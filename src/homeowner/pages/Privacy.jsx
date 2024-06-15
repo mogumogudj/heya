@@ -77,12 +77,14 @@ function Privacy() {
         <div className="page__container">
             <NavLogin />
             <div className="content" style={{ height: '100%' }}>
-                <div className="center-container-always" style={{ height: '100%' }}>
-                    <div className="accommodation__type__page">
+                <div className="center-container" style={{ height: '100%' }}>
+                    <div className="privacy__page">
+                        <div className="homeowner__register__header">
                         <h1>Your Privacy</h1>
                         <h2>Level of Privacy and Independence</h2>
+                        </div>
 
-                        <div>
+                        <div className='form__group'>
                             <p>How much time do you want to spend together?</p>
                             <div className="forGrid grid">
                                 {['Daily', 'Weekly', 'Monthly', 'Just sometimes', 'Never'].map((option) => (
@@ -97,7 +99,7 @@ function Privacy() {
                             </div>
                         </div>
 
-                        <div>
+                        <div className='form__group'>
                             <p>How much help do you want from your attendant?</p>
                             <div className="forGrid grid">
                                 {['Daily', 'Weekly', 'Monthly', 'Just sometimes', 'Never'].map((option) => (
@@ -112,14 +114,18 @@ function Privacy() {
                             </div>
                         </div>
 
-                        <div className="form__group">
-                            <p>Tell us something about your Privacy Values</p>
-                            <InfoOutlinedIcon />
-                            <TextBoxWithMaxInput
-                                value={privacyValues}
-                                onChange={handlePrivacyValuesChange}
-                                className="input__field"
-                            />
+                        <div className="TextBoxWithMaxInput">
+                            <div className="TextBoxWithMaxInput__flex">
+                                <p>Tell us something about your Privacy Values</p>
+                                <InfoOutlinedIcon
+                                    className="TextBoxWithMaxInput__flex__icon"
+                                    style={{ marginTop: '24px', fontSize: '20px', marginRight: '16px' }}
+                                />
+                            </div>
+                            <TextBoxWithMaxInput 
+                            value={privacyValues}
+                            onChange={handlePrivacyValuesChange}
+                            className="input__field" />
                         </div>
 
                         <div className="next__help">

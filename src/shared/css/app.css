@@ -951,6 +951,10 @@ textarea{
         margin-top: 152px;
     }
 
+    .privacy__page {
+        margin-top: 152px;
+    }
+
     @media screen and (max-width: 800px) {
         .household__details__page {
             margin-top: 0px;
