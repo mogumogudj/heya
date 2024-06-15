@@ -1,0 +1,130 @@
+.city-slider {
+    padding: 24px 0 40px 16px;
+  }
+  
+  .city-slider h3 {
+    margin-bottom: 16px;
+  }
+  
+  .city-card-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    padding: 0 0 16px;
+  }
+  
+  .city-card-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .city-card {
+    position: relative;
+  margin-right: 16px;
+  flex: 0 0 auto;
+  width: 300px;
+  scroll-snap-align: start;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+    .city-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+.city-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.city-card:hover::before {
+  background: rgba(0, 0, 0, 0);
+}
+  
+  .city-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .city-name {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transform: translateX(-50%);
+    color: var(--White);
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  /* Medium screens */
+  @media screen and (max-width: 1200px) {
+    .city-card {
+      width: 250px;
+    }
+  
+    .city-image {
+      height: 180px;
+    }
+  }
+  
+  /* Small screens */
+  @media screen and (max-width: 800px) {
+    .city-card-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      padding: 0;
+    }
+  
+    .city-card {
+      width: 100%;
+      margin-right: 0;
+    }
+  
+    .city-image {
+      height: 150px;
+    }
+  }
+  
+  /* Very small screens */
+  @media screen and (max-width: 400px) {
+    .city-card-container {
+      grid-template-columns: 1fr;
+    }
+  
+    .city-card {
+      width: 100%;
+    }
+  
+    .city-image {
+      height: 120px;
+    }
+  }
+  
+  /* Extra small screens */
+  @media screen and (max-width: 300px) {
+    .city-card {
+      width: 100%;
+    }
+  
+    .city-image {
+      height: 100px;
+    }
+  }
+  
