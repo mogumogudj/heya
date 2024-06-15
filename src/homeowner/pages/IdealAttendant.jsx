@@ -90,28 +90,31 @@ function IdealAttendant() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content">
-                <div className="center-container-always" style={{ height: '100%' }}>
-                    <div className="accommodation__type__page">
+            <div className="content" style={{ minHeight: '128vh' }}>
+                <div className="center-container" style={{ height: '100%' }}>
+                    <div className="ideal__attendant__page">
+                        <div className='homeowner__register__header'>
                         <h1>Perfect Attendant</h1>
                         <h2>Describe Your Ideal Attendant</h2>
-
+                        </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
+                            
                             <div className="form__group">
                                 <p>Preferred Age</p>
-                                <div className="flex">
+                                <div className="flex" style={{marginTop: '-8px'}}>
                                     <div>
                                         <input
-                                            style={{ width: '100%' }}
+                                            style={{ width: '35%' }}
                                             type="number"
                                             placeholder="18"
                                             {...register('ageMin', { required: true })}
                                             className="input__field small bold"
                                         />
                                     </div>
+
                                     <div>
                                         <input
-                                            style={{ width: '100%' }}
+                                            style={{ width: '35%' }}
                                             type="number"
                                             placeholder="64"
                                             {...register('ageMax', { required: true })}
@@ -149,7 +152,7 @@ function IdealAttendant() {
                                 </div>
                             </div>
 
-                            <div>
+                            <div className='form__group'>
                                 <p>Preferred Characteristics</p>
                                 <div className="forGrid grid">
                                     {[
@@ -173,18 +176,24 @@ function IdealAttendant() {
                                 </div>
                             </div>
 
-                            <div className="form__group">
+
+                            <div className="TextBoxWithMaxInput">
+                            <div className="TextBoxWithMaxInput__flex">
                                 <p>Extra information for characteristics</p>
-                                <InfoOutlinedIcon />
-                                <TextBoxWithMaxInput
-                                    value={extraInformationCharacter}
-                                    onChange={handleCharacterInputChange}
-                                    className="input__field"
+                                <InfoOutlinedIcon
+                                    className="TextBoxWithMaxInput__flex__icon"
+                                    style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }}
                                 />
                             </div>
+                            <TextBoxWithMaxInput 
+                            value={extraInformationCharacter}
+                            onChange={handleCharacterInputChange}
+                            className="input__field" />
+                        </div>
 
-                            <div>
-                                <p>Must bes</p>
+
+                            <div className='form__group'>
+                                <p>Must be</p>
                                 <div className="forGrid grid">
                                     {['Non Smoker', 'Vegetarian', 'Vegan', 'Other (please specify in textbox)'].map(
                                         (option) => (
@@ -200,15 +209,23 @@ function IdealAttendant() {
                                 </div>
                             </div>
 
-                            <div className="form__group">
-                                <p>Extra information for must bes</p>
-                                <InfoOutlinedIcon />
-                                <TextBoxWithMaxInput
-                                    value={extraInformation}
-                                    onChange={handleMustBeInputChange}
-                                    className="input__field"
+
+
+
+                            <div className="TextBoxWithMaxInput">
+                            <div className="TextBoxWithMaxInput__flex">
+                                <p>Extra information for characteristics</p>
+                                <InfoOutlinedIcon
+                                    className="TextBoxWithMaxInput__flex__icon"
+                                    style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }}
                                 />
                             </div>
+                            <TextBoxWithMaxInput 
+                            value={extraInformation}
+                            onChange={handleMustBeInputChange}
+                            className="input__field" />
+                        </div>
+
 
                             <div className="next__help">
                                 <button className="blue__button medium" type="submit">

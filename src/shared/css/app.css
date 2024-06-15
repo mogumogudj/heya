@@ -904,7 +904,7 @@ textarea{
     .flex {
         display: flex;
         flex-direction: column;
-        margin-bottom: 20px;
+        margin-bottom: 20px;   
     }
 
 
@@ -945,6 +945,10 @@ textarea{
         display: flex;
         flex-direction: row;
         gap: 16px;
+    }
+
+    .ideal__attendant__page {
+        margin-top: 152px;
     }
 
     @media screen and (max-width: 800px) {
@@ -1039,10 +1043,6 @@ textarea{
         font-size: 16px;
     }
 
-
-
-
-    
     .pricing__summary {
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1063,6 +1063,9 @@ textarea{
         color: var(--Lime_Green);
     }
     
+
+
+
 
     
 
