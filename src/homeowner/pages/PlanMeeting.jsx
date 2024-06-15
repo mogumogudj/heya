@@ -55,15 +55,17 @@ function PlanMeeting() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content">
-                <div className="center-container-always">
-                    <div className="accommodation__type__page">
+            <div className="content" style={{ height: '100%' }}>
+                <div className="center-container" style={{ height: '100%' }}>
+                    <div className="plan__meeting__page">
+                        <div className='homeowner__register__header'>
                         <h1>Plan a Meeting</h1>
                         <h2>Do you want to have a meeting with us?</h2>
+                        </div>
 
                         <div className="availabilityGrid">
                             <div className="availability__container">
-                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                <LocalizationProvider dateAdapter={AdapterDateFns} >
                                     <DateTimePicker
                                         value={selectedDateTime}
                                         onChange={handleDateChange}
@@ -74,11 +76,13 @@ function PlanMeeting() {
                         </div>
 
                         <div className="availability-info">
-                            <a>Skip this for now</a>
-                            <button className="blue__button small" onClick={handleSaveMeeting}>
+                            
+                            <button className="blue__button big" onClick={handleSaveMeeting}>
                                 Plan meeting
                             </button>
-                            <p>
+
+                            <a className='availability-info__skip-link'>Skip this for now</a>
+                            <p className="availability-info__selected-datetime">
                                 Selected Date and Time: {selectedDateTime ? selectedDateTime.toLocaleString() : 'None'}
                             </p>
                         </div>
