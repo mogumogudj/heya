@@ -131,9 +131,8 @@ function Chat() {
                                     <div className="active--chat__person">
                                         <div className="chat__lists--chat__image">
                                             <img
-                                                src={otherUserInfo.imageLink || 'path/to/placeholder-image.png'}
+                                                src={otherUserInfo.imageLink || '../placeholder-profile-image.jpg'}
                                                 alt="User"
-                                                className={!otherUserInfo.imageLink ? 'placeholder' : ''}
                                             />
                                         </div>
                                         <h6 className="chat__info--name no__padding h6__strong">{`${otherUserInfo.firstName} ${otherUserInfo.lastName}`}</h6>
