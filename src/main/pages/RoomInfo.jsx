@@ -31,19 +31,20 @@ function RoomInfo() {
     const [selectedImage, setSelectedImage] = useState(null);
 
     useEffect(() => {
-        const userId = localStorage.getItem('userId');
-        if (userId) {
-            setIsLoggedIn(true);
-        } else {
-            setIsLoggedIn(false);
-        }
-        const fetchRoom = async () => {
+        const fetchRoomAndOwner = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${roomId}`);
-                if (!response.ok) {
+                const userId = localStorage.getItem('userId');
+                if (userId) {
+                    setIsLoggedIn(true);
+                } else {
+                    setIsLoggedIn(false);
+                }
+
+                const roomResponse = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${roomId}`);
+                if (!roomResponse.ok) {
                     throw new Error('Network response was not ok');
                 }
-                const roomData = await response.json();
+                const roomData = await roomResponse.json();
                 setRoom(roomData);
 
                 if (roomData.owner) {
@@ -54,6 +55,10 @@ function RoomInfo() {
                     const ownerData = await ownerResponse.json();
                     setOwner(ownerData);
                 }
+
+                if (roomData.images && roomData.images.length > 0) {
+                    setSelectedImage(roomData.images[0]);
+                }
             } catch (error) {
                 console.error('Error fetching room and owner:', error);
             } finally {
@@ -61,7 +66,7 @@ function RoomInfo() {
             }
         };
 
-        fetchRoom();
+        fetchRoomAndOwner();
     }, [roomId]);
 
     const BookThisRoom = () => {
