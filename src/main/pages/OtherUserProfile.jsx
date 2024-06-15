@@ -6,6 +6,8 @@ import { UserContext } from '../../shared/contexts/UserContext';
 import { useParams, useNavigate } from 'react-router-dom';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import LocationCityOutlinedIcon from '@mui/icons-material/LocationCityOutlined';
+import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
+import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
 
 function OtherUserProfile() {
     const { userData, isLoading } = useContext(UserContext);
@@ -41,6 +43,15 @@ function OtherUserProfile() {
             }
         }
     `;
+
+    const loadNextReviews = () => {
+        console.log('Load next reviews');
+    };
+
+    const loadPreviousReviews = () => {
+        console.log('Load previous reviews');
+    };
+
 
     useEffect(() => {
         const fetchUserInfo = async (id) => {
@@ -137,6 +148,49 @@ function OtherUserProfile() {
                         <p>✔️ Identity</p>
                         <p>✔️ Email address</p>
                         <p>✔️ Phone number</p>
+                    </div>
+                </div>
+                <div className='person__reviews'>
+                    <div className='reviews__head'>
+                        <h4 className='no__padding'>My reviews</h4>
+                        <div className='review__navigation'>
+                            <div className='review__navigation__icon' onClick={loadNextReviews} >
+                                <ArrowBackIosNewRoundedIcon sx={{ fontSize: 20 }} />
+                            </div>
+                            <div className='review__navigation__icon' onClick={loadPreviousReviews} >
+                            <ArrowForwardIosRoundedIcon sx={{ fontSize: 20 }} />
+                            </div>
+                        </div>
+                    </div>
+                    <div className='reviews__box'>
+                        <div className='user__review'>
+                            <p className='user__review__text'>
+                                After a really succesfull year living with Wolf, I can't help but reflect on the warmth and happiness 
+                                I've experienced. Despite my initial thoughts on sharing space, Wolf made me feel like a happy man again. 
+                                Meals together, shared laughter, and ...
+                            </p>
+                            <div className='user__review__person'>
+                                <img className='user__review__image' src='../tjerk.webp' alt='Tjerk' />
+                                <div className='user__review__person--info'>
+                                    <p className='user__review__name'>Tjerk Symens</p>
+                                    <p className='user__review__date'>January 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='user__review'>
+                            <p className='user__review__text'>
+                                After a really succesfull year living with Wolf, I can't help but reflect on the warmth and happiness 
+                                I've experienced. Despite my initial thoughts on sharing space, Wolf made me feel like a happy man again. 
+                                Meals together, shared laughter, and ...
+                            </p>
+                            <div className='user__review__person'>
+                                <img className='user__review__image' src='../tjerk.webp' alt='Tjerk' />
+                                <div className='user__review__person--info'>
+                                    <p className='user__review__name'>Tjerk Symens</p>
+                                    <p className='user__review__date'>January 2024</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
