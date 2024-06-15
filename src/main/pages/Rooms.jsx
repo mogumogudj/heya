@@ -28,6 +28,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
 
 function Rooms() {
+    const [roomsInUse, setRoomsInUse] = useState([]);
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const { userData, isLoading } = useContext(UserContext);
     const navigate = useNavigate();
@@ -36,6 +37,8 @@ function Rooms() {
         const userId = localStorage.getItem('userId');
         if (userId) {
             setIsLoggedIn(true);
+            setRoomsInUse(userData?.room);
+            console.log(userData);
         } else {
             setIsLoggedIn(false);
         }
@@ -109,7 +112,6 @@ function Rooms() {
         const [Student, setStudent] = useState(false);
         const [Houseowner, setHouseowner] = useState(true);
         console.log(userData?.room);
-
 
         if (Student) {
             const [RoomRented, setRoomRented] = useState(true);
@@ -459,8 +461,13 @@ function Rooms() {
                                 <div className="room__info__side-content">
                                     <div className="side-content--your-rooms">
                                         <h2 className="side-content__title no__padding">Your rooms</h2>
-                                        <RoomCard location="Lange Noordstraat" houseowner="Tjerk Symens" />
-                                        <RoomCard location="Tolstraat" houseowner="Tjerk Symens" />
+                                        <div>
+                                            {roomsInUse.length === 0 ? (
+                                                <div>No rooms in use.</div>
+                                            ) : (
+                                                roomsInUse.map((room) => <RoomCard key={room} roomId={room} />)
+                                            )}
+                                        </div>
                                         <button onClick={allRooms} className="white__button">
                                             Open all rooms
                                         </button>
@@ -668,8 +675,13 @@ function Rooms() {
                             <div className="room-selector">
                                 <h2 className="room-selector__title no__padding">Your rooms</h2>
                                 <div className="room-selector--rooms">
-                                    <RoomCard location="Lange Noordstraat" houseowner="Tjerk Symens" size="big" />
-                                    <RoomCard location="Tolstraat" houseowner="Tjerk Symens" size="big" />
+                                    <div>
+                                        {roomsInUse.length === 0 ? (
+                                            <div>No rooms in use.</div>
+                                        ) : (
+                                            roomsInUse.map((room) => <RoomCard key={room} roomId={room} />)
+                                        )}
+                                    </div>
                                     <div className="add-room__button" onClick={addRoom}>
                                         <AddIcon sx={{ fontSize: 72 }} />
                                         <h6 className="h6__strong add-room__title">Add room</h6>
