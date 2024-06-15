@@ -85,7 +85,7 @@ function RoomSlider({ title }) {
                         <p className="room-label">{room.label}</p>
                         <FavoriteBorderIcon className="room-favorite-icon" />
                         <div className="room-details">
-                            <h6 className="room-price">{room.pricing[0]?.rent}</h6>
+                            <h6 className="room-price">€{room.pricing[0]?.rent}</h6>
                             <p className="room-city bold">{room.city}</p>
                         </div>
                     </div>

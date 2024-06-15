@@ -51,14 +51,13 @@
   
   .room-favorite-icon {
     position: relative;
-    top: -238px;
-    right: -260px;
+    margin-top: 24px;
     color: var(--White);
     cursor: pointer;
   }
   
   .room-details {
-    margin-top: -80px;
+    margin-top: -76px;
     padding: 12px;
     background-color: var(--White);
   }
