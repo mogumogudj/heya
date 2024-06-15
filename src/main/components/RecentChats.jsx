@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import AddCommentIcon from '@mui/icons-material/AddComment';
 import SearchIcon from '@mui/icons-material/Search';
 import { Box, TextField, IconButton } from '@mui/material';
 
 function RecentChats({ onSelectUser }) {
     const [chats, setChats] = useState([]);
+    const [allUsers, setAllUsers] = useState([]);
+    const [filteredChats, setFilteredChats] = useState([]);
+    const [filteredUsers, setFilteredUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const userId = localStorage.getItem('userId');
     const [searchKeyword, setSearchKeyword] = useState('');
-    const [searchKeywords, setSearchKeywords] = useState([]);
-    const [active, setActive] = useState('all');
 
     useEffect(() => {
         const fetchChats = async () => {
@@ -32,7 +32,10 @@ function RecentChats({ onSelectUser }) {
 
                 const allChats = Array.from(chatsByUser.values());
 
+                allChats.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
                 setChats(allChats);
+                setFilteredChats(allChats);
             } catch (error) {
                 console.error('Failed to fetch recent chats:', error);
             } finally {
@@ -40,36 +43,46 @@ function RecentChats({ onSelectUser }) {
             }
         };
 
+        const fetchAllUsers = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/users`);
+                const data = await response.json();
+                setAllUsers(data);
+            } catch (error) {
+                console.error('Failed to fetch all users:', error);
+            }
+        };
+
         fetchChats();
+        fetchAllUsers();
     }, [userId]);
 
-    const handleAddKeyword = () => {
-        if (searchKeyword.trim() !== '') {
-            setSearchKeywords([...searchKeywords, searchKeyword]);
-            setSearchKeyword('');
-        }
+    const handleSearch = (keyword) => {
+        const filteredChats = chats.filter(
+            (chat) =>
+                `${chat.sender.firstName} ${chat.sender.lastName}`.toLowerCase().includes(keyword.toLowerCase()) ||
+                `${chat.receiver.firstName} ${chat.receiver.lastName}`.toLowerCase().includes(keyword.toLowerCase()),
+        );
+
+        const filteredUsers = allUsers.filter((user) =>
+            `${user.firstName} ${user.lastName}`.toLowerCase().includes(keyword.toLowerCase()),
+        );
+
+        setFilteredChats(filteredChats);
+        setFilteredUsers(filteredUsers);
     };
 
     const handleChange = (event) => {
-        setSearchKeyword(event.target.value);
-    };
-
-    const favouritesActive = () => {
-        setActive('favourites');
-    };
-
-    const allActive = () => {
-        setActive('all');
+        const keyword = event.target.value;
+        setSearchKeyword(keyword);
+        handleSearch(keyword);
     };
 
     return (
         <div className="chats__list">
             <h1 className="no__padding">Chat</h1>
             <div className="chat__list__options">
-                <div className="add-chat__button">
-                    <AddCommentIcon onClick={() => console.log('create new chat')} sx={{ fontSize: 28 }} />
-                </div>
-                <Box display="flex" alignItems="center" gap={2} mb={2} sx={{ width: '100%' }}>
+                <Box display="flex" alignItems="center" gap={2} mb={2} sx={{ width: '100%', paddingTop: '32px' }}>
                     <TextField
                         fullWidth
                         variant="outlined"
@@ -79,86 +92,80 @@ function RecentChats({ onSelectUser }) {
                         onChange={handleChange}
                         InputProps={{
                             endAdornment: (
-                                <IconButton onClick={handleAddKeyword}>
+                                <IconButton>
                                     <SearchIcon className="search-icon" style={{ fontSize: 40 }} />
                                 </IconButton>
                             ),
                         }}
                     />
                 </Box>
-                <div className="chat__list__filters">
-                    <button
-                        onClick={favouritesActive}
-                        className={
-                            active === 'favourites'
-                                ? 'blue__button chat__list__filter active'
-                                : 'white__button chat__list__filter'
-                        }
-                    >
-                        Favourites
-                    </button>
-                    <button
-                        onClick={allActive}
-                        className={
-                            active === 'all'
-                                ? 'blue__button chat__list__filter active'
-                                : 'white__button chat__list__filter'
-                        }
-                    >
-                        All
-                    </button>
-                </div>
             </div>
             <div className="chats__list--chats">
                 {loading ? (
                     <p>Loading...</p>
-                ) : chats.length > 0 ? (
-                    <ul className="looped-chats__list">
-                        {chats.reverse().map((chat) => {
-                            const otherUserId = chat.sender._id === userId ? chat.receiver._id : chat.sender._id;
-                            const otherUserName =
-                                chat.sender._id === userId
-                                    ? `${chat.receiver.firstName} ${chat.receiver.lastName}`
-                                    : `${chat.sender.firstName} ${chat.sender.lastName}`;
-                            const otherUserImage =
-                                chat.sender._id === userId ? chat.receiver.imageLink : chat.sender.imageLink;
+                ) : searchKeyword.length === 0 ? (
+                    filteredChats.length > 0 ? (
+                        <ul className="looped-chats__list">
+                            {filteredChats.map((chat) => {
+                                const otherUserId = chat.sender._id === userId ? chat.receiver._id : chat.sender._id;
+                                const otherUserName =
+                                    chat.sender._id === userId
+                                        ? `${chat.receiver.firstName} ${chat.receiver.lastName}`
+                                        : `${chat.sender.firstName} ${chat.sender.lastName}`;
+                                const otherUserImage =
+                                    chat.sender._id === userId ? chat.receiver.imageLink : chat.sender.imageLink;
 
-                            return (
-                                <li
-                                    className="chat__lists--chat"
-                                    key={chat._id}
-                                    onClick={() => onSelectUser(otherUserId)}
-                                >
-                                    <div className="chat__lists--chat__image">
-                                        <img
-                                            src={otherUserImage || 'path/to/placeholder-image.png'}
-                                            alt={otherUserName}
-                                            className={!otherUserImage ? 'placeholder' : ''}
-                                        />
-                                    </div>
-                                    <div className="chat__info">
-                                        <h6 className="chat__info--name no__padding h6__strong">{otherUserName}</h6>
-                                        <p className="chat__info--message no__padding">{chat.content}</p>
-                                    </div>
-                                    <p className="chat__time no__padding">
-                                        {new Date(chat.timestamp).toLocaleString('en-GB', {
-                                            hour: '2-digit',
-                                            minute: '2-digit',
-                                            hour12: false,
-                                        })}
-                                    </p>
-                                </li>
-                            );
-                        })}
+                                return (
+                                    <li
+                                        className="chat__lists--chat"
+                                        key={chat._id}
+                                        onClick={() => onSelectUser(otherUserId)}
+                                    >
+                                        <div className="chat__lists--chat__image">
+                                            <img
+                                                src={otherUserImage || 'path/to/placeholder-image.png'}
+                                                alt={otherUserName}
+                                                className={!otherUserImage ? 'placeholder' : ''}
+                                            />
+                                        </div>
+                                        <div className="chat__info">
+                                            <h6 className="chat__info--name no__padding h6__strong">{otherUserName}</h6>
+                                            <p className="chat__info--message no__padding">{chat.content}</p>
+                                        </div>
+                                        <p className="chat__time no__padding">
+                                            {new Date(chat.timestamp).toLocaleString('en-GB', {
+                                                hour: '2-digit',
+                                                minute: '2-digit',
+                                                hour12: false,
+                                            })}
+                                        </p>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    ) : (
+                        <p>No recent chats</p>
+                    )
+                ) : filteredUsers.length > 0 ? (
+                    <ul className="looped-chats__list">
+                        {filteredUsers.map((user) => (
+                            <li className="chat__lists--chat" key={user._id} onClick={() => onSelectUser(user._id)}>
+                                <div className="chat__lists--chat__image">
+                                    <img
+                                        src={user.imageLink || 'path/to/placeholder-image.png'}
+                                        alt={`${user.firstName} ${user.lastName}`}
+                                        className={!user.imageLink ? 'placeholder' : ''}
+                                    />
+                                </div>
+                                <div className="chat__info">
+                                    <h6 className="chat__info--name no__padding h6__strong">{`${user.firstName} ${user.lastName}`}</h6>
+                                </div>
+                            </li>
+                        ))}
                     </ul>
                 ) : (
-                    <p>No recent chats</p>
+                    <p>No users found</p>
                 )}
-            </div>
-            <div className="more-people__button">
-                <a className="underline" href="#">
-                    Find more people to chat with!
-                </a>
             </div>
         </div>
     );
