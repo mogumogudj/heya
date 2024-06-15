@@ -95,16 +95,16 @@ function Rooms() {
                     <div className="room-selector">
                         <h2 className="room-selector__title no__padding">Your rooms</h2>
                         <div className="room-selector--rooms">
-                            <div>
+                            <div className='houseowner__looped__rooms'>
                                 {roomsInUse.length === 0 ? (
                                     <div>No rooms in use.</div>
                                 ) : (
-                                    roomsInUse.map((room) => <RoomCard key={room} roomId={room} />)
+                                    roomsInUse.map((room) => <RoomCard key={room} roomId={room} size="big" />)
                                 )}
-                            </div>
-                            <div className="add-room__button" onClick={addRoom}>
-                                <AddIcon sx={{ fontSize: 72 }} />
-                                <h6 className="h6__strong add-room__title">Add room</h6>
+                                <div className="add-room__button" onClick={addRoom}>
+                                    <AddIcon sx={{ fontSize: 72 }} />
+                                    <h6 className="h6__strong add-room__title">Add room</h6>
+                                </div>
                             </div>
                         </div>
                         <div className="room-not-found__button">

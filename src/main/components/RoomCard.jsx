@@ -37,7 +37,7 @@ function RoomCard({ roomId, size }) {
         return (
             <div className="your-room room__card room__card--big">
                 <div className="room__card--big__banner">
-                    <img className="your-room--image--big" src="../room.webp" alt={roomData.city} />
+                <img className="your-room--image--big" src={roomData?.images[0]} alt={roomData?.city} />
                     <div className="room--tag tag featured room__card__tag">
                         <p>Featured</p>
                     </div>
@@ -61,7 +61,7 @@ function RoomCard({ roomId, size }) {
                     <div className="room__card--big__owner">
                         <p className="no__padding bold">Houseowner</p>
                         <div className="owner--visual">
-                            <img className="houseowner__image" src="../tjerk.webp" alt="Houseowner" />
+                            <img className="houseowner__image" src={ownerData.imageLink} alt="Houseowner" />
                             <p className="no__padding">{ownerData.firstName}</p>
                         </div>
                     </div>
