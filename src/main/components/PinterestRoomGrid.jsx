@@ -26,7 +26,6 @@ function PinterestRoomGrid({ title }) {
     }, []);
 
     const openRoom = (id) => {
-        // Adjust this logic based on your application's routing strategy
         location.href = `/room-info/${id}`;
     };
 
