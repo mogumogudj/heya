@@ -1,159 +1,98 @@
-import React, { useRef } from "react";
-import "../../shared/css/roomSlider.css";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import React, { useRef, useState, useEffect } from 'react';
+import '../../shared/css/roomSlider.css';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-const rooms = [
-  {
-    id: 1,
-    image: "../kortrijk.webp",
-    label: "Featured",
-    price: "€1200",
-    city: "Leuven",
-  },
-  {
-    id: 2,
-    image: "../kortrijk.webp",
-    label: "New",
-    price: "€950",
-    city: "Antwerp",
-  },
-  {
-    id: 3,
-    image: "../kortrijk.webp",
-    label: "Featured",
-    price: "€800",
-    city: "Gent",
-  },
-  {
-    id: 4,
-    image: "../kortrijk.webp",
-    label: "New",
-    price: "€1100",
-    city: "Brussels",
-  },
-  {
-    id: 5,
-    image: "../kortrijk.webp",
-    label: "Featured",
-    price: "€900",
-    city: "Bruges",
-  },
-  {
-    id: 6,
-    image: "../kortrijk.webp",
-    label: "New",
-    price: "€1000",
-    city: "Ostend",
-  },
-  {
-    id: 7,
-    image: "../kortrijk.webp",
-    label: "Featured",
-    price: "€850",
-    city: "Mechelen",
-  },
-  {
-    id: 8,
-    image: "../kortrijk.webp",
-    label: "New",
-    price: "€950",
-    city: "Hasselt",
-  },
-  {
-    id: 9,
-    image: "../kortrijk.webp",
-    label: "Featured",
-    price: "€1200",
-    city: "Namur",
-  },
-  {
-    id: 10,
-    image: "../kortrijk.webp",
-    label: "New",
-    price: "€800",
-    city: "Liege",
-  },
-  {
-    id: 11,
-    image: "../kortrijk.webp",
-    label: "Featured",
-    price: "€900",
-    city: "Mons",
-  },
-  {
-    id: 12,
-    image: "../kortrijk.webp",
-    label: "New",
-    price: "€1000",
-    city: "Charleroi",
-  }
-];
+function RoomSlider({ title }) {
+    const roomCardContainerRef = useRef(null);
+    const [rooms, setRooms] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-function RoomSlider({title}) {
-  const roomCardContainerRef = useRef(null);
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
-  const handleMouseDown = (event) => {
-    isDown = true;
-    startX = event.pageX - roomCardContainerRef.current.offsetLeft;
-    scrollLeft = roomCardContainerRef.current.scrollLeft;
-  };
+    useEffect(() => {
+        const fetchRooms = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setRooms(data);
+            } catch (error) {
+                console.error('Error fetching rooms:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
 
-  const handleMouseLeave = () => {
-    isDown = false;
-  };
+        fetchRooms();
+    }, []);
 
-  const handleMouseUp = () => {
-    isDown = false;
-  };
+    const handleMouseDown = (event) => {
+        isDown = true;
+        startX = event.pageX - roomCardContainerRef.current.offsetLeft;
+        scrollLeft = roomCardContainerRef.current.scrollLeft;
+    };
 
-  const handleMouseMove = (event) => {
-    if (!isDown) return;
-    event.preventDefault();
-    const x = event.pageX - roomCardContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 3; 
-    roomCardContainerRef.current.scrollLeft = scrollLeft - walk;
-  };
+    const handleMouseLeave = () => {
+        isDown = false;
+    };
 
-  const openRoom = () => {
-    location.href = "/room-info";
-  }
+    const handleMouseUp = () => {
+        isDown = false;
+    };
 
-  return (
-    <div className="room-slider">
-      <div className="flex-container mb-4">
-        <h3>{title}</h3>
-        <button className="more-rooms-button blue__button small">See more</button>
-      </div>
+    const handleMouseMove = (event) => {
+        if (!isDown) return;
+        event.preventDefault();
+        const x = event.pageX - roomCardContainerRef.current.offsetLeft;
+        const walk = (x - startX) * 3;
+        roomCardContainerRef.current.scrollLeft = scrollLeft - walk;
+    };
 
-      <div
-        className="room-card-container"
-        ref={roomCardContainerRef}
-        onMouseDown={handleMouseDown}
-        onMouseLeave={handleMouseLeave}
-        onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
-      >
-        {rooms.map((room) => (
-          <div key={room.id} className="room-card" onClick={openRoom}>
-            <img
-              src={room.image}
-              alt={`Room in ${room.city}`}
-              className="room-image"
-            />
-            <p className="room-label">{room.label}</p>
-            <FavoriteBorderIcon className="room-favorite-icon" />
-            <div className="room-details">
-              <h6 className="room-price">{room.price}</h6>
-              <p className="room-city bold">{room.city}</p>
+    const openRoom = (id) => {
+        location.href = `/room-info/${id}`;
+    };
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (!rooms.length) {
+        return <div>No rooms available</div>;
+    }
+
+    return (
+        <div className="room-slider">
+            <div className="flex-container mb-4">
+                <h3>{title}</h3>
+                <button className="more-rooms-button blue__button small">See more</button>
             </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+
+            <div
+                className="room-card-container"
+                ref={roomCardContainerRef}
+                onMouseDown={handleMouseDown}
+                onMouseLeave={handleMouseLeave}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+            >
+                {rooms.map((room) => (
+                    <div key={room._id} className="room-card" onClick={() => openRoom(room._id)}>
+                        <img src={room.images[0]} alt={`Room in ${room.city}`} className="room-image" />
+                        <p className="room-label">{room.label}</p>
+                        <FavoriteBorderIcon className="room-favorite-icon" />
+                        <div className="room-details">
+                            <h6 className="room-price">{room.pricing[0]?.rent}</h6>
+                            <p className="room-city bold">{room.city}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 }
 
 export default RoomSlider;
