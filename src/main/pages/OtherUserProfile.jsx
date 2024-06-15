@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import '../css/profile.css';
 import Footer from '../../shared/components/Footer.jsx';
 import NavApp from '../components/NavApp.jsx';
+import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
+import UserReview from '../../main/components/UserReview.jsx';
 import { UserContext } from '../../shared/contexts/UserContext';
 import { useParams, useNavigate } from 'react-router-dom';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
@@ -18,6 +20,8 @@ function OtherUserProfile() {
     const [otherUserInfo, setOtherUserInfo] = useState(null);
     const [userImage, setUserImage] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
+    const [reviewFields, setReviewFields] = useState('closed');
+    const [userReview, setUserReview] = useState('');
 
     const spinnerStyle = {
         border: '4px solid rgba(0, 0, 0, 0.1)',
@@ -52,6 +56,16 @@ function OtherUserProfile() {
         console.log('Load previous reviews');
     };
 
+    const leaveReview = () => { 
+        setReviewFields('open');
+    }
+
+    const submitReview = () => {
+        setReviewFields('closed');
+        //moet alle data naar db sturen
+    }
+
+    const handleUserReviewChange = (e) => setUserReview(e.target.value);
 
     useEffect(() => {
         const fetchUserInfo = async (id) => {
@@ -163,34 +177,31 @@ function OtherUserProfile() {
                         </div>
                     </div>
                     <div className='reviews__box'>
-                        <div className='user__review'>
-                            <p className='user__review__text'>
-                                After a really succesfull year living with Wolf, I can't help but reflect on the warmth and happiness 
-                                I've experienced. Despite my initial thoughts on sharing space, Wolf made me feel like a happy man again. 
-                                Meals together, shared laughter, and ...
-                            </p>
-                            <div className='user__review__person'>
-                                <img className='user__review__image' src='../tjerk.webp' alt='Tjerk' />
-                                <div className='user__review__person--info'>
-                                    <p className='user__review__name'>Tjerk Symens</p>
-                                    <p className='user__review__date'>January 2024</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='user__review'>
-                            <p className='user__review__text'>
-                                After a really succesfull year living with Wolf, I can't help but reflect on the warmth and happiness 
-                                I've experienced. Despite my initial thoughts on sharing space, Wolf made me feel like a happy man again. 
-                                Meals together, shared laughter, and ...
-                            </p>
-                            <div className='user__review__person'>
-                                <img className='user__review__image' src='../tjerk.webp' alt='Tjerk' />
-                                <div className='user__review__person--info'>
-                                    <p className='user__review__name'>Tjerk Symens</p>
-                                    <p className='user__review__date'>January 2024</p>
-                                </div>
-                            </div>
-                        </div>
+                            <UserReview 
+                                reviewName='Tjerk Symens' 
+                                reviewImage='../tjerk.webp' 
+                                reviewText="After a really successful year living with Wolf, I can't help but reflect on the warmth and happiness I've experienced. Despite my initial thoughts on sharing space, Wolf made me feel like a happy man again. Meals together, shared laughter, and ..."
+                                reviewDate='January 2024' 
+                            />
+                            <UserReview 
+                                reviewName='Tjerk Symens' 
+                                reviewImage='../tjerk.webp' 
+                                reviewText="After a really successful year living with Wolf, I can't help but reflect on the warmth and happiness I've experienced. Despite my initial thoughts on sharing space, Wolf made me feel like a happy man again. Meals together, shared laughter, and ..."
+                                reviewDate='January 2024' 
+                            />
+                        <button 
+                            onClick={leaveReview} 
+                            className={reviewFields === "closed" ? "white__button review__button--closed-form" : reviewFields === "open" ? "white__button review__button--closed-form nodisplay" : "white__button review__button--closed-form"}
+                        >
+                            Leave a review for {otherUserInfo?.firstName}
+                        </button>
+                    </div>
+                    <div className={reviewFields === "closed" ? "review__form nodisplay" : reviewFields === "open" ? "review__form" : "review__form nodisplay"}>
+                        <h4>Leave a review</h4>
+                        <TextBoxWithMaxInput value={userReview} onChange={handleUserReviewChange} />
+                        <button onClick={submitReview} className="blue__button review__button--open-form">
+                            submit review
+                        </button>
                     </div>
                 </div>
             </div>

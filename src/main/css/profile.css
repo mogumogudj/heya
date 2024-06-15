@@ -124,6 +124,24 @@
     margin: 0;
 }
 
+.review__button--closed-form {
+    width: 300px;
+}
+
+.review__form {
+    margin-top: 16px;
+    width: calc(50% - 8px);
+}
+
+.review__button--open-form {
+    width: 60%;
+    margin-top: 8px;
+}
+
+.nodisplay {
+    display: none;
+}
+
 @media (min-width: 500px) {
     .twoGrid.grid.profile{
         display: grid;
