@@ -156,7 +156,9 @@ function PlaceOverview() {
                                 {roomData.roomDetails?.length > 0 && (
                                     <>
                                         <span> {roomData.roomDetails[0].furnishing}</span>
-                                        <span> {roomData.roomDetails[0].size}</span>
+                                        <br />
+                                        <span>size: {roomData.roomDetails[0].size} m²</span>
+                                        <br />
                                         {roomData.roomDetails[0]?.existingFurnishing?.map(
                                             (existingFurnishing, index) => (
                                                 <span key={index}>
