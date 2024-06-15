@@ -10,6 +10,7 @@ import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx
 
 function HouseholdDetails() {
     const methods = useForm();
+    const { register, handleSubmit, setValue } = methods;
     const [otherInfo, setOtherInfo] = useState('');
     const handleOtherInfoChange = (e) => setOtherInfo(e.target.value);
     const navigate = useNavigate();
@@ -75,13 +76,13 @@ function HouseholdDetails() {
                             <h2>Your Household Details</h2>
                         </div>
                         <FormProvider {...methods}>
-                            <form onSubmit={methods.handleSubmit(onSubmit)}>
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="household__details__flex">
                                     <div className="household__details__inputs">
                                         <div className="form__group">
                                             <p>Room for student(s)</p>
                                             <select
-                                                {...methods.register('room', { required: true })}
+                                                {...register('room', { required: true })}
                                                 className="input__field small"
                                             >
                                                 {[1, 2, 3, 4, 5].map((num) => (
@@ -101,9 +102,13 @@ function HouseholdDetails() {
                                                     <p style={{ textDecoration: 'underline' }}>Adults</p>
                                                     <input
                                                         type="number"
-                                                        placeholder="1"
-                                                        {...methods.register('adults', { required: true })}
+                                                        placeholder="2"
+                                                        {...register('adults', {
+                                                            required: true,
+                                                            min: 0,
+                                                        })}
                                                         className="input__field small"
+                                                        defaultValue={0}
                                                     />
                                                 </div>
                                                 <div className="household__details__item">
@@ -111,8 +116,12 @@ function HouseholdDetails() {
                                                     <input
                                                         type="number"
                                                         placeholder="0"
-                                                        {...methods.register('children', { required: true })}
+                                                        {...register('children', {
+                                                            required: true,
+                                                            min: 0,
+                                                        })}
                                                         className="input__field small"
+                                                        defaultValue={0}
                                                     />
                                                 </div>
                                             </div>
@@ -140,7 +149,7 @@ function HouseholdDetails() {
                                                 <input
                                                     type="radio"
                                                     value="yes"
-                                                    {...methods.register('pets', { required: true })}
+                                                    {...register('pets', { required: true })}
                                                 />
                                                 Yes
                                             </label>
@@ -148,7 +157,7 @@ function HouseholdDetails() {
                                                 <input
                                                     type="radio"
                                                     value="no"
-                                                    {...methods.register('pets', { required: true })}
+                                                    {...register('pets', { required: true })}
                                                 />
                                                 No
                                             </label>

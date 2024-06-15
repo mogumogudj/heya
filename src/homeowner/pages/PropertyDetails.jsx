@@ -76,7 +76,7 @@ function PropertyDetails() {
         <div className="page__container">
             <NavLogin />
             <div className="content">
-                <div className="center-container">
+                <div className="center-container" style={{ height: '100%', marginTop: '-220px' }}>
                     <div className="property__details__page">
                         <div className="homeowner__register__header">
                             <h1>Tell us something more about</h1>

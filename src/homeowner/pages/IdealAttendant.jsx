@@ -93,15 +93,14 @@ function IdealAttendant() {
             <div className="content" style={{ minHeight: '128vh' }}>
                 <div className="center-container" style={{ height: '100%' }}>
                     <div className="ideal__attendant__page">
-                        <div className='homeowner__register__header'>
-                        <h1>Perfect Attendant</h1>
-                        <h2>Describe Your Ideal Attendant</h2>
+                        <div className="homeowner__register__header">
+                            <h1>Perfect Attendant</h1>
+                            <h2>Describe Your Ideal Attendant</h2>
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            
                             <div className="form__group">
                                 <p>Preferred Age</p>
-                                <div className="flex" style={{marginTop: '-8px'}}>
+                                <div className="flex" style={{ marginTop: '-8px' }}>
                                     <div>
                                         <input
                                             style={{ width: '35%' }}
@@ -109,6 +108,7 @@ function IdealAttendant() {
                                             placeholder="18"
                                             {...register('ageMin', { required: true })}
                                             className="input__field small bold"
+                                            defaultValue={18}
                                         />
                                     </div>
 
@@ -116,9 +116,10 @@ function IdealAttendant() {
                                         <input
                                             style={{ width: '35%' }}
                                             type="number"
-                                            placeholder="64"
+                                            placeholder="30"
                                             {...register('ageMax', { required: true })}
                                             className="input__field small bold"
+                                            defaultValue={30}
                                         />
                                     </div>
                                 </div>
@@ -152,7 +153,7 @@ function IdealAttendant() {
                                 </div>
                             </div>
 
-                            <div className='form__group'>
+                            <div className="form__group">
                                 <p>Preferred Characteristics</p>
                                 <div className="forGrid grid">
                                     {[
@@ -176,23 +177,22 @@ function IdealAttendant() {
                                 </div>
                             </div>
 
-
                             <div className="TextBoxWithMaxInput">
-                            <div className="TextBoxWithMaxInput__flex">
-                                <p>Extra information for characteristics</p>
-                                <InfoOutlinedIcon
-                                    className="TextBoxWithMaxInput__flex__icon"
-                                    style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }}
+                                <div className="TextBoxWithMaxInput__flex">
+                                    <p>Extra information for characteristics</p>
+                                    <InfoOutlinedIcon
+                                        className="TextBoxWithMaxInput__flex__icon"
+                                        style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }}
+                                    />
+                                </div>
+                                <TextBoxWithMaxInput
+                                    value={extraInformationCharacter}
+                                    onChange={handleCharacterInputChange}
+                                    className="input__field"
                                 />
                             </div>
-                            <TextBoxWithMaxInput 
-                            value={extraInformationCharacter}
-                            onChange={handleCharacterInputChange}
-                            className="input__field" />
-                        </div>
 
-
-                            <div className='form__group'>
+                            <div className="form__group">
                                 <p>Must be</p>
                                 <div className="forGrid grid">
                                     {['Non Smoker', 'Vegetarian', 'Vegan', 'Other (please specify in textbox)'].map(
@@ -209,23 +209,20 @@ function IdealAttendant() {
                                 </div>
                             </div>
 
-
-
-
                             <div className="TextBoxWithMaxInput">
-                            <div className="TextBoxWithMaxInput__flex">
-                                <p>Extra information for must be's</p>
-                                <InfoOutlinedIcon
-                                    className="TextBoxWithMaxInput__flex__icon"
-                                    style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }}
+                                <div className="TextBoxWithMaxInput__flex">
+                                    <p>Extra information for must be's</p>
+                                    <InfoOutlinedIcon
+                                        className="TextBoxWithMaxInput__flex__icon"
+                                        style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }}
+                                    />
+                                </div>
+                                <TextBoxWithMaxInput
+                                    value={extraInformation}
+                                    onChange={handleMustBeInputChange}
+                                    className="input__field"
                                 />
                             </div>
-                            <TextBoxWithMaxInput 
-                            value={extraInformation}
-                            onChange={handleMustBeInputChange}
-                            className="input__field" />
-                        </div>
-
 
                             <div className="next__help">
                                 <button className="blue__button medium" type="submit">

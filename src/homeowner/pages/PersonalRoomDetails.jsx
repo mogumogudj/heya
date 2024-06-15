@@ -78,7 +78,7 @@ function PersonalRoomDetails() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content" style={{ minHeight: '100vh', marginTop: '-380px' }}>
+            <div className="content" style={{ minHeight: '100vh', marginTop: '-520px' }}>
                 <div className="center-container" style={{ height: '100%' }}>
                     <div className="personal__room__details__page">
                         <div className="homeowner__register__header">
