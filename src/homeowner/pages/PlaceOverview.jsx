@@ -20,24 +20,24 @@ function PlaceOverview() {
         }
 
         const fetchRoomData = async () => {
-            try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${roomId}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    setRoomData(data);
-                } else {
-                    console.error('Failed to fetch room data');
+            if (roomId) {
+                try {
+                    const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms/${roomId}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        setRoomData(data);
+                    } else {
+                        console.error('Failed to fetch room data');
+                    }
+                } catch (error) {
+                    console.error('Error fetching room data:', error);
+                } finally {
+                    setLoading(false);
                 }
-            } catch (error) {
-                console.error('Error fetching room data:', error);
-            } finally {
-                setLoading(false);
             }
         };
 
-        if (roomId) {
-            fetchRoomData();
-        }
+        fetchRoomData();
     }, [roomId]);
 
     const handleSubmit = () => {
@@ -59,7 +59,7 @@ function PlaceOverview() {
                 <h1>Okay, {userData?.firstName}, your place is ready.</h1>
                 <h2>Here are all the important details:</h2>
                 <div>
-                    <img className={'userImage'} src={roomData?.images[0] || ''} alt="User Image" />
+                    <img className={'userImage'} src={roomData?.images[0] || ''} alt="Room Image" />
                     <h3 className={'centered'}>
                         {userData?.firstName} {userData?.lastName}
                     </h3>
@@ -142,32 +142,50 @@ function PlaceOverview() {
                             <div>
                                 <b>For Shared Use</b>
                                 <br />
-                                {roomData.sharedSpaces[0]?.sharedSpaces.map((space, index) => (
-                                    <span key={index}>
-                                        {space}
-                                        <br />
-                                    </span>
-                                ))}
+                                {roomData.sharedSpaces?.length > 0 &&
+                                    roomData.sharedSpaces[0]?.sharedSpaces?.map((space, index) => (
+                                        <span key={index}>
+                                            {space}
+                                            <br />
+                                        </span>
+                                    ))}
                             </div>
                             <div>
-                                <b>Available Amentities</b>
+                                <b>Room Details</b>
                                 <br />
-                                {roomData.roomDetails[0]?.amenities.map((amenity, index) => (
-                                    <span key={index}>
-                                        {amenity}
+                                {roomData.roomDetails?.length > 0 && (
+                                    <>
+                                        <span> {roomData.roomDetails[0].furnishing}</span>
                                         <br />
-                                    </span>
-                                ))}
+                                        <span>size: {roomData.roomDetails[0].size} m²</span>
+                                        <br />
+                                        {roomData.roomDetails[0]?.existingFurnishing?.map(
+                                            (existingFurnishing, index) => (
+                                                <span key={index}>
+                                                    {existingFurnishing}
+                                                    <br />
+                                                </span>
+                                            ),
+                                        )}
+                                        <span>{roomData.roomDetails[0]?.otherInfo}</span>
+                                    </>
+                                )}
                             </div>
                             <div>
                                 <b>For Personal Use</b>
                                 <br />
-                                {roomData.personalRoomDetails[0]?.activities.map((activity, index) => (
-                                    <span key={index}>
-                                        {activity}
-                                        <br />
-                                    </span>
-                                ))}
+                                {roomData.personalRoomDetails?.length > 0 && (
+                                    <>
+                                        {roomData.personalRoomDetails[0]?.amentities?.map((amenity, index) => (
+                                            <span key={index}>
+                                                {amenity}
+                                                <br />
+                                            </span>
+                                        ))}
+                                        <span>{roomData.personalRoomDetails[0]?.additionalAmenities}</span>
+                                        <span>{roomData.personalRoomDetails[0]?.otherInfo}</span>
+                                    </>
+                                )}
                             </div>
                         </div>
                         <br />
@@ -182,7 +200,6 @@ function PlaceOverview() {
                                 <span>{roomData.pricing[0]?.deposit} € deposit</span>
                             </div>
                         </div>
-
                         <br />
                         <h4>Availability</h4>
                         <div className={'twoGrid grid'}>

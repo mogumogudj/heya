@@ -55,7 +55,7 @@ function AccommodationInformation() {
         };
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms`, {
+            const roomResponse = await fetch(`${import.meta.env.VITE_API_URL}/rooms`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -63,17 +63,31 @@ function AccommodationInformation() {
                 body: JSON.stringify(roomDto),
             });
 
-            const result = await response.json();
-            console.log('API Response:', result); // Debugging log
+            const roomResult = await roomResponse.json();
 
-            if (response.ok) {
-                if (result._id) {
-                    navigate(`/household-details-homeowner?roomId=${result._id}`);
+            if (roomResponse.ok) {
+                if (roomResult._id) {
+                    const userResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            room: roomResult._id,
+                        }),
+                    });
+                    const userResult = await userResponse.json();
+
+                    if (userResponse.ok) {
+                        navigate(`/household-details-homeowner?roomId=${roomResult._id}`);
+                    } else {
+                        throw new Error(userResult.message || 'Failed to update user with room ID');
+                    }
                 } else {
                     throw new Error('Room ID is missing in the API response');
                 }
             } else {
-                throw new Error(result.message || 'Failed to create room');
+                throw new Error(roomResult.message || 'Failed to create room');
             }
         } catch (error) {
             setLocalError(error.message || 'Failed to create room');

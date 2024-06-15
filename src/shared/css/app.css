@@ -955,6 +955,14 @@ textarea{
         margin-top: 152px;
     }
 
+    .homeowner__register__header {
+        margin-top: 140px;
+    }
+
+    .plan__meeting__page {
+        margin-top: 80px;
+    }
+
     @media screen and (max-width: 800px) {
         .household__details__page {
             margin-top: 0px;
@@ -1005,6 +1013,7 @@ textarea{
         margin-top: 152px;
     }
 
+ /* Plan meeting */
     .availabilityGrid .availability__container {
         margin-top: 40px;
     }
@@ -1030,6 +1039,20 @@ textarea{
     
     .availability-info__date:first-of-type {
         margin-top: 10px;
+    }
+
+   
+    .availability-info__skip-link {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--Black);
+        text-decoration: none;
+        font-size: 1em;
+        cursor: pointer;
+    }
+    
+    .availability-info__skip-link:hover {
+        text-decoration: underline;
     }
 
 
@@ -1163,6 +1186,48 @@ textarea{
     .total__amount {
         margin: 20px 0;
         color: var(--Lime_Green);
+    }
+
+/* Plan meeting */
+    .availabilityGrid .availability__container {
+        margin-top: 40px;
+    }
+
+    .availability-info {
+        background-color: var(--Transparent-Grey);
+        border: 1px solid var(--Grey_Blue);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .availability-info__title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+    
+    .availability-info__date {
+        font-size: 1.2em;
+        margin: 5px 0;
+    }
+    
+    .availability-info__date:first-of-type {
+        margin-top: 10px;
+    }
+
+   
+    .availability-info__skip-link {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--Black);
+        text-decoration: none;
+        font-size: 1em;
+        cursor: pointer;
+    }
+    
+    .availability-info__skip-link:hover {
+        text-decoration: underline;
     }
     
 }
