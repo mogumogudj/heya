@@ -49,11 +49,11 @@ function PinterestRoomGrid({ title }) {
             <div className="pinterest-room-grid">
                 {rooms.map((room) => (
                     <div key={room._id} className="pinterest-room-card" onClick={() => openRoom(room._id)}>
-                        <img src={room.images[0]} alt={`Room in ${room.city}`} className="pinterest-room-image" />
+                        <img src={room?.images[0]} alt={`Room in ${room?.city}`} className="pinterest-room-image" />
                         <FavoriteBorderIcon className="pinterest-room-favorite-icon" />
                         <div className="pinterest-room-details">
-                            <h6 className="pinterest-room-price">€{room.pricing[0].rent}</h6>
-                            <p className="pinterest-room-city p__strong">{room.city}</p>
+                            <h6 className="pinterest-room-price">€{room?.pricing[0]?.rent}</h6>
+                            <p className="pinterest-room-city p__strong">{room?.city}</p>
                         </div>
                     </div>
                 ))}
