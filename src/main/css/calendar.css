@@ -5,6 +5,11 @@
     font-size: 80px;
 }
 
+.addIcon:hover {
+    cursor: pointer;
+    color: var(--Dark_Blue);
+}
+
 .calendarGrid {
     display: grid;
     grid-template-columns: 40% 60%;
@@ -115,7 +120,6 @@
 .next-day-task ul li.task {
     background-color: #f32a5e;
 }
-
 
 @media (max-width: 1000px) {
     .calendarGrid {

@@ -67,8 +67,8 @@ function HouseholdDetails() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content">
-                <div className="center-container">
+            <div className="content" style={{ height: '100%', paddingTop: '280px' }}>
+                <div className="center-container" style={{ height: '100px' }}>
                     <div className="household__details__page">
                         <div className="homeowner__register__header">
                             <h1>Tell us about your household</h1>

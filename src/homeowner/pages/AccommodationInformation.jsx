@@ -67,21 +67,31 @@ function AccommodationInformation() {
 
             if (roomResponse.ok) {
                 if (roomResult._id) {
-                    const userResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`, {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            room: roomResult._id,
-                        }),
-                    });
+                    const userResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`);
                     const userResult = await userResponse.json();
 
                     if (userResponse.ok) {
-                        navigate(`/household-details-homeowner?roomId=${roomResult._id}`);
+                        const updatedRooms = userResult.room ? [...userResult.room, roomResult._id] : [roomResult._id];
+
+                        const userUpdateResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`, {
+                            method: 'PATCH',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                room: updatedRooms,
+                            }),
+                        });
+
+                        const userUpdateResult = await userUpdateResponse.json();
+
+                        if (userUpdateResponse.ok) {
+                            navigate(`/household-details-homeowner?roomId=${roomResult._id}`);
+                        } else {
+                            throw new Error(userUpdateResult.message || 'Failed to update user with room ID');
+                        }
                     } else {
-                        throw new Error(userResult.message || 'Failed to update user with room ID');
+                        throw new Error(userResult.message || 'Failed to fetch user data');
                     }
                 } else {
                     throw new Error('Room ID is missing in the API response');
@@ -126,7 +136,7 @@ function AccommodationInformation() {
                                             placeholder="1"
                                             className="input__field"
                                             {...methods.register('houseNumber', {
-                                                required: 'Street number is required',
+                                                required: 'House number is required',
                                             })}
                                         />
                                         {methods.formState.errors.houseNumber && (
