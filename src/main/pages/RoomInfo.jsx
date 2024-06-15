@@ -260,8 +260,8 @@ function RoomInfo() {
                             </div>
                             <div className="room__info--people">
                                 <div className="room__people">
-                                    <PersonCard userType="houseowner" name="Tjerk Symens" />  
-                                    <PersonCard userType="student" name="Wolf Ver Elst" />
+                                    <PersonCard userType="houseowner" name="Tjerk Symens" userId="664b5987cb1cbc49eec04488" />  
+                                    <PersonCard userType="student" name="Wolf Ver Elst" userId="666880c8ff0ca0a7fef48a67" />
                                 </div>
                                 <p className="no__padding">
                                     Something wrong? Please{' '}

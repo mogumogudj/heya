@@ -13,6 +13,7 @@ import Calendar from './main/pages/Calendar.jsx';
 import CreateCalendarEvent from './main/pages/CreateCalendarEvent.jsx';
 import Chat from './main/pages/Chat.jsx';
 import Profile from './main/pages/Profile.jsx';
+import OtherUserProfile from './main/pages/OtherUserProfile.jsx';
 import Logout from './users/pages/Logout.jsx';
 import PrivateRoutes from './PrivateRoute.jsx';
 import UploadImage from './users/pages/UploadImage.jsx';
@@ -103,6 +104,7 @@ function App() {
                         <Route path="/chat" element={<Chat />} />
                         <Route path="/chat/:otherUserId" element={<Chat />} />
                         <Route path="/profile" element={<Profile />} />
+                        <Route path="/profile/:otherUserId" element={<OtherUserProfile />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

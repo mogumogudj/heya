@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../shared/css/app.css';
 
-function PersonCard({ userType, name }) {
+function PersonCard({ userType, name, userId }) {
     const [isStudent, setIsStudent] = useState(false);
     const [isHouseowner, setIsHouseowner] = useState(false);
 
@@ -14,15 +14,11 @@ function PersonCard({ userType, name }) {
     }, [userType]);
 
     const chatWithThisPerson = () => {
-        //moet naar de chat gaan met deze persoon
-        //nu tijdelijk gewoon naar chat gaan
-        window.location.href = '/chat';
+        window.location.href = `/chat/${userId}`;
     };
 
     const ViewProfile = () => {
-        //moet naar de profile van deze persoon gaan
-        //nu tijdelijk gewoon naar profile gaan
-        window.location.href = '/profile';
+        window.location.href = `/profile/${userId}`;
     };
 
     const imageUrl = isStudent ? '../wolf.webp' : isHouseowner ? '../tjerk.webp' : '../wouter.webp';

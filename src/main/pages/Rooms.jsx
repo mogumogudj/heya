@@ -52,8 +52,6 @@ function Rooms() {
     };
 
     const reportProblem = () => {
-        //moet naar de report problem pagina gaan
-        //nu tijdelijk contact
         window.location.href = '/contact';
     };
 
@@ -75,10 +73,6 @@ function Rooms() {
     const [roomStatistics, setRoomStatistics] = useState('occupancy');
 
     const openOccupancy = () => { 
-        //de roomStatistics component moet openen met de occupancy data
-        //de reedse geopende roomStatistics component moet sluiten
-        //de basic-info__card--occupancy moet de class active krijgen
-        //de reeds active basic-info__card moet de class active verwijderen
         setRoomStatistics('occupancy');
         setActiveCard('occupancy');
     };

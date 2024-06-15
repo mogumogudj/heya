@@ -68,7 +68,7 @@ function UploadImage() {
 
             if (updateUserResponse.ok) {
                 console.log('Image uploaded successfully');
-                navigate('/profile-overview-homeowner');
+                navigate('/accommodation-type-homeowner');
             } else {
                 console.error('Failed to update user with image link');
                 setError('Failed to upload image');
