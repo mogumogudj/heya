@@ -107,7 +107,7 @@ function Rooms() {
         //dit moet dus geslecteerd worden van het user profile of die student is of houseowner
         //ophalen uit de DB ipv state mee te geven
         const [Student, setStudent] = useState(false);
-        const [Houseowner, setHouseowner] = useState(false);
+        const [Houseowner, setHouseowner] = useState(true);
         console.log(userData?.room);
 
 
