@@ -65,10 +65,12 @@ function Availability() {
         <div className="page__container">
             <NavLogin />
             <div className="content" style={{ height: '100%' }}>
-                <div className="center-container-always" style={{ height: '100%' }}>
-                    <div className="accommodation__type__page">
+                <div className="center-container" style={{ height: '100%' }}>
+                    <div className="place__availability__page">
+                        <div className="homeowner__register__header">
                         <h1>Availability</h1>
                         <h2>When is your Place Available?</h2>
+                        </div>
 
                         <div className="availabilityGrid">
                             <div className="availability__container">
@@ -83,12 +85,12 @@ function Availability() {
                             </div>
                         </div>
 
-                        <div style={{ paddingTop: '16px' }} className="availability-info">
-                            <h2>Selected Dates</h2>
-                            <p style={{ padding: 0 }}>
+                        <div className="availability-info">
+                            <h2 className="availability-info__title">Selected Dates</h2>
+                            <p className="availability-info__date">
                                 Start Date: {selectedStartDate ? selectedStartDate.toLocaleDateString() : 'None'}
                             </p>
-                            <p style={{ padding: 0 }}>
+                            <p className="availability-info__date">
                                 End Date: {selectedEndDate ? selectedEndDate.toLocaleDateString() : 'None'}
                             </p>
                         </div>

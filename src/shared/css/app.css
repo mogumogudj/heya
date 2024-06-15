@@ -982,7 +982,37 @@ textarea{
         margin-top: 348px;
     }
 
+    /* PlaceAvailability.jsx */
+    .place__availability__page {
+        margin-top: 152px;
+    }
 
+    .availabilityGrid .availability__container {
+        margin-top: 40px;
+    }
+
+    .availability-info {
+        background-color: var(--Transparent-Grey);
+        border: 1px solid var(--Grey_Blue);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .availability-info__title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+    
+    .availability-info__date {
+        font-size: 1.2em;
+        margin: 5px 0;
+    }
+    
+    .availability-info__date:first-of-type {
+        margin-top: 10px;
+    }
 
 
     
