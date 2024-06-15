@@ -110,7 +110,8 @@ function Rooms() {
         const [Houseowner, setHouseowner] = useState(false);
         console.log(userData?.room);
 
-        if (!userData?.room) {
+
+        if (Student) {
             const [RoomRented, setRoomRented] = useState(true);
             if (RoomRented) {
                 return (
@@ -368,7 +369,7 @@ function Rooms() {
                     </div>
                 );
             }
-        } else if (userData?.room) {
+        } else if (Houseowner) {
             if (RoomId) {
                 return (
                     <div className="page__container">
