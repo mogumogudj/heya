@@ -879,12 +879,22 @@ textarea{
 
     .pricing__page {
         padding: 20px;
+        margin-top: 72px;
     }
     
     .pricing__sections {
         display: flex;
         justify-content: space-between;
         gap: 80px;
+    }
+
+    .pricing__inputs input{
+    width: 100%;
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--Transparent-Grey);
     }
     
     .pricing__inputs, .pricing__summary {
@@ -1028,6 +1038,10 @@ textarea{
         border-radius: 4px;
         font-size: 16px;
     }
+
+
+
+
     
     .pricing__summary {
         padding: 20px;
@@ -1049,8 +1063,7 @@ textarea{
         color: var(--Lime_Green);
     }
     
-    .total__price {
-    }
+
     
 
     
@@ -1122,6 +1135,27 @@ textarea{
     .room-slider-container {
         padding-top: 0px;
     
+    }
+
+
+    .pricing__summary {
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        background-color: var(--Transparent-Grey);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .summary__header {
+        align-self: flex-end;
+    }
+    
+    .total__amount {
+        margin: 20px 0;
+        color: var(--Lime_Green);
     }
     
 }

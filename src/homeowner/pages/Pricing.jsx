@@ -65,16 +65,22 @@ function Pricing() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content">
-                <div className="center-container-always" style={{ height: '100%' }}>
+            <div className="content" style={{ minHeight: '112vh' }}>
+                <div className="center-container" style={{ height: '100%' }}>
                     <div className="pricing__page">
+                        <div className='homeowner__register__header'>
                         <h1>Set Your Room Pricing</h1>
                         <h2>Enter the details below</h2>
+                        </div>
+                        
                         <div className="pricing__sections">
+
+
                             <div className="pricing__inputs">
-                                <div className="flex">
-                                    <p>Rent (€ / month)</p>
-                                    <div className="inputWrapper">
+                                <div className="form__group">
+                                    <p>Rent (/ month)</p>
+                                    <div className="input-container">
+                                        
                                         <input
                                             type="text"
                                             maxLength="6"
@@ -82,12 +88,31 @@ function Pricing() {
                                             className={'input__field'}
                                             value={rent}
                                             onChange={handleInputChange(setRent)}
+                                            style={{ paddingRight: '30px' }}
                                         />
+                                        <span
+                                        className="input-unit"
+                                        style={{
+                                            position: 'absolute',
+                                            right: '10px',
+                                            top: '50%',
+                                            transform: 'translateY(-50%)',
+                                        }}
+                                    >
+                                        €
+                                    </span>
                                     </div>
                                 </div>
-                                <div className="flex">
-                                    <p>Additional costs (€ / month)</p>
-                                    <div className="inputWrapper">
+
+
+
+
+
+
+
+                                <div className="form__group">
+                                    <p>Additional costs (/ month)</p>
+                                    <div className="input-container">
                                         <input
                                             type="text"
                                             maxLength="6"
@@ -95,14 +120,27 @@ function Pricing() {
                                             className={'input__field'}
                                             value={additionalCosts}
                                             onChange={handleInputChange(setAdditionalCosts)}
+                                            style={{ paddingRight: '30px' }}
                                         />
+                                        <span
+                                        className="input-unit"
+                                        style={{
+                                            position: 'absolute',
+                                            right: '10px',
+                                            top: '50%',
+                                            transform: 'translateY(-50%)',
+                                        }}
+                                    >
+                                        €
+                                    </span>
                                     </div>
                                 </div>
-                                <div className="flex">
+                                
+                                <div className="form__group">
                                     <p>
                                         Service cost <InfoOutlinedIcon />
                                     </p>
-                                    <div className="inputWrapper">
+                                    <div className="input-container">
                                         <input
                                             type="text"
                                             maxLength="6"
@@ -110,14 +148,29 @@ function Pricing() {
                                             className={'input__field'}
                                             value={serviceCost}
                                             onChange={handleInputChange(setServiceCost)}
+                                            style={{ paddingRight: '30px' }}
                                         />
+                                        <span
+                                        className="input-unit"
+                                        style={{
+                                            position: 'absolute',
+                                            right: '10px',
+                                            top: '50%',
+                                            transform: 'translateY(-50%)',
+                                        }}
+                                    >
+                                        €
+                                    </span>
                                     </div>
                                 </div>
-                                <div className="flex">
+
+
+
+                                <div className="form__group">
                                     <p>
                                         Deposit/Warranty <InfoOutlinedIcon />
                                     </p>
-                                    <div className="inputWrapper">
+                                    <div className="input-container">
                                         <input
                                             type="text"
                                             maxLength="6"
@@ -125,10 +178,25 @@ function Pricing() {
                                             className={'input__field'}
                                             value={deposit}
                                             onChange={handleInputChange(setDeposit)}
+                                            style={{ paddingRight: '30px' }}
                                         />
+                                        <span
+                                        className="input-unit"
+                                        style={{
+                                            position: 'absolute',
+                                            right: '10px',
+                                            top: '50%',
+                                            transform: 'translateY(-50%)',
+                                        }}
+                                    >
+                                        €
+                                    </span>
                                     </div>
                                 </div>
                             </div>
+
+
+                            
                             <div className="pricing__summary">
                                 <div className="summary__header">
                                     <button className="white__button small">Help</button>
