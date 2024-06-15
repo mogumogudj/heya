@@ -41,7 +41,7 @@ function PinterestRoomGrid({ title }) {
         <div className="pinterest-room-total">
             <div className="filters-title">
                 <h4>
-                    <span className="bold">9</span>
+                    <span className="bold">{rooms.length}</span>
                     {title}
                     <span className="bold">bike</span>
                 </h4>
