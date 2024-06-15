@@ -15,6 +15,7 @@ function OtherUserProfile() {
 
     const [otherUserInfo, setOtherUserInfo] = useState(null);
     const [userImage, setUserImage] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const spinnerStyle = {
         border: '4px solid rgba(0, 0, 0, 0.1)',
@@ -47,6 +48,7 @@ function OtherUserProfile() {
                 const userInfoResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${id}`);
                 const userInfoData = await userInfoResponse.json();
                 setOtherUserInfo(userInfoData);
+                console.log(userInfoData);
             } catch (error) {
                 console.error('Failed to fetch user info:', error);
             }
@@ -81,6 +83,18 @@ function OtherUserProfile() {
                 </div>
                 <Footer />
                 <style>{keyframesStyle}</style>
+            </div>
+        );
+    }
+
+    if (errorMessage) {
+        return (
+            <div className="page__container">
+                <NavApp />
+                <div className="content">
+                    <p>{errorMessage}</p>
+                </div>
+                <Footer />
             </div>
         );
     }
