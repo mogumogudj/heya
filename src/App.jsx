@@ -64,6 +64,7 @@ function App() {
                     <Route path="/faq" element={<Faq />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/room-info" element={<RoomInfo />} />
+                    <Route path="/room-info/:id" element={<RoomInfo />} />
                     <Route element={<PrivateRoutes />}>
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/select-situation" element={<SelectSituation />} />

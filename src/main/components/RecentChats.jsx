@@ -64,7 +64,7 @@ function RecentChats({ onSelectUser }) {
 
     return (
         <div className="chats__list">
-            <h3 className="no__padding">Chat</h3>
+            <h1 className="no__padding">Chat</h1>
             <div className="chat__list__options">
                 <div className="add-chat__button">
                     <AddCommentIcon onClick={() => console.log('create new chat')} sx={{ fontSize: 28 }} />
