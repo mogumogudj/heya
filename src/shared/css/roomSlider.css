@@ -75,6 +75,10 @@
     width: 120px;
     margin-right: 40px;
   }
+
+  .room-price.no-label {
+    margin-top: 26px;
+  }
   
 
   /* Medium screens */
