@@ -214,7 +214,7 @@ function IdealAttendant() {
 
                             <div className="TextBoxWithMaxInput">
                             <div className="TextBoxWithMaxInput__flex">
-                                <p>Extra information for characteristics</p>
+                                <p>Extra information for must be's</p>
                                 <InfoOutlinedIcon
                                     className="TextBoxWithMaxInput__flex__icon"
                                     style={{ marginTop: '24px', fontSize: '20', marginRight: '16px' }}
