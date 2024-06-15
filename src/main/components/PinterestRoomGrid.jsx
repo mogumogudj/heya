@@ -1,123 +1,66 @@
-import React from 'react';
-import "../../shared/css/pinterestRoomGrid.css";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-
-const rooms = [
-  {
-    id: 1,
-    image: "../../Rodestraat2.webp",
-    // label: "Featured",
-    price: "€1200",
-    city: "Leuven",
-  },
-  {
-    id: 2,
-    image: "../../Rodestraat1.webp",
-    // label: "New",
-    price: "€950",
-    city: "Antwerp",
-  },
-  {
-    id: 3,
-    image: "../../leuven.webp",
-    // label: "Featured",
-    price: "€800",
-    city: "Gent",
-  },
-  {
-    id: 4,
-    image: "../../apartment.webp",
-    // label: "New",
-    price: "€1100",
-    city: "Brussels",
-  },
-  {
-    id: 5,
-    image: "../../antwerpen.webp",
-    // label: "Featured",
-    price: "€900",
-    city: "Bruges",
-  },
-  {
-    id: 6,
-    image: "../../kortrijk.webp",
-    // label: "New",
-    price: "€1000",
-    city: "Ostend",
-  },
-  {
-    id: 7,
-    image: "../../CozyLivingRoom.webp",
-    // label: "Featured",
-    price: "€850",
-    city: "Mechelen",
-  },
-  {
-    id: 8,
-    image: "../../brussel.webp",
-    // label: "New",
-    price: "€950",
-    city: "Hasselt",
-  },
-  {
-    id: 9,
-    image: "../../hasselt.webp",
-    // label: "Featured",
-    price: "€1200",
-    city: "Namur",
-  },
-  {
-    id: 10,
-    image: "../../gent.webp",
-    // label: "New",
-    price: "€800",
-    city: "Liege",
-  },
-  {
-    id: 11,
-    image: "../../leuven.webp",
-    // label: "Featured",
-    price: "€900",
-    city: "Mons",
-  },
-  {
-    id: 12,
-    image: "../../antwerpen.webp",
-    // label: "New",
-    price: "€1000",
-    city: "Charleroi",
-  }
-];
+import React, { useState, useEffect } from 'react';
+import '../../shared/css/pinterestRoomGrid.css';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 function PinterestRoomGrid({ title }) {
-  const openRoom = () => {
-    location.href = "/room-info";
-  }
-  
-  return (
-    <div className='pinterest-room-total'>
-      <div className="filters-title">
-      <h4><span className='bold'>9</span>{title}<span className='bold'>bike</span></h4>
-      </div>   
-    <div className="pinterest-room-grid">
-      {rooms.map((room) => (
-        <div key={room.id} className="pinterest-room-card" onClick={openRoom}>
-          <img
-            src={room.image}
-            alt={`Room in ${room.city}`}
-            className="pinterest-room-image"
-          />
-          {/* <p className="pinterest-room-label">{room.label}</p> */}
-          <FavoriteBorderIcon className="pinterest-room-favorite-icon" />
-          <div className="pinterest-room-details">
-            <h6 className="pinterest-room-price">{room.price}</h6>
-            <p className="pinterest-room-city p__strong">{room.city}</p>
-          </div>
+    const [rooms, setRooms] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchRooms = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/rooms`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setRooms(data);
+            } catch (error) {
+                console.error('Error fetching rooms:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchRooms();
+    }, []);
+
+    const openRoom = (id) => {
+        // Adjust this logic based on your application's routing strategy
+        location.href = `/room-info/${id}`;
+    };
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (!rooms.length) {
+        return <div>No rooms available</div>;
+    }
+
+    return (
+        <div className="pinterest-room-total">
+            <div className="filters-title">
+                <h4>
+                    <span className="bold">9</span>
+                    {title}
+                    <span className="bold">bike</span>
+                </h4>
+            </div>
+            <div className="pinterest-room-grid">
+                {rooms.map((room) => (
+                    <div key={room._id} className="pinterest-room-card" onClick={() => openRoom(room._id)}>
+                        <img src={room.images[0]} alt={`Room in ${room.city}`} className="pinterest-room-image" />
+                        <FavoriteBorderIcon className="pinterest-room-favorite-icon" />
+                        <div className="pinterest-room-details">
+                            <h6 className="pinterest-room-price">{room.pricing[0].rent}</h6>
+                            <p className="pinterest-room-city p__strong">{room.city}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
-      ))}
-    </div>
-    </div>
-  );
+    );
 }
 
 export default PinterestRoomGrid;
