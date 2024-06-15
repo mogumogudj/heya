@@ -278,23 +278,23 @@ function RoomInfo() {
                                         <div className="room__info--rules__basics">
                                             <div className="rules__basics--box">
                                                 <span className="rules__basics--text no__padding">
-                                                    Rent: <b>{room?.pricing[0]?.rent}</b>
+                                                    Rent: <b>€{room?.pricing[0]?.rent}</b>
                                                 </span>
                                             </div>
                                             <div className="rules__basics--box">
                                                 <span>
                                                     {' '}
-                                                    AdditionalCosts: <b>{room?.pricing[0]?.additionalCosts}</b>
+                                                    AdditionalCosts: <b>€{room?.pricing[0]?.additionalCosts}</b>
                                                 </span>
                                             </div>
                                             <div className="rules__basics--box">
                                                 <span>
-                                                    ServiceCost: <b>{room?.pricing[0]?.serviceCost}</b>
+                                                    ServiceCost: <b>€{room?.pricing[0]?.serviceCost}</b>
                                                 </span>
                                             </div>
                                             <div className="rules__basics--box">
                                                 <span>
-                                                    Deposit: <b>{room?.pricing[0]?.deposit}</b>
+                                                    Deposit: <b>€{room?.pricing[0]?.deposit}</b>
                                                 </span>
                                             </div>
                                         </div>

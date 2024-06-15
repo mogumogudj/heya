@@ -169,6 +169,10 @@
     align-items: center;
 }
 
+.overview__basics--box {
+    gap: 12px;
+}
+
 .room__buttons {
     width: 60%;
     display: flex;
@@ -218,6 +222,10 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.room__modal {
+    max-height: 590px;
 }
 
 @media screen and (max-width: 1200px) {
