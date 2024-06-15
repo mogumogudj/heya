@@ -82,10 +82,10 @@ function RoomSlider({ title }) {
                 {rooms.map((room) => (
                     <div key={room._id} className="room-card" onClick={() => openRoom(room._id)}>
                         <img src={room.images[0]} alt={`Room in ${room.city}`} className="room-image" />
-                        <p className="room-label">{room.label}</p>
+                        {room.label && <p className="room-label">{room.label}</p>}
                         <FavoriteBorderIcon className="room-favorite-icon" />
                         <div className="room-details">
-                            <h6 className="room-price">€{room.pricing[0]?.rent}</h6>
+                            <h6 className={`room-price ${!room.label ? 'room-price no-label' : 'room-price'}`}>€{room.pricing[0]?.rent}</h6>
                             <p className="room-city bold">{room.city}</p>
                         </div>
                     </div>

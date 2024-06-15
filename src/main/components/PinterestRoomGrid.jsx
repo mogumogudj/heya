@@ -52,7 +52,7 @@ function PinterestRoomGrid({ title }) {
                         <img src={room.images[0]} alt={`Room in ${room.city}`} className="pinterest-room-image" />
                         <FavoriteBorderIcon className="pinterest-room-favorite-icon" />
                         <div className="pinterest-room-details">
-                            <h6 className="pinterest-room-price">{room.pricing[0].rent}</h6>
+                            <h6 className="pinterest-room-price">€{room.pricing[0].rent}</h6>
                             <p className="pinterest-room-city p__strong">{room.city}</p>
                         </div>
                     </div>
