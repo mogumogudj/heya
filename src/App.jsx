@@ -9,6 +9,7 @@ import SelectSituation from './users/pages/SelectSituation.jsx';
 import AboutYourself from './users/pages/AboutYourself.jsx';
 import Home from './main/pages/Home.jsx';
 import Rooms from './main/pages/Rooms.jsx';
+import SpecificRoom from './homeowner/pages/OwnerSpecificRoom.jsx';
 import Calendar from './main/pages/Calendar.jsx';
 import CreateCalendarEvent from './main/pages/CreateCalendarEvent.jsx';
 import Chat from './main/pages/Chat.jsx';
@@ -99,7 +100,7 @@ function App() {
                         <Route path="/place-overview-homeowner" element={<PlaceOverviewHomeOwner />} />
 
                         <Route path="/rooms" element={<Rooms />} />
-                        <Route path="/rooms/:roomId" element={<Rooms />} />
+                        <Route path="/rooms/:roomId" element={<SpecificRoom />} />
                         <Route path="/calendar" element={<Calendar />} />
                         <Route path="/create-calendar-event" element={<CreateCalendarEvent />} />
                         <Route path="/chat" element={<Chat />} />

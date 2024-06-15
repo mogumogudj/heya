@@ -26,7 +26,7 @@ function RoomCard({ roomId, size }) {
     }, [roomId]);
 
     const viewRoom = () => {
-        navigate(`/room-info/${roomId}`);
+        navigate(`/rooms/${roomId}`);
     };
 
     if (!roomData || !ownerData) {
