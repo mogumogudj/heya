@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import NavApp from '../components/NavApp.jsx';
 import Footer from '../../shared/components/Footer.jsx';
@@ -7,6 +7,7 @@ import RoomCard from '../components/RoomCard.jsx';
 import TransactionCard from '../components/TransactionCard.jsx';
 import RoomStatistics from '../components/RoomStatistics.jsx';
 import OverallStatistics from '../components/OverallStatistics.jsx';
+import { UserContext } from '../../shared/contexts/UserContext';
 import '../css/rooms.css';
 import '../../shared/css/app.css';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
@@ -28,6 +29,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Rooms() {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const { userData, isLoading } = useContext(UserContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -59,6 +61,7 @@ function Rooms() {
 
     const changeThisRoom = () => {
         navigate('/accommodation-type-homeowner');
+        //dit werkt niet, want maakt nieuwe room aan ipv huidige aan te passen
     };
 
     const allRooms = () => {
@@ -104,9 +107,10 @@ function Rooms() {
         //dit moet dus geslecteerd worden van het user profile of die student is of houseowner
         //ophalen uit de DB ipv state mee te geven
         const [Student, setStudent] = useState(false);
-        const [Houseowner, setHouseowner] = useState(true);
+        const [Houseowner, setHouseowner] = useState(false);
+        console.log(userData?.room);
 
-        if (Student) {
+        if (!userData?.room) {
             const [RoomRented, setRoomRented] = useState(true);
             if (RoomRented) {
                 return (
@@ -364,7 +368,7 @@ function Rooms() {
                     </div>
                 );
             }
-        } else if (Houseowner) {
+        } else if (userData?.room) {
             if (RoomId) {
                 return (
                     <div className="page__container">
