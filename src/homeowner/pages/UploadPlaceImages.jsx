@@ -94,10 +94,10 @@ function UploadPlaceImages() {
     };
 
     return (
-        <div className="page__container" style={{ minHeight: '128vh' }}>
+        <div className="page__container">
             <NavLogin />
-            <div className="content" style={{ minHeight: '140vh' }}>
-                <div className="center-container">
+            <div className="content" style={{ height: '100%', marginTop: '-480px' }}>
+                <div className="center-container" style={{ height: '100%' }}>
                     <div className="upload__place__images__page">
                         <div className="homeowner__register__header">
                             <h1>Upload images</h1>

@@ -86,7 +86,7 @@ function Home() {
           <h1 className="home__title">Discover</h1>
           <Box display="flex" alignItems="center" gap={2} mb={2}>
             <FormControl fullWidth variant="outlined" className="form-control-custom">
-              <InputLabel >Choose your city</InputLabel>
+              <InputLabel >City</InputLabel>
               <Select className="city-selector-label" label="Choose your city" defaultValue="">
                 {cities.map((city) => (
                   <MenuItem key={city.key} value={city.value}>{city.text}</MenuItem>
@@ -130,7 +130,7 @@ function Home() {
               />
             ))}
           </Box>
-            <RoomSlider title="Some rooms in the spotlight" />
+            <RoomSlider title="In the spotlight" />
             <Divider />
             <RoomSlider title="Best match for you" />
             <Divider />
