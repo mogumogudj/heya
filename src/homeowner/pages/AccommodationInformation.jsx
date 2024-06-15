@@ -107,7 +107,7 @@ function AccommodationInformation() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content" style={{ height: '100%', marginTop: '-240px' }}>
+            <div className="content" style={{ height: '100%', marginTop: '-380px' }}>
                 <div className="center-container" style={{ height: '100%' }}>
                     <div className="accommodation__information__page">
                         <div className="homeowner__register__header">
