@@ -1,5 +1,5 @@
 .room-slider {
-    padding: 24px 0 40px 16px;
+    padding: 24px 0 18px 16px;
   }
   
   .flex-container {
@@ -51,7 +51,7 @@
   
   .room-favorite-icon {
     position: relative;
-    top: -244px;
+    top: -216px;
     right: -268px;
     margin-top: 24px;
     color: var(--White);
@@ -97,7 +97,7 @@
   }
   
   .room-favorite-icon {
-      top: -220px;
+      top: -196px;
       right: -216px;
   }
 
@@ -128,7 +128,7 @@
   }
 
   .room-favorite-icon {
-      top: -192px;
+      top: -168px;
       right: -172px;
   }
 
@@ -145,4 +145,30 @@
     
   }
 
+}
+
+/* Very small screens */
+@media screen and (max-width: 400px) {
+  .room-card {
+      width: 150px;
+  }
+
+  .room-image {
+      height: 120px;
+  }
+
+  .room-label {
+      bottom: 112px;
+      width: 60px;
+  }
+
+  .room-favorite-icon {
+      top: -140px;
+      right: -120px;
+  }
+
+  h3 {
+    width: 400px;
+  }
+  
 }

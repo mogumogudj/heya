@@ -72,28 +72,14 @@
     text-align: center;
   }
   
-  /* Medium screens */
-  @media screen and (max-width: 1200px) {
-    .city-card {
-      width: 250px;
-    }
-  
-    .city-image {
-      height: 180px;
-    }
-  }
-  
   /* Small screens */
   @media screen and (max-width: 800px) {
     .city-card-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
       gap: 16px;
-      padding: 16px 16px 16px 4px;
     }
   
     .city-card {
-      width: 100%;
+      width: 200px;
       margin-right: 0;
     }
   
@@ -105,26 +91,17 @@
   /* Very small screens */
   @media screen and (max-width: 400px) {
     .city-card-container {
-      grid-template-columns: 1fr;
+      gap: 16px;
     }
   
     .city-card {
-      width: 100%;
+      width: 200px;
+      margin-right: 0;
     }
   
     .city-image {
       height: 120px;
     }
   }
-  
-  /* Extra small screens */
-  @media screen and (max-width: 300px) {
-    .city-card {
-      width: 100%;
-    }
-  
-    .city-image {
-      height: 100px;
-    }
-  }
+
   
