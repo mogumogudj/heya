@@ -70,6 +70,7 @@ function Chat() {
                         `${import.meta.env.VITE_API_URL}/messages/all/${userId}/${otherUserId}`,
                     );
                     const data = await response.json();
+                    data.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
                     setMessages(data);
                 } catch (error) {
                     console.error('Failed to fetch chats:', error);
@@ -110,6 +111,7 @@ function Chat() {
         try {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/messages/all/${userId}/${selectedUserId}`);
             const data = await response.json();
+            data.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
             setMessages(data);
             await fetchUserInfo(selectedUserId);
         } catch (error) {
@@ -139,40 +141,37 @@ function Chat() {
                                     </div>
                                 </div>
                                 <div className="messages chat__messages" ref={messagesContainerRef}>
-                                    {messages
-                                        .slice()
-                                        .reverse()
-                                        .map((msg, index) => (
-                                            <div
-                                                key={index}
-                                                className={`message ${msg.userId === userId ? 'sender' : 'receiver'}`}
+                                    {messages.map((msg, index) => (
+                                        <div
+                                            key={index}
+                                            className={`message ${msg.userId === userId ? 'sender' : 'receiver'}`}
+                                        >
+                                            <h6 className="no__padding message__text">{msg.content}</h6>
+                                            <svg
+                                                className="message__balloon--svg"
+                                                width="20"
+                                                height="14"
+                                                viewBox="0 0 20 14"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
                                             >
-                                                <h6 className="no__padding message__text">{msg.content}</h6>
-                                                <svg
-                                                    className="message__balloon--svg"
-                                                    width="20"
-                                                    height="14"
-                                                    viewBox="0 0 20 14"
-                                                    fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        clipRule="evenodd"
-                                                        d="M15.0285 0H0C0 7.73199 6.26801 14 14 14H20V13.6709C18.5689 12.4697 17.3842 10.9871 16.5262 9.30324C15.4038 7.10032 15.107 4.39657 15.0285 0Z"
-                                                    />
-                                                </svg>
-                                                <img
-                                                    className={`message__image ${msg.userId === userId ? userImage : otherUserInfo.imageLink ? '' : 'placeholder'}`}
-                                                    src={
-                                                        msg.userId === userId
-                                                            ? userImage
-                                                            : otherUserInfo.imageLink || 'path/to/placeholder-image.png'
-                                                    }
-                                                    alt="User"
+                                                <path
+                                                    fillRule="evenodd"
+                                                    clipRule="evenodd"
+                                                    d="M15.0285 0H0C0 7.73199 6.26801 14 14 14H20V13.6709C18.5689 12.4697 17.3842 10.9871 16.5262 9.30324C15.4038 7.10032 15.107 4.39657 15.0285 0Z"
                                                 />
-                                            </div>
-                                        ))}
+                                            </svg>
+                                            <img
+                                                className={`message__image ${msg.userId === userId ? userImage : otherUserInfo.imageLink ? '' : 'placeholder'}`}
+                                                src={
+                                                    msg.userId === userId
+                                                        ? userImage
+                                                        : otherUserInfo.imageLink || 'path/to/placeholder-image.png'
+                                                }
+                                                alt="User"
+                                            />
+                                        </div>
+                                    ))}
                                     <div ref={messagesEndRef} />
                                 </div>
                                 <div className="input-box chat__input">
