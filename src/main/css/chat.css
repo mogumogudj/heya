@@ -68,6 +68,10 @@
     padding: 8px;
 }
 
+.chat__lists--chat--search {
+    justify-content: start;;
+}
+
 .chat__lists--chat:hover {
     cursor: pointer;
 }
@@ -96,6 +100,12 @@
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.chat__info--search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .chat__info--message {

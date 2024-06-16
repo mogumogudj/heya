@@ -160,7 +160,7 @@ function RecentChats({ onSelectUser }) {
                 ) : filteredUsers.length > 0 ? (
                     <ul className="looped-chats__list">
                         {filteredUsers.map((user) => (
-                            <li className="chat__lists--chat" key={user._id} onClick={() => onSelectUser(user._id)}>
+                            <li className="chat__lists--chat chat__lists--chat--search" key={user._id} onClick={() => onSelectUser(user._id)}>
                                 <div className="chat__lists--chat__image">
                                     <img
                                         src={user.imageLink || 'path/to/placeholder-image.png'}
@@ -168,7 +168,7 @@ function RecentChats({ onSelectUser }) {
                                         className={!user.imageLink ? 'placeholder' : ''}
                                     />
                                 </div>
-                                <div className="chat__info">
+                                <div className="chat__info chat__info--search">
                                     <h6 className="chat__info--name no__padding h6__strong">{`${user.firstName} ${user.lastName}`}</h6>
                                 </div>
                             </li>
