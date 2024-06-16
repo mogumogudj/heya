@@ -354,6 +354,10 @@ textarea{
     margin-top: -24px;
 }
 
+.user__register__header h2 {
+    margin-top: -24px;
+}
+
 
 
 
@@ -969,6 +973,10 @@ textarea{
         margin-top: 140px;
     }
 
+    .user__register__header {
+        margin-top: 140px;
+    }
+
     .plan__meeting__page {
         margin-top: 80px;
     }
@@ -1099,7 +1107,14 @@ textarea{
         margin: 20px 0;
         color: var(--Lime_Green);
     }
+
+    .select__situation__page {
+        margin-bottom: 200px;
+    }
     
+    .select__situation h2 {
+        width: 100%;
+    }
 
 
 
