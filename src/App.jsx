@@ -30,6 +30,7 @@ import RoomInfo from './main/pages/RoomInfo.jsx';
 import PreferredAccommodation from './users/pages/PreferredAccommodation.jsx';
 import ProfileOverview from './users/pages/ProfileOverview.jsx';
 import StepOverview1 from './users/pages/StepOverview1.jsx';
+import StepOverview2 from './users/pages/StepOverview2.jsx';
 
 import ProfileOverviewHomeOwner from './homeowner/pages/ProfileOverview.jsx';
 import AboutYourselfHomeOwner from './homeowner/pages/AboutYourself.jsx';
@@ -49,6 +50,7 @@ import IdealAttendantHomeOwner from './homeowner/pages/IdealAttendant.jsx';
 import PrivacyHomeOwner from './homeowner/pages/Privacy.jsx';
 import PlanMeetingHomeOwner from './homeowner/pages/PlanMeeting.jsx';
 import PlaceOverviewHomeOwner from './homeowner/pages/PlaceOverview.jsx';
+import StepOverview1Homeowner from './homeowner/pages/StepOverview1.jsx';
 
 import { UserProvider } from './shared/contexts/UserContext.jsx';
 
@@ -73,6 +75,7 @@ function App() {
                         <Route path="/step-overview-1" element={<StepOverview1 />} />
                         <Route path="/about-yourself" element={<AboutYourself />} />
                         <Route path="/upload-image" element={<UploadImage />} />
+                        <Route path="/step-overview-2" element={<StepOverview2 />} />
                         <Route path="/customize-stay" element={<CustomizeStay />} />
                         <Route path="/user-person-info" element={<UserPersonInfo />} />
                         <Route path="/user-expectations" element={<UserExpectations />} />
@@ -80,6 +83,7 @@ function App() {
                         <Route path="/profile-overview" element={<ProfileOverview />} />
 
                         <Route path="/profile-overview-homeowner" element={<ProfileOverviewHomeOwner />} />
+                        <Route path="/step-overview-1-homeowner" element={<StepOverview1Homeowner />} />
                         <Route path="/about-yourself-homeowner" element={<AboutYourselfHomeOwner />} />
                         <Route path="/upload-image-homeowner" element={<UploadImageHomeOwner />} />
                         <Route path="/accommodation-type-homeowner" element={<AccommodationTypeHomeOwner />} />
