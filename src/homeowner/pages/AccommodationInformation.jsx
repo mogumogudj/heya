@@ -207,7 +207,7 @@ function AccommodationInformation() {
 
                                     <div className="TextBoxWithMaxInput">
                                         <div className="TextBoxWithMaxInput__flex">
-                                            <p>Extra information you would like us to know?</p>
+                                            <p>Give a basic description to your room</p>
                                             <InfoOutlinedIcon
                                                 className="TextBoxWithMaxInput__flex__icon"
                                                 style={{ marginTop: '24px', fontSize: '20px', marginRight: '16px' }}

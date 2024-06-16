@@ -110,7 +110,7 @@
 }
 
 .daily-tasks ul li.task {
-    background-color: #f32a5e;
+    background-color: #c84668;
 }
 
 .next-day-task ul li.event {
@@ -119,6 +119,10 @@
 
 .next-day-task ul li.task {
     background-color: #f32a5e;
+}
+
+.calendar__card {
+    color: var(--White);
 }
 
 @media (max-width: 1000px) {
