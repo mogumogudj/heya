@@ -102,7 +102,7 @@ function Calendar() {
                             <ul>
                                 {tasksForSelectedDate.length > 0 ? (
                                     tasksForSelectedDate.map((task, index) => (
-                                        <li key={index} className={task.event === 'Event' ? 'event' : 'task'}>
+                                        <li key={index} className={task.event === 'Event' ? 'event calendar__card' : 'task calendar__card'}>
                                             <b className={task.event === 'Event' ? 'event-title' : 'task-title'}>
                                                 {task.title}
                                             </b>
@@ -117,7 +117,13 @@ function Calendar() {
                                                     {task.description}
                                                 </p>
                                             )}
-                                            <p className="timestamp">{new Date(task.timestamp).toLocaleString()}</p>
+                                            <p className="timestamp">
+                                                {new Date(task.timestamp).toLocaleTimeString('en-GB', {
+                                                    hour: '2-digit',
+                                                    minute: '2-digit',
+                                                    hour12: true
+                                                })}
+                                            </p>
                                             {task.otherUsersId && (
                                                 <p className="other-users">
                                                     {task.otherUsersId
@@ -139,7 +145,7 @@ function Calendar() {
                             <ul>
                                 {tasksForTomorrow.length > 0 ? (
                                     tasksForTomorrow.map((task, index) => (
-                                        <li key={index} className={task.event === 'Event' ? 'event' : 'task'}>
+                                        <li key={index} className={task.event === 'Event' ? 'event calendar__card' : 'task calendar__card'}>
                                             <b className={task.event === 'Event' ? 'event-title' : 'task-title'}>
                                                 {task.title}
                                             </b>
@@ -154,7 +160,13 @@ function Calendar() {
                                                     {task.description}
                                                 </p>
                                             )}
-                                            <p className="timestamp">{new Date(task.timestamp).toLocaleString()}</p>
+                                            <p className="timestamp">
+                                                {new Date(task.timestamp).toLocaleTimeString('en-GB', {
+                                                    hour: '2-digit',
+                                                    minute: '2-digit',
+                                                    hour12: true
+                                                })}
+                                            </p>
                                             {task.otherUsersId && (
                                                 <p className="other-users">
                                                     {task.otherUsersId
@@ -174,7 +186,7 @@ function Calendar() {
                             <ul>
                                 {tasksForDayAfterTomorrow.length > 0 ? (
                                     tasksForDayAfterTomorrow.map((task, index) => (
-                                        <li key={index} className={task.event === 'Event' ? 'event' : 'task'}>
+                                        <li key={index} className={task.event === 'Event' ? 'event calendar__card' : 'task calendar__card'}>
                                             <b className={task.event === 'Event' ? 'event-title' : 'task-title'}>
                                                 {task.title}
                                             </b>
@@ -189,7 +201,13 @@ function Calendar() {
                                                     {task.description}
                                                 </p>
                                             )}
-                                            <p className="timestamp">{new Date(task.timestamp).toLocaleString()}</p>
+                                            <p className="timestamp">
+                                                {new Date(task.timestamp).toLocaleTimeString('en-GB', {
+                                                    hour: '2-digit',
+                                                    minute: '2-digit',
+                                                    hour12: true
+                                                })}
+                                            </p>
                                             {task.otherUsersId && (
                                                 <p className="other-users">
                                                     {task.otherUsersId
