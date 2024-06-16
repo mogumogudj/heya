@@ -124,15 +124,21 @@ function PreferredAccommodation() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content">
+            <div className="content" style={{minHeight: '132vh'}}>
+            <div className="center-container">
+            <div className="preferred__accommodation__page">
+                <div className="user__register__header">
                 <h1>Tell us something about</h1>
                 <h2>Your preferred accommodation</h2>
-                <div>
+                </div>
+
+                <div className='form__group'>
                     <p>In which city do you want to stay?</p>
                     <select
                         {...methods.register('city', { required: true })}
                         onChange={(e) => handleCityChange(e.target.value)}
                         className='city__select'
+                        style={{ marginTop: '0px'}}
                     >
                         {Object.values(Cities).map((cityOption) => (
                             <option key={cityOption} value={cityOption}>
@@ -145,8 +151,11 @@ function PreferredAccommodation() {
                             {errors.city}
                         </Alert>
                     )}
-                    <div className="twoGrid grid">
-                        <div>
+
+
+
+                    <div className="flex">
+                        <div className="form__group">
                             <p>Preferred move-in date?</p>
                             <Controller
                                 name="moveInDate"
@@ -169,7 +178,8 @@ function PreferredAccommodation() {
                                 </Alert>
                             )}
                         </div>
-                        <div>
+
+                        <div className="form__group">
                             <p>Preferred move-out date?</p>
                             <Controller
                                 name="moveOutDate"
@@ -193,6 +203,8 @@ function PreferredAccommodation() {
                             )}
                         </div>
                     </div>
+
+                    <div className="form__group">
                     <p>For how many people are you searching a place for?</p>
                     <div className="twoGrid selectGrid grid  padding__grid">
                         {['Myself', 'Multiple people'].map((option) => (
@@ -210,41 +222,82 @@ function PreferredAccommodation() {
                             {errors.peopleAmount}
                         </Alert>
                     )}
-                    <div className="twoGrid grid">
-                        <div>
+                    </div>
+
+
+                    <div className="flex">
+                    <div className="pricing__inputs" style={{width: '50px'}}>
+                        <div className='form__group'>
                             <p>Min. monthly rental budget</p>
+                            <div className="input-container">
                             <input
                                 type="text"
                                 maxLength="4"
                                 placeholder="100"
                                 value={minBudget}
                                 onChange={handleMinBudgetChange}
+                                className="input__field"
                             />
+                            <span
+                                        className="input-unit"
+                                        style={{
+                                            position: 'absolute',
+                                            right: '10px',
+                                            top: '50%',
+                                            transform: 'translateY(-50%)',
+                                        }}
+                                    >
+                                        €
+                                    </span>
                             {errors.minBudget && (
                                 <Alert className={classes.customAlert} severity="error">
                                     {errors.minBudget}
                                 </Alert>
                             )}
                         </div>
-                        <div>
+                        </div>
+
+
+                        <div className='form__group'>
                             <p>Max. monthly rental budget</p>
+                            <div className="input-container">
                             <input
                                 type="text"
-                                maxLength="4"
-                                placeholder="1000"
+                                maxLength="6"
+                                placeholder="1200"
                                 value={maxBudget}
                                 onChange={handleMaxBudgetChange}
+                                className="input__field"
                             />
+                            <span
+                                        className="input-unit"
+                                        style={{
+                                            position: 'absolute',
+                                            right: '10px',
+                                            top: '50%',
+                                            transform: 'translateY(-50%)',
+                                        }}
+                                    >
+                                        €
+                                    </span>
                             {errors.maxBudget && (
                                 <Alert className={classes.customAlert} severity="error">
                                     {errors.maxBudget}
                                 </Alert>
                             )}
-                        </div>
+                    </div> 
                     </div>
-                    <div>
-                        <p className='text__label__margin'>Minimum m² of rented space</p>
-                        <div className="inputWrapper">
+                    </div>
+                    </div>
+
+
+
+                    
+
+                    <div className={'about__yourself__inputs'}>
+                    <div className='form__group'>
+                        <p>Minimum m² of rented space</p>
+                        <div className="input-container">
                             <input
                                 type="text"
                                 maxLength="4"
@@ -252,20 +305,38 @@ function PreferredAccommodation() {
                                 value={minimumSize}
                                 onChange={handleMinimumSizeChange}
                                 className={'input__field'}
+                                style={{ paddingRight: '30px' }}
                             />
+
+<span
+                                        className="input-unit"
+                                        style={{
+                                            position: 'absolute',
+                                            right: '10px',
+                                            top: '50%',
+                                            transform: 'translateY(-50%)',
+                                        }}
+                                    >
+                                        m²
+                                    </span>
                             {errors.minimumSize && (
                                 <Alert className={classes.customAlert} severity="error">
                                     {errors.minimumSize}
                                 </Alert>
                             )}
-                        </div>
                     </div>
+                    </div>
+                    </div>
+
+
                     <div className="next__help">
                         <button className="blue__button medium" type="button" onClick={handleSubmit}>
                             Next step
                         </button>
                         <span className="help">I need help</span>
                     </div>
+                </div>
+                </div>
                 </div>
             </div>
             <Footer />
