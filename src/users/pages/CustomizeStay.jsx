@@ -3,6 +3,8 @@ import '../css/userInfo.css';
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
+
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
@@ -98,9 +100,13 @@ function CustomizeStay() {
         <div className="page__container">
             <NavLogin />
             <div className="content">
+            <div className="customize__stay__page">
+                <div className="user__register__header">
                 <h1>Customize your stay</h1>
                 <h2>Upload your profile picture</h2>
-                <div>
+                </div>
+                
+                <div className='form__group'>
                     <p>What will you do during your stay?</p>
                     <div className="forGrid grid">
                         {['Study', 'Work', 'Internship', 'Other'].map((option) => (
@@ -118,12 +124,18 @@ function CustomizeStay() {
                             {errors.activities}
                         </Alert>
                     )}
-                    <div>
-                        <p>Other information</p>
-                        <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
-                    </div>
+                    <div className="TextBoxWithMaxInput">
+                                    <div className="TextBoxWithMaxInput__flex">
+                                        <p>Other information</p>
+                                        <InfoOutlinedIcon
+                                            className="TextBoxWithMaxInput__flex__icon"
+                                            style={{ marginTop: '24px', fontSize: '20px', marginRight: '16px' }}
+                                        />
+                                    </div>
+                                    <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
+                                </div>
                     <div className="twoGrid grid">
-                        <div>
+                        <div className='form__group' >
                             <p>What do/will you study?</p>
                             <input
                                 type="text"
@@ -138,7 +150,7 @@ function CustomizeStay() {
                                 </Alert>
                             )}
                         </div>
-                        <div>
+                        <div className='form__group'>
                             <p>In what city do/will you study?</p>
                             <input
                                 type="text"
@@ -177,10 +189,18 @@ function CustomizeStay() {
                             {errors.experiences}
                         </Alert>
                     )}
-                    <div>
-                        <p>Extra information you would like us to know?</p>
-                        <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
-                    </div>
+
+                                <div className="TextBoxWithMaxInput">
+                                    <div className="TextBoxWithMaxInput__flex">
+                                        <p>Extra information you would like us to know?</p>
+                                        <InfoOutlinedIcon
+                                            className="TextBoxWithMaxInput__flex__icon"
+                                            style={{ marginTop: '24px', fontSize: '20px', marginRight: '16px' }}
+                                        />
+                                    </div>
+                                    <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
+                                </div>
+
                     <div className="next__help">
                         <button className="blue__button medium" type="button" onClick={handleSubmit}>
                             Next step
@@ -188,6 +208,7 @@ function CustomizeStay() {
                         <span className="help">I need help</span>
                     </div>
                 </div>
+            </div>
             </div>
             <Footer />
         </div>

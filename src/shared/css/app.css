@@ -354,6 +354,10 @@ textarea{
     margin-top: -24px;
 }
 
+.user__register__header h2 {
+    margin-top: -24px;
+}
+
 
 
 
@@ -970,6 +974,10 @@ textarea{
         margin-top: 140px;
     }
 
+    .user__register__header {
+        margin-top: 140px;
+    }
+
     .plan__meeting__page {
         margin-top: 80px;
     }
@@ -1021,6 +1029,16 @@ textarea{
 
     /* PlaceAvailability.jsx */
     .place__availability__page {
+        margin-top: 152px;
+    }
+
+    /* UploadImage.jsx */
+    .upload__image__page {
+        margin-top: 164px;
+    }
+
+    /* CustomizeStay.jsx */
+    .customize__stay__page {
         margin-top: 152px;
     }
 
@@ -1100,7 +1118,14 @@ textarea{
         margin: 20px 0;
         color: var(--Lime_Green);
     }
+
+    .select__situation__page {
+        margin-bottom: 200px;
+    }
     
+    .select__situation h2 {
+        width: 100%;
+    }
 
 
 
