@@ -6,6 +6,7 @@ import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles({
     customAlert: {
@@ -27,6 +28,7 @@ function UserExpectations() {
     const [userId] = useState(localStorage.getItem('userId'));
     const [errors, setErrors] = useState({});
     const classes = useStyles();
+    const navigate = useNavigate();
 
     const handleClick = (category, option) => {
         setSelectedOptions((prevState) => {
@@ -77,6 +79,7 @@ function UserExpectations() {
 
             if (response.ok) {
                 console.log('Data submitted successfully');
+                navigate('/preferred-accommodation');
             } else {
                 console.error('Error submitting data');
             }
