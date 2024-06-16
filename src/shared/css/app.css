@@ -1,6 +1,6 @@
 .page__container {
     padding-top: 100px;
-    height: auto;
+    height: 100vh;
 }
 
 .content{
@@ -783,6 +783,7 @@ textarea{
     }
 
     .form__group__password, .form__group__confirm__password {
+        width: 800px;
         margin-left: auto;
         margin-right: auto;
     }
