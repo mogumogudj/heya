@@ -12,7 +12,7 @@ function SelectSituation() {
     }
 
     function aboutYourselfHomeOwner() {
-        navigate('/about-yourself-homeowner');
+        navigate('/step-overview-1-homeowner');
     }
 
     return (
