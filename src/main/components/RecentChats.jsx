@@ -10,6 +10,7 @@ function RecentChats({ onSelectUser }) {
     const [loading, setLoading] = useState(true);
     const userId = localStorage.getItem('userId');
     const [searchKeyword, setSearchKeyword] = useState('');
+    const [activeChatId, setActiveChatId] = useState(null);
 
     useEffect(() => {
         const fetchChats = async () => {
@@ -78,6 +79,10 @@ function RecentChats({ onSelectUser }) {
         handleSearch(keyword);
     };
 
+    const handleChatClick = (chatId) => {
+        setActiveChatId(chatId);
+    };
+
     return (
         <div className="chats__list">
             <h1 className="no__padding">Chat</h1>
@@ -117,9 +122,13 @@ function RecentChats({ onSelectUser }) {
 
                                 return (
                                     <li
-                                        className="chat__lists--chat"
-                                        key={chat._id}
-                                        onClick={() => onSelectUser(otherUserId)}
+                                    className={`chat__lists--chat ${activeChatId === chat.id ? 'active' : 'chat__lists--chat inactive'}`}
+                                        key={chat.id}
+                                        onClick={() => {
+                                                onSelectUser(otherUserId);
+                                                handleChatClick(chat.id);
+                                            }
+                                        }
                                     >
                                         <div className="chat__lists--chat__image">
                                             <img
@@ -144,7 +153,9 @@ function RecentChats({ onSelectUser }) {
                             })}
                         </ul>
                     ) : (
-                        <p>No recent chats</p>
+                        <div className="no__chats__box">
+                            <p className="no-chats__message">No recent chats</p>
+                        </div>
                     )
                 ) : filteredUsers.length > 0 ? (
                     <ul className="looped-chats__list">
@@ -164,7 +175,9 @@ function RecentChats({ onSelectUser }) {
                         ))}
                     </ul>
                 ) : (
-                    <p>No users found</p>
+                    <div className="no-users__box">
+                        <p className="no-users__message">No users found</p>
+                    </div>
                 )}
             </div>
         </div>

@@ -248,3 +248,26 @@
     position: relative;
     top: -10px;
 }
+
+.no-chat-selected {
+    width: 100%;
+    background-color: var(--Transparent-Grey);
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 18px;
+}
+
+.no-chats__box, .no-users__box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-chats__message, .no-users__message {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
