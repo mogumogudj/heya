@@ -225,8 +225,9 @@ function PreferredAccommodation() {
                     </div>
 
 
-                    <div className="flex">
-                    <div className="pricing__inputs" style={{width: '50px'}}>
+
+                    <div className="pricing__sections">
+                    <div className="pricing__inputs">
                         <div className='form__group'>
                             <p>Min. monthly rental budget</p>
                             <div className="input-container">
