@@ -28,6 +28,7 @@ import UserExpectations from './users/pages/UserExpectations.jsx';
 import RoomInfo from './main/pages/RoomInfo.jsx';
 import PreferredAccommodation from './users/pages/PreferredAccommodation.jsx';
 import ProfileOverview from './users/pages/ProfileOverview.jsx';
+import StepOverview1 from './users/pages/StepOverview1.jsx';
 
 import ProfileOverviewHomeOwner from './homeowner/pages/ProfileOverview.jsx';
 import AboutYourselfHomeOwner from './homeowner/pages/AboutYourself.jsx';
@@ -68,6 +69,7 @@ function App() {
                     <Route element={<PrivateRoutes />}>
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/select-situation" element={<SelectSituation />} />
+                        <Route path="/step-overview-1" element={<StepOverview1 />} />
                         <Route path="/about-yourself" element={<AboutYourself />} />
                         <Route path="/upload-image" element={<UploadImage />} />
                         <Route path="/customize-stay" element={<CustomizeStay />} />
