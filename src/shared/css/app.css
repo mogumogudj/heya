@@ -132,6 +132,11 @@ h1, h2, h3, h4, h5, h6{
     margin-top: -40px
 }
 
+.already__have__account:hover {
+    color: var(--Dark_Blue);
+    cursor: pointer;
+}
+
 .place__to__offer, .looking__for__a__place {
     border: 1px solid var(--Grey_Blue);
     border-radius: 8px;
