@@ -3,6 +3,7 @@ import '../css/userInfo.css';
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
 
@@ -87,11 +88,16 @@ function UserExpectations() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content">
+            <div className="content" style={{minHeight:'140vh'}}>
+            <div className="center-container">
+            <div className="user__expectations__page">
+                <div className="user__register__header">
                 <h1>Your Expectations?</h1>
                 <h2>This helps us find your ideal match.</h2>
-                <div>
-                    <p>I want my host to.</p>
+                </div>
+
+                <div className='form__group'>
+                    <p>I want my host to..</p>
                     <div className="forGrid grid">
                         {[
                             'Become friends with me',
@@ -114,6 +120,9 @@ function UserExpectations() {
                             {errors.wants}
                         </Alert>
                     )}
+
+
+                    <div className='form__group'>
                     <p>Characteristics you find important for the house?</p>
                     <div className="forGrid grid">
                         {[
@@ -137,15 +146,27 @@ function UserExpectations() {
                             </div>
                         ))}
                     </div>
+                    </div>
+
                     {errors.characteristics && (
                         <Alert className={classes.customAlert} severity="error">
                             {errors.characteristics}
                         </Alert>
                     )}
-                    <div>
-                        <p>Other characteristics</p>
-                        <TextBoxWithMaxInput value={otherCharacteristics} onChange={handleOtherCharacteristicsChange} />
-                    </div>
+
+                            <div className="form__group">
+                                <div className="TextBoxWithMaxInput">
+                                    <div className="TextBoxWithMaxInput__flex">
+                                    <p>Other characteristics</p>
+                                        <InfoOutlinedIcon
+                                            className="TextBoxWithMaxInput__flex__icon"
+                                            style={{ marginTop: '24px', fontSize: '20px', marginRight: '16px' }}
+                                        />
+                                    </div>
+                                    <TextBoxWithMaxInput value={otherCharacteristics} onChange={handleOtherCharacteristicsChange} />
+                                </div>
+                            </div>
+
                     <div className="next__help">
                         <button className="blue__button medium" type="button" onClick={handleSubmit}>
                             Next step
@@ -153,6 +174,8 @@ function UserExpectations() {
                         <span className="help">I need help</span>
                     </div>
                 </div>
+                </div>
+            </div>
             </div>
             <Footer />
         </div>
