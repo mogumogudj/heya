@@ -27,9 +27,9 @@ function StepOverview1() {
                     
                         
                     <StepOverviewComponent
-          title="Next Step: Profile Information"
-          subtitle="Complete your profile"
-          description="Please provide detailed information about yourself to improve your experience."
+          title="Provide Your Personal Information"
+          subtitle="Help Us Get to Know You Better"
+          description="Please fill out the form below with your personal details. This information is crucial for us to create your student profile and ensure that we have all the necessary data to support your educational journey. All information provided will be kept confidential and secure."
           image="/SleepingRoom.webp"
         />
 
