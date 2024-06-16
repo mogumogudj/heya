@@ -13,6 +13,10 @@ function ProfileOverview() {
         navigate('/home');
     };
 
+    const goHome = () => {
+        navigate('/home');
+    };
+
     return (
         <div className="page__container">
             <NavLogin />
@@ -165,14 +169,14 @@ function ProfileOverview() {
                                 </div>
                             </div>
                         </div>
-                        <div className="next__help">
-                            <button className="blue__button medium" type="button" onClick={handleSubmit}>
-                                Next step
-                            </button>
-                            <span className="help">I need help</span>
-                        </div>
                     </div>
                 )}
+                <div className="next__help">
+                    <button className="blue__button medium" type="button" onClick={handleSubmit}>
+                        Next step
+                    </button>
+                    <span className="help">I need help</span>
+                </div>
             </div>
             <Footer />
         </div>

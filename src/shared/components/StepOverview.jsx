@@ -4,7 +4,7 @@ import '../css/step-overview.css';
 function StepOverviewComponent({ title, subtitle, description, image }) {
   return (
     <div className="page__container">
-      <div className="content" style={{maxHeight: '100%'}}>
+      <div className="step-overview_-content">
         <div className="center-container">
           <div className="step__overview">
             <div className="text-container">

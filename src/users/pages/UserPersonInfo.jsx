@@ -98,7 +98,7 @@ function UserPersonInfo() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content" style={{minHeight:'172vh'}}>
+            <div className="content" style={{minHeight:'190vh'}}>
             <div className="center-container">
                 <div className="user__person__info__page">
                 <div className="user__register__header">

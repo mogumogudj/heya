@@ -123,7 +123,7 @@ function CustomizeStay() {
                         <TextBoxWithMaxInput value={otherInfo} onChange={handleOtherInfoChange} />
                     </div>
                     <div className="twoGrid grid">
-                        <div>
+                        <div className='form__group'>
                             <p>What do/will you study?</p>
                             <input
                                 type="text"
@@ -147,6 +147,7 @@ function CustomizeStay() {
                                 placeholder="Antwerp"
                                 value={city}
                                 onChange={handleCityChange}
+                                className="input__field"
                             />
                             {errors.city && (
                                 <Alert className={classes.customAlert} severity="error">

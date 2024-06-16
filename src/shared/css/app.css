@@ -1,5 +1,6 @@
 .page__container {
     padding-top: 100px;
+    height: auto;
 }
 
 .content{
@@ -9,6 +10,10 @@
 
 .home__content {
     padding: 0 32px;
+}
+
+.step-overview_-content {
+    height: auto;
 }
 
 .center-container-always{
@@ -135,7 +140,11 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .next__help {
-    padding-top: 32px;
+    margin-bottom: 120px;
+}
+
+.next__help.extra__margin340 {
+    margin-bottom: 340px;
 }
 
 .form__group {
@@ -741,9 +750,6 @@ textarea{
 
 
 
-
-
-
 /* Availability */
 .availbilityGrid {
     display: grid;
@@ -765,8 +771,7 @@ textarea{
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 100vh;
-        margin-top: -70px;
+        height: 90vh;
     }
 
     .heya__logo__blue__round{

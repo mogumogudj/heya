@@ -21,7 +21,7 @@ function StepOverview2() {
         
         <div className="page__container" style={{height: '100%'}}>
             <NavLogin />
-            <div className="content">
+            <div className="content step-overview_-content">
                 <div className="center-container">
                     <div>
                     
@@ -35,7 +35,7 @@ function StepOverview2() {
 
 
                         
-                        <div className="next__help" style={{position: 'relative', bottom: '240px'}}>
+                        <div className="next__help">
                             <button className="blue__button medium" type="button" onClick={nextStep}>
                                 Next step
                             </button>
