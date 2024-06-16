@@ -89,7 +89,9 @@ function Profile() {
                     </div>
                     <div>
                         <h2>{`${userData?.firstName} ${userData?.lastName}`}</h2>
-                        <h3>Student</h3>
+                        <h3>
+                            {userData?.role === 'student' ? 'Student' : userData?.role === 'houseowner' ? 'Houseowner' : 'Heya user'}
+                        </h3>
                         <div className="profile__info">
                             <p>
                                 <SchoolOutlinedIcon style={{ verticalAlign: 'middle', marginRight: '8px' }} />
