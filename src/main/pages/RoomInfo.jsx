@@ -234,7 +234,7 @@ function RoomInfo() {
                                         Description
                                     </h4>
                                     <p className="room__description--description__text no__padding">
-                                        {room?.otherInfo}
+                                        {room?.roomDetails[0]?.otherInfo}
                                     </p>
                                 </div>
                             </div>
