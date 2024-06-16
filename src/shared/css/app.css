@@ -1031,9 +1031,14 @@ textarea{
         margin-top: 152px;
     }
 
+    /* UploadImage.jsx */
     .upload__image__page {
         margin-top: 164px;
-    
+    }
+
+    /* CustomizeStay.jsx */
+    .customize__stay__page {
+        margin-top: 152px;
     }
 
  /* Plan meeting */
