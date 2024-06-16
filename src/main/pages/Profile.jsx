@@ -142,10 +142,10 @@ function Profile() {
                             reviewDate='January 2024' 
                         />
                         <UserReview 
-                            reviewName='Tjerk Symens' 
-                            reviewImage='../tjerk.webp' 
-                            reviewText="After a really successful year living with Wolf, I can't help but reflect on the warmth and happiness I've experienced. Despite my initial thoughts on sharing space, Wolf made me feel like a happy man again. Meals together, shared laughter, and ..."
-                            reviewDate='January 2024' 
+                            reviewName='Wolf Ver Elst' 
+                            reviewImage='../wolf.webp' 
+                            reviewText="He might be one of those youngsters we boomers are wrong about. He is never lazy and helps out where needed. The occasional loud music you can expect from a dj is a problem I gladly accept. And he will notify us when he will do so."
+                            reviewDate='May 2024' 
                         />
                     </div>
                 </div>
