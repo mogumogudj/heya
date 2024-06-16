@@ -232,7 +232,7 @@ function SpecificRoom() {
                                 </p>
                             </div>
                         </div>
-                        <PersonCard userType="student" name="Wolf Ver Elst" />
+                        <PersonCard userType="student" name="Wolf Ver Elst" userId="666d7df166fb97a810222a25" imageUrl="https://res.cloudinary.com/doxzjrtjh/image/upload/v1718451719/udt33egy6j9ou9put3t1.jpg" />
                         <div className="rent__buttons">
                             <button onClick={changeThisRoom} className="blue__button">
                                 Make changes to this room
