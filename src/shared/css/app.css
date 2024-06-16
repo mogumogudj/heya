@@ -758,6 +758,7 @@ textarea{
     background-color: #fff;
 }
 
+
 @media screen and (min-height: 700px) and (min-width: 800px) {
     .center-container{
         display: flex;
