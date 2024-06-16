@@ -30,6 +30,7 @@ import RoomInfo from './main/pages/RoomInfo.jsx';
 import PreferredAccommodation from './users/pages/PreferredAccommodation.jsx';
 import ProfileOverview from './users/pages/ProfileOverview.jsx';
 import StepOverview1 from './users/pages/StepOverview1.jsx';
+import StepOverview2 from './users/pages/StepOverview2.jsx';
 
 import ProfileOverviewHomeOwner from './homeowner/pages/ProfileOverview.jsx';
 import AboutYourselfHomeOwner from './homeowner/pages/AboutYourself.jsx';
@@ -73,6 +74,7 @@ function App() {
                         <Route path="/step-overview-1" element={<StepOverview1 />} />
                         <Route path="/about-yourself" element={<AboutYourself />} />
                         <Route path="/upload-image" element={<UploadImage />} />
+                        <Route path="/step-overview-2" element={<StepOverview2 />} />
                         <Route path="/customize-stay" element={<CustomizeStay />} />
                         <Route path="/user-person-info" element={<UserPersonInfo />} />
                         <Route path="/user-expectations" element={<UserExpectations />} />

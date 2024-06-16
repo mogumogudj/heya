@@ -68,7 +68,7 @@ function UploadImage() {
 
             if (updateUserResponse.ok) {
                 console.log('Image uploaded successfully');
-                navigate('/customize-stay');
+                navigate('/step-overview-2');
             } else {
                 console.error('Failed to update user with image link');
                 setError('Failed to upload image');
