@@ -37,18 +37,19 @@ function Rooms() {
     const isLoggedIn = !!localStorage.getItem('userId');
     const isStudent = userData?.role === 'student';
     const isHouseowner = userData?.role === 'houseowner';
+    const rentsRoom = userData?.rentsRoom === true;
+    const rentsRoomId = userData?.rentsRoomId;
 
     if (!isLoggedIn) {
         return <Navigate to="/login" />;
     }
 
     if (isStudent) {
-        const hasRoom = roomsInUse.length > 0;
-        if (hasRoom) {
+        if (rentsRoom) {
             return (
                 <div className="page__container">
                     <NavApp />
-                    <UserWithRoom />
+                    <UserWithRoom roomId={rentsRoomId} />
                     <Footer />
                 </div>
             );
