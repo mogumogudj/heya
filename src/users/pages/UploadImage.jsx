@@ -138,7 +138,7 @@ function UploadImage() {
                                 {error}
                             </Alert>
                         )}
-                        <div className="next__help">
+                        <div className="next__help" style={{position: 'relative', top:'52px' }}>
                             <button className="blue__button medium" type="button" onClick={handleUpload}>
                                 Next step
                             </button>
