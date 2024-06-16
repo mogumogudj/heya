@@ -919,6 +919,12 @@ textarea{
         margin-bottom: 20px;   
     }
 
+    .study__flex {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;   
+    }
+
 
     /* HouseholdDetails.jsx */
 .household__details__page {
@@ -1036,7 +1042,11 @@ textarea{
 
     /* CustomizeStay.jsx */
     .customize__stay__page {
+<<<<<<< HEAD
         margin-top: 152px;
+=======
+        margin-top: 232px;
+>>>>>>> 95572dcbb79a2eecbb8f442d425214bd886494be
     }
 
  /* Plan meeting */
