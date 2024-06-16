@@ -25,27 +25,27 @@ function Chat() {
     const messagesEndRef = useRef(null);
     const messagesContainerRef = useRef(null);
 
+    const fetchUserInfo = async (id) => {
+        try {
+            const userInfoResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${id}`);
+            const userInfoData = await userInfoResponse.json();
+            setOtherUserInfo(userInfoData);
+        } catch (error) {
+            console.error('Failed to fetch user info:', error);
+        }
+    };
+
+    const fetchUserImage = async () => {
+        try {
+            const userInfoResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`);
+            const userInfoData = await userInfoResponse.json();
+            setUserImage(userInfoData.imageLink);
+        } catch (error) {
+            console.error('Failed to fetch current user info:', error);
+        }
+    };
+
     useEffect(() => {
-        const fetchUserInfo = async (id) => {
-            try {
-                const userInfoResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${id}`);
-                const userInfoData = await userInfoResponse.json();
-                setOtherUserInfo(userInfoData);
-            } catch (error) {
-                console.error('Failed to fetch user info:', error);
-            }
-        };
-
-        const fetchUserImage = async () => {
-            try {
-                const userInfoResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`);
-                const userInfoData = await userInfoResponse.json();
-                setUserImage(userInfoData.imageLink);
-            } catch (error) {
-                console.error('Failed to fetch current user info:', error);
-            }
-        };
-
         fetchUserImage();
 
         if (urlOtherUserId) {
@@ -66,10 +66,12 @@ function Chat() {
         if (otherUserId) {
             const fetchMessages = async () => {
                 try {
+                    console.log('Fetching messages for:', userId, otherUserId);
                     const response = await fetch(
                         `${import.meta.env.VITE_API_URL}/messages/all/${userId}/${otherUserId}`,
                     );
                     const data = await response.json();
+                    console.log('Fetched messages:', data);
                     setMessages(data);
                 } catch (error) {
                     console.error('Failed to fetch chats:', error);
