@@ -51,6 +51,7 @@ import PrivacyHomeOwner from './homeowner/pages/Privacy.jsx';
 import PlanMeetingHomeOwner from './homeowner/pages/PlanMeeting.jsx';
 import PlaceOverviewHomeOwner from './homeowner/pages/PlaceOverview.jsx';
 import StepOverview1Homeowner from './homeowner/pages/StepOverview1.jsx';
+import StepOverview2Homeowner from './homeowner/pages/StepOverview2.jsx';
 
 import { UserProvider } from './shared/contexts/UserContext.jsx';
 
@@ -86,6 +87,7 @@ function App() {
                         <Route path="/step-overview-1-homeowner" element={<StepOverview1Homeowner />} />
                         <Route path="/about-yourself-homeowner" element={<AboutYourselfHomeOwner />} />
                         <Route path="/upload-image-homeowner" element={<UploadImageHomeOwner />} />
+                        <Route path="/step-overview-2-homeowner" element={<StepOverview2Homeowner />} />
                         <Route path="/accommodation-type-homeowner" element={<AccommodationTypeHomeOwner />} />
                         <Route
                             path="/accommodation-information-homeowner"
