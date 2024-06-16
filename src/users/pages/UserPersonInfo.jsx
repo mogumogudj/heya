@@ -3,6 +3,7 @@ import '../css/userInfo.css';
 import Footer from '../../shared/components/Footer.jsx';
 import NavLogin from '../../shared/components/NavLogin.jsx';
 import TextBoxWithMaxInput from '../../shared/components/TextBoxWithMaxInput.jsx';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
@@ -97,10 +98,14 @@ function UserPersonInfo() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content">
+            <div className="content" style={{minHeight:'172vh'}}>
+            <div className="center-container">
+                <div className="user__person__info__page">
+                <div className="user__register__header">
                 <h1>Who are you as a person?</h1>
                 <h2>Tell us about yourself so we can find the best match possible</h2>
-                <div>
+                </div>
+                <div className='form__group'>
                     <p>What languages do you speak?</p>
                     <div className="forGrid grid">
                         {['Dutch', 'English', 'French', 'German', 'Other'].map((option) => (
@@ -118,10 +123,24 @@ function UserPersonInfo() {
                             {errors.languages}
                         </Alert>
                     )}
-                    <div>
-                        <p>Other Languages</p>
-                        <TextBoxWithMaxInput value={otherLanguage} onChange={handleOtherLanguageChange} />
-                    </div>
+
+                            <div className="form__group">
+                                <div className="TextBoxWithMaxInput">
+                                    <div className="TextBoxWithMaxInput__flex">
+                                    <p>Other Languages</p>
+                                        <InfoOutlinedIcon
+                                            className="TextBoxWithMaxInput__flex__icon"
+                                            style={{ marginTop: '24px', fontSize: '20px', marginRight: '16px' }}
+                                        />
+                                    </div>
+                                    <TextBoxWithMaxInput value={otherLanguage} onChange={handleOtherLanguageChange} />
+                                </div>
+                            </div>
+
+
+
+
+                    <div className="form__group">
                     <p>What characterizes you?</p>
                     <div className="forGrid grid">
                         {[
@@ -144,24 +163,44 @@ function UserPersonInfo() {
                             </div>
                         ))}
                     </div>
+                    </div>
                     {errors.character && (
                         <Alert className={classes.customAlert} severity="error">
                             {errors.character}
                         </Alert>
                     )}
-                    <div>
-                        <p>Other character</p>
-                        <TextBoxWithMaxInput value={otherCharacter} onChange={handleOtherCharacterChange} />
+
+                    <div className="form__group">
+                                <div className="TextBoxWithMaxInput">
+                                    <div className="TextBoxWithMaxInput__flex">
+                                    <p>Other characteristics</p>
+                                        <InfoOutlinedIcon
+                                            className="TextBoxWithMaxInput__flex__icon"
+                                            style={{ marginTop: '24px', fontSize: '20px', marginRight: '16px' }}
+                                        />
+                                    </div>
+                                    <TextBoxWithMaxInput value={otherCharacter} onChange={handleOtherCharacterChange} />
+                                </div>
                     </div>
-                    <div>
-                        <p>Give us a short description of yourself</p>
-                        <TextBoxWithMaxInput value={shortDescription} onChange={handleShortDescriptionChange} />
-                        {errors.shortDescription && (
+
+                    <div className="form__group">
+                                <div className="TextBoxWithMaxInput">
+                                    <div className="TextBoxWithMaxInput__flex">
+                                    <p>Give us a short description of yourself</p>
+                                        <InfoOutlinedIcon
+                                            className="TextBoxWithMaxInput__flex__icon"
+                                            style={{ marginTop: '24px', fontSize: '20px', marginRight: '16px' }}
+                                        />
+                                    </div>
+                                    <TextBoxWithMaxInput value={shortDescription} onChange={handleShortDescriptionChange} />
+                                    {errors.shortDescription && (
                             <Alert className={classes.customAlert} severity="error">
                                 {errors.shortDescription}
                             </Alert>
                         )}
+                                </div>
                     </div>
+
                     <div className="next__help">
                         <button className="blue__button medium" type="button" onClick={handleSubmit}>
                             Next step
@@ -169,6 +208,8 @@ function UserPersonInfo() {
                         <span className="help">I need help</span>
                     </div>
                 </div>
+            </div>
+            </div>
             </div>
             <Footer />
         </div>
