@@ -519,6 +519,12 @@
     margin-bottom: 48px;
 }
 
+.houseowner__looped__rooms {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
 @media screen and (max-width: 1000px) {
     .room__basic-info {
         width: 100%;
