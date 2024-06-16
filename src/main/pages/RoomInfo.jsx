@@ -108,6 +108,8 @@ function RoomInfo() {
 
     const fullName = `${owner?.firstName || ''} ${owner?.lastName || ''}`;
 
+    console.log(owner.role);
+
     //if the window size is bigger than mobile (800px) return this
     if (window.innerWidth > 800) {
         return (
@@ -218,10 +220,12 @@ function RoomInfo() {
                                 </div>
                             </div>
                             <div className="room__buttons">
-                                <button onClick={BookThisRoom} className="blue__button">
-                                    Book this room
-                                </button>
-                                <button onClick={moveToChat} className="white__button">
+                                {owner.role === 'student' && (
+                                    <button onClick={BookThisRoom} className="blue__button">
+                                        Book this room
+                                    </button>
+                                )}
+                                <button onClick={moveToChat} className="white__button" style={{ marginTop: '16px' }}>
                                     Contact the owner
                                 </button>
                             </div>
@@ -533,9 +537,11 @@ function RoomInfo() {
                             </p>
                         </div>
                         <div className="room__buttons">
-                            <button onClick={BookThisRoom} className="blue__button">
-                                Book this room
-                            </button>
+                            {owner.role === 'student' && (
+                                <button onClick={BookThisRoom} className="blue__button">
+                                    Book this room
+                                </button>
+                            )}
                             <button onClick={moveToChat} className="white__button">
                                 Contact the owner
                             </button>
