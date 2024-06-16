@@ -98,7 +98,7 @@ function CustomizeStay() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content" style={{minHeight: '120vh'}}>
+            <div className="content" style={{minHeight: '1000px'}}>
             <div className="center-container">
                 <div className="customize__stay__page">
                 <div className="user__register__header">
