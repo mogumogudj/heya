@@ -16,7 +16,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import HandshakeRoundedIcon from '@mui/icons-material/HandshakeRounded';
 import CountertopsRoundedIcon from '@mui/icons-material/CountertopsRounded';
 import ShowerRoundedIcon from '@mui/icons-material/ShowerRounded';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function RoomInfo() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,7 +27,6 @@ function RoomInfo() {
     const [isLoading, setIsLoading] = useState(true);
     const [selectedImage, setSelectedImage] = useState(null);
     const userId = localStorage.getItem('userId');
-    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchRoomAndOwner = async () => {
@@ -91,7 +90,7 @@ function RoomInfo() {
                 throw new Error('Failed to update user data');
             }
             console.log('User data updated successfully');
-            navigate('/rooms');
+            window.location.href = '/rooms';
         } catch (error) {
             console.error('Error booking room:', error);
         }
@@ -492,7 +491,6 @@ function RoomInfo() {
                                             {amentity}
                                         </li>
                                     ))}
-                                    <li>{room?.personalRoomDetails[0]?.additionalAmenities}</li>
                                 </ul>
                             </div>
                         </div>
@@ -508,7 +506,6 @@ function RoomInfo() {
                                             {character}
                                         </li>
                                     ))}
-                                    <li>{room?.personalRoomDetails[0]?.additionalAmenities}</li>
                                 </ul>
                             </div>
                             <div className="divider divider--room"></div>
