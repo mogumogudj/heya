@@ -80,6 +80,7 @@ function AccommodationInformation() {
                             },
                             body: JSON.stringify({
                                 room: updatedRooms,
+                                role: 'houseowner',
                             }),
                         });
 
