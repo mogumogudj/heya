@@ -155,7 +155,7 @@ function RoomDetails() {
 
                         <div className="TextBoxWithMaxInput">
                             <div className="TextBoxWithMaxInput__flex">
-                                <p>Extra information</p>
+                                <p>Give here your room Description</p>
                                 <InfoOutlinedIcon
                                     className="TextBoxWithMaxInput__flex__icon"
                                     style={{ marginTop: '24px', fontSize: '20px', marginRight: '16px' }}
