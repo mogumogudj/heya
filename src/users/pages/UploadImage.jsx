@@ -88,9 +88,11 @@ function UploadImage() {
             <NavLogin />
             <div className="content">
                 <div className="center-container">
-                    <div>
+                    <div className='upload__image__page'>
+                    <div className="user__register__header">
                         <h1 className="photo__h1">Give us a photo of yourself</h1>
                         <h2>Upload your profile picture</h2>
+                    </div>
                         <div className="center">
                             {preview ? (
                                 <img
