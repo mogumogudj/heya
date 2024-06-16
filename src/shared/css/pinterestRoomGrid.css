@@ -1,9 +1,9 @@
 .pinterest-room-grid {
-  columns: 3;
+  columns: 4;
   gap: 16px;
   justify-content: space-between;
   padding: 16px; 
-  width: 75%;
+  width: 80%;
   }  
 
   .pinterest-room-total {
@@ -71,10 +71,24 @@
   }
 
 
+@media screen and (max-width: 1200px) {
+  .pinterest-room-grid {
+    columns: 3;
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .pinterest-room-grid {
+    width: 64%;
+  }
+}
+
   /* Small screens */
 @media screen and (max-width: 800px) {
-  .pinterest-room-total {
-    display: none;
+  .pinterest-room-grid {
+    width: calc(100% - 32px);
+    columns: 2;
   }
 
 }

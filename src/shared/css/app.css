@@ -7,7 +7,9 @@
     margin: 0 120px 16px 120px;
 }
 
-
+.home__content {
+    padding: 0 32px;
+}
 
 .center-container-always{
     display: flex;
@@ -619,10 +621,12 @@ textarea{
 
 .home__title {
     margin-top: -44px;
+    width: 1200px;
+    margin-left: calc(50% - 600px);
 }
 
 .room-slider-container {
-    width: calc(75% + calc(100vw - 1200px)/2 + 32px);
+    width: calc(100% - 160px);
 }
   
 .search-icon {
@@ -635,6 +639,10 @@ textarea{
 .custom-chip {
     color: red;
     background-color: blue;
+}
+
+.form-control-custom {
+    max-width: 600px;
 }
 
 
@@ -1099,6 +1107,13 @@ textarea{
     
 
     
+}
+
+@media screen and (max-width: 1264px) {
+    .home__title {
+        width: 100%;
+        margin-left: 0;
+    }
 }
 
 @media screen and (max-width: 1200px) {

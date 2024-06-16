@@ -81,10 +81,10 @@ function Home() {
   return (
     <div className="page__container home__body">
       {isLoggedIn ? <NavApp /> : <Nav />}
-      <div className="content">
+      <div className="home__content">
         <div className="home__container">
           <h1 className="home__title">Discover</h1>
-          <Box display="flex" alignItems="center" gap={2} mb={2}>
+          <Box display="flex" alignItems="center" justifyContent="center" gap={2} mb={2}>
             <FormControl fullWidth variant="outlined" className="form-control-custom">
               <InputLabel >City</InputLabel>
               <Select className="city-selector-label" label="Choose your city" defaultValue="">

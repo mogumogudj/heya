@@ -1,5 +1,6 @@
 .room-slider {
     padding: 24px 0 18px 16px;
+    width: calc(100% - 64px);
   }
   
   .flex-container {
@@ -106,7 +107,7 @@
   }
 
   .more-rooms-button {
-    margin-right: 400px;
+    margin-right: 300px;
     width: 152px;
   }
 }
@@ -139,12 +140,14 @@
   .more-rooms-button {
     background-color: var(--White);
     color: var(--Black);
-    width: 140px;
+    width: 120px;
     margin-left: auto;
-    margin-right: 32px;
-    
+    margin-right: 16px;
   }
 
+  .room-slider {
+    width: 100%;
+  }
 }
 
 /* Very small screens */

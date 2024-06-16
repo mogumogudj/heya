@@ -1,5 +1,6 @@
 .city-slider {
     padding: 24px 0 40px 16px;
+    width: calc(100% - 64px);
   }
   
   .city-slider h3 {
@@ -15,7 +16,7 @@
     -webkit-overflow-scrolling: touch;
     overflow-x: scroll;
     scrollbar-width: none;
-    padding: 16px 16px 16px 16px;
+    padding: 16px ;
   }
   
   .city-card-container::-webkit-scrollbar {
@@ -24,14 +25,14 @@
   
   .city-card {
     position: relative;
-  margin-right: 16px;
-  flex: 0 0 auto;
-  width: 300px;
-  scroll-snap-align: start;
-  border-radius: 8px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+    margin-right: 16px;
+    flex: 0 0 auto;
+    width: 270px;
+    scroll-snap-align: start;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease;
   }
 
     .city-card::before {
@@ -85,6 +86,11 @@
   
     .city-image {
       height: 150px;
+    }
+
+    .city-slider {
+      padding: 0;
+      width: 100%;
     }
   }
   
