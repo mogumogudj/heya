@@ -144,7 +144,9 @@ function RecentChats({ onSelectUser }) {
                             })}
                         </ul>
                     ) : (
-                        <p>No recent chats</p>
+                        <div className="no__chats__box">
+                            <p className="no-chats__message">No recent chats</p>
+                        </div>
                     )
                 ) : filteredUsers.length > 0 ? (
                     <ul className="looped-chats__list">
@@ -164,7 +166,9 @@ function RecentChats({ onSelectUser }) {
                         ))}
                     </ul>
                 ) : (
-                    <p>No users found</p>
+                    <div className="no-users__box">
+                        <p className="no-users__message">No users found</p>
+                    </div>
                 )}
             </div>
         </div>
