@@ -7,11 +7,7 @@ import '../css/room-info.css';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import SwapHorizontalCircleRoundedIcon from '@mui/icons-material/SwapHorizontalCircleRounded';
 import MapsHomeWorkRoundedIcon from '@mui/icons-material/MapsHomeWorkRounded';
-import FitnessCenterRoundedIcon from '@mui/icons-material/FitnessCenterRounded';
-import TvRoundedIcon from '@mui/icons-material/TvRounded';
 import DirectionsBikeRoundedIcon from '@mui/icons-material/DirectionsBikeRounded';
-import WifiRoundedIcon from '@mui/icons-material/WifiRounded';
-import RadioRoundedIcon from '@mui/icons-material/RadioRounded';
 import HotelRoundedIcon from '@mui/icons-material/HotelRounded';
 import ChairRoundedIcon from '@mui/icons-material/ChairRounded';
 import CottageRoundedIcon from '@mui/icons-material/CottageRounded';
@@ -20,20 +16,22 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import HandshakeRoundedIcon from '@mui/icons-material/HandshakeRounded';
 import CountertopsRoundedIcon from '@mui/icons-material/CountertopsRounded';
 import ShowerRoundedIcon from '@mui/icons-material/ShowerRounded';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 function RoomInfo() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const roomId = useParams().id;
     const [room, setRoom] = useState(null);
     const [owner, setOwner] = useState(null);
+    const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [selectedImage, setSelectedImage] = useState(null);
+    const userId = localStorage.getItem('userId');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchRoomAndOwner = async () => {
             try {
-                const userId = localStorage.getItem('userId');
                 if (userId) {
                     setIsLoggedIn(true);
                 } else {
@@ -56,6 +54,13 @@ function RoomInfo() {
                     setOwner(ownerData);
                 }
 
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user data');
+                }
+                const userData = await response.json();
+                setUser(userData);
+
                 if (roomData.images && roomData.images.length > 0) {
                     setSelectedImage(roomData.images[0]);
                 }
@@ -69,10 +74,27 @@ function RoomInfo() {
         fetchRoomAndOwner();
     }, [roomId]);
 
-    const BookThisRoom = () => {
-        //moet deze room booken en dan naar calendar gaan
-        //nu tijdelijk console log
-        console.log('Room booked');
+    const BookThisRoom = async () => {
+        try {
+            console.log('Room booked');
+            const updateUserResponse = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    rentsRoom: true,
+                    rentsRoomId: roomId,
+                }),
+            });
+            if (!updateUserResponse.ok) {
+                throw new Error('Failed to update user data');
+            }
+            console.log('User data updated successfully');
+            navigate('/rooms');
+        } catch (error) {
+            console.error('Error booking room:', error);
+        }
     };
 
     const moveToChat = () => {
@@ -107,8 +129,6 @@ function RoomInfo() {
     };
 
     const fullName = `${owner?.firstName || ''} ${owner?.lastName || ''}`;
-
-    console.log(owner.role);
 
     //if the window size is bigger than mobile (800px) return this
     if (window.innerWidth > 800) {
@@ -220,7 +240,7 @@ function RoomInfo() {
                                 </div>
                             </div>
                             <div className="room__buttons">
-                                {owner.role === 'student' && (
+                                {user.role === 'student' && (
                                     <button onClick={BookThisRoom} className="blue__button">
                                         Book this room
                                     </button>
@@ -537,7 +557,7 @@ function RoomInfo() {
                             </p>
                         </div>
                         <div className="room__buttons">
-                            {owner.role === 'student' && (
+                            {user.role === 'student' && (
                                 <button onClick={BookThisRoom} className="blue__button">
                                     Book this room
                                 </button>
