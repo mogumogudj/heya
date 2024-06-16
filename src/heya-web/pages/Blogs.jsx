@@ -30,7 +30,6 @@ function Blogs() {
                         className="article"
                     />
                 </div>
-                <CitySelector />
                 <div className="blogs__articles blogs__articles__33">
                     <Article
                         type="Default"
