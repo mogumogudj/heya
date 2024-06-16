@@ -91,7 +91,7 @@ function UserExpectations() {
     return (
         <div className="page__container">
             <NavLogin />
-            <div className="content" style={{minHeight:'140vh'}}>
+            <div className="content" style={{minHeight:'156vh'}}>
             <div className="center-container">
             <div className="user__expectations__page">
                 <div className="user__register__header">
