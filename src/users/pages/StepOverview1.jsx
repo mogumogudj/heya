@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import StepOverviewComponent from '../../shared/components/StepOverview.jsx';
@@ -12,14 +12,14 @@ function StepOverview1() {
 
     const navigate = useNavigate();
 
-    //make funtion to navigate to next page
-    const handleClick = () => {
-        navigate('/step-overview');
+    function nextStep() {
+        navigate('/about-yourself');
     }
 
 
     return (
-        <div className="page__container">
+        
+        <div className="page__container" style={{height: '100%'}}>
             <NavLogin />
             <div className="content">
                 <div className="center-container">
@@ -35,8 +35,8 @@ function StepOverview1() {
 
 
                         
-                        <div className="next__help">
-                            <button className="blue__button medium" type="button" >
+                        <div className="next__help" style={{position: 'relative', bottom: '240px'}}>
+                            <button className="blue__button medium" type="button" onClick={nextStep}>
                                 Next step
                             </button>
                             <span className="help">I need help</span>

@@ -8,7 +8,7 @@ function SelectSituation() {
     const navigate = useNavigate();
 
     function aboutYourself() {
-        navigate('/about-yourself');
+        navigate('/step-overview-1');
     }
 
     function aboutYourselfHomeOwner() {
