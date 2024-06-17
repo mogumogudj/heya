@@ -53,7 +53,7 @@ function Chat() {
         }
 
         socket.on('receiveMessage', (msg) => {
-            if (msg.userId === otherUserId || msg.sentToUserId === otherUserId) {
+            if (msg.userId === userId || msg.sentToUserId === userId) {
                 setMessages((prevMessages) => [msg, ...prevMessages]);
                 scrollToBottom();
             }
