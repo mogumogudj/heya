@@ -53,7 +53,10 @@ function Chat() {
         }
 
         socket.on('receiveMessage', (msg) => {
-            if (msg.userId === userId || msg.sentToUserId === userId) {
+            if (
+                (msg.userId === userId && msg.sentToUserId === otherUserId) ||
+                (msg.userId === otherUserId && msg.sentToUserId === userId)
+            ) {
                 setMessages((prevMessages) => [msg, ...prevMessages]);
                 scrollToBottom();
             }
@@ -62,7 +65,7 @@ function Chat() {
         return () => {
             socket.off('receiveMessage');
         };
-    }, [userId, urlOtherUserId]);
+    }, [userId, urlOtherUserId, otherUserId]);
 
     useEffect(() => {
         if (otherUserId) {
